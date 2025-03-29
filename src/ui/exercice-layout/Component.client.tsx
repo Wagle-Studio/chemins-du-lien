@@ -5,7 +5,7 @@ import { ExerciceHeader } from '@/ui/exercice-header/Component.client'
 interface Props extends React.HTMLAttributes<HTMLElement> {
   cursus: CursusDocument
   exercice: ExerciceDocument
-  exerciceSlugs: String[]
+  exerciceSlugs: string[]
 }
 
 export const ExerciceLayout: React.FC<Props> = ({

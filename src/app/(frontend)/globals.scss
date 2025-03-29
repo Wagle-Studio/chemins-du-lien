@@ -20,6 +20,7 @@
   --primary-gradient: linear-gradient(-15deg, #feebcb 0%, #ffd6a5 100%);
 
   --view-max-width: 1280px;
+  --auth-form-max-width: 400px;
 
   --space-1: 8px;
   --space-2: 16px;
@@ -83,4 +84,46 @@ ul,
 ol {
   padding: 0;
   list-style: none;
+}
+
+.with-bar-left {
+  position: relative;
+  padding-left: var(--space-2);
+  box-sizing: border-box;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 5px;
+    height: 100%;
+    background-color: var(--primary);
+  }
+}
+
+.loading-spiner {
+  position: relative;
+  opacity: 50%;
+  pointer-events: none;
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: 3px solid var(--black);
+    border-top-color: transparent;
+    animation: spinner 1s linear infinite;
+    transform: translate(-50%, -50%);
+  }
+}
+
+@keyframes spinner {
+  to {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
 }
