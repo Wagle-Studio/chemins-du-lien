@@ -1,0 +1,10 @@
+.profil_layout {
+  display: flex;
+  flex-direction: column;
+  padding: 0 var(--space-6);
+  gap: 160px;
+  width: 100%;
+  max-width: var(--view-max-width);
+  margin: 0 auto;
+  box-sizing: border-box;
+}
