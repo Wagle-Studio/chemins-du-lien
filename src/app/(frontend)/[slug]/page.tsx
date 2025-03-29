@@ -1,8 +1,9 @@
 import React from 'react'
-import { type RequiredDataFromCollectionSlug } from 'payload'
+import { notFound } from 'next/navigation'
 import { PageParams } from '@/types/app'
 import { getEntryBySlugCached, getStaticParamsFromSlugs } from '@/utilities/payload-utils'
 import { RenderBlocks } from '@/blocks/RenderBlocks'
+import { type RequiredDataFromCollectionSlug } from 'payload'
 
 type Args = PageParams<'slug'>
 
@@ -14,10 +15,7 @@ export default async function Page({ params: paramsPromise }: Args) {
     slug ?? '',
   )
 
-  if (!page) {
-    // TODO: handle redirect or 404 properly
-    return <div>Page introuvable</div>
-  }
+  if (!page) return notFound()
 
   return <RenderBlocks blocks={page.blocks} />
 }

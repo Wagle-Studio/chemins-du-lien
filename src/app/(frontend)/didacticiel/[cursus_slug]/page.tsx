@@ -1,4 +1,5 @@
 import React from 'react'
+import { notFound } from 'next/navigation'
 import { PageParams } from '@/types/app'
 import { getEntryBySlugCached, getStaticParamsFromSlugs } from '@/utilities/payload-utils'
 import { Cursus } from '@/ui/didacticiel/cursus/Cursus'
@@ -14,10 +15,7 @@ export default async function CursusPage({ params: paramsPromise }: Args) {
     cursus_slug ?? '',
   )
 
-  // TODO: handle more properly.
-  if (!cursus) {
-    return <div>Cursus introuvable</div>
-  }
+  if (!cursus) return notFound()
 
   return <Cursus cursus={cursus} />
 }

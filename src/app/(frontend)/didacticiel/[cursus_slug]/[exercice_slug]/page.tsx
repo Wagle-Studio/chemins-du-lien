@@ -1,4 +1,5 @@
 import React from 'react'
+import { notFound } from 'next/navigation'
 import { PageParams } from '@/types/app'
 import { getEntryBySlugCached, getStaticParamsFromSlugs } from '@/utilities/payload-utils'
 import { Exercice } from '@/ui/didacticiel/exercice/Exercice'
@@ -14,10 +15,7 @@ export default async function ExercicePage({ params: paramsPromise }: Args) {
     exercice_slug ?? '',
   )
 
-  // TODO: handle more properly.
-  if (!exercice) {
-    return <div>Exercice introuvable</div>
-  }
+  if (!exercice) return notFound()
 
   return <Exercice exercice={exercice} />
 }

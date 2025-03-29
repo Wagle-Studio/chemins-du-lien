@@ -1,3 +1,4 @@
+import { notFound } from 'next/navigation'
 import { LayoutWithChildren } from '@/types/app'
 import { getEntryBySlugCached } from '@/utilities/payload-utils'
 import { CursusLayout } from '@/ui/didacticiel/cursus-layout/CursusLayout'
@@ -9,10 +10,7 @@ export default async function CursusRootLayout({ children, params }: Props) {
 
   const cursus = await getEntryBySlugCached('cursus', cursus_slug)
 
-  // TODO: handle more properly.
-  if (!cursus) {
-    return <div>Cursus introuvable</div>
-  }
+  if (!cursus) return notFound()
 
   return <CursusLayout cursus={cursus}>{children}</CursusLayout>
 }
