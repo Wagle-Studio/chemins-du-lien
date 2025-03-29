@@ -1,66 +1,27 @@
-import './style.scss'
-import React, { cache } from 'react'
-import { getPayload, type RequiredDataFromCollectionSlug } from 'payload'
-import configPromise from '@payload-config'
+import React from 'react'
+import { type RequiredDataFromCollectionSlug } from 'payload'
+import { PageParams } from '@/types/app'
+import { getEntryBySlugCached, getStaticParamsFromSlugs } from '@/utilities/payload-utils'
 import { RenderBlocks } from '@/blocks/RenderBlocks'
 
-export async function generateStaticParams() {
-  const payload = await getPayload({ config: configPromise })
-  const pages = await payload.find({
-    collection: 'pages',
-    draft: false,
-    limit: 200,
-    overrideAccess: false,
-    pagination: false,
-    select: {
-      slug: true,
-    },
-  })
-
-  const params = pages.docs.map(({ slug }) => {
-    return { slug }
-  })
-
-  return params
-}
-
-type Args = {
-  params: Promise<{
-    slug?: string
-  }>
-}
+type Args = PageParams<'slug'>
 
 export default async function Page({ params: paramsPromise }: Args) {
   const { slug } = await paramsPromise
 
-  let page: RequiredDataFromCollectionSlug<'pages'> | null
-
-  page = await queryPageBySlug({ slug: slug ?? '' })
+  const page: RequiredDataFromCollectionSlug<'pages'> | null = await getEntryBySlugCached(
+    'pages',
+    slug ?? '',
+  )
 
   if (!page) {
-    // return <PayloadRedirects url={url} />
+    // TODO: handle redirect or 404 properly
+    return <div>Page introuvable</div>
   }
 
-  return (
-    <div className="page">
-      <RenderBlocks blocks={page.blocks} />
-    </div>
-  )
+  return <RenderBlocks blocks={page.blocks} />
 }
 
-const queryPageBySlug = cache(async ({ slug }: { slug: string }) => {
-  const payload = await getPayload({ config: configPromise })
-
-  const result = await payload.find({
-    collection: 'pages',
-    limit: 1,
-    pagination: false,
-    where: {
-      slug: {
-        equals: slug,
-      },
-    },
-  })
-
-  return result.docs?.[0] || null
-})
+export async function generateStaticParams() {
+  return getStaticParamsFromSlugs('pages')
+}

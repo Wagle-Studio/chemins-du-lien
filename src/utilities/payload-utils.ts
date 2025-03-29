@@ -1,11 +1,12 @@
 import { cache } from 'react'
 import { DataFromCollectionSlug, getPayload } from 'payload'
-import { Cursus, Exercice, Homepage } from '@/payload-types'
+import { Cursus, Exercice, Homepage, Page } from '@/payload-types'
 import configPromise from '@payload-config'
 
 type CollectionSlugToType = {
   cursus: Cursus
   exercices: Exercice
+  pages: Page
 }
 
 type CollectionSlug = keyof CollectionSlugToType & string
