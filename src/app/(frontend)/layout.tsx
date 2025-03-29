@@ -1,6 +1,7 @@
 import './globals.scss'
 import React from 'react'
 import { Libre_Franklin, Open_Sans } from 'next/font/google'
+import { AuthWrapper } from '@/auth/AuthWrapper.server'
 import { Navigation } from '@/ui/header/Component.client'
 
 export const metadata = {
@@ -20,8 +21,10 @@ export default async function RootLayout(props: { children: React.ReactNode }) {
     <html lang="en">
       <head></head>
       <body>
-        <Navigation />
-        <main className={fonts.join(' ')}>{children}</main>
+        <AuthWrapper>
+          <Navigation />
+          <main className={fonts.join(' ')}>{children}</main>
+        </AuthWrapper>
       </body>
     </html>
   )
