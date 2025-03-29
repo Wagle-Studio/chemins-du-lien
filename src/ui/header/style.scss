@@ -19,10 +19,7 @@
   &__nav {
     display: flex;
     flex-direction: row;
+    align-items: center;
     gap: var(--space-3);
-
-    &__item {
-      font-size: var(--font-size-medium);
-    }
   }
 }
