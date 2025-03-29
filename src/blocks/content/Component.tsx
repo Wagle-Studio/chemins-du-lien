@@ -1,5 +1,5 @@
-import type { ExtractBlock, AllBlocks } from '@/blocks'
-import { RichText } from '@/ui/rich-text/Component.client'
+import { RichText } from '@/ui/blocks/rich-text/RichText'
+import type { ExtractBlock, AllBlocks } from '@/types/blocks'
 
 type Props = ExtractBlock<AllBlocks, 'content'>
 

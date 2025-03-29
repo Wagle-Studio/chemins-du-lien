@@ -1,6 +1,6 @@
-import { LayoutWithChildren } from '@/types/utils'
+import { LayoutWithChildren } from '@/types/app'
 import { getEntryBySlugCached, getExerciceSlugsFromCursus } from '@/utilities/payload-utils'
-import { ExerciceLayout } from '@/ui/exercice-layout/Component.client'
+import { ExerciceLayout } from '@/ui/didacticiel/exercice-layout/ExerciceLayout'
 
 type Props = LayoutWithChildren<'cursus_slug' | 'exercice_slug'>
 

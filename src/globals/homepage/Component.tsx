@@ -1,6 +1,6 @@
 import React from 'react'
-import { getGlobal } from '@/utilities/getGlobal'
 import type { Homepage } from '@/payload-types'
+import { getGlobal } from '@/utilities/payload-utils'
 import { RenderBlocks } from '@/blocks/RenderBlocks'
 
 export async function Homepage() {

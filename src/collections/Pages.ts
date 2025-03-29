@@ -1,5 +1,5 @@
 import type { CollectionConfig } from 'payload'
-import { generateSlug } from '@/hooks/generateSlug'
+import { useUniqueSlug } from '@/hooks/useUniqueSlug'
 import { Content } from '@/blocks/content/config'
 import { Discoveries } from '@/blocks/discoveries/config'
 
@@ -34,6 +34,6 @@ export const Pages: CollectionConfig = {
     },
   ],
   hooks: {
-    beforeChange: [generateSlug],
+    beforeChange: [useUniqueSlug],
   },
 }

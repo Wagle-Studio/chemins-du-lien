@@ -1,7 +1,7 @@
 import React from 'react'
-import { PageParams } from '@/types/utils'
+import { PageParams } from '@/types/app'
 import { getEntryBySlugCached, getStaticParamsFromSlugs } from '@/utilities/payload-utils'
-import { Cursus } from '@/ui/cursus/Component.client'
+import { Cursus } from '@/ui/didacticiel/cursus/Cursus'
 import { type RequiredDataFromCollectionSlug } from 'payload'
 
 type Args = PageParams<'cursus_slug'>

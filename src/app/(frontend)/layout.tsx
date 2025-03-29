@@ -2,7 +2,7 @@ import './globals.scss'
 import React from 'react'
 import { Libre_Franklin, Open_Sans } from 'next/font/google'
 import { AuthWrapper } from '@/auth/AuthWrapper.server'
-import { Navigation } from '@/ui/header/Component.client'
+import { Header } from '@/ui/header/Header.client'
 
 export const metadata = {
   description: 'Hello world',
@@ -22,7 +22,7 @@ export default async function RootLayout(props: { children: React.ReactNode }) {
       <head></head>
       <body>
         <AuthWrapper>
-          <Navigation />
+          <Header />
           <main className={fonts.join(' ')}>{children}</main>
         </AuthWrapper>
       </body>

@@ -1,5 +1,5 @@
 import type { CollectionConfig } from 'payload'
-import { generateSlug } from '@/hooks/generateSlug'
+import { useUniqueSlug } from '@/hooks/useUniqueSlug'
 import { Content } from '@/blocks/content/config'
 
 export const Exercices: CollectionConfig = {
@@ -33,6 +33,6 @@ export const Exercices: CollectionConfig = {
     },
   ],
   hooks: {
-    beforeChange: [generateSlug],
+    beforeChange: [useUniqueSlug],
   },
 }

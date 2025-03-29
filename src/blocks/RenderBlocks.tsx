@@ -1,5 +1,5 @@
 import React from 'react'
-import { blockComponents } from '@/blocks'
+import { blockComponents } from '@/types/blocks'
 
 type BaseBlock = { blockType: string; id?: string | null }
 

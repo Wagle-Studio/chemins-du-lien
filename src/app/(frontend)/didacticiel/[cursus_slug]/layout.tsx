@@ -1,6 +1,6 @@
-import { LayoutWithChildren } from '@/types/utils'
+import { LayoutWithChildren } from '@/types/app'
 import { getEntryBySlugCached } from '@/utilities/payload-utils'
-import { CursusLayout } from '@/ui/cursus-layout/Component.client'
+import { CursusLayout } from '@/ui/didacticiel/cursus-layout/CursusLayout'
 
 type Props = LayoutWithChildren<'cursus_slug'>
 

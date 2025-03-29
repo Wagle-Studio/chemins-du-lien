@@ -1,10 +1,10 @@
-import { SignUpForm } from '@/ui/forms/signup/Component.client'
+import { SignUpForm } from '@/forms/signup/Component.client'
 
 export default function SignUpPage() {
   return (
-    <div>
-      <h1 className="with-bar-left">Inscription</h1>
-      <SignUpForm />
+    <div className="auth_form_page">
+      <h1 className="auth_form_page__title with-bar-left">Inscription</h1>
+      <SignUpForm className="auth_form_page__form" />
     </div>
   )
 }

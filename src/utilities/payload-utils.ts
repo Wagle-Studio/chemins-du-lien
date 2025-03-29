@@ -8,11 +8,12 @@ type CollectionSlugToType = {
   exercices: Exercice
 }
 
+type CollectionSlug = keyof CollectionSlugToType & string
+
 type GlobalSlugToType = {
   homepage: Homepage
 }
 
-type CollectionSlug = keyof CollectionSlugToType & string
 type GlobalSlug = keyof GlobalSlugToType & string
 
 // Initializes Payload with config
