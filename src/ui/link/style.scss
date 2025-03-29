@@ -1,0 +1,21 @@
+.link {
+  &--default {
+    text-decoration: none;
+  }
+
+  &--primary {
+    padding: var(--space-1) var(--space-3);
+    width: max-content;
+    background-color: var(--primary-85);
+    border-radius: var(--border-radius-base);
+    text-decoration: none;
+    text-align: center;
+    font-weight: var(--font-weight-medium);
+    box-sizing: border-box;
+  }
+
+  &--small {
+    padding: var(--space-1) var(--space-2);
+    font-size: var(--font-size-small);
+  }
+}

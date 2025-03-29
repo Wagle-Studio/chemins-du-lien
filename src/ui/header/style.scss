@@ -1,0 +1,28 @@
+.header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: baseline;
+  padding: var(--space-3) var(--space-6) var(--space-2) var(--space-6);
+  width: 100%;
+  max-width: var(--view-max-width);
+  margin: 0 auto;
+  box-sizing: border-box;
+
+  &__brand {
+    &__name {
+      font-weight: var(--font-weight-large);
+      font-size: var(--font-size-large);
+    }
+  }
+
+  &__nav {
+    display: flex;
+    flex-direction: row;
+    gap: var(--space-3);
+
+    &__item {
+      font-size: var(--font-size-medium);
+    }
+  }
+}

@@ -1,0 +1,107 @@
+import { cache } from 'react'
+import { DataFromCollectionSlug, getPayload } from 'payload'
+import { Cursus, Exercice, Homepage } from '@/payload-types'
+import configPromise from '@payload-config'
+
+type CollectionSlugToType = {
+  cursus: Cursus
+  exercices: Exercice
+}
+
+type GlobalSlugToType = {
+  homepage: Homepage
+}
+
+type CollectionSlug = keyof CollectionSlugToType & string
+type GlobalSlug = keyof GlobalSlugToType & string
+
+// Initializes Payload with config
+export const getPayloadClient = async () => getPayload({ config: configPromise })
+
+// Finds global document.
+export const getGlobal = async <TSlug extends GlobalSlug>(
+  slug: TSlug,
+  depth = 0,
+): Promise<GlobalSlugToType[TSlug]> => {
+  const payload = await getPayloadClient()
+
+  const result = await payload.findGlobal({ slug, depth })
+
+  return result as GlobalSlugToType[TSlug]
+}
+
+// Finds every collection documents.
+export const getCollection = async <TSlug extends CollectionSlug>(
+  slug: TSlug,
+  depth = 0,
+): Promise<CollectionSlugToType[TSlug][]> => {
+  const payload = await getPayloadClient()
+
+  const result = await payload.find({
+    collection: slug,
+    depth,
+  })
+
+  return result.docs as CollectionSlugToType[TSlug][]
+}
+
+// Finds collection document by it's slug.
+export const getEntryBySlug = async <TSlug extends CollectionSlug>(
+  collection: TSlug,
+  slug: string,
+): Promise<DataFromCollectionSlug<TSlug> | null> => {
+  const payload = await getPayloadClient()
+
+  const result = await payload.find({
+    collection,
+    limit: 1,
+    pagination: false,
+    where: {
+      slug: {
+        equals: slug,
+      },
+    },
+  })
+
+  return result.docs?.[0] || null
+}
+
+// Lists every collection slugs.
+export const getSlugsFromCollection = async <TSlug extends CollectionSlug>(
+  collection: TSlug,
+): Promise<string[]> => {
+  const payload = await getPayloadClient()
+
+  const result = await payload.find({
+    collection,
+    draft: false,
+    limit: 100,
+    overrideAccess: false,
+    pagination: false,
+    select: { slug: true },
+  })
+
+  return result.docs.map((doc: any) => doc.slug)
+}
+
+// Extracts cursus' collection document exercice slugs.
+export const getExerciceSlugsFromCursus = (cursus: Cursus): string[] => {
+  if (!('exercices' in cursus)) return []
+
+  return (
+    (cursus.exercices as Array<{ slug?: string } | number>)
+      ?.filter((ex): ex is { slug: string } => typeof ex === 'object' && !!ex.slug)
+      ?.map((ex) => ex.slug) ?? []
+  )
+}
+
+// Caches entries.
+export const getEntryBySlugCached = cache(getEntryBySlug)
+
+// Extracts collection slugs to generates static params.
+export const getStaticParamsFromSlugs = async <TSlug extends CollectionSlug>(
+  collection: TSlug,
+): Promise<{ slug: string }[]> => {
+  const slugs = await getSlugsFromCollection(collection)
+  return slugs.map((slug) => ({ slug }))
+}

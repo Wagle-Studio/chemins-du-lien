@@ -1,0 +1,86 @@
+* {
+  margin: 0;
+}
+
+:root {
+  --primary: #fdcb6e;
+  --primary-85: #fdcb6ed9;
+  --primary-65: #fdcb6ea6;
+  --primary-45: #fdcb6e73;
+
+  --black: #1e1e1e;
+  --white: #fcfcfc;
+  --gray: #d8d9d7;
+  --gray-light: #dee2e6;
+  --gray-lighter: #f0f2f4;
+  --gray-deep: #8c8b88;
+  --gray-deeper: #494a49;
+  --body: #f9fbfd;
+
+  --primary-gradient: linear-gradient(-15deg, #feebcb 0%, #ffd6a5 100%);
+
+  --view-max-width: 1280px;
+
+  --space-1: 8px;
+  --space-2: 16px;
+  --space-3: 24px;
+  --space-4: 32px;
+  --space-5: 40px;
+  --space-6: 48px;
+  --space-7: 56px;
+  --space-8: 64px;
+  --space-9: 72px;
+  --space-10: 80px;
+  --space-11: 88px;
+  --space-12: 96px;
+
+  --font-primary: 'Libre Franklin', sans-serif;
+  --font-secondary: 'Open Sans', sans-serif;
+
+  --font-weight-base: 400;
+  --font-weight-medium: 500;
+  --font-weight-large: 600;
+  --font-weight-xlarge: 700;
+
+  --font-size-small: 0.75rem;
+  --font-size-base: 1rem;
+  --font-size-medium: 1.25rem;
+  --font-size-large: 1.5rem;
+  --font-size-extra: 2rem;
+
+  --border-radius-base: 3px;
+  --border-radius-medium: 6px;
+
+  --card-shadow: 0px 4px 20px 0px rgba(0, 0, 0, 0.08);
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  gap: 160px;
+  background-color: var(--body);
+  padding-bottom: var(--space-12);
+}
+
+h1 {
+  font-family: var(--font-primary);
+  font-weight: var(--font-weight-large);
+  font-size: var(--font-size-extra);
+  color: var(--black);
+  letter-spacing: 0.025rem;
+}
+
+a,
+p {
+  font-family: var(--font-secondary);
+  font-weight: var(--font-weight-base);
+  font-size: var(--font-size-base);
+  color: var(--black);
+  letter-spacing: 0.025rem;
+}
+
+ul,
+ol {
+  padding: 0;
+  list-style: none;
+}

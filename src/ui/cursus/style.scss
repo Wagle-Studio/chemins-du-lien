@@ -1,0 +1,45 @@
+.cursus {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr max-content;
+  grid-gap: var(--space-2);
+
+  &__content {
+    padding: var(--space-3);
+    background-color: var(--gray-white);
+    border-radius: var(--border-radius-medium);
+    border: 1px solid var(--gray-lighter);
+    box-shadow: var(--card-shadow);
+    box-sizing: border-box;
+  }
+
+  &__exercices {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-1);
+
+    &__item {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      padding: var(--space-1) var(--space-3);
+      width: 100%;
+      background-color: var(--gray-white);
+      border-radius: var(--border-radius-medium);
+      border: 1px solid var(--gray-lighter);
+      box-shadow: var(--card-shadow);
+      box-sizing: border-box;
+
+      p {
+        display: flex;
+        flex-direction: row;
+        gap: var(--space-2);
+      }
+
+      a {
+        text-decoration: none;
+      }
+    }
+  }
+}
