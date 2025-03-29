@@ -1,0 +1,23 @@
+.input_text_field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+
+  &__label {
+    font-weight: var(--font-weight-medium);
+  }
+
+  &__input {
+    padding: var(--space-1) var(--space-2);
+    background-color: var(--white);
+    border-radius: var(--border-radius-base);
+    border: 1px solid var(--gray);
+    font-family: var(--font-secondary);
+    font-weight: var(--font-weight-base);
+    font-size: var(--font-size-base);
+    color: var(--gray-deeper);
+    letter-spacing: 0.025rem;
+    box-shadow: var(--card-shadow);
+    box-sizing: border-box;
+  }
+}
