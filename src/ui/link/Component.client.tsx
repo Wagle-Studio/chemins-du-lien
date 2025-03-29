@@ -6,7 +6,7 @@ import NextLink from 'next/link'
 import clsx from 'clsx'
 
 interface Props extends ComponentProps<typeof NextLink> {
-  variant?: 'default' | 'primary'
+  variant?: 'default' | 'primary' | 'ghost'
   size?: 'default' | 'small'
 }
 

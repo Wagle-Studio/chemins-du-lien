@@ -3,19 +3,40 @@
     text-decoration: none;
   }
 
-  &--primary {
+  &--primary,
+  &--ghost {
+    display: block;
     padding: var(--space-1) var(--space-3);
     width: max-content;
-    background-color: var(--primary-85);
     border-radius: var(--border-radius-base);
-    text-decoration: none;
-    text-align: center;
+    color: var(--black);
+    font-family: var(--font-secondary);
     font-weight: var(--font-weight-medium);
+    font-size: var(--font-size-base);
+    letter-spacing: 0.025rem;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
     box-sizing: border-box;
   }
 
+  &--primary {
+    border: none;
+    background-color: var(--primary-85);
+  }
+
+  &--ghost {
+    padding: 6px 22px;
+    background-color: var(--white);
+    border: 2px solid var(--primary-85);
+  }
+
   &--small {
-    padding: var(--space-1) var(--space-2);
     font-size: var(--font-size-small);
+  }
+
+  &--disabled {
+    cursor: not-allowed;
+    opacity: 60%;
   }
 }
