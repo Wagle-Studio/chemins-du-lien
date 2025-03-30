@@ -1,6 +1,21 @@
 import React from 'react'
+import { draftMode } from 'next/headers'
+import { notFound } from 'next/navigation'
 import { Homepage } from '@/globals/homepage/Component'
+import { getGlobal, getGlobalCached } from '@/utilities/payload-utils'
+import { LivePreviewListener } from '@/ui/LivePreviewListener'
 
 export default async function HomePage() {
-  return <Homepage />
+  const { isEnabled: isDraft } = await draftMode()
+
+  const homepage = isDraft ? await getGlobal('homepage', 1) : await getGlobalCached('homepage', 1)
+
+  if (!homepage) return notFound()
+
+  return (
+    <>
+      {isDraft && <LivePreviewListener />}
+      <Homepage />
+    </>
+  )
 }

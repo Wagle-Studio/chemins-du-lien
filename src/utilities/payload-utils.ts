@@ -1,6 +1,6 @@
 import { cache } from 'react'
 import { draftMode } from 'next/headers'
-import { DataFromCollectionSlug, getPayload, RequiredDataFromCollectionSlug } from 'payload'
+import { CollectionConfig, DataFromCollectionSlug, getPayload, GlobalConfig } from 'payload'
 import { Cursus, Exercice, Homepage, Page } from '@/payload-types'
 import configPromise from '@payload-config'
 
@@ -102,8 +102,11 @@ export const getExerciceSlugsFromCursus = (cursus: Cursus): string[] => {
   )
 }
 
-// Caches entries.
+// Caches collection entries.
 export const getEntryBySlugCached = cache(getEntryBySlug)
+
+// Caches global entries.
+export const getGlobalCached = cache(getGlobal)
 
 // Extracts collection slugs to generates static params.
 export const getStaticParamsFromSlugs = async <TSlug extends CollectionSlug>(
@@ -111,4 +114,35 @@ export const getStaticParamsFromSlugs = async <TSlug extends CollectionSlug>(
 ): Promise<{ slug: string }[]> => {
   const slugs = await getSlugsFromCollection(collection)
   return slugs.map((slug) => ({ slug }))
+}
+
+// Serves appropriate url for live preview;
+export const serveLivePreview = (
+  data: Record<string, any>,
+  collectionConfig: CollectionConfig | undefined,
+  globalConfig: GlobalConfig | undefined,
+): string => {
+  if (collectionConfig && !globalConfig) {
+    switch (collectionConfig.slug) {
+      case 'pages':
+        return `/api/preview?redirect=/${data.slug}`
+      case 'cursus':
+        return `/api/preview?redirect=/didacticiel/${data.slug}`
+      case 'exercices':
+        return `/api/preview?redirect=/didacticiel/exercice/${data.slug}`
+      default:
+        return '/'
+    }
+  }
+
+  if (globalConfig && !collectionConfig) {
+    switch (globalConfig.slug) {
+      case 'homepage':
+        return `/api/preview?redirect=/`
+      default:
+        return '/'
+    }
+  }
+
+  return '/'
 }

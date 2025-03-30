@@ -1,4 +1,4 @@
-import { buildConfig, CollectionConfig } from 'payload'
+import { buildConfig } from 'payload'
 import { sqliteAdapter } from '@payloadcms/db-sqlite'
 import { payloadCloudPlugin } from '@payloadcms/payload-cloud'
 import { lexicalEditor } from '@payloadcms/richtext-lexical'
@@ -13,6 +13,7 @@ import { Pages } from './collections/Pages'
 import { Exercices } from './collections/Exercices'
 import { Cursus } from './collections/Cursus'
 import { Categories } from './collections/Categories'
+import { serveLivePreview } from './utilities/payload-utils'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -24,8 +25,10 @@ export default buildConfig({
       baseDir: path.resolve(dirname),
     },
     livePreview: {
-      url: ({ data, collectionConfig }) => serveLivePreview(data, collectionConfig),
+      url: ({ data, collectionConfig, globalConfig }) =>
+        serveLivePreview(data, collectionConfig, globalConfig),
       collections: ['pages', 'cursus', 'exercices'],
+      globals: ['homepage'],
     },
   },
   globals: [Homepage],
@@ -43,18 +46,3 @@ export default buildConfig({
   sharp,
   plugins: [payloadCloudPlugin()],
 })
-
-const serveLivePreview = (data: Record<string, any>, config: CollectionConfig | undefined) => {
-  console.log(config)
-
-  switch (config?.slug) {
-    case 'pages':
-      return `/api/preview?redirect=/${data.slug}`
-    case 'cursus':
-      return `/api/preview?redirect=/didacticiel/${data.slug}`
-    case 'exercices':
-      return `/api/preview?redirect=/didacticiel/exercice/${data.slug}`
-    default:
-      return '/'
-  }
-}
