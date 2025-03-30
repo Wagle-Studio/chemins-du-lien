@@ -1,5 +1,6 @@
 import { cache } from 'react'
-import { DataFromCollectionSlug, getPayload } from 'payload'
+import { draftMode } from 'next/headers'
+import { DataFromCollectionSlug, getPayload, RequiredDataFromCollectionSlug } from 'payload'
 import { Cursus, Exercice, Homepage, Page } from '@/payload-types'
 import configPromise from '@payload-config'
 
@@ -52,12 +53,16 @@ export const getEntryBySlug = async <TSlug extends CollectionSlug>(
   collection: TSlug,
   slug: string,
 ): Promise<DataFromCollectionSlug<TSlug> | null> => {
+  const { isEnabled: draft } = await draftMode()
+
   const payload = await getPayloadClient()
 
   const result = await payload.find({
     collection,
-    limit: 1,
+    draft,
+    overrideAccess: draft,
     pagination: false,
+    limit: 1,
     where: {
       slug: {
         equals: slug,

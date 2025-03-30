@@ -1,4 +1,4 @@
-import { buildConfig } from 'payload'
+import { buildConfig, CollectionConfig } from 'payload'
 import { sqliteAdapter } from '@payloadcms/db-sqlite'
 import { payloadCloudPlugin } from '@payloadcms/payload-cloud'
 import { lexicalEditor } from '@payloadcms/richtext-lexical'
@@ -23,6 +23,10 @@ export default buildConfig({
     importMap: {
       baseDir: path.resolve(dirname),
     },
+    livePreview: {
+      url: ({ data, collectionConfig }) => serveLivePreview(data, collectionConfig),
+      collections: ['pages', 'cursus', 'exercices'],
+    },
   },
   globals: [Homepage],
   collections: [Users, Media, Pages, Exercices, Cursus, Categories],
@@ -39,3 +43,18 @@ export default buildConfig({
   sharp,
   plugins: [payloadCloudPlugin()],
 })
+
+const serveLivePreview = (data: Record<string, any>, config: CollectionConfig | undefined) => {
+  console.log(config)
+
+  switch (config?.slug) {
+    case 'pages':
+      return `/api/preview?redirect=/${data.slug}`
+    case 'cursus':
+      return `/api/preview?redirect=/didacticiel/${data.slug}`
+    case 'exercices':
+      return `/api/preview?redirect=/didacticiel/exercice/${data.slug}`
+    default:
+      return '/'
+  }
+}

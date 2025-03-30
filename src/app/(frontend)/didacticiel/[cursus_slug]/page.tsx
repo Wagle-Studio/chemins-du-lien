@@ -1,23 +1,37 @@
 import React from 'react'
+import { draftMode } from 'next/headers'
 import { notFound } from 'next/navigation'
-import { PageParams } from '@/types/app'
-import { getEntryBySlugCached, getStaticParamsFromSlugs } from '@/utilities/payload-utils'
-import { Cursus } from '@/ui/didacticiel/cursus/Cursus'
 import { type RequiredDataFromCollectionSlug } from 'payload'
+import { PageParams } from '@/types/app'
+import {
+  getEntryBySlug,
+  getEntryBySlugCached,
+  getStaticParamsFromSlugs,
+} from '@/utilities/payload-utils'
+import { Cursus } from '@/ui/didacticiel/cursus/Cursus'
+import { LivePreviewListener } from '@/ui/LivePreviewListener'
 
 type Args = PageParams<'cursus_slug'>
 
 export default async function CursusPage({ params: paramsPromise }: Args) {
   const { cursus_slug } = await paramsPromise
+  const { isEnabled: isDraft } = await draftMode()
 
-  const cursus: RequiredDataFromCollectionSlug<'cursus'> | null = await getEntryBySlugCached(
+  const getPage = isDraft ? getEntryBySlug : getEntryBySlugCached
+
+  const cursus: RequiredDataFromCollectionSlug<'cursus'> | null = await getPage(
     'cursus',
     cursus_slug ?? '',
   )
 
   if (!cursus) return notFound()
 
-  return <Cursus cursus={cursus} />
+  return (
+    <>
+      {isDraft && <LivePreviewListener />}
+      <Cursus cursus={cursus} />
+    </>
+  )
 }
 
 export async function generateStaticParams() {

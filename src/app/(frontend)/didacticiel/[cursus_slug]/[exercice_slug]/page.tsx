@@ -1,23 +1,37 @@
 import React from 'react'
+import { draftMode } from 'next/headers'
 import { notFound } from 'next/navigation'
-import { PageParams } from '@/types/app'
-import { getEntryBySlugCached, getStaticParamsFromSlugs } from '@/utilities/payload-utils'
-import { Exercice } from '@/ui/didacticiel/exercice/Exercice'
 import { type RequiredDataFromCollectionSlug } from 'payload'
+import { PageParams } from '@/types/app'
+import {
+  getEntryBySlug,
+  getEntryBySlugCached,
+  getStaticParamsFromSlugs,
+} from '@/utilities/payload-utils'
+import { Exercice } from '@/ui/didacticiel/exercice/Exercice'
+import { LivePreviewListener } from '@/ui/LivePreviewListener'
 
 type Args = PageParams<'exercice_slug'>
 
 export default async function ExercicePage({ params: paramsPromise }: Args) {
   const { exercice_slug } = await paramsPromise
+  const { isEnabled: isDraft } = await draftMode()
 
-  const exercice: RequiredDataFromCollectionSlug<'exercices'> | null = await getEntryBySlugCached(
+  const getPage = isDraft ? getEntryBySlug : getEntryBySlugCached
+
+  const exercice: RequiredDataFromCollectionSlug<'exercices'> | null = await getPage(
     'exercices',
     exercice_slug ?? '',
   )
 
   if (!exercice) return notFound()
 
-  return <Exercice exercice={exercice} />
+  return (
+    <>
+      {isDraft && <LivePreviewListener />}
+      <Exercice exercice={exercice} />
+    </>
+  )
 }
 
 export async function generateStaticParams() {
