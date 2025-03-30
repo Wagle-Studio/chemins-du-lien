@@ -17,7 +17,8 @@ export async function AuthWrapper({ children }: { children: React.ReactNode }) {
       })
 
       if (res.ok) {
-        user = await res.json()
+        const json = await res.json()
+        user = json.user
       }
     } catch (err) {
       console.error('[AuthWrapper] Failed to fetch user:', err)
