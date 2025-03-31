@@ -146,3 +146,21 @@ export const serveLivePreview = (
 
   return '/'
 }
+
+// Finds the three latest events.
+export const getLatestEvents = async (): Promise<any[]> => {
+  const payload = await getPayloadClient()
+
+  const result = await payload.find({
+    collection: 'events',
+    limit: 3,
+    sort: 'date',
+    where: {
+      date: {
+        greater_than_equal: new Date().toISOString(),
+      },
+    },
+  })
+
+  return result.docs
+}

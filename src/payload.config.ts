@@ -6,14 +6,15 @@ import { fileURLToPath } from 'url'
 import sharp from 'sharp'
 import path from 'path'
 
+import { serveLivePreview } from './utilities/payload-utils'
 import { Homepage } from './globals/homepage/config'
 import { Users } from './collections/Users'
 import { Media } from './collections/Media'
 import { Pages } from './collections/Pages'
+import { Categories } from './collections/Categories'
 import { Exercices } from './collections/Exercices'
 import { Cursus } from './collections/Cursus'
-import { Categories } from './collections/Categories'
-import { serveLivePreview } from './utilities/payload-utils'
+import { Events } from './collections/Events'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -32,7 +33,7 @@ export default buildConfig({
     },
   },
   globals: [Homepage],
-  collections: [Users, Media, Pages, Exercices, Cursus, Categories],
+  collections: [Users, Media, Pages, Exercices, Cursus, Categories, Events],
   editor: lexicalEditor(),
   secret: process.env.PAYLOAD_SECRET || '',
   typescript: {

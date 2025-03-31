@@ -1,10 +1,15 @@
+import './style.scss'
 import React from 'react'
-import type { Homepage } from '@/payload-types'
 import { getGlobal } from '@/utilities/payload-utils'
 import { RenderBlocks } from '@/blocks/RenderBlocks'
+import type { Homepage } from '@/payload-types'
 
 export async function Homepage() {
   const data = await getGlobal('homepage', 1)
 
-  return <RenderBlocks blocks={data.blocks} />
+  return (
+    <div className="homepage">
+      <RenderBlocks blocks={data.blocks} />
+    </div>
+  )
 }

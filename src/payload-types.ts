@@ -73,6 +73,7 @@ export interface Config {
     exercices: Exercice;
     cursus: Cursus;
     categories: Category;
+    events: Event;
     'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
     'payload-migrations': PayloadMigration;
@@ -85,6 +86,7 @@ export interface Config {
     exercices: ExercicesSelect<false> | ExercicesSelect<true>;
     cursus: CursusSelect<false> | CursusSelect<true>;
     categories: CategoriesSelect<false> | CategoriesSelect<true>;
+    events: EventsSelect<false> | EventsSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
     'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
     'payload-migrations': PayloadMigrationsSelect<false> | PayloadMigrationsSelect<true>;
@@ -313,6 +315,25 @@ export interface Category {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "events".
+ */
+export interface Event {
+  id: number;
+  slug?: string | null;
+  title: string;
+  description: string;
+  'on-site': boolean;
+  date: string;
+  'meeting-location': string;
+  capacity: number;
+  status: 'Programmé' | 'Confirmé' | 'Annulé' | 'Reporté';
+  categories?: (number | Category)[] | null;
+  updatedAt: string;
+  createdAt: string;
+  _status?: ('draft' | 'published') | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-locked-documents".
  */
 export interface PayloadLockedDocument {
@@ -341,6 +362,10 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'categories';
         value: number | Category;
+      } | null)
+    | ({
+        relationTo: 'events';
+        value: number | Event;
       } | null);
   globalSlug?: string | null;
   user: {
@@ -539,6 +564,24 @@ export interface CategoriesSelect<T extends boolean = true> {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "events_select".
+ */
+export interface EventsSelect<T extends boolean = true> {
+  slug?: T;
+  title?: T;
+  description?: T;
+  'on-site'?: T;
+  date?: T;
+  'meeting-location'?: T;
+  capacity?: T;
+  status?: T;
+  categories?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  _status?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-locked-documents_select".
  */
 export interface PayloadLockedDocumentsSelect<T extends boolean = true> {
@@ -576,22 +619,30 @@ export interface PayloadMigrationsSelect<T extends boolean = true> {
 export interface Homepage {
   id: number;
   blocks?:
-    | {
-        cards?:
-          | {
-              title: string;
-              description: string;
-              internalLink: {
-                label: string;
-                page: number | Page;
-              };
-              id?: string | null;
-            }[]
-          | null;
-        id?: string | null;
-        blockName?: string | null;
-        blockType: 'discoveries';
-      }[]
+    | (
+        | {
+            cards?:
+              | {
+                  title: string;
+                  description: string;
+                  internalLink: {
+                    label: string;
+                    page: number | Page;
+                  };
+                  id?: string | null;
+                }[]
+              | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'discoveries';
+          }
+        | {
+            type: 'Les trois prochains événements';
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'events';
+          }
+      )[]
     | null;
   updatedAt?: string | null;
   createdAt?: string | null;
@@ -620,6 +671,13 @@ export interface HomepageSelect<T extends boolean = true> {
                         };
                     id?: T;
                   };
+              id?: T;
+              blockName?: T;
+            };
+        events?:
+          | T
+          | {
+              type?: T;
               id?: T;
               blockName?: T;
             };
