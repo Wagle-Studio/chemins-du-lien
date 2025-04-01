@@ -1,13 +1,13 @@
 import { cache } from 'react'
 import { draftMode } from 'next/headers'
 import { CollectionConfig, DataFromCollectionSlug, getPayload, GlobalConfig } from 'payload'
-import { Cursus, Exercice, Homepage, Page } from '@/payload-types'
+import { Article, Cursus, Exercice, Homepage } from '@/payload-types'
 import configPromise from '@payload-config'
 
 type CollectionSlugToType = {
   cursus: Cursus
   exercices: Exercice
-  pages: Page
+  articles: Article
 }
 
 type CollectionSlug = keyof CollectionSlugToType & string

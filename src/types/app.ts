@@ -1,4 +1,4 @@
-export type PageParams<TSlug extends string> = {
+export type ArticleParams<TSlug extends string> = {
   params: Promise<{ [K in TSlug]?: string }>
 }
 

@@ -17,8 +17,8 @@ export const Discoveries: React.FC<Props> = ({ data }) => {
                 <h3>{card.title}</h3>
                 <p>{card.description}</p>
               </div>
-              {typeof card.internalLink.page !== 'number' && (
-                <Link href={card.internalLink.page.slug ?? '#'} variant="primary">
+              {typeof card.internalLink.article !== 'number' && (
+                <Link href={card.internalLink.article.slug ?? '#'} variant="primary">
                   {card.internalLink.label}
                 </Link>
               )}

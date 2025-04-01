@@ -3,8 +3,8 @@ import { useUniqueSlug } from '@/hooks/useUniqueSlug'
 import { Content } from '@/blocks/content/config'
 import { Discoveries } from '@/blocks/discoveries/config'
 
-export const Pages: CollectionConfig = {
-  slug: 'pages',
+export const Article: CollectionConfig = {
+  slug: 'articles',
   admin: {
     useAsTitle: 'title',
   },

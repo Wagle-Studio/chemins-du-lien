@@ -10,7 +10,7 @@ import { serveLivePreview } from './utilities/payload-utils'
 import { Homepage } from './globals/homepage/config'
 import { Users } from './collections/Users'
 import { Media } from './collections/Media'
-import { Pages } from './collections/Pages'
+import { Article } from './collections/Article'
 import { Categories } from './collections/Categories'
 import { Exercices } from './collections/Exercices'
 import { Cursus } from './collections/Cursus'
@@ -28,12 +28,12 @@ export default buildConfig({
     livePreview: {
       url: ({ data, collectionConfig, globalConfig }) =>
         serveLivePreview(data, collectionConfig, globalConfig),
-      collections: ['pages', 'cursus', 'exercices'],
+      collections: ['articles', 'cursus', 'exercices'],
       globals: ['homepage'],
     },
   },
   globals: [Homepage],
-  collections: [Users, Media, Pages, Exercices, Cursus, Categories, Events],
+  collections: [Users, Media, Article, Exercices, Cursus, Categories, Events],
   editor: lexicalEditor(),
   secret: process.env.PAYLOAD_SECRET || '',
   typescript: {

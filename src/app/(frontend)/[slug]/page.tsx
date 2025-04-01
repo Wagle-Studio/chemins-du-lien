@@ -2,7 +2,7 @@ import React from 'react'
 import { draftMode } from 'next/headers'
 import { notFound } from 'next/navigation'
 import { type RequiredDataFromCollectionSlug } from 'payload'
-import { PageParams } from '@/types/app'
+import { ArticleParams } from '@/types/app'
 import {
   getEntryBySlug,
   getEntryBySlugCached,
@@ -11,26 +11,29 @@ import {
 import { RenderBlocks } from '@/blocks/RenderBlocks'
 import { LivePreviewListener } from '@/ui/LivePreviewListener'
 
-type Args = PageParams<'slug'>
+type Args = ArticleParams<'slug'>
 
-export default async function Page({ params: paramsPromise }: Args) {
+export default async function Article({ params: paramsPromise }: Args) {
   const { slug } = await paramsPromise
   const { isEnabled: isDraft } = await draftMode()
 
-  const getPage = isDraft ? getEntryBySlug : getEntryBySlugCached
+  const getArticle = isDraft ? getEntryBySlug : getEntryBySlugCached
 
-  const page: RequiredDataFromCollectionSlug<'pages'> | null = await getPage('pages', slug ?? '')
+  const articles: RequiredDataFromCollectionSlug<'articles'> | null = await getArticle(
+    'articles',
+    slug ?? '',
+  )
 
-  if (!page) return notFound()
+  if (!articles) return notFound()
 
   return (
     <>
       {isDraft && <LivePreviewListener />}
-      <RenderBlocks blocks={page.blocks} />
+      <RenderBlocks blocks={articles.blocks} />
     </>
   )
 }
 
 export async function generateStaticParams() {
-  return getStaticParamsFromSlugs('pages')
+  return getStaticParamsFromSlugs('articles')
 }

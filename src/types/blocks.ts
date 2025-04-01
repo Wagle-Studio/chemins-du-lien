@@ -1,12 +1,12 @@
-import type { Homepage, Page } from '@/payload-types'
+import type { Homepage, Article, Cursus } from '@/payload-types'
 import { Discoveries } from '@/blocks/discoveries/Component'
 import { Content } from '@/blocks/content/Component'
 import { Events } from '@/blocks/events/Component'
 
 export type HomepageBlocks = NonNullable<Homepage['blocks']>[number]
-export type PageBlocks = NonNullable<Page['blocks']>[number]
-export type Cursus = NonNullable<Page['blocks']>[number]
-export type AllBlocks = HomepageBlocks | PageBlocks | Cursus
+export type ArticleBlocks = NonNullable<Article['blocks']>[number]
+export type CursusBlocks = NonNullable<Cursus['blocks']>[number]
+export type AllBlocks = HomepageBlocks | ArticleBlocks | CursusBlocks
 
 export const blockComponents: {
   [K in AllBlocks['blockType']]: React.ComponentType<Extract<AllBlocks, { blockType: K }>>

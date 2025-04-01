@@ -10,9 +10,9 @@ export const internalLink: Field = {
       required: true,
     },
     {
-      name: 'page',
+      name: 'article',
       type: 'relationship',
-      relationTo: 'pages',
+      relationTo: 'articles',
       required: true,
     },
   ],

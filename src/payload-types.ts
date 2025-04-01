@@ -69,7 +69,7 @@ export interface Config {
   collections: {
     users: User;
     media: Media;
-    pages: Page;
+    articles: Article;
     exercices: Exercice;
     cursus: Cursus;
     categories: Category;
@@ -82,7 +82,7 @@ export interface Config {
   collectionsSelect: {
     users: UsersSelect<false> | UsersSelect<true>;
     media: MediaSelect<false> | MediaSelect<true>;
-    pages: PagesSelect<false> | PagesSelect<true>;
+    articles: ArticlesSelect<false> | ArticlesSelect<true>;
     exercices: ExercicesSelect<false> | ExercicesSelect<true>;
     cursus: CursusSelect<false> | CursusSelect<true>;
     categories: CategoriesSelect<false> | CategoriesSelect<true>;
@@ -183,9 +183,9 @@ export interface Media {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "pages".
+ * via the `definition` "articles".
  */
-export interface Page {
+export interface Article {
   id: number;
   slug?: string | null;
   title: string;
@@ -218,7 +218,7 @@ export interface Page {
                   description: string;
                   internalLink: {
                     label: string;
-                    page: number | Page;
+                    article: number | Article;
                   };
                   id?: string | null;
                 }[]
@@ -348,8 +348,8 @@ export interface PayloadLockedDocument {
         value: number | Media;
       } | null)
     | ({
-        relationTo: 'pages';
-        value: number | Page;
+        relationTo: 'articles';
+        value: number | Article;
       } | null)
     | ({
         relationTo: 'exercices';
@@ -468,9 +468,9 @@ export interface MediaSelect<T extends boolean = true> {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "pages_select".
+ * via the `definition` "articles_select".
  */
-export interface PagesSelect<T extends boolean = true> {
+export interface ArticlesSelect<T extends boolean = true> {
   slug?: T;
   title?: T;
   blocks?:
@@ -495,7 +495,7 @@ export interface PagesSelect<T extends boolean = true> {
                       | T
                       | {
                           label?: T;
-                          page?: T;
+                          article?: T;
                         };
                     id?: T;
                   };
@@ -627,7 +627,7 @@ export interface Homepage {
                   description: string;
                   internalLink: {
                     label: string;
-                    page: number | Page;
+                    article: number | Article;
                   };
                   id?: string | null;
                 }[]
@@ -667,7 +667,7 @@ export interface HomepageSelect<T extends boolean = true> {
                       | T
                       | {
                           label?: T;
-                          page?: T;
+                          article?: T;
                         };
                     id?: T;
                   };
