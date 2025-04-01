@@ -1,7 +1,6 @@
 import React from 'react'
 import { draftMode } from 'next/headers'
 import { notFound } from 'next/navigation'
-import { type RequiredDataFromCollectionSlug } from 'payload'
 import { ArticleParams } from '@/types/app'
 import {
   getEntryBySlug,
@@ -10,27 +9,31 @@ import {
 } from '@/utilities/payload-utils'
 import { RenderBlocks } from '@/blocks/RenderBlocks'
 import { LivePreviewListener } from '@/ui/LivePreviewListener'
+import { Article } from '@/ui/article/Article'
+import { type RequiredDataFromCollectionSlug } from 'payload'
 
 type Args = ArticleParams<'slug'>
 
-export default async function Article({ params: paramsPromise }: Args) {
+export default async function ArticlePage({ params: paramsPromise }: Args) {
   const { slug } = await paramsPromise
   const { isEnabled: isDraft } = await draftMode()
 
   const getArticle = isDraft ? getEntryBySlug : getEntryBySlugCached
 
-  const articles: RequiredDataFromCollectionSlug<'articles'> | null = await getArticle(
+  const article: RequiredDataFromCollectionSlug<'articles'> | null = await getArticle(
     'articles',
     slug ?? '',
   )
 
-  if (!articles) return notFound()
+  if (!article) return notFound()
+
+  console.log(article)
 
   return (
-    <>
+    <Article article={article}>
       {isDraft && <LivePreviewListener />}
-      <RenderBlocks blocks={articles.blocks} />
-    </>
+      <RenderBlocks blocks={article.blocks} />
+    </Article>
   )
 }
 

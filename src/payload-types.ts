@@ -189,6 +189,9 @@ export interface Article {
   id: number;
   slug?: string | null;
   title: string;
+  description: string;
+  author: string;
+  categories?: (number | Category)[] | null;
   blocks?:
     | (
         | {
@@ -232,6 +235,16 @@ export interface Article {
   updatedAt: string;
   createdAt: string;
   _status?: ('draft' | 'published') | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "categories".
+ */
+export interface Category {
+  id: number;
+  label: string;
+  updatedAt: string;
+  createdAt: string;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -302,16 +315,6 @@ export interface Cursus {
   updatedAt: string;
   createdAt: string;
   _status?: ('draft' | 'published') | null;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "categories".
- */
-export interface Category {
-  id: number;
-  label: string;
-  updatedAt: string;
-  createdAt: string;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -473,6 +476,9 @@ export interface MediaSelect<T extends boolean = true> {
 export interface ArticlesSelect<T extends boolean = true> {
   slug?: T;
   title?: T;
+  description?: T;
+  author?: T;
+  categories?: T;
   blocks?:
     | T
     | {
