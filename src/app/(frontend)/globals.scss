@@ -87,6 +87,11 @@ ol {
   list-style: none;
 }
 
+.no-scroll {
+  overflow: hidden;
+  height: 100vh;
+}
+
 .with-bar-left {
   position: relative;
   padding-left: var(--space-2);

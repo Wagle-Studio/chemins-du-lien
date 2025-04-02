@@ -1,0 +1,11 @@
+.icon {
+  stroke: var(--black);
+  fill: none;
+  stroke-width: 0;
+
+  path {
+    fill-rule: evenodd;
+    clip-rule: evenodd;
+    fill: var(--black);
+  }
+}

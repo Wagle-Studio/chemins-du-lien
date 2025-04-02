@@ -1,8 +1,6 @@
 .header {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
-  align-items: baseline;
   padding: var(--space-3) var(--space-6) var(--space-2) var(--space-6);
   width: 100%;
   max-width: var(--view-max-width);
@@ -17,9 +15,99 @@
   }
 
   &__nav {
+    display: none;
+
+    &__mobile {
+      display: flex;
+    }
+
+    &__list {
+      &__mobile {
+        z-index: 1;
+        position: absolute;
+        top: 73px;
+        left: 0;
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-3);
+        padding: var(--space-10) var(--space-6) var(--space-3) var(--space-6);
+        height: 100%;
+        width: 100%;
+        background-color: var(--white);
+        box-sizing: border-box;
+
+        .link {
+          width: 100%;
+        }
+      }
+
+      &__item {
+        &__mobile {
+          > a {
+            display: block;
+            padding: var(--space-2) 0;
+            width: 100%;
+            border-top: 1px solid var(--gray-deep);
+            border-bottom: 1px solid var(--gray-deep);
+            text-align: center;
+            box-sizing: border-box;
+          }
+        }
+      }
+    }
+  }
+
+  &__mobile_menu {
     display: flex;
     flex-direction: row;
     align-items: center;
-    gap: var(--space-3);
+    gap: var(--space-2);
+    margin-left: auto;
+    cursor: pointer;
+
+    &__icon {
+      width: 37px;
+      height: 37px;
+    }
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .header {
+    &__nav {
+      display: flex;
+      margin-left: auto;
+
+      &__list {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: var(--space-3);
+
+        &__mobile {
+          all: unset;
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+          gap: var(--space-3);
+          list-style: none;
+        }
+
+        &__item__mobile {
+          a {
+            padding: 0;
+            width: 0;
+            border-top: unset;
+            border-bottom: unset;
+            text-align: unset;
+            box-sizing: unset;
+          }
+        }
+      }
+    }
+
+    &__mobile_menu {
+      display: none;
+    }
   }
 }
