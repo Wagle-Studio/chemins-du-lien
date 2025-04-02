@@ -33,10 +33,11 @@
         padding: var(--space-10) var(--space-6) var(--space-3) var(--space-6);
         height: 100%;
         width: 100%;
-        background-color: var(--white);
+        background-color: var(--body);
         box-sizing: border-box;
 
-        .link {
+        .link,
+        .button {
           width: 100%;
         }
       }
@@ -66,8 +67,10 @@
     cursor: pointer;
 
     &__icon {
-      width: 37px;
-      height: 37px;
+      padding: 1.5px;
+      width: 34px;
+      height: 34px;
+      box-sizing: border-box;
     }
   }
 }
@@ -94,7 +97,7 @@
         }
 
         &__item__mobile {
-          a {
+          a, button {
             padding: 0;
             width: 0;
             border-top: unset;

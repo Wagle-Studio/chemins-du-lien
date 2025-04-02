@@ -648,6 +648,17 @@ export interface Homepage {
             blockName?: string | null;
             blockType: 'events';
           }
+        | {
+            title: string;
+            description: string;
+            internalLink: {
+              label: string;
+              article: number | Article;
+            };
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'cursus';
+          }
       )[]
     | null;
   updatedAt?: string | null;
@@ -684,6 +695,20 @@ export interface HomepageSelect<T extends boolean = true> {
           | T
           | {
               type?: T;
+              id?: T;
+              blockName?: T;
+            };
+        cursus?:
+          | T
+          | {
+              title?: T;
+              description?: T;
+              internalLink?:
+                | T
+                | {
+                    label?: T;
+                    article?: T;
+                  };
               id?: T;
               blockName?: T;
             };

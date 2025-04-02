@@ -1,6 +1,7 @@
 import { GlobalConfig } from 'payload'
 import { Discoveries } from '@/blocks/discoveries/config'
 import { Events } from '@/blocks/events/config'
+import { Cursus } from '@/blocks/cursus/config'
 
 export const Homepage: GlobalConfig = {
   slug: 'homepage',
@@ -8,7 +9,7 @@ export const Homepage: GlobalConfig = {
     {
       name: 'blocks',
       type: 'blocks',
-      blocks: [Discoveries, Events],
+      blocks: [Discoveries, Events, Cursus],
     },
   ],
 }
