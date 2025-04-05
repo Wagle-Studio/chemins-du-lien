@@ -27,8 +27,6 @@ export default async function ArticlePage({ params: paramsPromise }: Args) {
 
   if (!article) return notFound()
 
-  console.log(article)
-
   return (
     <Article article={article}>
       {isDraft && <LivePreviewListener />}

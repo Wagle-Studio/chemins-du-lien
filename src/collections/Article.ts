@@ -33,15 +33,15 @@ export const Article: CollectionConfig = {
       required: true,
     },
     {
-      name: 'author',
-      type: 'text',
-      required: true,
-    },
-    {
       name: 'categories',
       type: 'relationship',
       relationTo: 'categories',
       hasMany: true,
+    },
+    {
+      name: 'author',
+      type: 'relationship',
+      relationTo: 'users',
     },
     {
       name: 'blocks',

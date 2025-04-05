@@ -133,6 +133,10 @@ export interface UserAuthOperations {
  */
 export interface User {
   id: number;
+  firstname: string;
+  lastname: string;
+  avatar?: (number | null) | Media;
+  fullName?: string | null;
   updatedAt: string;
   createdAt: string;
   email: string;
@@ -163,15 +167,7 @@ export interface Media {
   focalX?: number | null;
   focalY?: number | null;
   sizes?: {
-    thumbnail?: {
-      url?: string | null;
-      width?: number | null;
-      height?: number | null;
-      mimeType?: string | null;
-      filesize?: number | null;
-      filename?: string | null;
-    };
-    banner?: {
+    avatar?: {
       url?: string | null;
       width?: number | null;
       height?: number | null;
@@ -190,8 +186,8 @@ export interface Article {
   slug?: string | null;
   title: string;
   description: string;
-  author: string;
   categories?: (number | Category)[] | null;
+  author?: (number | null) | User;
   blocks?:
     | (
         | {
@@ -417,6 +413,10 @@ export interface PayloadMigration {
  * via the `definition` "users_select".
  */
 export interface UsersSelect<T extends boolean = true> {
+  firstname?: T;
+  lastname?: T;
+  avatar?: T;
+  fullName?: T;
   updatedAt?: T;
   createdAt?: T;
   email?: T;
@@ -447,17 +447,7 @@ export interface MediaSelect<T extends boolean = true> {
   sizes?:
     | T
     | {
-        thumbnail?:
-          | T
-          | {
-              url?: T;
-              width?: T;
-              height?: T;
-              mimeType?: T;
-              filesize?: T;
-              filename?: T;
-            };
-        banner?:
+        avatar?:
           | T
           | {
               url?: T;
@@ -477,8 +467,8 @@ export interface ArticlesSelect<T extends boolean = true> {
   slug?: T;
   title?: T;
   description?: T;
-  author?: T;
   categories?: T;
+  author?: T;
   blocks?:
     | T
     | {

@@ -3,12 +3,14 @@ import React from 'react'
 import clsx from 'clsx'
 import { ArticleDocument } from '@/types/collections'
 import { Category } from '@/ui/category/Category'
+import { Avatar } from '@/ui/avatar/Avatar'
 
 interface Props extends React.HTMLAttributes<HTMLElement> {
   article: ArticleDocument
 }
 
 export const Article: React.FC<Props> = ({ className, children, article, ...props }) => {
+  const author = typeof article.author !== 'number' ? article.author : null
   const updatedAt = article.updatedAt ? new Date(article.updatedAt) : null
 
   const formatdDate = (date: Date) =>
@@ -34,9 +36,14 @@ export const Article: React.FC<Props> = ({ className, children, article, ...prop
             )}
           </ul>
         </div>
-        {(updatedAt || article.author) && (
+        {(author || updatedAt) && (
           <div className="article__header__bottom">
-            <p>{article.author}</p>
+            {author && (
+              <div className="article__header__bottom__author">
+                <Avatar user={author} />
+                <p>{author.fullName}</p>
+              </div>
+            )}
             {updatedAt && <p>{formatdDate(updatedAt)}</p>}
           </div>
         )}
