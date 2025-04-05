@@ -14,9 +14,9 @@ export const Header: React.FC<HTMLAttributes<HTMLElement>> = ({ className, ...pr
 
   useEffect(() => {
     if (isMobileMenuOpen) {
-      document.body.classList.add('no-scroll')
+      document.body.classList.add('no_scroll')
     } else {
-      document.body.classList.remove('no-scroll')
+      document.body.classList.remove('no_scroll')
     }
   }, [isMobileMenuOpen])
 

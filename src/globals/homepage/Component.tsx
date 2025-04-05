@@ -1,4 +1,3 @@
-import './style.scss'
 import React from 'react'
 import { getGlobal } from '@/utilities/payload-utils'
 import { RenderBlocks } from '@/blocks/RenderBlocks'
@@ -8,7 +7,7 @@ export async function Homepage() {
   const data = await getGlobal('homepage', 1)
 
   return (
-    <div className="homepage">
+    <div className="homepage_layout">
       <RenderBlocks blocks={data.blocks} />
     </div>
   )

@@ -1,6 +1,6 @@
 import { Article } from '@/payload-types'
 import { getLatestArticles } from '@/utilities/payload-utils'
-import { Articles as ArticlesComponent } from '@/ui/blocks/articles/Articles'
+import { ArticlesBlock } from '@/ui/blocks/articles-block/ArticlesBlock'
 import type { AllBlocks, ExtractBlock } from '@/types/blocks'
 
 type Props = ExtractBlock<AllBlocks, 'articles'>
@@ -14,5 +14,5 @@ export const Articles = async ({ type }: Props) => {
       break
   }
 
-  return <ArticlesComponent data={articles} />
+  return <ArticlesBlock data={articles} />
 }

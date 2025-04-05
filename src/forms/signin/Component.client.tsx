@@ -42,7 +42,7 @@ export const SignInForm: React.FC<HTMLAttributes<HTMLElement>> = ({ className, .
 
   return (
     <form
-      className={clsx('signin_form', className, { 'loading-spiner': isSubmitting || isLoading })}
+      className={clsx('signin_form', className, { loading_spiner: isSubmitting || isLoading })}
       {...props}
       onSubmit={handleSubmit(onSubmit)}
     >

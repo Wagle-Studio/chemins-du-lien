@@ -1,4 +1,4 @@
-import { RichText } from '@/ui/blocks/rich-text/RichText'
+import { ContentBlock } from '@/ui/blocks/content-block/ContentBlock'
 import type { ExtractBlock, AllBlocks } from '@/types/blocks'
 
 type Props = ExtractBlock<AllBlocks, 'content'>
@@ -6,5 +6,5 @@ type Props = ExtractBlock<AllBlocks, 'content'>
 export const Content: React.FC<Props> = ({ richText }) => {
   if (!richText) return null
 
-  return <RichText data={richText} />
+  return <ContentBlock data={richText} />
 }

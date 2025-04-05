@@ -6,5 +6,5 @@ import { useAuth } from '@/hooks/useAuth'
 export default function ProfilPage() {
   const { user } = useAuth()
 
-  return <h1 className="with-bar-left">{user?.email}</h1>
+  return <h1 className="with_bar_left">{user?.email}</h1>
 }

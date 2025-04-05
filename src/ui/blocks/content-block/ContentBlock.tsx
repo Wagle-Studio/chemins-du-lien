@@ -6,6 +6,6 @@ type Props = {
   data: DefaultTypedEditorState
 }
 
-export const RichText: React.FC<Props> = ({ data }: Props) => {
+export const ContentBlock: React.FC<Props> = ({ data }: Props) => {
   return <ConvertRichText data={data} />
 }

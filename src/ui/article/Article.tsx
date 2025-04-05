@@ -19,7 +19,7 @@ export const Article: React.FC<Props> = ({ className, children, article, ...prop
     }).format(date)
 
   return (
-    <div className={clsx('article', className)} {...props}>
+    <article className={clsx('article', className)} {...props}>
       <div className="article__header">
         <div className="article__header__background"></div>
         <div className="article__header__content">
@@ -48,7 +48,7 @@ export const Article: React.FC<Props> = ({ className, children, article, ...prop
           </div>
         )}
       </div>
-      {children}
-    </div>
+      <div className="article__content">{children}</div>
+    </article>
   )
 }

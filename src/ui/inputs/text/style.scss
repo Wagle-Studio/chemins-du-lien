@@ -19,5 +19,9 @@
     letter-spacing: 0.025rem;
     box-shadow: var(--card-shadow);
     box-sizing: border-box;
+
+    &::placeholder {
+      font-size: var(--font-size-small);
+    }
   }
 }

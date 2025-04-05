@@ -16,7 +16,10 @@ export const Link: React.FC<Props> = ({
   ...props
 }) => {
   return (
-    <NextLink className={clsx('link', `link--${variant}`, `link--${size}`, className)} {...props}>
+    <NextLink
+      className={clsx('link', `link--variant-${variant}`, `link--size-${size}`, className)}
+      {...props}
+    >
       {children}
     </NextLink>
   )

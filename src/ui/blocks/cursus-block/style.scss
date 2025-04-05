@@ -1,4 +1,4 @@
-.cursus {
+.cursus_block {
   display: flex;
   flex-direction: column;
   padding: var(--space-4) var(--space-3);
@@ -39,7 +39,7 @@
 }
 
 @media screen and (min-width: 576px) {
-  .cursus {
+  .cursus_block {
     padding: var(--space-4) var(--space-6);
 
     &__card {

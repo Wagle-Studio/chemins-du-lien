@@ -1,7 +1,7 @@
 import React from 'react'
 import { draftMode } from 'next/headers'
 import { notFound } from 'next/navigation'
-import { ArticleParams } from '@/types/app'
+import { PageParams } from '@/types/app'
 import {
   getEntryBySlug,
   getEntryBySlugCached,
@@ -12,7 +12,7 @@ import { LivePreviewListener } from '@/ui/LivePreviewListener'
 import { Article } from '@/ui/article/Article'
 import { type RequiredDataFromCollectionSlug } from 'payload'
 
-type Args = ArticleParams<'slug'>
+type Args = PageParams<'slug'>
 
 export default async function ArticlePage({ params: paramsPromise }: Args) {
   const { slug } = await paramsPromise

@@ -1,6 +1,6 @@
 import { Event } from '@/payload-types'
 import { getLatestEvents } from '@/utilities/payload-utils'
-import { Events as EventsComponent } from '@/ui/blocks/events/Events'
+import { EventsBlock } from '@/ui/blocks/events-block/EventsBlock'
 import type { AllBlocks, ExtractBlock } from '@/types/blocks'
 
 type Props = ExtractBlock<AllBlocks, 'events'>
@@ -14,5 +14,5 @@ export const Events = async ({ type }: Props) => {
       break
   }
 
-  return <EventsComponent data={events} />
+  return <EventsBlock data={events} />
 }

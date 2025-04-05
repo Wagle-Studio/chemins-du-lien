@@ -6,11 +6,11 @@ type Props = {
   data: ExtractBlock<AllBlocks, 'cursus'>
 }
 
-export const Cursus: React.FC<Props> = ({ data }) => {
+export const CursusBlock: React.FC<Props> = ({ data }) => {
   return (
-    <div className="cursus">
-      <div className="cursus__card">
-        <div className="cursus__card__content">
+    <div className="cursus_block">
+      <div className="cursus_block__card">
+        <div className="cursus_block__card__content">
           <h2>{data.title}</h2>
           <p>{data.description}</p>
         </div>
