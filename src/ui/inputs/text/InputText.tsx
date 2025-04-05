@@ -8,7 +8,7 @@ export interface InputTextProps<T extends FieldValues> {
   label: string
   placeholder?: string
   type?: 'text' | 'password' | 'email'
-  inputProps: { autoComplete: string }
+  inputProps?: { autoComplete: string }
   className?: string
 }
 

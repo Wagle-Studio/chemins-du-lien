@@ -2,14 +2,14 @@ import { NextRequest, NextResponse } from 'next/server'
 
 export async function POST(req: NextRequest) {
   const body = await req.json()
-  const { email, password } = body
+  const { email, firstname, lastname, password } = body
 
   const createRes = await fetch(`${process.env.NEXT_PUBLIC_CMS_URL}/api/users`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
     },
-    body: JSON.stringify({ email, password }),
+    body: JSON.stringify({ email, firstname, lastname, password }),
   })
 
   if (!createRes.ok) {
@@ -22,7 +22,7 @@ export async function POST(req: NextRequest) {
     headers: {
       'Content-Type': 'application/json',
     },
-    body: JSON.stringify({ email, password }),
+    body: JSON.stringify({ email, firstname, lastname, password }),
     credentials: 'include',
   })
 

@@ -58,6 +58,8 @@ export const SignUpForm: React.FC<HTMLAttributes<HTMLElement>> = ({ className, .
           inputProps={{ autoComplete: 'email' }}
           placeholder="exemple@gmail.com"
         />
+        <InputText<FormValues> control={control} name="firstname" label="Prénom" type="text" />
+        <InputText<FormValues> control={control} name="lastname" label="Nom" type="text" />
         <InputText<FormValues>
           control={control}
           name="password"
