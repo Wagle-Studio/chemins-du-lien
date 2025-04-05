@@ -659,6 +659,12 @@ export interface Homepage {
             blockName?: string | null;
             blockType: 'cursus';
           }
+        | {
+            type: 'Les trois derniers articles';
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'articles';
+          }
       )[]
     | null;
   updatedAt?: string | null;
@@ -709,6 +715,13 @@ export interface HomepageSelect<T extends boolean = true> {
                     label?: T;
                     article?: T;
                   };
+              id?: T;
+              blockName?: T;
+            };
+        articles?:
+          | T
+          | {
+              type?: T;
               id?: T;
               blockName?: T;
             };

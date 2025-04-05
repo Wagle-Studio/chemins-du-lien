@@ -164,3 +164,16 @@ export const getLatestEvents = async (): Promise<any[]> => {
 
   return result.docs
 }
+
+// Finds the three latest articles.
+export const getLatestArticles = async (): Promise<any[]> => {
+  const payload = await getPayloadClient()
+
+  const result = await payload.find({
+    collection: 'articles',
+    limit: 3,
+    sort: 'createdAt',
+  })
+
+  return result.docs
+}

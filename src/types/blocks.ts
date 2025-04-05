@@ -3,6 +3,7 @@ import { Discoveries } from '@/blocks/discoveries/Component'
 import { Content } from '@/blocks/content/Component'
 import { Events } from '@/blocks/events/Component'
 import { Cursus } from '@/blocks/cursus/Component'
+import { Articles } from '@/blocks/articles/Component'
 
 export type HomepageBlocks = NonNullable<Homepage['blocks']>[number]
 export type ArticleBlocks = NonNullable<Article['blocks']>[number]
@@ -16,6 +17,7 @@ export const blockComponents: {
   content: Content,
   events: Events,
   cursus: Cursus,
+  articles: Articles,
 }
 
 export type ExtractBlock<T extends { blockType: string }, S extends T['blockType']> = Extract<
