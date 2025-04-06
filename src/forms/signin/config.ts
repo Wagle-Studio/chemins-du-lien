@@ -6,11 +6,6 @@ export type FormValues = {
   password: string
 }
 
-export type LoginResponse = {
-  user: User
-  token: string
-}
-
 export const schema: yup.ObjectSchema<FormValues> = yup.object({
   email: yup.string().email('Email invalide').required('L’email est requis'),
   password: yup

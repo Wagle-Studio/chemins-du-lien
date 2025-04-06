@@ -6,11 +6,12 @@ import { Resolver, useForm } from 'react-hook-form'
 import { useRouter } from 'next/navigation'
 import { yupResolver } from '@hookform/resolvers/yup'
 import clsx from 'clsx'
+import { RegisterResponse } from '@/types/api'
 import { useAuth } from '@/hooks/useAuth'
 import useFetcher from '@/hooks/useFetcher'
 import { Button } from '@/ui/button/Button.client'
 import { InputText } from '@/ui/inputs/text/InputText'
-import { FormValues, RegisterResponse, defaultValues, schema } from './config'
+import { FormValues, defaultValues, schema } from '@/forms/signup/config'
 
 export const SignUpForm: React.FC<HTMLAttributes<HTMLElement>> = ({ className, ...props }) => {
   const { fetcher, error, isLoading } = useFetcher<RegisterResponse>()
