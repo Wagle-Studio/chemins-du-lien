@@ -1,7 +1,7 @@
 import { cache } from 'react'
 import { draftMode } from 'next/headers'
-import { CollectionConfig, DataFromCollectionSlug, getPayload, GlobalConfig } from 'payload'
-import { Article, Cursus, Event, Exercice, Homepage } from '@/payload-types'
+import { CollectionConfig, DataFromCollectionSlug, getPayload, GlobalConfig, Where } from 'payload'
+import { Article, Category, Cursus, Event, Exercice, Homepage } from '@/payload-types'
 import configPromise from '@payload-config'
 
 type CollectionSlugToType = {
@@ -9,6 +9,7 @@ type CollectionSlugToType = {
   events: Event
   exercices: Exercice
   articles: Article
+  categories: Category
 }
 
 type CollectionSlug = keyof CollectionSlugToType & string
@@ -44,6 +45,30 @@ export const getCollection = async <TSlug extends CollectionSlug>(
   const result = await payload.find({
     collection: slug,
     depth,
+  })
+
+  return result.docs as CollectionSlugToType[TSlug][]
+}
+
+// Finds every collection documents based on parameters.
+export const getCollectionWithParams = async <TSlug extends CollectionSlug>(
+  slug: TSlug,
+  params: {
+    depth?: number
+    limit?: number
+    sort?: string
+    where?: Where
+    draft?: boolean
+    overrideAccess?: boolean
+    pagination?: boolean
+    select?: Record<string, boolean>
+  } = {},
+): Promise<CollectionSlugToType[TSlug][]> => {
+  const payload = await getPayloadClient()
+
+  const result = await payload.find({
+    collection: slug,
+    ...params,
   })
 
   return result.docs as CollectionSlugToType[TSlug][]
