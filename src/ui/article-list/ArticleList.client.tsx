@@ -7,8 +7,8 @@ import { Article, Category } from '@/payload-types'
 import clsx from 'clsx'
 import { ArticlesResponse } from '@/types/response'
 import useFetcher from '@/hooks/useFetcher'
-import { ArticleFiltersForm } from '@/forms/article-filters/FiltersForm.client'
-import { FormValues } from '@/forms/filters/config'
+import { ArticleFiltersForm } from '@/forms/article-filters/ArticleFiltersForm.client'
+import { FormValues } from '@/forms/article-filters/config'
 import { ArticleTeaser } from '@/ui/article-teaser/ArticleTeaser'
 
 interface ArticleListProps {

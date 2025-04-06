@@ -2,13 +2,7 @@
 
 import React, { createContext, useState } from 'react'
 import { User } from '@/payload-types'
-
-type AuthContextType = {
-  user: User | null
-  isAuthenticated: boolean
-  setUser: (user: User | null) => void
-  logout: () => Promise<void>
-}
+import { AuthContextType } from '@/types/auth'
 
 export const AuthContext = createContext<AuthContextType | undefined>(undefined)
 

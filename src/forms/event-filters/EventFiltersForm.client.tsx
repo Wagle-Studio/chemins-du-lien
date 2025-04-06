@@ -5,15 +5,15 @@ import { Resolver, useForm } from 'react-hook-form'
 import { Category } from '@/payload-types'
 import { yupResolver } from '@hookform/resolvers/yup'
 import clsx from 'clsx'
-import { FormValues, schema, defaultValues } from '@/forms/filters/config'
+import { FormValues, schema, defaultValues } from '@/forms/event-filters/config'
 import { InputSelect } from '@/ui/inputs/select/InputSelect'
 
-interface FiltersFormProps extends HTMLAttributes<HTMLElement> {
+interface EventFiltersFormProps extends HTMLAttributes<HTMLElement> {
   categories: Category[]
   onSubmitForm: (data: FormValues) => void
 }
 
-export const FiltersForm: React.FC<FiltersFormProps> = ({
+export const EventFiltersForm: React.FC<EventFiltersFormProps> = ({
   className,
   categories,
   onSubmitForm,

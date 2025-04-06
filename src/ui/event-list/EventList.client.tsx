@@ -7,8 +7,8 @@ import { Category, Event } from '@/payload-types'
 import clsx from 'clsx'
 import { EventsResponse } from '@/types/response'
 import useFetcher from '@/hooks/useFetcher'
-import { FiltersForm } from '@/forms/filters/FiltersForm.client'
-import { FormValues } from '@/forms/filters/config'
+import { EventFiltersForm } from '@/forms/event-filters/EventFiltersForm.client'
+import { FormValues } from '@/forms/event-filters/config'
 import { EventTeaser } from '@/ui/event-teaser/EventTeaser'
 
 interface EventListProps {
@@ -56,7 +56,7 @@ export const EventList: React.FC<EventListProps> = ({ categories }) => {
           </p>
         </div>
         <div className="event_collection_layout__grid__filter">
-          <FiltersForm categories={categories} onSubmitForm={handleFilterChanges} />
+          <EventFiltersForm categories={categories} onSubmitForm={handleFilterChanges} />
         </div>
         <div className={clsx('event_collection_layout__grid__list', { loading_spiner: isLoading })}>
           {!error &&
