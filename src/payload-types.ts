@@ -238,7 +238,8 @@ export interface Article {
  */
 export interface Category {
   id: number;
-  label: string;
+  slug?: string | null;
+  title: string;
   updatedAt: string;
   createdAt: string;
 }
@@ -554,7 +555,8 @@ export interface CursusSelect<T extends boolean = true> {
  * via the `definition` "categories_select".
  */
 export interface CategoriesSelect<T extends boolean = true> {
-  label?: T;
+  slug?: T;
+  title?: T;
   updatedAt?: T;
   createdAt?: T;
 }

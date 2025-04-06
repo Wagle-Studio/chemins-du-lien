@@ -9,7 +9,7 @@ interface Props extends React.HTMLAttributes<HTMLElement> {
 export const Category: React.FC<Props> = ({ category, className, ...props }) => {
   return (
     <p className={clsx('category', className)} {...props}>
-      {category.label}
+      {category.title}
     </p>
   )
 }
