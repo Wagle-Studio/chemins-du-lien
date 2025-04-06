@@ -1,5 +1,5 @@
 import { Article } from '@/payload-types'
-import { getLatestArticles } from '@/utilities/payload/shortcuts'
+import { getCollectionWithParams } from '@/utilities/payload/collections'
 import { ArticlesBlock } from '@/ui/blocks/articles-block/ArticlesBlock'
 import type { AllBlocks, ExtractBlock } from '@/types/blocks'
 
@@ -10,7 +10,11 @@ export const Articles = async ({ type }: Props) => {
 
   switch (type) {
     case 'Les trois derniers articles':
-      articles = await getLatestArticles()
+      articles = await getCollectionWithParams('articles', {
+        depth: 2,
+        sort: 'createdAt',
+        limit: 3,
+      })
       break
   }
 

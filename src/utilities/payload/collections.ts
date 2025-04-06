@@ -1,17 +1,7 @@
 import { DataFromCollectionSlug, Where } from 'payload'
 import { draftMode } from 'next/headers'
-import { Article, Category, Cursus, Event, Exercice } from '@/payload-types'
+import { CollectionSlug, CollectionSlugToType } from '@/types/slug'
 import { getPayloadClient } from './client'
-
-type CollectionSlugToType = {
-  cursus: Cursus
-  events: Event
-  exercices: Exercice
-  articles: Article
-  categories: Category
-}
-
-type CollectionSlug = keyof CollectionSlugToType & string
 
 // Finds all documents of a collection
 export const getCollection = async <TSlug extends CollectionSlug>(

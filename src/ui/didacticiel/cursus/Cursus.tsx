@@ -1,7 +1,7 @@
 import './style.scss'
 import clsx from 'clsx'
+import { CursusDocument } from '@/types/documents'
 import { RenderBlocks } from '@/blocks/RenderBlocks'
-import { CursusDocument } from '@/types/collections'
 import { Link } from '@/ui/link/Link'
 
 interface Props extends React.HTMLAttributes<HTMLElement> {

@@ -1,5 +1,5 @@
 import { Event } from '@/payload-types'
-import { getLatestEvents } from '@/utilities/payload/shortcuts'
+import { getCollectionWithParams } from '@/utilities/payload/collections'
 import { EventsBlock } from '@/ui/blocks/events-block/EventsBlock'
 import type { AllBlocks, ExtractBlock } from '@/types/blocks'
 
@@ -10,7 +10,11 @@ export const Events = async ({ type }: Props) => {
 
   switch (type) {
     case 'Les trois prochains événements':
-      events = await getLatestEvents()
+      events = await getCollectionWithParams('events', {
+        depth: 2,
+        sort: 'date',
+        limit: 3,
+      })
       break
   }
 

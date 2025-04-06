@@ -1,7 +1,7 @@
 import './style.scss'
 import React from 'react'
 import clsx from 'clsx'
-import { ArticleDocument } from '@/types/collections'
+import { ArticleDocument } from '@/types/documents'
 import { Category } from '@/ui/category/Category'
 import { Avatar } from '@/ui/avatar/Avatar'
 

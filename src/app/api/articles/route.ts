@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server'
-import { RawFilterValue } from '@/types/api'
+import { RawFilterValue } from '@/types/filters'
 import { buildWhereFromFilters } from '@/utilities/payload/utils'
 import { getCollectionWithParams } from '@/utilities/payload/collections'
 

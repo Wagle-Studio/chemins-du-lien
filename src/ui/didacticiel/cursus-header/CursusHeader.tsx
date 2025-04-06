@@ -1,7 +1,7 @@
 import './style.scss'
 import { Exercice } from '@/payload-types'
 import clsx from 'clsx'
-import { CursusDocument } from '@/types/collections'
+import { CursusDocument } from '@/types/documents'
 import { Category } from '@/ui/category/Category'
 
 interface Props extends React.HTMLAttributes<HTMLElement> {

@@ -1,11 +1,5 @@
-import { Homepage } from '@/payload-types'
+import { GlobalSlug, GlobalSlugToType } from '@/types/slug'
 import { getPayloadClient } from './client'
-
-type GlobalSlugToType = {
-  homepage: Homepage
-}
-
-type GlobalSlug = keyof GlobalSlugToType & string
 
 // Finds a global document by slug
 export const getGlobal = async <TSlug extends GlobalSlug>(

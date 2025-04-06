@@ -1,6 +1,6 @@
 import './style.scss'
 import clsx from 'clsx'
-import { ExerciceDocument } from '@/types/collections'
+import { ExerciceDocument } from '@/types/documents'
 import { RenderBlocks } from '@/blocks/RenderBlocks'
 
 interface Props extends React.HTMLAttributes<HTMLElement> {

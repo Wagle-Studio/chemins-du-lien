@@ -1,6 +1,6 @@
 import './style.scss'
 import clsx from 'clsx'
-import { CursusDocument } from '@/types/collections'
+import { CursusDocument } from '@/types/documents'
 import { CursusHeader } from '@/ui/didacticiel/cursus-header/CursusHeader'
 
 interface Props extends React.HTMLAttributes<HTMLElement> {
