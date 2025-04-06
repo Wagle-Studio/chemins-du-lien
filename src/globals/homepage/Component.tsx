@@ -1,5 +1,5 @@
 import React from 'react'
-import { getGlobal } from '@/utilities/payload-utils'
+import { getGlobal } from '@/utilities/payload/globals'
 import { RenderBlocks } from '@/blocks/RenderBlocks'
 import type { Homepage } from '@/payload-types'
 

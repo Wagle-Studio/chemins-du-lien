@@ -1,5 +1,5 @@
 import { Event } from '@/payload-types'
-import { getLatestEvents } from '@/utilities/payload-utils'
+import { getLatestEvents } from '@/utilities/payload/shortcuts'
 import { EventsBlock } from '@/ui/blocks/events-block/EventsBlock'
 import type { AllBlocks, ExtractBlock } from '@/types/blocks'
 

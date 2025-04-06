@@ -1,5 +1,5 @@
 import React from 'react'
-import { getCollection } from '@/utilities/payload-utils'
+import { getCollection } from '@/utilities/payload/collections'
 import { EventList } from '@/ui/event-list/EventList.client'
 
 export default async function EventsPage() {

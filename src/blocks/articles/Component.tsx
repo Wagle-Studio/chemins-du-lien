@@ -1,5 +1,5 @@
 import { Article } from '@/payload-types'
-import { getLatestArticles } from '@/utilities/payload-utils'
+import { getLatestArticles } from '@/utilities/payload/shortcuts'
 import { ArticlesBlock } from '@/ui/blocks/articles-block/ArticlesBlock'
 import type { AllBlocks, ExtractBlock } from '@/types/blocks'
 

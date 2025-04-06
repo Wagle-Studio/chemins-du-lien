@@ -2,7 +2,8 @@ import React from 'react'
 import { draftMode } from 'next/headers'
 import { notFound } from 'next/navigation'
 import { Homepage } from '@/globals/homepage/Component'
-import { getGlobal, getGlobalCached } from '@/utilities/payload-utils'
+import { getGlobal } from '@/utilities/payload/globals'
+import { getGlobalCached } from '@/utilities/payload/cached'
 import { LivePreviewListener } from '@/ui/LivePreviewListener'
 
 export default async function HomePage() {

@@ -1,13 +1,10 @@
 import React from 'react'
 import { draftMode } from 'next/headers'
 import { notFound } from 'next/navigation'
-import { PageParams } from '@/types/app'
-import {
-  getEntryBySlug,
-  getEntryBySlugCached,
-  getStaticParamsFromSlugs,
-} from '@/utilities/payload-utils'
 import { RenderBlocks } from '@/blocks/RenderBlocks'
+import { PageParams } from '@/types/app'
+import { getEntryBySlugCached } from '@/utilities/payload/cached'
+import { getEntryBySlug, getStaticParamsFromSlugs } from '@/utilities/payload/collections'
 import { LivePreviewListener } from '@/ui/LivePreviewListener'
 import { Article } from '@/ui/article/Article'
 import { type RequiredDataFromCollectionSlug } from 'payload'

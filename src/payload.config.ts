@@ -6,7 +6,7 @@ import { fileURLToPath } from 'url'
 import sharp from 'sharp'
 import path from 'path'
 
-import { serveLivePreview } from './utilities/payload-utils'
+import { serveLivePreview } from './utilities/payload/preview'
 import { Homepage } from './globals/homepage/config'
 import { Users } from './collections/Users'
 import { Media } from './collections/Media'

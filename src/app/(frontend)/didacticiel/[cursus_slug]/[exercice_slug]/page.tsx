@@ -3,11 +3,8 @@ import { draftMode } from 'next/headers'
 import { notFound } from 'next/navigation'
 import { type RequiredDataFromCollectionSlug } from 'payload'
 import { PageParams } from '@/types/app'
-import {
-  getEntryBySlug,
-  getEntryBySlugCached,
-  getStaticParamsFromSlugs,
-} from '@/utilities/payload-utils'
+import { getEntryBySlugCached } from '@/utilities/payload/cached'
+import { getEntryBySlug, getStaticParamsFromSlugs } from '@/utilities/payload/collections'
 import { Exercice } from '@/ui/didacticiel/exercice/Exercice'
 import { LivePreviewListener } from '@/ui/LivePreviewListener'
 

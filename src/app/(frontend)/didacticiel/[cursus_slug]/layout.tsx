@@ -1,6 +1,6 @@
 import { notFound } from 'next/navigation'
 import { LayoutWithChildren } from '@/types/app'
-import { getEntryBySlugCached } from '@/utilities/payload-utils'
+import { getEntryBySlugCached } from '@/utilities/payload/cached'
 import { CursusLayout } from '@/ui/didacticiel/cursus-layout/CursusLayout'
 
 type Props = LayoutWithChildren<'cursus_slug'>
