@@ -1,7 +1,7 @@
 import './style.scss'
 import { Event } from '@/payload-types'
 import clsx from 'clsx'
-import { Category } from '@/ui/category/Category'
+import { Tag } from '@/ui/tag/Tag'
 import { Link } from '@/ui/link/Link'
 
 type Props = {
@@ -23,16 +23,44 @@ export const EventTeaser: React.FC<Props> = ({
     }).format(date)
   }
 
+  const generateStatusClass = (status: string) => {
+    const classBase = 'event_teaser__header__bottom__status'
+
+    switch (status) {
+      case 'Programmé':
+        return `${classBase}--success`
+      case 'Confirmé':
+        return `${classBase}--success`
+      case 'Annulé':
+        return `${classBase}--error`
+      case 'Reporté':
+        return `${classBase}--warning`
+      default:
+        return ''
+    }
+  }
+
   return (
     <article className={clsx('event_teaser', className)} {...props}>
       <div className="event_teaser__header">
         <div className="event_teaser__header__top">
           <h3>{data.title}</h3>
-          <p>{data['on-site'] ? 'présentiel' : 'visio conférence'}</p>
+          <Tag
+            label={data['on-site'] ? 'présentiel' : 'visio conférence'}
+            variant="gray"
+            size="small"
+          />
         </div>
         <div className="event_teaser__header__bottom">
           <p>{formatdDate(data.date)}</p>
-          <p>{data.status.toLowerCase()}</p>
+          <p
+            className={clsx(
+              'event_teaser__header__bottom__status',
+              generateStatusClass(data.status),
+            )}
+          >
+            {data.status.toLowerCase()}
+          </p>
         </div>
       </div>
       <div className="event_teaser__body">
@@ -45,7 +73,7 @@ export const EventTeaser: React.FC<Props> = ({
               (category) =>
                 typeof category !== 'number' && (
                   <li key={category.id}>
-                    <Category category={category} />
+                    <Tag label={category.title} />
                   </li>
                 ),
             )}

@@ -1,7 +1,7 @@
 import './style.scss'
 import { Article } from '@/payload-types'
 import clsx from 'clsx'
-import { Category } from '@/ui/category/Category'
+import { Tag } from '@/ui/tag/Tag'
 
 type Props = {
   data: Article
@@ -32,7 +32,7 @@ export const ArticleTeaser: React.FC<Props> = ({ data, className, ...props }) =>
               (category) =>
                 typeof category !== 'number' && (
                   <li key={category.id}>
-                    <Category category={category} />
+                    <Tag label={category.title} />
                   </li>
                 ),
             )}

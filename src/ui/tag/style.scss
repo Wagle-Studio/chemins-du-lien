@@ -1,0 +1,29 @@
+.tag {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  width: max-content;
+  border-radius: var(--border-radius-medium);
+  font-size: var(--font-size-small);
+  box-sizing: border-box;
+
+  &-variant {
+    &--default {
+      background-color: var(--primary-45);
+    }
+
+    &--gray {
+      background-color: var(--gray-light);
+    }
+  }
+
+  &-size {
+    &--default {
+      padding: var(--space-1);
+    }
+
+    &--small {
+      padding: 4px var(--space-1);
+    }
+  }
+}

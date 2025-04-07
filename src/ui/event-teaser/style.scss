@@ -46,7 +46,7 @@
         font-weight: 600;
       }
 
-      > :last-child {
+      &__status {
         position: relative;
         padding-left: var(--space-3);
         box-sizing: border-box;
@@ -61,6 +61,24 @@
           border-radius: 10px;
           background-color: var(--success);
           transform: translate(-7%, -50%);
+        }
+
+        &--success {
+          &::before {
+            background-color: var(--success);
+          }
+        }
+
+        &--error {
+          &::before {
+            background-color: var(--error);
+          }
+        }
+
+        &--warning {
+          &::before {
+            background-color: var(--warning);
+          }
         }
       }
     }

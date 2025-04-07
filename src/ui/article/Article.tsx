@@ -2,7 +2,7 @@ import './style.scss'
 import React from 'react'
 import clsx from 'clsx'
 import { ArticleDocument } from '@/types/documents'
-import { Category } from '@/ui/category/Category'
+import { Tag } from '@/ui/tag/Tag'
 import { Avatar } from '@/ui/avatar/Avatar'
 
 interface Props extends React.HTMLAttributes<HTMLElement> {
@@ -30,7 +30,7 @@ export const Article: React.FC<Props> = ({ className, children, article, ...prop
               (category) =>
                 typeof category !== 'number' && (
                   <li key={category.id}>
-                    <Category category={category} />
+                    <Tag label={category.title} />
                   </li>
                 ),
             )}

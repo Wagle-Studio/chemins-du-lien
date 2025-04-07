@@ -2,7 +2,7 @@ import './style.scss'
 import { Exercice } from '@/payload-types'
 import clsx from 'clsx'
 import { CursusDocument } from '@/types/documents'
-import { Category } from '@/ui/category/Category'
+import { Tag } from '@/ui/tag/Tag'
 
 interface Props extends React.HTMLAttributes<HTMLElement> {
   cursus: CursusDocument
@@ -27,7 +27,7 @@ export const CursusHeader: React.FC<Props> = ({ cursus, className, ...props }) =
           (category) =>
             typeof category !== 'number' && (
               <li key={category.id} className="cursus_header__categories__item">
-                <Category category={category} />
+                <Tag label={category.title} />
               </li>
             ),
         )}
