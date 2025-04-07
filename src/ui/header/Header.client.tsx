@@ -36,17 +36,17 @@ export const Header: React.FC<HTMLAttributes<HTMLElement>> = ({ className, ...pr
       </div>
       <nav className={clsx('header__nav', { header__nav__mobile: isMobileMenuOpen })}>
         <ul className={clsx('header__nav__list', { header__nav__list__mobile: isMobileMenuOpen })}>
-          {/* <li
-            className={clsx('header__nav__list__item', {
+          <li
+            className={clsx('header__nav__list__item', 'header__nav__list__item--hidden', {
               header__nav__list__item__mobile: isMobileMenuOpen,
             })}
           >
             <Link href={`/evenements`} onClick={closeMobileMenu}>
               Événements
             </Link>
-          </li> */}
+          </li>
           <li
-            className={clsx('header__nav__list__item', {
+            className={clsx('header__nav__list__item', 'header__nav__list__item--hidden', {
               header__nav__list__item__mobile: isMobileMenuOpen,
             })}
           >

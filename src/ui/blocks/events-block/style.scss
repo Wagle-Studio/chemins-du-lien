@@ -25,9 +25,17 @@
     grid-template-columns: 1fr;
     grid-template-rows: repeat(3, max-content);
     grid-gap: var(--space-6);
-    padding: 0 var(--space-6);
+    padding: 0 var(--space-3);
     width: 100%;
     box-sizing: border-box;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .events_block {
+    &__list {
+      padding: 0 var(--space-6);
+    }
   }
 }
 

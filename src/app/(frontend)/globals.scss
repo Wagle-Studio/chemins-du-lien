@@ -119,12 +119,18 @@ ol {
 .page_layout {
   display: flex;
   flex-direction: column;
-  padding: 0 var(--space-6);
+  padding: 0 var(--space-3);
   gap: var(--space-20);
   width: 100%;
   max-width: var(--view-max-width);
   margin: 0 auto;
   box-sizing: border-box;
+}
+
+@media screen and (min-width: 768px) {
+  .page_layout {
+    padding: 0 var(--space-6);
+  }
 }
 
 .no_scroll {
