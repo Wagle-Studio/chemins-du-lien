@@ -4,7 +4,7 @@
   justify-content: center;
   align-items: center;
   gap: var(--space-3);
-  padding: var(--space-2);
+  padding: var(--space-4) var(--space-2);
   background-color: var(--gray-white);
   border-radius: var(--border-radius-medium);
   border: 1px solid var(--gray-lighter);
@@ -15,5 +15,11 @@
   p {
     width: 100%;
     max-width: 80%;
+  }
+}
+
+@media screen and (min-width: 992px) {
+  .didacticiel {
+    padding: var(--space-2);
   }
 }

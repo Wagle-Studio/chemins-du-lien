@@ -1,3 +1,11 @@
+.header__nav__list__item__mobile {
+  &:nth-child(3) {
+    a {
+      border-bottom: 1px solid var(--gray-deep);
+    }
+  }
+}
+
 .header {
   display: flex;
   flex-direction: row;
@@ -29,12 +37,21 @@
         left: 0;
         display: flex;
         flex-direction: column;
-        gap: var(--space-3);
         padding: var(--space-10) var(--space-6) var(--space-3) var(--space-6);
         height: 100%;
         width: 100%;
         background-color: var(--body);
         box-sizing: border-box;
+
+        > li {
+          &:nth-child(4) {
+            margin-top: var(--space-9);
+          }
+
+          &:nth-child(5) {
+            margin-top: var(--space-3);
+          }
+        }
 
         .link,
         .button {
@@ -49,7 +66,6 @@
             padding: var(--space-2) 0;
             width: 100%;
             border-top: 1px solid var(--gray-deep);
-            border-bottom: 1px solid var(--gray-deep);
             text-align: center;
             box-sizing: border-box;
           }
@@ -85,7 +101,7 @@
         display: flex;
         flex-direction: row;
         align-items: center;
-        gap: var(--space-3);
+        gap: var(--space-2);
 
         &__mobile {
           all: unset;
@@ -97,7 +113,8 @@
         }
 
         &__item__mobile {
-          a, button {
+          a,
+          button {
             padding: 0;
             width: 0;
             border-top: unset;

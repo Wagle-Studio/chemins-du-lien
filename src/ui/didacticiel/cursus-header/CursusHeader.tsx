@@ -36,7 +36,7 @@ export const CursusHeader: React.FC<Props> = ({ cursus, className, ...props }) =
         <div className="cursus_header__information">
           {updatedAt && <p>{formatdDate(updatedAt)}</p>}
           {cursus.exercices && (
-            <p>
+            <p className="cursus_header__information__exercices_nmb">
               {formatExercicesSize(
                 cursus.exercices.filter((e): e is Exercice => typeof e !== 'number'),
               )}
