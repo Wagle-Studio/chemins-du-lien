@@ -41,6 +41,8 @@
       top: 52%;
       width: 20px;
       height: 20px;
+      padding-left: 8px;
+      background-color: var(--white);
       transform: translateY(-50%);
       pointer-events: none;
     }

@@ -77,6 +77,22 @@ h1 {
   letter-spacing: 0.025rem;
 }
 
+h2 {
+  position: relative;
+  padding-left: var(--space-2);
+  box-sizing: border-box;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 5px;
+    height: 100%;
+    background-color: var(--primary);
+  }
+}
+
 a,
 p {
   font-family: var(--font-secondary);

@@ -14,11 +14,9 @@ export const CursusBlock: React.FC<Props> = ({ data }) => {
           <h2>{data.title}</h2>
           <p>{data.description}</p>
         </div>
-        {typeof data.internalLink.article !== 'number' && (
-          <Link href={data.internalLink.article.slug ?? '#'} variant="primary">
-            {data.internalLink.label}
-          </Link>
-        )}
+        <Link href="/didacticiel" variant="primary">
+          Découvrez nos cursus
+        </Link>
       </div>
     </div>
   )

@@ -14,6 +14,5 @@ export const Cursus: Block = {
       type: 'text',
       required: true,
     },
-    internalLink,
   ],
 }

@@ -2,22 +2,6 @@ p + h2 {
   margin-top: var(--space-4);
 }
 
-h2 {
-  position: relative;
-  padding-left: var(--space-2);
-  box-sizing: border-box;
-
-  &::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 5px;
-    height: 100%;
-    background-color: var(--primary);
-  }
-}
-
 p + h3 {
   margin-top: var(--space-3);
 }

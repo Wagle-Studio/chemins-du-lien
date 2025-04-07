@@ -643,10 +643,6 @@ export interface Homepage {
         | {
             title: string;
             description: string;
-            internalLink: {
-              label: string;
-              article: number | Article;
-            };
             id?: string | null;
             blockName?: string | null;
             blockType: 'cursus';
@@ -701,12 +697,6 @@ export interface HomepageSelect<T extends boolean = true> {
           | {
               title?: T;
               description?: T;
-              internalLink?:
-                | T
-                | {
-                    label?: T;
-                    article?: T;
-                  };
               id?: T;
               blockName?: T;
             };
