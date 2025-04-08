@@ -54,6 +54,7 @@ export const getEntryBySlug = async <TSlug extends CollectionSlug>(
   return result.docs?.[0] || null
 }
 
+// TODO: update typing
 // Lists all document slugs of a collection
 export const getSlugsFromCollection = async <TSlug extends CollectionSlug>(
   collection: TSlug,

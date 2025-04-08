@@ -6,6 +6,7 @@ type Props = {
   data: ExtractBlock<AllBlocks, 'discoveries'>['cards']
 }
 
+// TODO: update typing
 export const DiscoveriesBlock: React.FC<Props> = ({ data }) => {
   return (
     <div className="discoveries_block">

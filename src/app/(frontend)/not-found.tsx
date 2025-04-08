@@ -12,9 +12,9 @@ export default function NotFoundPage() {
       }}
     >
       <h1 className="with_bar_left">Page introuvable</h1>
-      <p>La page que vous cherchez n'existe pas ou a été déplacée.</p>
+      <p>La page que vous cherchez n&apos;existe pas ou a été déplacée.</p>
       <Link href="/" variant="primary">
-        Retour à l'accueil
+        Retour à l&apos;accueil
       </Link>
     </div>
   )

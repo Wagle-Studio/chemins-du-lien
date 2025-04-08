@@ -1,4 +1,3 @@
-import { internalLink } from '@/fields/internalLink'
 import { Block } from 'payload'
 
 export const Cursus: Block = {

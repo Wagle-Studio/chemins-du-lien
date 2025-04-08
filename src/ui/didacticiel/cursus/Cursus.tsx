@@ -13,7 +13,9 @@ export const Cursus: React.FC<Props> = ({ cursus, className, ...props }) => {
     <div className={clsx('cursus', className)} {...props}>
       <div className="cursus__content">
         {cursus.blocks && cursus.blocks?.length > 0 && <RenderBlocks blocks={cursus.blocks} />}
-        {cursus.blocks && cursus.blocks?.length == 0 && <p>Pas d'informations supplémentaires.</p>}
+        {cursus.blocks && cursus.blocks?.length == 0 && (
+          <p>Pas d&apos;informations supplémentaires.</p>
+        )}
       </div>
       <ul className="cursus__exercices">
         {cursus.exercices?.map(

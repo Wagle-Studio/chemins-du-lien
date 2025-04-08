@@ -1,4 +1,3 @@
-import { User } from '@/payload-types'
 import * as yup from 'yup'
 
 export type FormValues = {

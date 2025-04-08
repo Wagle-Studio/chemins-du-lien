@@ -38,7 +38,7 @@ export const ArticleFiltersForm: React.FC<ArticleFiltersFormProps> = ({
     })
 
     return () => subscription.unsubscribe()
-  }, [watch])
+  }, [watch, handleSubmit, onSubmitForm])
 
   return (
     <form

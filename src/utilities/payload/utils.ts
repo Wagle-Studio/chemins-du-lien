@@ -2,6 +2,7 @@ import { Where } from 'payload'
 import { Cursus } from '@/payload-types'
 import { RawFilterValue } from '@/types/filters'
 
+// TODO: update typing
 // Constructs a Payload `where` clause from filter values
 export const buildWhereFromFilters = (
   filters: Record<string, RawFilterValue>,

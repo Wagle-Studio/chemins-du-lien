@@ -24,9 +24,7 @@ export async function GET(request: Request) {
 
     return NextResponse.json(events)
   } catch (error) {
-    return NextResponse.json(
-      { error: 'Une erreur est survenue lors de la récupération des événements.' },
-      { status: 500 },
-    )
+    console.log(error)
+    return NextResponse.json({ status: 500 })
   }
 }

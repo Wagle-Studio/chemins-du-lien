@@ -38,7 +38,7 @@ export const EventList: React.FC<EventListProps> = ({ categories }) => {
     }
 
     fetchEvents()
-  }, [selectedCategory])
+  }, [selectedCategory, fetcher])
 
   const handleFilterChanges = (data: FormValues) => {
     const params = new URLSearchParams(window.location.search)

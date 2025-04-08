@@ -19,7 +19,7 @@ export const SignUpForm: React.FC<HTMLAttributes<HTMLElement>> = ({ className, .
   const router = useRouter()
 
   const onSubmit = async (data: FormValues) => {
-    const { verifyPassword, ...payloadData } = data
+    const { ...payloadData } = data
 
     const { data: result } = await fetcher('/api/register', {
       method: 'POST',

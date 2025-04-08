@@ -82,7 +82,7 @@ export const EventTeaser: React.FC<Props> = ({
         {variant === 'highlight' && (
           <div className="event_teaser__body__footer">
             <Link href="#" variant="primary">
-              S'inscrire
+              S&apos;inscrire
             </Link>
             <p>
               Il reste
