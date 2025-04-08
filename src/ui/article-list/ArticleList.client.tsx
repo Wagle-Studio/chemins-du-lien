@@ -10,6 +10,7 @@ import useFetcher from '@/hooks/useFetcher'
 import { ArticleFiltersForm } from '@/forms/article-filters/ArticleFiltersForm.client'
 import { FormValues } from '@/forms/article-filters/config'
 import { ArticleTeaser } from '@/ui/article-teaser/ArticleTeaser'
+import { Link } from '@/ui/link/Link'
 
 interface ArticleListProps {
   categories: Category[]
@@ -63,8 +64,12 @@ export const ArticleList: React.FC<ArticleListProps> = ({ categories }) => {
         >
           {!error &&
             articles.length >= 1 &&
-            articles.map((article) => <ArticleTeaser key={article.id} data={article} />)}
-          {!error && articles.length === 0 && (
+            articles.map((article) => (
+              <Link href={`/articles/${article.slug}`} key={article.id}>
+                <ArticleTeaser data={article} />
+              </Link>
+            ))}
+          {!error && !isLoading && articles.length === 0 && (
             <div className="article_collection_layout__grid__list__empty">
               <p className="article_collection_layout__grid__list__empty__msg">
                 Aucun article ne correspond à vos filtres.

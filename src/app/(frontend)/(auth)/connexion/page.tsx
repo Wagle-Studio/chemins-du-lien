@@ -1,4 +1,4 @@
-import { SignInForm } from '@/forms/signin/Component.client'
+import { SignInForm } from '@/forms/signin/SigninForm.client'
 
 export default function SignInPage() {
   return (
