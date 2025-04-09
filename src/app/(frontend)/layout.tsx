@@ -3,6 +3,7 @@ import React from 'react'
 import { Libre_Franklin, Open_Sans } from 'next/font/google'
 import { AuthWrapper } from '@/auth/AuthWrapper.server'
 import { Header } from '@/ui/header/Header.client'
+import { Footer } from '@/ui/footer/Footer'
 
 export const metadata = {
   description: 'Hello world',
@@ -24,6 +25,7 @@ export default async function RootLayout(props: { children: React.ReactNode }) {
         <AuthWrapper>
           <Header />
           <main className={fonts.join(' ')}>{children}</main>
+          <Footer />
         </AuthWrapper>
       </body>
     </html>
