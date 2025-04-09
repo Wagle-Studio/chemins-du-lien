@@ -40,6 +40,21 @@ export const EventTeaser: React.FC<Props> = ({
     }
   }
 
+  const registrationIsOpen = (status: string) => {
+    switch (status) {
+      case 'Programmé':
+        return true
+      case 'Confirmé':
+        return true
+      case 'Annulé':
+        return false
+      case 'Reporté':
+        return false
+      default:
+        return false
+    }
+  }
+
   return (
     <article className={clsx('event_teaser', className)} {...props}>
       <div className="event_teaser__header">
@@ -79,7 +94,7 @@ export const EventTeaser: React.FC<Props> = ({
             )}
           </ul>
         </div>
-        {variant === 'highlight' && (
+        {variant === 'highlight' && registrationIsOpen(data.status) && (
           <div className="event_teaser__body__footer">
             <Link href="#" variant="primary">
               S&apos;inscrire
