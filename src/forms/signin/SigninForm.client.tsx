@@ -66,7 +66,6 @@ export const SignInForm: React.FC<HTMLAttributes<HTMLElement>> = ({ className, .
           placeholder="********"
         />
       </fieldset>
-
       <Button type="submit" disabled={!isValid || isSubmitting}>
         Me connecter
       </Button>

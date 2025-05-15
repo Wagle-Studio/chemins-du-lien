@@ -78,7 +78,6 @@ export const SignUpForm: React.FC<HTMLAttributes<HTMLElement>> = ({ className, .
           placeholder="********"
         />
       </fieldset>
-
       <Button type="submit" disabled={!isValid || isSubmitting || isLoading}>
         Créer mon compte
       </Button>

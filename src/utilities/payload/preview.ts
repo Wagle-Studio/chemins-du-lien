@@ -10,7 +10,7 @@ export const serveLivePreview = (
   if (collectionConfig && !globalConfig) {
     switch (collectionConfig.slug) {
       case 'articles':
-        return `/api/preview?redirect=/${data.slug}`
+        return `/api/preview?redirect=/articles/${data.slug}`
       case 'cursus':
         return `/api/preview?redirect=/didacticiel/${data.slug}`
       case 'exercices':
