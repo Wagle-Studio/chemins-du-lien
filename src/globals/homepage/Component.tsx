@@ -13,19 +13,19 @@ export async function Homepage() {
       <div className="homepage_layout__heading">
         <div className="homepage_layout__heading__overlay">
           <div className="homepage_layout__heading__overlay__content">
-            <h1 className="homepage_layout__heading__overlay__content__title">
-              Chemins du lien <br />{' '}
-              <span className="homepage_layout__heading__overlay__content__title__sub">
-                de soi à l'autre
-              </span>
-            </h1>
-            <div className="homepage_layout__heading__overlay__content__cta">
-              <Link href="/" variant="primary">
-                Découvrir le processus
-              </Link>
-              <Link href="/" variant="ghost">
-                Nos ateliers
-              </Link>
+            <div className="homepage_layout__heading__overlay__content__wrapper">
+              <div className="homepage_layout__heading__overlay__content__wrapper__title">
+                <p className="heading_1">Chemins du lien</p>
+                <p className="heading_3">de soi à l'autre</p>
+              </div>
+              <div className="homepage_layout__heading__overlay__content__wrapper__cta">
+                <Link href="/" variant="primary">
+                  Découvrir le processus
+                </Link>
+                <Link href="/" variant="ghost">
+                  Nos ateliers
+                </Link>
+              </div>
             </div>
           </div>
         </div>

@@ -16,38 +16,37 @@
       background-color: rgba(0, 0, 0, 0.05);
 
       &__content {
-        position: relative;
         display: flex;
         flex-direction: column;
         justify-content: flex-end;
-        gap: var(--space-3);
+        width: 100%;
         max-width: var(--view-max-width);
         height: 100%;
+        padding: 0 var(--space-3) var(--space-15) var(--space-3);
         margin: 0 auto;
-        padding-bottom: var(--space-15);
         box-sizing: border-box;
 
-        &__title {
-          width: 100%;
-          max-width: max-content;
-          padding: 0 var(--space-3);
-          color: var(--white);
-          font-size: var(--font-size-hero-banner);
-          line-height: 3.25rem;
-          box-sizing: border-box;
-
-          &__sub {
-            font-size: var(--font-size-extra);
-            font-style: italic;
-          }
-        }
-
-        &__cta {
+        &__wrapper {
           display: flex;
           flex-direction: column;
-          gap: var(--space-3);
-          padding: 0 var(--space-3);
-          box-sizing: border-box;
+          gap: var(--space-5);
+
+          &__title {
+            > p {
+              color: var(--white);
+              font-weight: var(--font-weight-large);
+            }
+
+            > p:last-of-type {
+              font-style: italic;
+            }
+          }
+
+          &__cta {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-3);
+          }
         }
       }
     }
@@ -59,17 +58,22 @@
     &__heading {
       &__overlay {
         &__content {
-          gap: var(--space-5);
+          align-items: flex-start;
+          padding: 0 var(--space-6) var(--space-15) var(--space-6);
 
-          &__title {
-            padding: 0 var(--space-6);
-            line-height: 2.75rem;
-            text-align: right;
-          }
+          &__wrapper {
+            max-width: max-content;
+            margin: unset;
 
-          &__cta {
-            flex-direction: row;
-            padding: 0 var(--space-6);
+            &__title {
+              > p {
+                text-align: right;
+              }
+            }
+
+            &__cta {
+              flex-direction: row;
+            }
           }
         }
       }
