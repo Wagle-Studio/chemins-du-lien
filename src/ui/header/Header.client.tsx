@@ -1,16 +1,29 @@
 'use client'
 
 import './style.scss'
-import { HTMLAttributes, useEffect, useState } from 'react'
+import { HTMLAttributes, useEffect, useRef, useState } from 'react'
 import clsx from 'clsx'
-import { useAuth } from '@/hooks/useAuth'
+import gsap from 'gsap'
+import ScrollTrigger from 'gsap/ScrollTrigger'
 import { Link } from '@/ui/link/Link'
-import { Button } from '@/ui/button/Button.client'
 import { MenuIcon } from '@/ui/icons/MenuIcon'
+
+gsap.registerPlugin(ScrollTrigger)
 
 export const Header: React.FC<HTMLAttributes<HTMLElement>> = ({ className, ...props }) => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
-  const { isAuthenticated, logout } = useAuth()
+  const headerRef = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    if (!headerRef.current) return
+
+    ScrollTrigger.create({
+      start: 'top -100',
+      onUpdate: (self) => {
+        headerRef.current?.classList.toggle('is-scrolled', self.scroll() > 100)
+      },
+    })
+  }, [])
 
   useEffect(() => {
     if (isMobileMenuOpen) {
@@ -25,80 +38,73 @@ export const Header: React.FC<HTMLAttributes<HTMLElement>> = ({ className, ...pr
   }
 
   return (
-    <header className={clsx('header', className)} {...props}>
-      <div className="header__brand">
-        <Link href="/" className="header__brand__name" onClick={closeMobileMenu}>
-          Insight Mediation
-        </Link>
+    <header
+      ref={headerRef}
+      className={clsx('header', { header__mobile: isMobileMenuOpen }, className)}
+      {...props}
+    >
+      <div className={clsx('header__bar', { header__bar__mobile: isMobileMenuOpen })}>
+        <div
+          className={clsx('header__bar__brand', { header__bar__brand__mobile: isMobileMenuOpen })}
+        >
+          <Link href="/" className="header__bar__brand__name" onClick={closeMobileMenu}>
+            Chemins du lien
+            <br />
+            <span className="header__bar__brand__name__sub">de soi à l'autre</span>
+          </Link>
+        </div>
+        <div
+          className={clsx('header__bar__mobile_menu', {
+            header__bar__mobile_menu__mobile: isMobileMenuOpen,
+          })}
+          onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+        >
+          <MenuIcon className="header__bar__mobile_menu__icon" />
+        </div>
+        <nav className={clsx('header__bar__nav', { header__bar__nav__mobile: isMobileMenuOpen })}>
+          <ul
+            className={clsx('header__bar__nav__list', {
+              header__bar__nav__list__mobile: isMobileMenuOpen,
+            })}
+          >
+            <li
+              className={clsx('header__bar__nav__list__item', {
+                header__bar__nav__list__item__mobile: isMobileMenuOpen,
+              })}
+            >
+              <Link href={`/`} onClick={closeMobileMenu}>
+                Accueil
+              </Link>
+            </li>
+            <li
+              className={clsx(
+                'header__bar__nav__list__item',
+                'header__bar__nav__list__item--hidden',
+                {
+                  header__bar__nav__list__item__mobile: isMobileMenuOpen,
+                  'header__bar__nav__list__item__mobile--hidden': isMobileMenuOpen,
+                },
+              )}
+            >
+              <Link href={`/processus`} onClick={closeMobileMenu}>
+                Processus
+              </Link>
+            </li>
+            <li
+              className={clsx('header__bar__nav__list__item', {
+                header__bar__nav__list__item__mobile: isMobileMenuOpen,
+              })}
+            >
+              <Link href={`/ateliers`} onClick={closeMobileMenu}>
+                Ateliers
+              </Link>
+            </li>
+            <Link href={`/contact`} variant="primary" onClick={closeMobileMenu}>
+              Contact
+            </Link>
+          </ul>
+        </nav>
       </div>
-      <div className="header__mobile_menu" onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}>
-        <MenuIcon className="header__mobile_menu__icon" />
-      </div>
-      <nav className={clsx('header__nav', { header__nav__mobile: isMobileMenuOpen })}>
-        <ul className={clsx('header__nav__list', { header__nav__list__mobile: isMobileMenuOpen })}>
-          <li
-            className={clsx('header__nav__list__item', 'header__nav__list__item--hidden', {
-              header__nav__list__item__mobile: isMobileMenuOpen,
-            })}
-          >
-            <Link href={`/evenements`} onClick={closeMobileMenu}>
-              Événements
-            </Link>
-          </li>
-          <li
-            className={clsx('header__nav__list__item', 'header__nav__list__item--hidden', {
-              header__nav__list__item__mobile: isMobileMenuOpen,
-            })}
-          >
-            <Link href={`/articles`} onClick={closeMobileMenu}>
-              Articles
-            </Link>
-          </li>
-          <li
-            className={clsx('header__nav__list__item', {
-              header__nav__list__item__mobile: isMobileMenuOpen,
-            })}
-          >
-            <Link href={`/didacticiel`} onClick={closeMobileMenu}>
-              Didacticiel
-            </Link>
-          </li>
-          {!isAuthenticated && (
-            <>
-              <li>
-                <Link href={`/inscription`} variant="ghost" onClick={closeMobileMenu}>
-                  Inscription
-                </Link>
-              </li>
-              <li>
-                <Link href={`/connexion`} variant="primary" onClick={closeMobileMenu}>
-                  Connexion
-                </Link>
-              </li>
-            </>
-          )}
-          {isAuthenticated && (
-            <>
-              <li>
-                <Button
-                  variant="ghost"
-                  onClick={() => {
-                    logout()
-                    closeMobileMenu()
-                  }}
-                >
-                  Déconnexion
-                </Button>
-              </li>
-              <li>
-                <Link href={`/profil`} variant="primary" onClick={closeMobileMenu}>
-                  Profil
-                </Link>
-              </li>
-            </>
-          )}
-        </ul>
-      </nav>
     </header>
   )
 }
