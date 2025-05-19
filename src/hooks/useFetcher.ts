@@ -3,7 +3,7 @@ import { useState, useCallback } from 'react'
 type FetchOptions = {
   method?: 'GET' | 'POST' | 'PUT' | 'DELETE'
   headers?: HeadersInit
-  body?: any // TODO: update typing
+  body?: any
   credentials?: RequestCredentials
 }
 

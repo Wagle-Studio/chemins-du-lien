@@ -1,6 +1,5 @@
 import { CollectionConfig, GlobalConfig } from 'payload'
 
-// TODO: update typing
 // Returns appropriate preview URL based on the document type
 export const serveLivePreview = (
   data: Record<string, any>,

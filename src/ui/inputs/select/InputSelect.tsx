@@ -10,7 +10,7 @@ export interface InputSelectProps<T extends FieldValues> {
   labelDisplay?: boolean
   inputProps?: { autoComplete: string }
   className?: string
-  options: any[] // TODO: update typing
+  options: any[]
   optionsValue: string
   optionsLabel: string
   defaultOption: { value: any; label: string }
