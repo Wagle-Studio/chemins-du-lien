@@ -13,13 +13,13 @@
 
   &--primary {
     border: none;
-    background-color: var(--primary-85);
+    background-color: var(--primary);
   }
 
   &--ghost {
     padding: 6px 22px;
     background-color: var(--white);
-    border: 2px solid var(--primary-85);
+    border: 2px solid var(--primary);
   }
 
   &--small {

@@ -22,13 +22,12 @@
 
   &--variant-primary {
     border: none;
-    background-color: var(--primary-85);
+    background-color: var(--primary);
   }
 
   &--variant-ghost {
-    padding: 6px 22px;
-    background-color: var(--white);
-    border: 2px solid var(--primary-85);
+    background-color: var(--body);
+    box-shadow:inset 0px 0px 0px 3px var(--primary);
   }
 
   &--size-small {

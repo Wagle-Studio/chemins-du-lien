@@ -3,10 +3,8 @@
 }
 
 :root {
-  --primary: #fdcb6e;
-  --primary-85: #fdcb6ed9;
-  --primary-65: #fdcb6ea6;
-  --primary-45: #fdcb6e73;
+  --primary: #FDCB6E;
+  --primary-45: #fce0a2;
 
   --body: #f9fbfd;
   --black: #1e1e1e;
@@ -37,6 +35,9 @@
   --space-10: 80px;
   --space-11: 88px;
   --space-12: 96px;
+  --space-13: 104px;
+  --space-14: 112px;
+  --space-15: 120px;
   --space-20: 160px;
 
   --font-primary: 'Libre Franklin', sans-serif;
@@ -52,6 +53,7 @@
   --font-size-medium: 1.25rem;
   --font-size-large: 1.5rem;
   --font-size-extra: 2rem;
+  --font-size-hero-banner: 3.5rem;
 
   --border-radius-base: 3px;
   --border-radius-medium: 6px;
