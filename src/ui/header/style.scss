@@ -43,13 +43,13 @@
         display: flex;
         flex-direction: column;
         font-weight: var(--font-weight-large);
-        font-size: var(--font-size-large);
+        font-size: var(--font-size-medium) !important;
         color: var(--white);
         line-height: 1.75rem;
 
         &__sub {
           font-weight: var(--font-weight-large);
-          font-size: var(--font-size-base);
+          font-size: var(--font-size-small) !important;
           font-style: italic;
         }
       }
@@ -84,7 +84,7 @@
         &__item {
           > a {
             font-weight: var(--font-weight-medium);
-            font-size: var(--font-size-medium);
+            font-size: var(--font-size-medium) !important;
           }
 
           &__mobile {
@@ -126,8 +126,8 @@
 
       &__icon {
         padding: 1.5px;
-        width: 40px;
-        height: 40px;
+        width: 38px;
+        height: 38px;
         box-sizing: border-box;
 
         path {
@@ -154,6 +154,14 @@
         &__mobile {
           > a {
             color: var(--white);
+          }
+        }
+
+        &__name {
+          font-size: var(--font-size-large) !important;
+
+          &__sub {
+            font-size: var(--font-size-base) !important;
           }
         }
       }
