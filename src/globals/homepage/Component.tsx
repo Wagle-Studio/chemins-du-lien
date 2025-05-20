@@ -10,7 +10,7 @@ export async function Homepage() {
   return (
     <div className="homepage_layout">
       <HomepageHero />
-      {/* <RenderBlocks blocks={data.blocks} /> */}
+      <RenderBlocks blocks={data.blocks} />
     </div>
   )
 }

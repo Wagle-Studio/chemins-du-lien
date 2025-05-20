@@ -24,6 +24,10 @@ export const Media: CollectionConfig = {
         width: 40,
         height: 40,
       },
+      {
+        name: 'content',
+        width: 500,
+      },
     ],
   },
 }
