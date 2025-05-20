@@ -18,5 +18,9 @@ export const IntroductionEvents: Block = {
       type: 'upload',
       relationTo: 'media',
     },
+    {
+      name: 'background',
+      type: 'checkbox',
+    },
   ],
 }

@@ -655,6 +655,7 @@ export interface Homepage {
               [k: string]: unknown;
             };
             image?: (number | null) | Media;
+            background?: boolean | null;
             id?: string | null;
             blockName?: string | null;
             blockType: 'introduction';
@@ -677,6 +678,7 @@ export interface Homepage {
               [k: string]: unknown;
             };
             image?: (number | null) | Media;
+            background?: boolean | null;
             id?: string | null;
             blockName?: string | null;
             blockType: 'introduction_events';
@@ -736,6 +738,7 @@ export interface HomepageSelect<T extends boolean = true> {
               subtitle?: T;
               description?: T;
               image?: T;
+              background?: T;
               id?: T;
               blockName?: T;
             };
@@ -745,6 +748,7 @@ export interface HomepageSelect<T extends boolean = true> {
               title?: T;
               description?: T;
               image?: T;
+              background?: T;
               id?: T;
               blockName?: T;
             };

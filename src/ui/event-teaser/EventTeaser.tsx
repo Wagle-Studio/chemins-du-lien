@@ -56,7 +56,14 @@ export const EventTeaser: React.FC<Props> = ({
   }
 
   return (
-    <article className={clsx('event_teaser', className)} {...props}>
+    <article
+      className={clsx(
+        'event_teaser',
+        variant === 'default' ? 'event_teaser--teaser' : 'event_teaser--highlight',
+        className,
+      )}
+      {...props}
+    >
       <div className="event_teaser__header">
         <div className="event_teaser__header__top">
           <h3 className="heading_3">{data.title}</h3>

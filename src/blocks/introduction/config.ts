@@ -23,5 +23,9 @@ export const Introduction: Block = {
       type: 'upload',
       relationTo: 'media',
     },
+    {
+      name: 'background',
+      type: 'checkbox',
+    },
   ],
 }
