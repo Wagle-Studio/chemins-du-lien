@@ -684,6 +684,28 @@ export interface Homepage {
             blockType: 'introduction_events';
           }
         | {
+            title: string;
+            description: {
+              root: {
+                type: string;
+                children: {
+                  type: string;
+                  version: number;
+                  [k: string]: unknown;
+                }[];
+                direction: ('ltr' | 'rtl') | null;
+                format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+                indent: number;
+                version: number;
+              };
+              [k: string]: unknown;
+            };
+            background?: boolean | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'introduction_team';
+          }
+        | {
             cards?:
               | {
                   title: string;
@@ -748,6 +770,15 @@ export interface HomepageSelect<T extends boolean = true> {
               title?: T;
               description?: T;
               image?: T;
+              background?: T;
+              id?: T;
+              blockName?: T;
+            };
+        introduction_team?:
+          | T
+          | {
+              title?: T;
+              description?: T;
               background?: T;
               id?: T;
               blockName?: T;

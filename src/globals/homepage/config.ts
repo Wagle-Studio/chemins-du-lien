@@ -5,6 +5,7 @@ import { Discoveries } from '@/blocks/discoveries/config'
 import { Events } from '@/blocks/events/config'
 import { Cursus } from '@/blocks/cursus/config'
 import { Articles } from '@/blocks/articles/config'
+import { IntroductionTeam } from '@/blocks/introduction_team/config'
 
 export const Homepage: GlobalConfig = {
   slug: 'homepage',
@@ -12,7 +13,15 @@ export const Homepage: GlobalConfig = {
     {
       name: 'blocks',
       type: 'blocks',
-      blocks: [Introduction, IntroductionEvents, Discoveries, Events, Cursus, Articles],
+      blocks: [
+        Introduction,
+        IntroductionEvents,
+        IntroductionTeam,
+        Discoveries,
+        Events,
+        Cursus,
+        Articles,
+      ],
     },
   ],
 }
