@@ -57,11 +57,11 @@
 
   --font-size-desktop-heading-1: 3rem;
   --font-size-desktop-heading-2: 2.25rem;
-  --font-size-desktop-heading-3: 1.75rem;
+  --font-size-desktop-heading-3: 1.50rem;
 
   --font-size-mobile-heading-1: 2.25rem;
   --font-size-mobile-heading-2: 1.75rem;
-  --font-size-mobile-heading-3: 1.5rem;
+  --font-size-mobile-heading-3: 1.25rem;
 
   --font-line-height-button: 50%;
   --font-line-height-large: 135%;
@@ -118,6 +118,7 @@ p {
   font-size: var(--font-size-base);
   color: var(--black);
   letter-spacing: 0.025rem;
+  line-height: var(--font-line-height-extra);
 }
 
 ul,

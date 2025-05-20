@@ -19,11 +19,11 @@
 
   &-size {
     &--default {
-      padding: var(--space-1);
+      padding: 4px var(--space-2);
     }
 
     &--small {
-      padding: 4px var(--space-1);
+      padding: 4px 12px;
     }
   }
 }

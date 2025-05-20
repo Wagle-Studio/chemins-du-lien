@@ -26,6 +26,7 @@ export const IntroductionBlock: React.FC<Props> = ({ data }: Props) => {
             alt={data.image.alt}
             width={data.image.sizes.content.width}
             height={data.image.sizes.content.height}
+            quality={100}
           />
         )}
     </div>

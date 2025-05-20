@@ -637,6 +637,51 @@ export interface Homepage {
   blocks?:
     | (
         | {
+            title: string;
+            subtitle: string;
+            description: {
+              root: {
+                type: string;
+                children: {
+                  type: string;
+                  version: number;
+                  [k: string]: unknown;
+                }[];
+                direction: ('ltr' | 'rtl') | null;
+                format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+                indent: number;
+                version: number;
+              };
+              [k: string]: unknown;
+            };
+            image?: (number | null) | Media;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'introduction';
+          }
+        | {
+            title: string;
+            description: {
+              root: {
+                type: string;
+                children: {
+                  type: string;
+                  version: number;
+                  [k: string]: unknown;
+                }[];
+                direction: ('ltr' | 'rtl') | null;
+                format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+                indent: number;
+                version: number;
+              };
+              [k: string]: unknown;
+            };
+            image?: (number | null) | Media;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'introduction_events';
+          }
+        | {
             cards?:
               | {
                   title: string;
@@ -671,29 +716,6 @@ export interface Homepage {
             blockName?: string | null;
             blockType: 'articles';
           }
-        | {
-            title: string;
-            subtitle: string;
-            description: {
-              root: {
-                type: string;
-                children: {
-                  type: string;
-                  version: number;
-                  [k: string]: unknown;
-                }[];
-                direction: ('ltr' | 'rtl') | null;
-                format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-                indent: number;
-                version: number;
-              };
-              [k: string]: unknown;
-            };
-            image?: (number | null) | Media;
-            id?: string | null;
-            blockName?: string | null;
-            blockType: 'introduction';
-          }
       )[]
     | null;
   updatedAt?: string | null;
@@ -707,6 +729,25 @@ export interface HomepageSelect<T extends boolean = true> {
   blocks?:
     | T
     | {
+        introduction?:
+          | T
+          | {
+              title?: T;
+              subtitle?: T;
+              description?: T;
+              image?: T;
+              id?: T;
+              blockName?: T;
+            };
+        introduction_events?:
+          | T
+          | {
+              title?: T;
+              description?: T;
+              image?: T;
+              id?: T;
+              blockName?: T;
+            };
         discoveries?:
           | T
           | {
@@ -745,16 +786,6 @@ export interface HomepageSelect<T extends boolean = true> {
           | T
           | {
               type?: T;
-              id?: T;
-              blockName?: T;
-            };
-        introduction?:
-          | T
-          | {
-              title?: T;
-              subtitle?: T;
-              description?: T;
-              image?: T;
               id?: T;
               blockName?: T;
             };

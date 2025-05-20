@@ -59,7 +59,7 @@ export const EventTeaser: React.FC<Props> = ({
     <article className={clsx('event_teaser', className)} {...props}>
       <div className="event_teaser__header">
         <div className="event_teaser__header__top">
-          <h3>{data.title}</h3>
+          <h3 className="heading_3">{data.title}</h3>
           <Tag
             label={data['on-site'] ? 'présentiel' : 'visio conférence'}
             variant="gray"
