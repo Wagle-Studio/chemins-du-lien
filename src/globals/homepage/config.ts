@@ -6,6 +6,7 @@ import { Events } from '@/blocks/events/config'
 import { Cursus } from '@/blocks/cursus/config'
 import { Articles } from '@/blocks/articles/config'
 import { IntroductionTeam } from '@/blocks/introduction_team/config'
+import { Instagram } from '@/blocks/instagram/config'
 
 export const Homepage: GlobalConfig = {
   slug: 'homepage',
@@ -17,6 +18,7 @@ export const Homepage: GlobalConfig = {
         Introduction,
         IntroductionEvents,
         IntroductionTeam,
+        Instagram,
         Discoveries,
         Events,
         Cursus,

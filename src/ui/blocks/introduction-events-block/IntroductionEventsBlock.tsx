@@ -36,7 +36,7 @@ export const IntroductionEventsBlock: React.FC<Props> = ({ data, events }) => {
               />
             )}
           <div className="introduction_events_block__wrapper__information__content">
-            <h1 className="heading_1">{data.title}</h1>
+            <h2 className="heading_1">{data.title}</h2>
             <ConvertRichText data={data.description} />
           </div>
         </div>

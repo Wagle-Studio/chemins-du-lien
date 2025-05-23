@@ -23,7 +23,7 @@ export const IntroductionTeamBlock: React.FC<Props> = ({ data }: Props) => {
       <div className="introduction_team_block__wrapper">
         <div className="introduction_team_block__wrapper__left">
           <div className="introduction_team_block__wrapper__left__content">
-            <h1 className="heading_1">{data.title}</h1>
+            <h2 className="heading_1">{data.title}</h2>
             <ConvertRichText data={data.description} />
           </div>
           <div className="introduction_team_block__wrapper__left__team">

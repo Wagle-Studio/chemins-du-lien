@@ -24,6 +24,7 @@
         display: flex;
         flex-direction: column;
         justify-content: center;
+        gap: var(--space-3);
         min-width: 0;
         padding-left: var(--space-3);
         border-left: 5px solid var(--primary);

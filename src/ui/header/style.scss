@@ -17,7 +17,7 @@
     max-width: var(--view-max-width);
     margin: 0 auto;
     padding: 6px var(--space-2);
-    background-color: rgba(255, 255, 255, 0.4);
+    background-color: rgba(224, 224, 224, 0.75);
     border-radius: var(--border-radius-medium);
     backdrop-filter: blur(40px);
     box-sizing: border-box;
@@ -25,7 +25,7 @@
     &__mobile {
       padding: 30px var(--space-5);
       background-color: var(--body);
-      backdrop-filter: blur(0px);
+      backdrop-filter: blur(5px);
       border-radius: 0;
     }
 
@@ -33,6 +33,10 @@
       display: flex;
       padding-left: var(--space-2);
       border-left: 5px solid var(--primary);
+
+      > a {
+        text-shadow: var(--text-shadow);
+      }
 
       &__mobile {
         > a {
@@ -45,7 +49,8 @@
         flex-direction: column;
         font-weight: var(--font-weight-large);
         font-size: var(--font-size-medium) !important;
-        color: var(--white);
+        // color: var(--white);
+        color: var(--black);
         line-height: 1.75rem;
 
         &__sub {
@@ -86,6 +91,7 @@
           > a {
             font-weight: var(--font-weight-medium);
             font-size: var(--font-size-medium) !important;
+            text-shadow: var(--text-shadow);
           }
 
           &__mobile {
@@ -132,7 +138,8 @@
         box-sizing: border-box;
 
         path {
-          fill: var(--white) !important;
+          // fill: var(--white) !important;
+          fill: var(--black) !important;
         }
       }
     }
@@ -154,7 +161,8 @@
       &__brand {
         &__mobile {
           > a {
-            color: var(--white);
+            // color: var(--white);
+            color: var(--black);
           }
         }
 
@@ -195,7 +203,8 @@
             all: unset;
 
             a {
-              color: var(--white);
+              // color: var(--white);
+              color: var(--black);
             }
 
             &--hidden {
@@ -209,7 +218,8 @@
                 width: 0;
                 border-top: unset !important;
                 border-bottom: unset !important;
-                color: var(--white);
+                // color: var(--white);
+                color: var(--black);
               }
             }
           }

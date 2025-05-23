@@ -706,6 +706,12 @@ export interface Homepage {
             blockType: 'introduction_team';
           }
         | {
+            background?: boolean | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'instagram';
+          }
+        | {
             cards?:
               | {
                   title: string;
@@ -779,6 +785,13 @@ export interface HomepageSelect<T extends boolean = true> {
           | {
               title?: T;
               description?: T;
+              background?: T;
+              id?: T;
+              blockName?: T;
+            };
+        instagram?:
+          | T
+          | {
               background?: T;
               id?: T;
               blockName?: T;
