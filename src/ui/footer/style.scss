@@ -37,6 +37,25 @@
         > * {
           font-size: var(--font-size-small);
         }
+
+        &--wgls_studio {
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+          gap: var(--space-0);
+          max-width: max-content;
+          border-bottom: 1px solid transparent;
+          transition: 150ms ease-out;
+
+          &:hover {
+            border-bottom: 1px solid var(--gray-deeper);
+          }
+
+          svg {
+            width: 16px;
+            height: 16px;
+          }
+        }
       }
     }
 
@@ -56,6 +75,24 @@
           flex-direction: row;
           align-items: center;
           gap: var(--space-1);
+
+          > a {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            gap: var(--space-0);
+            border-bottom: 1px solid transparent;
+            transition: 150ms ease-out;
+
+            &:hover {
+              border-bottom: 1px solid var(--gray-deeper);
+            }
+
+            svg {
+              width: 16px;
+              height: 16px;
+            }
+          }
 
           &__icon {
             width: 32px;
@@ -79,6 +116,15 @@
           & li:first-child {
             a {
               font-weight: var(--font-weight-large);
+            }
+          }
+
+          > li a {
+            border-bottom: 1px solid transparent;
+            transition: 150ms ease-out;
+
+            &:hover {
+              border-bottom: 1px solid var(--gray-deeper);
             }
           }
         }

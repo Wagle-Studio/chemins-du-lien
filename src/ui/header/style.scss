@@ -17,7 +17,7 @@
     max-width: var(--view-max-width);
     margin: 0 auto;
     padding: 6px var(--space-2);
-    background-color: rgba(225, 225, 225, 0.80);
+    background-color: rgba(225, 225, 225, 0.8);
     border-radius: var(--border-radius-medium);
     backdrop-filter: blur(5px);
     box-sizing: border-box;
@@ -94,6 +94,12 @@
             text-shadow: var(--text-shadow);
           }
 
+          .link {
+            &--variant-primary {
+              padding: var(--space-0) var(--space-2);
+            }
+          }
+
           &__mobile {
             > a {
               display: flex;
@@ -108,6 +114,18 @@
             &:not(:first-of-type) {
               > a {
                 border-top: 1px solid var(--gray-deep);
+              }
+            }
+
+            &:last-child {
+              > a {
+                border-top: none;
+              }
+            }
+
+            .link {
+              &--variant-primary {
+                padding: var(--space-1) var(--space-3);
               }
             }
           }
@@ -143,7 +161,7 @@
         }
       }
     }
-  }   
+  }
 }
 
 @media screen and (min-width: 768px) {
@@ -170,6 +188,11 @@
 
         &__name {
           font-size: var(--font-size-large) !important;
+          transition: 150ms ease-out;
+
+          &:hover {
+            padding-left: 4px;
+          }
 
           &__sub {
             font-size: var(--font-size-base) !important;
@@ -204,9 +227,16 @@
           &__item {
             all: unset;
 
-            a {
+            a:not(.link--variant-primary) {
               // color: var(--white);
+              border-bottom: 2px solid transparent;
               color: var(--black);
+              transition: 150ms ease-out;
+
+              &:hover {
+                border-bottom: 2px solid var(--gray-deeper);
+                padding-bottom: 4px;
+              }
             }
 
             &--hidden {
@@ -214,14 +244,26 @@
             }
 
             &__mobile {
-              a {
+              a:not(.link--variant-primary) {
                 display: inline;
                 padding: 0;
                 width: 0;
                 border-top: unset !important;
-                border-bottom: unset !important;
                 // color: var(--white);
                 color: var(--black);
+                border-bottom: 2px solid transparent;
+                transition: 150ms ease-out;
+
+                &:hover {
+                  border-bottom: 2px solid var(--gray-deeper);
+                  padding-bottom: 4px;
+                }
+              }
+
+              .link {
+                &--variant-primary {
+                  padding: var(--space-0) var(--space-2);
+                }
               }
             }
           }

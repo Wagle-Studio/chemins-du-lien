@@ -4,6 +4,7 @@
 
 :root {
   --primary: #fdcb6e;
+  --primary-150: #fcb126;
   --primary-45: #fce0a2;
 
   --body: #f9fbfd;
@@ -86,6 +87,10 @@
   --breakpoint-tablet: 768px;
   --breakpoint-laptop: 992px;
   --breakpoint-desktop: 1260px;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {

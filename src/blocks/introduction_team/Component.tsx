@@ -1,4 +1,4 @@
-import { IntroductionTeamBlock } from '@/ui/blocks/introduction-team-block/IntroductionBlock'
+import { IntroductionTeamBlock } from '@/ui/blocks/introduction-team-block/IntroductionTeamBlock'
 import type { AllBlocks, ExtractBlock } from '@/types/blocks'
 
 type Props = ExtractBlock<AllBlocks, 'introduction_team'>

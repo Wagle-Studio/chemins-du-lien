@@ -1,5 +1,9 @@
+'use client'
+
 import './style.scss'
 import clsx from 'clsx'
+import { useEffect, useRef } from 'react'
+import gsap from 'gsap'
 import Image from 'next/image'
 import { Event } from '@/payload-types'
 import { RichText as ConvertRichText } from '@payloadcms/richtext-lexical/react'
@@ -13,8 +17,44 @@ type Props = {
 }
 
 export const IntroductionEventsBlock: React.FC<Props> = ({ data, events }) => {
+  const sectionRef = useRef<HTMLElement>(null)
+  const descriptionRef = useRef<HTMLDivElement>(null)
+  const eventsListRef = useRef<HTMLUListElement>(null)
+
+  useEffect(() => {
+    if (!sectionRef.current || !descriptionRef.current || !eventsListRef.current) return
+
+    const ctx = gsap.context(() => {
+      gsap.from(descriptionRef.current, {
+        scrollTrigger: {
+          trigger: descriptionRef.current,
+          start: 'top 80%',
+        },
+        opacity: 0,
+        y: -30,
+        duration: 0.5,
+        ease: 'power2.out',
+      })
+
+      gsap.from(Array.from(eventsListRef.current!.children), {
+        scrollTrigger: {
+          trigger: eventsListRef.current,
+          start: 'top 85%',
+        },
+        opacity: 0,
+        y: 40,
+        stagger: 0.2,
+        duration: 0.5,
+        ease: 'power2.out',
+      })
+    }, sectionRef)
+
+    return () => ctx.revert()
+  }, [])
+
   return (
     <section
+      ref={sectionRef}
       className={clsx('introduction_events_block', {
         'introduction_events_block--background': data.background,
       })}
@@ -37,11 +77,13 @@ export const IntroductionEventsBlock: React.FC<Props> = ({ data, events }) => {
             )}
           <div className="introduction_events_block__wrapper__information__content">
             <h2 className="heading_1">{data.title}</h2>
-            <ConvertRichText data={data.description} />
+            <div ref={descriptionRef}>
+              <ConvertRichText data={data.description} />
+            </div>
           </div>
         </div>
         <div className="introduction_events_block__wrapper__events">
-          <ul className="introduction_events_block__wrapper__events__list">
+          <ul ref={eventsListRef} className="introduction_events_block__wrapper__events__list">
             {events.map((event, index) => (
               <li key={event.id} className={clsx('events_block__list__item')}>
                 <EventTeaser data={event} variant={index === 0 ? 'highlight' : 'default'} />
@@ -50,10 +92,10 @@ export const IntroductionEventsBlock: React.FC<Props> = ({ data, events }) => {
           </ul>
         </div>
         <div className="introduction_events_block__wrapper__cta">
-          <Link href="/" variant="primary">
+          <Link href="/decouvrir" variant="primary" internalLink>
             Découvrir les ateliers
           </Link>
-          <Link href="/" variant="ghost">
+          <Link href="/ateliers" variant="ghost" internalLink>
             Voir tous les ateliers
           </Link>
         </div>

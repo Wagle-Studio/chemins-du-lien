@@ -24,15 +24,58 @@
     border: none;
     background-color: var(--primary);
     border: 2px solid var(--primary);
+    transition: 150ms ease-out;
+
+    &:hover {
+      border: 2px solid var(--primary-150);
+      background-color: var(--primary-150);
+    }
   }
 
   &--variant-ghost {
     background-color: var(--body);
     border: 2px solid var(--primary);
+    transition: 150ms ease-out;
+
+    &:hover {
+      border: 2px solid var(--primary-150);
+    }
   }
 
   &--disabled {
     cursor: not-allowed;
     opacity: 60%;
+  }
+
+  &--icon {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-1);
+
+    &:hover {
+      span {
+        transform: translateX(0);
+      }
+
+      svg {
+        transform: translateX(2px);
+        opacity: 1;
+      }
+    }
+  }
+
+  &__content {
+    transform: translateX(12px);
+    transition: 150ms ease-out;
+  }
+
+  &__icon {
+    opacity: 0;
+    width: 20px;
+    height: 20px;
+    transform: translateX(-8px);
+    transition: 150ms ease-out;
   }
 }

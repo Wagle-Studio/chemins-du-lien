@@ -8,7 +8,7 @@
     flex-direction: column;
     align-items: center;
     gap: var(--space-10);
-    padding: var(--space-5) var(--space-3);
+    padding: var(--space-5) var(--space-3) var(--space-10) var(--space-3);
     width: 100%;
     max-width: var(--view-max-width);
     margin: 0 auto;
@@ -37,6 +37,24 @@
         width: 40px;
         height: 40px;
       }
+
+      &__link_to {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: var(--space-1);
+        border-bottom: 2px solid transparent;
+        transition: 150ms ease-out;
+
+        &__icon {
+          width: 20px;
+          height: 20px;
+        }
+
+        &:hover {
+          border-bottom: 2px solid var(--gray-deeper);
+        }
+      }
     }
 
     &__posts {
@@ -53,7 +71,7 @@
 @media screen and (min-width: 768px) {
   .instagram_block {
     &__wrapper {
-      padding: var(--space-5) var(--space-6);
+      padding: var(--space-5) var(--space-6) var(--space-10) var(--space-6);
     }
   }
 }
