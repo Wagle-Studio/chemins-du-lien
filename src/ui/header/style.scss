@@ -4,6 +4,7 @@
   width: 100%;
   padding: var(--space-3) var(--space-3) 0 var(--space-3);
   box-sizing: border-box;
+  transition: 300ms ease-out;
 
   &__mobile {
     padding: 0;
@@ -25,7 +26,7 @@
       padding: 30px var(--space-5);
       background-color: var(--body);
       backdrop-filter: blur(0px);
-      border-radius: 0; // to reverse
+      border-radius: 0;
     }
 
     &__brand {
@@ -229,10 +230,13 @@
 }
 
 .is-scrolled {
+  padding: 0 var(--space-3) var(--space-2) var(--space-3);
+
   .header {
     &__bar {
       background-color: var(--body);
       backdrop-filter: blur(0px);
+      border-radius: 0 0 var(--border-radius-medium) var(--border-radius-medium);
 
       &__brand {
         &__name {
@@ -258,5 +262,15 @@
         }
       }
     }
+  }
+}
+
+.is-scrolled.header__mobile {
+  padding: 0 !important;
+}
+
+@media screen and (min-width: 768px) {
+  .is-scrolled {
+    padding: 0 var(--space-6) var(--space-2) var(--space-6);
   }
 }

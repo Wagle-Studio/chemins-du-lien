@@ -12,6 +12,7 @@ gsap.registerPlugin(ScrollTrigger)
 
 export const Header: React.FC<HTMLAttributes<HTMLElement>> = ({ className, ...props }) => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
+  const [isMenuScrolled, setIsMenuScrolled] = useState(false)
   const headerRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
@@ -20,7 +21,12 @@ export const Header: React.FC<HTMLAttributes<HTMLElement>> = ({ className, ...pr
     ScrollTrigger.create({
       start: 'top -100',
       onUpdate: (self) => {
-        headerRef.current?.classList.toggle('is-scrolled', self.scroll() > 100)
+        const shouldBeScrolled = self.scroll() > 100
+        setIsMenuScrolled(shouldBeScrolled)
+
+        if (headerRef.current) {
+          headerRef.current.classList.toggle('is-scrolled', shouldBeScrolled)
+        }
       },
     })
   }, [])
@@ -33,8 +39,13 @@ export const Header: React.FC<HTMLAttributes<HTMLElement>> = ({ className, ...pr
     }
   }, [isMobileMenuOpen])
 
-  const closeMobileMenu = () => {
-    setIsMobileMenuOpen(false)
+  const handleMobileMenu = () => {
+    setIsMobileMenuOpen(!isMobileMenuOpen)
+
+    setTimeout(() => {
+      const shouldBeScrolled = window.scrollY > 100
+      headerRef.current?.classList.toggle('is-scrolled', shouldBeScrolled)
+    }, 0)
   }
 
   return (
@@ -47,7 +58,7 @@ export const Header: React.FC<HTMLAttributes<HTMLElement>> = ({ className, ...pr
         <div
           className={clsx('header__bar__brand', { header__bar__brand__mobile: isMobileMenuOpen })}
         >
-          <Link href="/" className="header__bar__brand__name" onClick={closeMobileMenu}>
+          <Link href="/" className="header__bar__brand__name" onClick={handleMobileMenu}>
             Chemins du lien
             <br />
             <span className="header__bar__brand__name__sub">de soi à l'autre</span>
@@ -57,7 +68,7 @@ export const Header: React.FC<HTMLAttributes<HTMLElement>> = ({ className, ...pr
           className={clsx('header__bar__mobile_menu', {
             header__bar__mobile_menu__mobile: isMobileMenuOpen,
           })}
-          onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+          onClick={handleMobileMenu}
         >
           <MenuIcon className="header__bar__mobile_menu__icon" />
         </div>
@@ -72,7 +83,7 @@ export const Header: React.FC<HTMLAttributes<HTMLElement>> = ({ className, ...pr
                 header__bar__nav__list__item__mobile: isMobileMenuOpen,
               })}
             >
-              <Link href={`/`} onClick={closeMobileMenu}>
+              <Link href={`/`} onClick={handleMobileMenu}>
                 Accueil
               </Link>
             </li>
@@ -86,7 +97,7 @@ export const Header: React.FC<HTMLAttributes<HTMLElement>> = ({ className, ...pr
                 },
               )}
             >
-              <Link href={`/processus`} onClick={closeMobileMenu}>
+              <Link href={`/processus`} onClick={handleMobileMenu}>
                 Processus
               </Link>
             </li>
@@ -95,11 +106,11 @@ export const Header: React.FC<HTMLAttributes<HTMLElement>> = ({ className, ...pr
                 header__bar__nav__list__item__mobile: isMobileMenuOpen,
               })}
             >
-              <Link href={`/ateliers`} onClick={closeMobileMenu}>
+              <Link href={`/ateliers`} onClick={handleMobileMenu}>
                 Ateliers
               </Link>
             </li>
-            <Link href={`/contact`} variant="primary" onClick={closeMobileMenu}>
+            <Link href={`/contact`} variant="primary" onClick={handleMobileMenu}>
               Contact
             </Link>
           </ul>
