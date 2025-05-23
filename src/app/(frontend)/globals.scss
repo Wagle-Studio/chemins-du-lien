@@ -39,6 +39,7 @@
   --space-12: 96px;
   --space-15: 120px;
   --space-20: 160px;
+  --space-25: 200px;
   --space-30: 240px;
   --space-40: 320px;
 
@@ -77,7 +78,8 @@
   --border-radius-large: 16px;
   --border-radius-xlarge: 32px;
 
-  --text-shadow: text-shadow: 0 2px 4px rgba(0, 0, 0, 0.4), 0 0 10px rgba(0, 0, 0, 0.2);
+  --text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  --text-shadow-deep: 0 2px 4px rgba(0, 0, 0, 0.4), 0 0 10px rgba(0, 0, 0, 0.2);
   --card-shadow: 0px 4px 20px 0px rgba(0, 0, 0, 0.08);
 
   --breakpoint-mobile: 576px;
@@ -87,16 +89,13 @@
 }
 
 body {
-  display: flex;
-  flex-direction: column;
-  // gap: var(--space-20);
   background-color: var(--body);
 }
 
 main {
   display: flex;
   flex-direction: column;
-  gap: var(--space-20);
+  gap: var(--space-15);
   background-color: var(--body);
 }
 
@@ -156,12 +155,6 @@ ol {
 }
 
 // LAYOUT
-
-.homepage_layout {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-20);
-}
 
 .page_layout {
   display: flex;

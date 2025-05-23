@@ -8,9 +8,9 @@ export async function Homepage() {
   const data = await getGlobal('homepage', 1)
 
   return (
-    <div className="homepage_layout">
+    <>
       <HomepageHero />
       <RenderBlocks blocks={data.blocks} />
-    </div>
+    </>
   )
 }

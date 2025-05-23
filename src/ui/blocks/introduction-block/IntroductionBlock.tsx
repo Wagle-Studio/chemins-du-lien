@@ -10,7 +10,7 @@ type Props = {
 
 export const IntroductionBlock: React.FC<Props> = ({ data }: Props) => {
   return (
-    <div
+    <section
       className={clsx('introduction_block', { 'introduction_block--background': data.background })}
     >
       <div className="introduction_block__wrapper">
@@ -34,6 +34,6 @@ export const IntroductionBlock: React.FC<Props> = ({ data }: Props) => {
             />
           )}
       </div>
-    </div>
+    </section>
   )
 }

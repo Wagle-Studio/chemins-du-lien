@@ -14,7 +14,7 @@ type Props = {
 
 export const IntroductionEventsBlock: React.FC<Props> = ({ data, events }) => {
   return (
-    <div
+    <section
       className={clsx('introduction_events_block', {
         'introduction_events_block--background': data.background,
       })}
@@ -58,6 +58,6 @@ export const IntroductionEventsBlock: React.FC<Props> = ({ data, events }) => {
           </Link>
         </div>
       </div>
-    </div>
+    </section>
   )
 }

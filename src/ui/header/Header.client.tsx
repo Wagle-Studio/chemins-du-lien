@@ -58,7 +58,7 @@ export const Header: React.FC<HTMLAttributes<HTMLElement>> = ({ className, ...pr
         <div
           className={clsx('header__bar__brand', { header__bar__brand__mobile: isMobileMenuOpen })}
         >
-          <Link href="/" className="header__bar__brand__name" onClick={handleMobileMenu}>
+          <Link href="/" className="header__bar__brand__name">
             Chemins du lien
             <br />
             <span className="header__bar__brand__name__sub">de soi à l'autre</span>

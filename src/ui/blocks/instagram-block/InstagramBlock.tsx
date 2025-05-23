@@ -14,7 +14,9 @@ type Props = {
 
 export const InstagramBlock: React.FC<Props> = ({ data }: Props) => {
   return (
-    <div className={clsx('instagram_block', { 'instagram_block--background': data.background })}>
+    <section
+      className={clsx('instagram_block', { 'instagram_block--background': data.background })}
+    >
       <div className="instagram_block__wrapper">
         <div className="instagram_block__wrapper__content">
           <h2 className="heading_1">
@@ -38,6 +40,6 @@ export const InstagramBlock: React.FC<Props> = ({ data }: Props) => {
           </li>
         </ul>
       </div>
-    </div>
+    </section>
   )
 }
