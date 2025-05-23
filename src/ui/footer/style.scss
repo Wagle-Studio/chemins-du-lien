@@ -1,7 +1,4 @@
 .footer {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-3);
   width: 100%;
   background: var(--primary);
 
@@ -9,29 +6,82 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    gap: var(--space-3);
-    padding: var(--space-4) var(--space-3);
+    gap: var(--space-5);
+    padding: var(--space-6) var(--space-3);
     width: 100%;
     max-width: var(--view-max-width);
     margin: 0 auto;
     box-sizing: border-box;
 
     &__brand {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-2);
+
       &__name {
         font-weight: var(--font-weight-large);
-        font-size: var(--font-size-large);
-      }
-    }
+        font-size: var(--font-size-extra);
+        line-height: var(--font-line-height-medium);
 
-    &__nav {
-      &__list {
+        &__sub {
+          font-weight: var(--font-weight-large);
+          font-size: var(--font-size-medium);
+        }
+      }
+
+      &__mentions {
         display: flex;
         flex-direction: column;
         gap: var(--space-2);
-        list-style: none;
-        padding: 0;
-        margin: 0;
-        box-sizing: border-box;
+
+        > * {
+          font-size: var(--font-size-small);
+        }
+      }
+    }
+
+    &__links {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-5);
+      // order: -1;
+
+      &__social_medias {
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-2);
+
+        &__item {
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+          gap: var(--space-1);
+
+          &__icon {
+            width: 32px;
+            height: 32px;
+          }
+        }
+      }
+
+      &__nav {
+        order: -1;
+
+        &__list {
+          display: flex;
+          flex-direction: column;
+          gap: var(--space-2);
+          list-style: none;
+          padding: 0;
+          margin: 0;
+          box-sizing: border-box;
+
+          & li:first-child {
+            a {
+              font-weight: var(--font-weight-large);
+            }
+          }
+        }
       }
     }
   }
@@ -43,7 +93,21 @@
       flex-direction: row;
       align-items: center;
       justify-content: space-between;
-      align-items: baseline;
+      align-items: flex-start;
+
+      &__brand {
+        gap: var(--space-7);
+      }
+
+      &__links {
+        flex-direction: row;
+        gap: var(--space-8);
+        // order: unset;
+
+        &__nav {
+          order: unset;
+        }
+      }
     }
   }
 }

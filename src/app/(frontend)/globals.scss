@@ -65,6 +65,7 @@
   --font-size-mobile-heading-3: 1.25rem;
 
   --font-line-height-button: 50%;
+  --font-line-height-medium: 100%;
   --font-line-height-large: 135%;
   --font-line-height-extra: 150%;
 
@@ -86,6 +87,13 @@
 }
 
 body {
+  display: flex;
+  flex-direction: column;
+  // gap: var(--space-20);
+  background-color: var(--body);
+}
+
+main {
   display: flex;
   flex-direction: column;
   gap: var(--space-20);

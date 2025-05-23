@@ -25,7 +25,7 @@ export default async function RootLayout(props: { children: React.ReactNode }) {
         <AuthWrapper>
           <Header />
           <main className={fonts.join(' ')}>{children}</main>
-          {/* <Footer /> */}
+          <Footer />
         </AuthWrapper>
       </body>
     </html>
