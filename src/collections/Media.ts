@@ -25,6 +25,11 @@ export const Media: CollectionConfig = {
         height: 40,
       },
       {
+        name: 'avatar_large',
+        width: 100,
+        height: 100,
+      },
+      {
         name: 'content',
         width: 500,
       },

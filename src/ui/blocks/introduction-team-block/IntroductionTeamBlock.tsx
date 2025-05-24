@@ -3,7 +3,7 @@
 import './style.scss'
 import clsx from 'clsx'
 import Image from 'next/image'
-import { useEffect, useRef } from 'react'
+import { Fragment, useEffect, useRef } from 'react'
 import gsap from 'gsap'
 import ScrollTrigger from 'gsap/ScrollTrigger'
 import { RichText as ConvertRichText } from '@payloadcms/richtext-lexical/react'
@@ -13,6 +13,7 @@ import pp0 from './../../_assets/pictures/pp_0.png'
 import pp1 from './../../_assets/pictures/pp_1.png'
 import pp2 from './../../_assets/pictures/pp_2.png'
 import pp3 from './../../_assets/pictures/pp_3.png'
+import { Media } from '@/payload-types'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -25,6 +26,9 @@ export const IntroductionTeamBlock: React.FC<Props> = ({ data }: Props) => {
   const descriptionRef = useRef<HTMLDivElement>(null)
   const imagesRef = useRef<HTMLDivElement>(null)
   const videoRef = useRef<HTMLDivElement>(null)
+
+  const video = data['highlight-video'].video as Media
+  const thumbnail = data['highlight-video'].miniature as Media
 
   useEffect(() => {
     if (!sectionRef.current || !descriptionRef.current || !imagesRef.current || !videoRef.current)
@@ -84,12 +88,28 @@ export const IntroductionTeamBlock: React.FC<Props> = ({ data }: Props) => {
               <ConvertRichText data={data.description} />
             </div>
           </div>
-          <div ref={imagesRef} className="introduction_team_block__wrapper__left__team">
-            <Image src={pp0} alt="Photo de profil de Eliane Hanry" quality={100} />
-            <Image src={pp1} alt="Photo de profil de Jean-Luc Berger" quality={100} />
-            <Image src={pp2} alt="Photo de profil de Tiphaine Hanry" quality={100} />
-            <Image src={pp3} alt="Photo de profil d'une Girafone" quality={100} />
-          </div>
+          {data.members && data.members?.length > 0 && (
+            <div ref={imagesRef} className="introduction_team_block__wrapper__left__team">
+              {data.members.map((member) => (
+                <Fragment key={member.id}>
+                  {typeof member['profile-picture'] !== 'number' &&
+                    member['profile-picture'].sizes &&
+                    member['profile-picture'].sizes.avatar_large &&
+                    member['profile-picture'].sizes.avatar_large.url &&
+                    member['profile-picture'].sizes.avatar_large.width &&
+                    member['profile-picture'].sizes.avatar_large.height && (
+                      <Image
+                        src={member['profile-picture'].sizes.avatar_large.url}
+                        alt={member['profile-picture'].alt}
+                        width={member['profile-picture'].sizes.avatar_large.width}
+                        height={member['profile-picture'].sizes.avatar_large.height}
+                        quality={100}
+                      />
+                    )}
+                </Fragment>
+              ))}
+            </div>
+          )}
         </div>
         <div className="introduction_team_block__wrapper__right">
           <div ref={videoRef} className="introduction_team_block__wrapper__right__video">
@@ -97,9 +117,9 @@ export const IntroductionTeamBlock: React.FC<Props> = ({ data }: Props) => {
               className="introduction_team_block__wrapper__right__video__player"
               controls
               preload="metadata"
-              poster="/pictures/preview_video_Tiphaine.jpg"
+              poster={thumbnail.url ?? undefined}
             >
-              <source src="/videos/feedback_Tiphaine.mp4" type="video/mp4" />
+              {video.url && <source src={video.url} type="video/mp4" />}
               Votre navigateur ne supporte pas la lecture de vidéos.
             </video>
           </div>

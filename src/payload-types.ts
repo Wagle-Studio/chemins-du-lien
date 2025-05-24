@@ -177,6 +177,14 @@ export interface Media {
       filesize?: number | null;
       filename?: string | null;
     };
+    avatar_large?: {
+      url?: string | null;
+      width?: number | null;
+      height?: number | null;
+      mimeType?: string | null;
+      filesize?: number | null;
+      filename?: string | null;
+    };
     content?: {
       url?: string | null;
       width?: number | null;
@@ -468,6 +476,16 @@ export interface MediaSelect<T extends boolean = true> {
               filesize?: T;
               filename?: T;
             };
+        avatar_large?:
+          | T
+          | {
+              url?: T;
+              width?: T;
+              height?: T;
+              mimeType?: T;
+              filesize?: T;
+              filename?: T;
+            };
         content?:
           | T
           | {
@@ -702,6 +720,17 @@ export interface Homepage {
               };
               [k: string]: unknown;
             };
+            'highlight-video': {
+              title: string;
+              miniature: number | Media;
+              video: number | Media;
+            };
+            members?:
+              | {
+                  'profile-picture': number | Media;
+                  id?: string | null;
+                }[]
+              | null;
             background?: boolean | null;
             id?: string | null;
             blockName?: string | null;
@@ -869,6 +898,19 @@ export interface HomepageSelect<T extends boolean = true> {
           | {
               title?: T;
               description?: T;
+              'highlight-video'?:
+                | T
+                | {
+                    title?: T;
+                    miniature?: T;
+                    video?: T;
+                  };
+              members?:
+                | T
+                | {
+                    'profile-picture'?: T;
+                    id?: T;
+                  };
               background?: T;
               id?: T;
               blockName?: T;
