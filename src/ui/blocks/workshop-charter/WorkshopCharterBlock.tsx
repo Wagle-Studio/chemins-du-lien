@@ -15,37 +15,33 @@ type Props = {
 }
 
 export const WorkshopCharterBlock: React.FC<Props> = ({ data }: Props) => {
-  console.log(data)
-
   return (
-    <section
-      className={clsx('instagram_block', { 'instagram_block--background': data.background })}
-    >
-      <div className="instagram_block__wrapper">
-        <div className="instagram_block__wrapper__content">
-          <h2 className="heading_2">{data.title}</h2>
-          <p className="instagram_block__wrapper__content__subtitle">{data.subtitle}</p>
+    <section className={clsx('workshop_block', { 'workshop_block--background': data.background })}>
+      <div className="workshop_block__wrapper">
+        <div className="workshop_block__wrapper__content">
+          <h2 className="heading_1">{data.title}</h2>
+          <p className="workshop_block__wrapper__content__subtitle">{data.subtitle}</p>
         </div>
-        <div className="instagram_block__wrapper__body">
-          <ul className="instagram_block__wrapper__body__posts">
+        <div className="workshop_block__wrapper__body">
+          <ul className="workshop_block__wrapper__body__posts">
             {data.item?.map((item) => (
-              <li key={item.id} className="instagram_block__wrapper__body__posts__item">
-                <div className="instagram_block__wrapper__body__posts__item__background"></div>
-                <div className="instagram_block__wrapper__body__posts__item__content">
+              <li key={item.id} className="workshop_block__wrapper__body__posts__item">
+                <div className="workshop_block__wrapper__body__posts__item__background"></div>
+                <div className="workshop_block__wrapper__body__posts__item__content">
                   <h3 className="heading_3">{item.title}</h3>
                   <p>{item.description}</p>
                 </div>
               </li>
             ))}
           </ul>
-          <div className="instagram_block__wrapper__body__wrapper">
+          <div className="workshop_block__wrapper__body__wrapper">
             {data.image &&
               typeof data.image !== 'number' &&
               data.image.sizes?.content?.url &&
               data.image.sizes?.content?.width &&
               data.image.sizes?.content?.height && (
                 <Image
-                  className="instagram_block__wrapper__body__wrapper__picture"
+                  className="workshop_block__wrapper__body__wrapper__picture"
                   src={data.image.sizes?.content?.url}
                   alt={data.image.alt}
                   width={data.image.sizes.content.width}
@@ -53,7 +49,7 @@ export const WorkshopCharterBlock: React.FC<Props> = ({ data }: Props) => {
                   quality={100}
                 />
               )}
-            <div className="instagram_block__wrapper__body__wrapper__cta">
+            <div className="workshop_block__wrapper__body__wrapper__cta">
               <Link href="/ateliers" variant="primary" internalLink>
                 Participer à un atelier
               </Link>

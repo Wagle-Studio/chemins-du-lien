@@ -799,6 +799,36 @@ export interface Process {
             blockName?: string | null;
             blockType: 'workshop_charter';
           }
+        | {
+            title: string;
+            description: {
+              root: {
+                type: string;
+                children: {
+                  type: string;
+                  version: number;
+                  [k: string]: unknown;
+                }[];
+                direction: ('ltr' | 'rtl') | null;
+                format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+                indent: number;
+                version: number;
+              };
+              [k: string]: unknown;
+            };
+            videos?:
+              | {
+                  title: string;
+                  miniature: number | Media;
+                  video: number | Media;
+                  id?: string | null;
+                }[]
+              | null;
+            background?: boolean | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'feedback';
+          }
       )[]
     | null;
   _status?: ('draft' | 'published') | null;
@@ -926,6 +956,23 @@ export interface ProcessSelect<T extends boolean = true> {
                     id?: T;
                   };
               image?: T;
+              background?: T;
+              id?: T;
+              blockName?: T;
+            };
+        feedback?:
+          | T
+          | {
+              title?: T;
+              description?: T;
+              videos?:
+                | T
+                | {
+                    title?: T;
+                    miniature?: T;
+                    video?: T;
+                    id?: T;
+                  };
               background?: T;
               id?: T;
               blockName?: T;

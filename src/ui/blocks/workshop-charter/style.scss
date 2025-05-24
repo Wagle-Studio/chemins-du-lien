@@ -1,4 +1,4 @@
-.instagram_block {
+.workshop_block {
   &--background {
     background-color: var(--body_secondary);
   }
@@ -20,7 +20,7 @@
       gap: var(--space-3);
       align-items: center;
 
-      > .heading_2 {
+      > .heading_1 {
         width: 100%;
         max-width: max-content;
         padding-bottom: var(--space-1);
@@ -74,7 +74,7 @@
       &__wrapper {
         display: flex;
         flex-direction: column;
-        gap: var(--space-3);
+        gap: var(--space-5);
 
         &__picture {
           display: none;
@@ -95,7 +95,7 @@
 }
 
 @media screen and (min-width: 768px) {
-  .instagram_block {
+  .workshop_block {
     &__wrapper {
       padding: var(--space-5) var(--space-6);
 
@@ -112,7 +112,7 @@
 }
 
 @media screen and (min-width: 992px) {
-  .instagram_block {
+  .workshop_block {
     &__wrapper {
       &__content {
         &__subtitle {

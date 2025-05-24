@@ -1,0 +1,118 @@
+.feedback_block {
+  &--background {
+    background-color: var(--body_secondary);
+  }
+
+  &__wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-8);
+    padding: var(--space-5) var(--space-3);
+    width: 100%;
+    max-width: var(--view-max-width);
+    margin: 0 auto;
+    box-sizing: border-box;
+
+    &__left {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: var(--space-3);
+    }
+
+    &__right {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: var(--space-3);
+
+      &__video {
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-2);
+        padding: var(--space-1);
+        width: 100%;
+        height: 100%;
+        border-radius: var(--border-radius-base);
+        background-color: var(--white);
+        box-shadow: var(--card-shadow);
+        box-sizing: border-box;
+
+        &__player {
+          width: 100%;
+          border-radius: var(--border-radius-base);
+          margin-bottom: -5px;
+        }
+
+        &__title {
+          padding: 0 var(--space-1);
+          font-weight: var(--font-weight-large);
+        }
+      }
+
+      &__videos {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        gap: var(--space-2);
+
+        &__item {
+          padding: var(--space-0);
+          border-radius: var(--border-radius-base);
+          background-color: var(--white);
+          box-shadow: var(--card-shadow);
+          box-sizing: border-box;
+          cursor: pointer;
+
+          &__thumbnail {
+            width: 100%;
+            height: auto;
+            border-radius: var(--border-radius-base);
+            margin-bottom: -5px;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .feedback_block {
+    &__wrapper {
+      padding: var(--space-5) var(--space-6);
+
+      &__right {
+        flex-direction: row;
+        &__videos {
+          max-width: 20%;
+          flex-direction: column;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 992px) {
+  .feedback_block {
+    &__wrapper {
+      flex-direction: row;
+      align-items: flex-start;
+      justify-content: space-between;
+
+      &__left {
+        min-width: 50%;
+      }
+
+      &__right {
+        flex-direction: column;
+        // max-width: 600px;
+
+        &__videos {
+          max-width: unset;
+          flex-direction: row;
+        }
+      }
+    }
+  }
+}
