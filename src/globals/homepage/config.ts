@@ -10,6 +10,9 @@ import { Instagram } from '@/blocks/instagram/config'
 
 export const Homepage: GlobalConfig = {
   slug: 'homepage',
+  versions: {
+    drafts: true,
+  },
   fields: [
     {
       name: 'blocks',

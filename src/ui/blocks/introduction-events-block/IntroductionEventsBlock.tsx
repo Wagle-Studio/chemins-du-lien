@@ -82,15 +82,17 @@ export const IntroductionEventsBlock: React.FC<Props> = ({ data, events }) => {
             </div>
           </div>
         </div>
-        <div className="introduction_events_block__wrapper__events">
-          <ul ref={eventsListRef} className="introduction_events_block__wrapper__events__list">
-            {events.map((event, index) => (
-              <li key={event.id} className={clsx('events_block__list__item')}>
-                <EventTeaser data={event} variant={index === 0 ? 'highlight' : 'default'} />
-              </li>
-            ))}
-          </ul>
-        </div>
+        {events.length > 0 && (
+          <div className="introduction_events_block__wrapper__events">
+            <ul ref={eventsListRef} className="introduction_events_block__wrapper__events__list">
+              {events.map((event, index) => (
+                <li key={event.id} className={clsx('events_block__list__item')}>
+                  <EventTeaser data={event} variant={index === 0 ? 'highlight' : 'default'} />
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
         <div className="introduction_events_block__wrapper__cta">
           <Link href="/decouvrir" variant="primary" internalLink>
             Découvrir les ateliers

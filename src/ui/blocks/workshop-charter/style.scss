@@ -49,9 +49,10 @@
           display: grid;
           grid-template-columns: 1fr;
           grid-template-rows: 24px max-content;
-          background-color: var(--body);
+          background-color: var(--white);
           box-sizing: border-box;
           border-radius: var(--border-radius-base);
+          box-shadow: var(--card-shadow);
 
           &__background {
             width: 100%;

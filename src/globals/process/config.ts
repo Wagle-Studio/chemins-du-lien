@@ -4,6 +4,9 @@ import { WorkshopCharter } from '@/blocks/workshop-charter/config'
 
 export const ProcessPage: GlobalConfig = {
   slug: 'process',
+  versions: {
+    drafts: true,
+  },
   fields: [
     {
       name: 'blocks',

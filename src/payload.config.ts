@@ -30,7 +30,7 @@ export default buildConfig({
       url: ({ data, collectionConfig, globalConfig }) =>
         serveLivePreview(data, collectionConfig, globalConfig),
       collections: ['articles', 'cursus', 'exercices'],
-      globals: ['homepage'],
+      globals: ['homepage', 'process'],
     },
   },
   globals: [Homepage, ProcessPage],
