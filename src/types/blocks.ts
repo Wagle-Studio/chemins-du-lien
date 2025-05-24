@@ -9,6 +9,7 @@ import { Articles } from '@/blocks/articles/Component'
 import { IntroductionTeam } from '@/blocks/introduction-team/Component'
 import { Instagram } from '@/blocks/instagram/Component'
 import { PageHeroBanner } from '@/blocks/page-hero-banner/Component'
+import { WorkshopCharter } from '@/blocks/workshop-charter/Component'
 
 export type HomepageBlocks = NonNullable<Homepage['blocks']>[number]
 export type ProcessBlocks = NonNullable<Process['blocks']>[number]
@@ -25,6 +26,7 @@ export const blockComponents: {
   introduction_team: IntroductionTeam,
   instagram: Instagram,
   page_hero_banner: PageHeroBanner,
+  workshop_charter: WorkshopCharter,
   content: Content,
   events: Events,
   cursus: Cursus,

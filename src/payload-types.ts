@@ -760,27 +760,45 @@ export interface Homepage {
 export interface Process {
   id: number;
   blocks?:
-    | {
-        title: string;
-        description: {
-          root: {
-            type: string;
-            children: {
-              type: string;
-              version: number;
+    | (
+        | {
+            title: string;
+            description: {
+              root: {
+                type: string;
+                children: {
+                  type: string;
+                  version: number;
+                  [k: string]: unknown;
+                }[];
+                direction: ('ltr' | 'rtl') | null;
+                format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+                indent: number;
+                version: number;
+              };
               [k: string]: unknown;
-            }[];
-            direction: ('ltr' | 'rtl') | null;
-            format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-            indent: number;
-            version: number;
-          };
-          [k: string]: unknown;
-        };
-        id?: string | null;
-        blockName?: string | null;
-        blockType: 'page_hero_banner';
-      }[]
+            };
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'page_hero_banner';
+          }
+        | {
+            title: string;
+            subtitle: string;
+            item?:
+              | {
+                  title: string;
+                  description: string;
+                  id?: string | null;
+                }[]
+              | null;
+            image?: (number | null) | Media;
+            background?: boolean | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'workshop_charter';
+          }
+      )[]
     | null;
   updatedAt?: string | null;
   createdAt?: string | null;
@@ -889,6 +907,23 @@ export interface ProcessSelect<T extends boolean = true> {
           | {
               title?: T;
               description?: T;
+              id?: T;
+              blockName?: T;
+            };
+        workshop_charter?:
+          | T
+          | {
+              title?: T;
+              subtitle?: T;
+              item?:
+                | T
+                | {
+                    title?: T;
+                    description?: T;
+                    id?: T;
+                  };
+              image?: T;
+              background?: T;
               id?: T;
               blockName?: T;
             };
