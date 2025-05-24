@@ -14,7 +14,7 @@ export const Footer: React.FC<HTMLAttributes<HTMLElement>> = ({ className, ...pr
           <Link href="/" className="footer__wrapper__brand__name">
             Chemins du lien
             <br />
-            <span className="footer__wrapper__brand__name__sub">de soi à l'autre</span>
+            <span className="footer__wrapper__brand__name__sub">de soi à l&apos;autre</span>
           </Link>
           <div className="footer__wrapper__brand__mentions">
             <p>© 2025 Chemins du lien – Tous droits réservés.</p>
@@ -48,7 +48,7 @@ export const Footer: React.FC<HTMLAttributes<HTMLElement>> = ({ className, ...pr
                 <Link href={`#homepage__hero_banner`}>Haut de la page</Link>
               </li>
               <li>
-                <Link href={`/`}>Page d'accueil</Link>
+                <Link href={`/`}>Page d&apos;accueil</Link>
               </li>
               <li>
                 <Link href={`/decouvrir`}>Processus</Link>

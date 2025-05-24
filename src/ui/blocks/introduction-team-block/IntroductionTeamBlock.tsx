@@ -105,7 +105,7 @@ export const IntroductionTeamBlock: React.FC<Props> = ({ data }: Props) => {
           </div>
           <div className="introduction_team_block__wrapper__right__cta">
             <Link href="/decouvrir" variant="primary" internalLink>
-              Voir les retours d'expériences
+              Voir les retours d&apos;expériences
             </Link>
             <Link href="/collectif" variant="ghost" internalLink>
               Découvrir le collectif

@@ -62,7 +62,7 @@ export const Header: React.FC<HTMLAttributes<HTMLElement>> = ({ className, ...pr
           >
             Chemins du lien
             <br />
-            <span className="header__bar__brand__name__sub">de soi à l'autre</span>
+            <span className="header__bar__brand__name__sub">de soi à l&apos;autre</span>
           </Link>
         </div>
         <div

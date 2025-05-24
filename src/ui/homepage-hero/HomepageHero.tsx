@@ -59,7 +59,7 @@ export const HomepageHero: React.FC<HTMLAttributes<HTMLElement>> = ({ className,
           <div className="homepage__hero_banner__overlay__content__wrapper">
             <div ref={titleRef} className="homepage__hero_banner__overlay__content__wrapper__title">
               <p className="heading_1">Chemins du lien</p>
-              <p className="heading_3">de soi à l'autre</p>
+              <p className="heading_3">de soi à l&apos;autre</p>
             </div>
             <div ref={ctaRef} className="homepage__hero_banner__overlay__content__wrapper__cta">
               <Link href="/decouvrir" variant="primary" internalLink>
