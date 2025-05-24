@@ -1,4 +1,4 @@
-import { Article, Category, Cursus, Event, Exercice, Homepage } from '@/payload-types'
+import { Article, Category, Cursus, Event, Exercice, Homepage, Process } from '@/payload-types'
 
 export type CollectionSlugToType = {
   articles: Article
@@ -12,6 +12,7 @@ export type CollectionSlug = keyof CollectionSlugToType & string
 
 export type GlobalSlugToType = {
   homepage: Homepage
+  process: Process
 }
 
 export type GlobalSlug = keyof GlobalSlugToType & string

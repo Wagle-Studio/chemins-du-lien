@@ -96,9 +96,11 @@ export interface Config {
   };
   globals: {
     homepage: Homepage;
+    process: Process;
   };
   globalsSelect: {
     homepage: HomepageSelect<false> | HomepageSelect<true>;
+    process: ProcessSelect<false> | ProcessSelect<true>;
   };
   locale: null;
   user: User & {
@@ -753,6 +755,38 @@ export interface Homepage {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "process".
+ */
+export interface Process {
+  id: number;
+  blocks?:
+    | {
+        title: string;
+        description: {
+          root: {
+            type: string;
+            children: {
+              type: string;
+              version: number;
+              [k: string]: unknown;
+            }[];
+            direction: ('ltr' | 'rtl') | null;
+            format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+            indent: number;
+            version: number;
+          };
+          [k: string]: unknown;
+        };
+        id?: string | null;
+        blockName?: string | null;
+        blockType: 'page_hero_banner';
+      }[]
+    | null;
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "homepage_select".
  */
 export interface HomepageSelect<T extends boolean = true> {
@@ -834,6 +868,27 @@ export interface HomepageSelect<T extends boolean = true> {
           | T
           | {
               type?: T;
+              id?: T;
+              blockName?: T;
+            };
+      };
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "process_select".
+ */
+export interface ProcessSelect<T extends boolean = true> {
+  blocks?:
+    | T
+    | {
+        page_hero_banner?:
+          | T
+          | {
+              title?: T;
+              description?: T;
               id?: T;
               blockName?: T;
             };
