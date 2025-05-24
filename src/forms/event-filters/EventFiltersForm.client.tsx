@@ -54,7 +54,7 @@ export const EventFiltersForm: React.FC<EventFiltersFormProps> = ({
         options={categories}
         optionsValue="slug"
         optionsLabel="title"
-        defaultOption={{ value: 'tous-les-evenements', label: 'Tous les événements' }}
+        defaultOption={{ value: 'tous-les-ateliers', label: 'Tous les ateliers' }}
       />
     </form>
   )

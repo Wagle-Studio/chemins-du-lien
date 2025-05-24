@@ -1,12 +1,20 @@
+body {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr max-content;
+  height: 110vh;
+}
+
+main {
+  height: 100%;
+}
+
 .event_collection_layout {
   display: flex;
   flex-direction: column;
   gap: var(--space-10);
-
-  &__title {
-    font-weight: var(--font-weight-large);
-    font-size: var(--font-size-extra);
-  }
+  padding: var(--space-25) var(--space-3);
+  box-sizing: border-box;
 
   &__grid {
     display: grid;
@@ -32,6 +40,12 @@
         }
       }
     }
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .event_collection_layout {
+    padding: var(--space-25) var(--space-6);
   }
 }
 

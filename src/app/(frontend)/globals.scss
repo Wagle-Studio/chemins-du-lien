@@ -159,19 +159,6 @@ ol {
   }
 }
 
-// LAYOUT
-
-.page_layout {
-  display: flex;
-  flex-direction: column;
-  padding: 0 var(--space-3);
-  gap: var(--space-20);
-  width: 100%;
-  max-width: var(--view-max-width);
-  margin: 0 auto;
-  box-sizing: border-box;
-}
-
 // UTILITIES
 
 .no_scroll {
