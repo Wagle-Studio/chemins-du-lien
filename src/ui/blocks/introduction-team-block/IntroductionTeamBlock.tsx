@@ -57,7 +57,7 @@ export const IntroductionTeamBlock: React.FC<Props> = ({ data }: Props) => {
       gsap.from(Array.from(videoRef.current!.children), {
         scrollTrigger: {
           trigger: videoRef.current,
-          start: 'top 80%',
+          start: 'top 85%',
         },
         opacity: 0,
         x: 30,
