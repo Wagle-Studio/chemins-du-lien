@@ -12,6 +12,7 @@ import { PageHeroBanner } from '@/blocks/page-hero-banner/Component'
 import { WorkshopCharter } from '@/blocks/workshop-charter/Component'
 import { Feedback } from '@/blocks/feedback/Component'
 import { Book } from '@/blocks/book/Component'
+import { IntroductionFaq } from '@/blocks/introduction-faq/Component'
 
 export type HomepageBlocks = NonNullable<Homepage['blocks']>[number]
 export type ProcessBlocks = NonNullable<Process['blocks']>[number]
@@ -32,6 +33,7 @@ export const blockComponents: {
   feedback: Feedback,
   book: Book,
   content: Content,
+  introduction_faq: IntroductionFaq,
   events: Events,
   cursus: Cursus,
   articles: Articles,

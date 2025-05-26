@@ -917,6 +917,30 @@ export interface Process {
             blockName?: string | null;
             blockType: 'content';
           }
+        | {
+            title: string;
+            subtitle: string;
+            description: {
+              root: {
+                type: string;
+                children: {
+                  type: string;
+                  version: number;
+                  [k: string]: unknown;
+                }[];
+                direction: ('ltr' | 'rtl') | null;
+                format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+                indent: number;
+                version: number;
+              };
+              [k: string]: unknown;
+            };
+            image?: (number | null) | Media;
+            background?: boolean | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'introduction_faq';
+          }
       )[]
     | null;
   _status?: ('draft' | 'published') | null;
@@ -1105,6 +1129,17 @@ export interface ProcessSelect<T extends boolean = true> {
           | T
           | {
               richText?: T;
+              background?: T;
+              id?: T;
+              blockName?: T;
+            };
+        introduction_faq?:
+          | T
+          | {
+              title?: T;
+              subtitle?: T;
+              description?: T;
+              image?: T;
               background?: T;
               id?: T;
               blockName?: T;
