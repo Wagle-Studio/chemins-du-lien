@@ -1,24 +1,36 @@
+'use client'
+
 import './workshop-charter.scss'
 
 import clsx from 'clsx'
 import Image from 'next/image'
+import { useRef } from 'react'
 import { AllBlocks, ExtractBlock } from '@/types/blocks'
 import { Link } from '@/ui/atoms/link/Link'
+import { useWorkshopCharterAnimation } from './useWorkshopCharterAnimation'
 
 type Props = {
   data: ExtractBlock<AllBlocks, 'workshop_charter'>
 }
 
 export const WorkshopCharter: React.FC<Props> = ({ data }) => {
+  const sectionRef = useRef<HTMLElement>(null)
+  const listRef = useRef<HTMLUListElement>(null)
+
+  useWorkshopCharterAnimation(sectionRef, listRef)
+
   return (
-    <section className={clsx('workshop_block', { 'workshop_block--background': data.background })}>
+    <section
+      ref={sectionRef}
+      className={clsx('workshop_block', { 'workshop_block--background': data.background })}
+    >
       <div className="workshop_block__wrapper">
         <div className="workshop_block__wrapper__content">
           <h2 className="heading_1">{data.title}</h2>
           <p className="workshop_block__wrapper__content__subtitle">{data.subtitle}</p>
         </div>
         <div className="workshop_block__wrapper__body">
-          <ul className="workshop_block__wrapper__body__posts">
+          <ul ref={listRef} className="workshop_block__wrapper__body__posts">
             {data.item?.map((item) => (
               <li key={item.id} className="workshop_block__wrapper__body__posts__item">
                 <div className="workshop_block__wrapper__body__posts__item__background"></div>

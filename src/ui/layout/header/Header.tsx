@@ -100,7 +100,7 @@ export const Header: React.FC<HTMLAttributes<HTMLElement>> = ({ className, ...pr
               )}
             >
               <Link href={`/decouvrir`} onClick={() => setIsMobileMenuOpen(false)}>
-                Processus
+                Découvrir
               </Link>
             </li>
             <li

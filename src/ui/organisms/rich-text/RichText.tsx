@@ -1,18 +1,27 @@
+'use client'
+
 import './rich-text.scss'
 
 import clsx from 'clsx'
+import { useRef } from 'react'
 import { RichText as ConvertRichText } from '@payloadcms/richtext-lexical/react'
 import { AllBlocks, ExtractBlock } from '@/types/blocks'
+import { useRichTextAnimation } from './useRichTextAnimation'
 
 type Props = {
   data: ExtractBlock<AllBlocks, 'content'>
 }
 
 export const RichText: React.FC<Props> = ({ data }: Props) => {
+  const sectionRef = useRef<HTMLElement>(null)
+
+  useRichTextAnimation(sectionRef)
+
   return (
     <>
       {data.richText && (
         <section
+          ref={sectionRef}
           className={clsx('rich_text_block', { 'rich_text_block--background': data.background })}
         >
           <div className="rich_text_block__wrapper">

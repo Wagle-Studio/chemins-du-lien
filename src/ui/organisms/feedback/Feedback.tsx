@@ -8,6 +8,7 @@ import Image from 'next/image'
 import { RichText as ConvertRichText } from '@payloadcms/richtext-lexical/react'
 import { Media } from '@/payload-types'
 import { AllBlocks, ExtractBlock } from '@/types/blocks'
+import { useFeedbackAnimation } from './useFeedbackAnimation'
 
 type Props = {
   data: ExtractBlock<AllBlocks, 'feedback'>
@@ -15,27 +16,20 @@ type Props = {
 
 export const Feedback: React.FC<Props> = ({ data }) => {
   const highlightVideoRef = useRef<HTMLVideoElement | null>(null)
+  const descriptionRef = useRef<HTMLDivElement>(null)
+  const videoListRef = useRef<HTMLUListElement>(null)
+
   const [activeIndex, setActiveIndex] = useState<number>(0)
   const [activeTitle, setActiveTitle] = useState<string | null>()
   const [activeVideo, setActiveVideo] = useState<Media | null>()
   const [activeThumbnail, setActiveThumbnail] = useState<Media | null>()
 
+  useFeedbackAnimation(descriptionRef, videoListRef)
+
   useEffect(() => {
-    setActiveTitle(
-      data.videos && data.videos[activeIndex]?.title ? data.videos[activeIndex].title : null,
-    )
-
-    setActiveVideo(
-      data.videos && data.videos[activeIndex]?.video
-        ? (data.videos[activeIndex].video as Media)
-        : null,
-    )
-
-    setActiveThumbnail(
-      data.videos && data.videos[activeIndex]?.miniature
-        ? (data.videos[activeIndex].miniature as Media)
-        : null,
-    )
+    setActiveTitle(data.videos?.[activeIndex]?.title ?? null)
+    setActiveVideo((data.videos?.[activeIndex]?.video as Media) ?? null)
+    setActiveThumbnail((data.videos?.[activeIndex]?.miniature as Media) ?? null)
   }, [activeIndex, data.videos])
 
   return (
@@ -48,7 +42,7 @@ export const Feedback: React.FC<Props> = ({ data }) => {
       <div className="feedback_block__wrapper">
         <div className="feedback_block__wrapper__left">
           <h2 className="heading_1 with_bar_left">{data.title}</h2>
-          <div>
+          <div ref={descriptionRef}>
             <ConvertRichText data={data.description} />
           </div>
         </div>
@@ -68,7 +62,7 @@ export const Feedback: React.FC<Props> = ({ data }) => {
             <p className="feedback_block__wrapper__right__video__title">{activeTitle}</p>
           </div>
           {data.videos && data.videos.length > 0 && (
-            <ul className="feedback_block__wrapper__right__videos">
+            <ul ref={videoListRef} className="feedback_block__wrapper__right__videos">
               {data.videos.map((video, index) => (
                 <li
                   key={video.id}
