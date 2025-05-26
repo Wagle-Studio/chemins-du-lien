@@ -15,6 +15,7 @@ import { Users } from './collections/Users'
 import { Media } from './collections/Media'
 import { Categories } from './collections/Categories'
 import { Workshops } from './collections/Workshops'
+import { FAQ } from './collections/FAQ'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -33,7 +34,7 @@ export default buildConfig({
     },
   },
   globals: [Homepage, DiscoverPage, AboutPage],
-  collections: [Users, Media, Categories, Workshops],
+  collections: [Users, Media, Categories, Workshops, FAQ],
   editor: lexicalEditor(),
   secret: process.env.PAYLOAD_SECRET || '',
   typescript: {

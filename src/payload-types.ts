@@ -71,6 +71,7 @@ export interface Config {
     media: Media;
     categories: Category;
     workshops: Workshop;
+    faq: Faq;
     'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
     'payload-migrations': PayloadMigration;
@@ -81,6 +82,7 @@ export interface Config {
     media: MediaSelect<false> | MediaSelect<true>;
     categories: CategoriesSelect<false> | CategoriesSelect<true>;
     workshops: WorkshopsSelect<false> | WorkshopsSelect<true>;
+    faq: FaqSelect<false> | FaqSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
     'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
     'payload-migrations': PayloadMigrationsSelect<false> | PayloadMigrationsSelect<true>;
@@ -224,6 +226,33 @@ export interface Workshop {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "faq".
+ */
+export interface Faq {
+  id: number;
+  slug?: string | null;
+  question: string;
+  answer: {
+    root: {
+      type: string;
+      children: {
+        type: string;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  };
+  updatedAt: string;
+  createdAt: string;
+  _status?: ('draft' | 'published') | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-locked-documents".
  */
 export interface PayloadLockedDocument {
@@ -244,6 +273,10 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'workshops';
         value: number | Workshop;
+      } | null)
+    | ({
+        relationTo: 'faq';
+        value: number | Faq;
       } | null);
   globalSlug?: string | null;
   user: {
@@ -383,6 +416,18 @@ export interface WorkshopsSelect<T extends boolean = true> {
   capacity?: T;
   status?: T;
   categories?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  _status?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "faq_select".
+ */
+export interface FaqSelect<T extends boolean = true> {
+  slug?: T;
+  question?: T;
+  answer?: T;
   updatedAt?: T;
   createdAt?: T;
   _status?: T;
@@ -779,6 +824,20 @@ export interface About {
             blockName?: string | null;
             blockType: 'book';
           }
+        | {
+            title: string;
+            background?: boolean | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'faq';
+          }
+        | {
+            background?: boolean | null;
+            'profile-url': string;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'instagram';
+          }
       )[]
     | null;
   _status?: ('draft' | 'published') | null;
@@ -996,6 +1055,22 @@ export interface AboutSelect<T extends boolean = true> {
                     description?: T;
                   };
               background?: T;
+              id?: T;
+              blockName?: T;
+            };
+        faq?:
+          | T
+          | {
+              title?: T;
+              background?: T;
+              id?: T;
+              blockName?: T;
+            };
+        instagram?:
+          | T
+          | {
+              background?: T;
+              'profile-url'?: T;
               id?: T;
               blockName?: T;
             };

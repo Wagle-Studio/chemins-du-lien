@@ -1,0 +1,98 @@
+.faq_block {
+  &--background {
+    background-color: var(--body_secondary);
+  }
+
+  &__wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-10);
+    padding: var(--space-12) var(--space-3);
+    width: 100%;
+    max-width: var(--view-max-width);
+    margin: 0 auto;
+    box-sizing: border-box;
+
+    &__list {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-1);
+
+      &__item {
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-2);
+        background-color: var(--white);
+        border-radius: var(--border-radius-small);
+        box-shadow: var(--card-shadow);
+        cursor: pointer;
+        box-sizing: border-box;
+        transition: 150ms ease-in-out;
+
+        &__question {
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+          gap: var(--space-3);
+          padding: var(--space-2) var(--space-4) var(--space-2) var(--space-2);
+          border-radius: var(--border-radius-small);
+          box-sizing: border-box;
+
+          &:hover {
+            background-color: var(--primary-45);
+          }
+
+          > svg {
+            width: 26px;
+            height: 26px;
+            transform: rotate(90deg);
+            transition: 200ms ease-in-out;
+          }
+
+          &--selected {
+            > svg {
+              transform: rotate(-90deg);
+            }
+          }
+        }
+
+        &__answer {
+          display: none;
+          padding: 0 var(--space-2) var(--space-3) var(--space-2);
+          box-sizing: border-box;
+          transition: 150ms ease-out;
+
+          &--selected {
+            display: flex;
+          }
+        }
+      }
+    }
+
+    &__cta {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-3);
+
+      > .link {
+        width: 100%;
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .faq_block {
+    &__wrapper {
+      padding: var(--space-12) var(--space-6);
+
+      &__cta {
+        flex-direction: row;
+
+        > .link {
+          width: max-content;
+        }
+      }
+    }
+  }
+}

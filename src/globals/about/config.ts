@@ -2,6 +2,8 @@ import { GlobalConfig } from 'payload'
 import { RichText } from '@/blocks/rich-text/config'
 import { Members } from '@/blocks/members/config'
 import { Book } from '@/blocks/book/config'
+import { Faq } from '@/blocks/faq/config'
+import { Instagram } from '@/blocks/instagram/config'
 
 export const AboutPage: GlobalConfig = {
   slug: 'about',
@@ -22,7 +24,7 @@ export const AboutPage: GlobalConfig = {
     {
       name: 'blocks',
       type: 'blocks',
-      blocks: [RichText, Members, Book],
+      blocks: [RichText, Members, Book, Faq, Instagram],
     },
   ],
 }

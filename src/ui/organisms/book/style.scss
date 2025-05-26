@@ -131,6 +131,11 @@
           &__body {
             &__cta {
               flex-direction: row;
+              margin-left: auto;
+
+              > .link {
+                width: max-content;
+              }
             }
           }
         }

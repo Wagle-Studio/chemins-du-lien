@@ -2,6 +2,7 @@ import type { Homepage, Discover, About } from '@/payload-types'
 
 import { BookBlock } from '@/blocks/book/BookBlock'
 import { RichTextBlock } from '@/blocks/rich-text/RichTextBlock'
+import { FaqBlock } from '@/blocks/faq/FaqBlock'
 import { FeedbackBlock } from '@/blocks/feedback/FeedbackBlock'
 import { InstagramBlock } from '@/blocks/instagram/InstagramBlock'
 import { IntroductionBlock } from '@/blocks/introduction/IntroductionBlock'
@@ -21,6 +22,7 @@ export const blockComponents: {
 } = {
   book: BookBlock,
   content: RichTextBlock,
+  faq: FaqBlock,
   feedback: FeedbackBlock,
   instagram: InstagramBlock,
   introduction: IntroductionBlock,
