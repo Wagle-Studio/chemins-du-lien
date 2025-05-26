@@ -720,6 +720,34 @@ export interface About {
             blockType: 'content';
           }
         | {
+            members?:
+              | {
+                  'profile-picture': number | Media;
+                  title: string;
+                  description: {
+                    root: {
+                      type: string;
+                      children: {
+                        type: string;
+                        version: number;
+                        [k: string]: unknown;
+                      }[];
+                      direction: ('ltr' | 'rtl') | null;
+                      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+                      indent: number;
+                      version: number;
+                    };
+                    [k: string]: unknown;
+                  };
+                  id?: string | null;
+                }[]
+              | null;
+            background?: boolean | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'members';
+          }
+        | {
             title: string;
             product: {
               'product-picture'?: (number | null) | Media;
@@ -929,6 +957,21 @@ export interface AboutSelect<T extends boolean = true> {
           | T
           | {
               richText?: T;
+              background?: T;
+              id?: T;
+              blockName?: T;
+            };
+        members?:
+          | T
+          | {
+              members?:
+                | T
+                | {
+                    'profile-picture'?: T;
+                    title?: T;
+                    description?: T;
+                    id?: T;
+                  };
               background?: T;
               id?: T;
               blockName?: T;

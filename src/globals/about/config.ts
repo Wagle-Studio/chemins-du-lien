@@ -1,5 +1,6 @@
 import { GlobalConfig } from 'payload'
 import { RichText } from '@/blocks/rich-text/config'
+import { Members } from '@/blocks/members/config'
 import { Book } from '@/blocks/book/config'
 
 export const AboutPage: GlobalConfig = {
@@ -21,7 +22,7 @@ export const AboutPage: GlobalConfig = {
     {
       name: 'blocks',
       type: 'blocks',
-      blocks: [RichText, Book],
+      blocks: [RichText, Members, Book],
     },
   ],
 }

@@ -1,4 +1,4 @@
-import type { Homepage, Discover } from '@/payload-types'
+import type { Homepage, Discover, About } from '@/payload-types'
 
 import { BookBlock } from '@/blocks/book/BookBlock'
 import { RichTextBlock } from '@/blocks/rich-text/RichTextBlock'
@@ -8,11 +8,13 @@ import { IntroductionBlock } from '@/blocks/introduction/IntroductionBlock'
 import { IntroductionWorkshopBlock } from '@/blocks/introduction-workshop/IntroductionWorkshopBlock'
 import { IntroductionTeamBlock } from '@/blocks/introduction-team/IntroductionTeamBlock'
 import { IntroductionFaqBlock } from '@/blocks/introduction-faq/IntroductionFaqBlock'
+import { MembersBlock } from '@/blocks/members/MembersBlock'
 import { WorkshopCharterBlock } from '@/blocks/workshop-charter/WorkshopCharterBlock'
 
 export type HomepageBlocks = NonNullable<Homepage['blocks']>[number]
 export type DiscoverBlocks = NonNullable<Discover['blocks']>[number]
-export type AllBlocks = HomepageBlocks | DiscoverBlocks
+export type AboutBlocks = NonNullable<About['blocks']>[number]
+export type AllBlocks = HomepageBlocks | DiscoverBlocks | AboutBlocks
 
 export const blockComponents: {
   [K in AllBlocks['blockType']]: React.ComponentType<Extract<AllBlocks, { blockType: K }>>
@@ -25,6 +27,7 @@ export const blockComponents: {
   introduction_workshop: IntroductionWorkshopBlock,
   introduction_team: IntroductionTeamBlock,
   introduction_faq: IntroductionFaqBlock,
+  members: MembersBlock,
   workshop_charter: WorkshopCharterBlock,
 }
 
