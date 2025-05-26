@@ -858,6 +858,38 @@ export interface Process {
             blockName?: string | null;
             blockType: 'feedback';
           }
+        | {
+            title: string;
+            product: {
+              'product-picture'?: (number | null) | Media;
+              comment: {
+                root: {
+                  type: string;
+                  children: {
+                    type: string;
+                    version: number;
+                    [k: string]: unknown;
+                  }[];
+                  direction: ('ltr' | 'rtl') | null;
+                  format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+                  indent: number;
+                  version: number;
+                };
+                [k: string]: unknown;
+              };
+              'comment-url'?: string | null;
+              'shop-url': string;
+            };
+            author: {
+              picture?: (number | null) | Media;
+              author: string;
+              description: string;
+            };
+            background?: boolean | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'book';
+          }
       )[]
     | null;
   _status?: ('draft' | 'published') | null;
@@ -1014,6 +1046,29 @@ export interface ProcessSelect<T extends boolean = true> {
                     miniature?: T;
                     video?: T;
                     id?: T;
+                  };
+              background?: T;
+              id?: T;
+              blockName?: T;
+            };
+        book?:
+          | T
+          | {
+              title?: T;
+              product?:
+                | T
+                | {
+                    'product-picture'?: T;
+                    comment?: T;
+                    'comment-url'?: T;
+                    'shop-url'?: T;
+                  };
+              author?:
+                | T
+                | {
+                    picture?: T;
+                    author?: T;
+                    description?: T;
                   };
               background?: T;
               id?: T;

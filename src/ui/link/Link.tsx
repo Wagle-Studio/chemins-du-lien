@@ -3,11 +3,13 @@ import React, { ComponentProps } from 'react'
 import NextLink from 'next/link'
 import clsx from 'clsx'
 import { ArrowRightIcon } from '../icons/ArrowRightIcon'
+import { ExternalLinkIcon } from '../icons/ExternalLinkIcon'
 
 interface Props extends ComponentProps<typeof NextLink> {
   variant?: 'default' | 'primary' | 'ghost'
   size?: 'default' | 'small'
   internalLink?: boolean
+  externalLink?: boolean
 }
 
 export const Link: React.FC<Props> = ({
@@ -16,6 +18,7 @@ export const Link: React.FC<Props> = ({
   variant = 'default',
   size = 'default',
   internalLink = false,
+  externalLink = false,
   ...props
 }) => {
   return (
@@ -24,16 +27,17 @@ export const Link: React.FC<Props> = ({
         'link',
         `link--variant-${variant}`,
         `link--size-${size}`,
-        { 'link--icon': internalLink },
+        { 'link--icon': internalLink || externalLink },
         className,
       )}
       {...props}
     >
-      {!internalLink && <>{children}</>}
-      {internalLink && (
+      {!internalLink && !externalLink && <>{children}</>}
+      {(internalLink || externalLink) && (
         <>
           <span className="link__content">{children}</span>
-          <ArrowRightIcon className="link__icon" />
+          {internalLink && <ArrowRightIcon className="link__icon" />}
+          {externalLink && <ExternalLinkIcon className="link__icon" />}
         </>
       )}
     </NextLink>
