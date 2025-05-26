@@ -91,10 +91,12 @@ export interface Config {
   globals: {
     homepage: Homepage;
     discover: Discover;
+    about: About;
   };
   globalsSelect: {
     homepage: HomepageSelect<false> | HomepageSelect<true>;
     discover: DiscoverSelect<false> | DiscoverSelect<true>;
+    about: AboutSelect<false> | AboutSelect<true>;
   };
   locale: null;
   user: User & {
@@ -674,6 +676,89 @@ export interface Discover {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "about".
+ */
+export interface About {
+  id: number;
+  title: string;
+  introduction: {
+    root: {
+      type: string;
+      children: {
+        type: string;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  };
+  blocks?:
+    | (
+        | {
+            richText?: {
+              root: {
+                type: string;
+                children: {
+                  type: string;
+                  version: number;
+                  [k: string]: unknown;
+                }[];
+                direction: ('ltr' | 'rtl') | null;
+                format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+                indent: number;
+                version: number;
+              };
+              [k: string]: unknown;
+            } | null;
+            background?: boolean | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'content';
+          }
+        | {
+            title: string;
+            product: {
+              'product-picture'?: (number | null) | Media;
+              comment: {
+                root: {
+                  type: string;
+                  children: {
+                    type: string;
+                    version: number;
+                    [k: string]: unknown;
+                  }[];
+                  direction: ('ltr' | 'rtl') | null;
+                  format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+                  indent: number;
+                  version: number;
+                };
+                [k: string]: unknown;
+              };
+              'comment-url'?: string | null;
+              'shop-url': string;
+            };
+            author: {
+              picture?: (number | null) | Media;
+              author: string;
+              description: string;
+            };
+            background?: boolean | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'book';
+          }
+      )[]
+    | null;
+  _status?: ('draft' | 'published') | null;
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "homepage_select".
  */
 export interface HomepageSelect<T extends boolean = true> {
@@ -820,6 +905,53 @@ export interface DiscoverSelect<T extends boolean = true> {
               subtitle?: T;
               description?: T;
               image?: T;
+              background?: T;
+              id?: T;
+              blockName?: T;
+            };
+      };
+  _status?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "about_select".
+ */
+export interface AboutSelect<T extends boolean = true> {
+  title?: T;
+  introduction?: T;
+  blocks?:
+    | T
+    | {
+        content?:
+          | T
+          | {
+              richText?: T;
+              background?: T;
+              id?: T;
+              blockName?: T;
+            };
+        book?:
+          | T
+          | {
+              title?: T;
+              product?:
+                | T
+                | {
+                    'product-picture'?: T;
+                    comment?: T;
+                    'comment-url'?: T;
+                    'shop-url'?: T;
+                  };
+              author?:
+                | T
+                | {
+                    picture?: T;
+                    author?: T;
+                    description?: T;
+                  };
               background?: T;
               id?: T;
               blockName?: T;
