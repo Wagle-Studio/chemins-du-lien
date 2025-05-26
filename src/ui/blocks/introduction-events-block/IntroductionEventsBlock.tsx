@@ -22,7 +22,7 @@ export const IntroductionEventsBlock: React.FC<Props> = ({ data, events }) => {
   const eventsListRef = useRef<HTMLUListElement>(null)
 
   useEffect(() => {
-    if (!sectionRef.current || !descriptionRef.current || !eventsListRef.current) return
+    if (!sectionRef.current || !descriptionRef.current) return
 
     const ctx = gsap.context(() => {
       gsap.from(descriptionRef.current, {
@@ -36,6 +36,7 @@ export const IntroductionEventsBlock: React.FC<Props> = ({ data, events }) => {
         ease: 'power2.out',
       })
 
+      if (!eventsListRef.current) return
       gsap.from(Array.from(eventsListRef.current!.children), {
         scrollTrigger: {
           trigger: eventsListRef.current,

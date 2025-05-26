@@ -40,7 +40,10 @@ export const FeedbackBlock: React.FC<Props> = ({ data }) => {
   }, [activeIndex])
 
   return (
-    <section className={clsx('feedback_block', { 'feedback_block--background': data.background })}>
+    <section
+      id="feedback_block"
+      className={clsx('feedback_block', { 'feedback_block--background': data.background })}
+    >
       <div className="feedback_block__wrapper">
         <div className="feedback_block__wrapper__left">
           <h2 className="heading_1 with_bar_left">{data.title}</h2>

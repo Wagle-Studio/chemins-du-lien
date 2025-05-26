@@ -124,7 +124,7 @@ export const IntroductionTeamBlock: React.FC<Props> = ({ data }: Props) => {
             </video>
           </div>
           <div className="introduction_team_block__wrapper__right__cta">
-            <Link href="/decouvrir" variant="primary" internalLink>
+            <Link href="/decouvrir#feedback_block" variant="primary" internalLink>
               Voir les retours d&apos;expériences
             </Link>
             <Link href="/collectif" variant="ghost" internalLink>
