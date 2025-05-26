@@ -46,19 +46,19 @@ export const Footer: React.FC<HTMLAttributes<HTMLElement>> = ({ className, ...pr
           <nav className={clsx('footer__wrapper__links__nav')}>
             <ul className={clsx('footer__wrapper__links__nav__list')}>
               <li>
-                <Link href={`#homepage__hero_banner`}>Haut de la page</Link>
+                <Link href={`#top`}>Haut de la page</Link>
               </li>
               <li>
                 <Link href={`/`}>Page d&apos;accueil</Link>
               </li>
               <li>
-                <Link href={`/decouvrir`}>Processus</Link>
+                <Link href={`/decouvrir`}>Découvrir</Link>
               </li>
               <li>
                 <Link href={`/ateliers`}>Les ateliers</Link>
               </li>
               <li>
-                <Link href={`/collectif`}>Le collectif</Link>
+                <Link href={`/a-propos`}>À propos</Link>
               </li>
               <li>
                 <Link href={`/contact`}>Contact</Link>

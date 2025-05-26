@@ -2,13 +2,14 @@
 
 import './faq.scss'
 
-import { useRef, useState } from 'react'
 import clsx from 'clsx'
-import { Faq as FaqType } from '@/payload-types'
+import { useRef, useState } from 'react'
 import { RichText } from '@payloadcms/richtext-lexical/react'
+import { Faq as FaqType } from '@/payload-types'
 import { AllBlocks, ExtractBlock } from '@/types/blocks'
 import { ArrowRightIcon } from '@/ui/atoms/icons/ArrowRightIcon'
 import { Link } from '@/ui/atoms/link/Link'
+
 import { useFaqAnimation } from './useFaqAnimation'
 
 type Props = {
@@ -29,6 +30,7 @@ export const Faq: React.FC<Props> = ({ data, faqs }) => {
 
   return (
     <section
+      id="faq"
       ref={sectionRef}
       className={clsx('faq_block', {
         'faq_block--background': data.background,

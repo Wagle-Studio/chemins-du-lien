@@ -3,11 +3,11 @@
 import './hero-page.scss'
 import { useRef } from 'react'
 import { RichText as ConvertRichText } from '@payloadcms/richtext-lexical/react'
-import { Discover } from '@/payload-types'
+import { About, Discover } from '@/payload-types'
 import { useHeroPageAnimation } from './useHeroPageAnimation'
 
 type Props = {
-  data: Discover
+  data: Discover | About
 }
 
 export const HeroPage: React.FC<Props> = ({ data, ...props }) => {
@@ -18,7 +18,7 @@ export const HeroPage: React.FC<Props> = ({ data, ...props }) => {
   useHeroPageAnimation(sectionRef, headingRef, introductionRef)
 
   return (
-    <section ref={sectionRef} className="page_hero_banner_block" {...props}>
+    <section id="top" ref={sectionRef} className="page_hero_banner_block" {...props}>
       <div className="page_hero_banner_block__wrapper">
         <div className="page_hero_banner_block__wrapper__content">
           <h1 ref={headingRef} className="heading_1">

@@ -2,9 +2,9 @@
 
 import './members.scss'
 
-import { useRef } from 'react'
 import clsx from 'clsx'
 import Image from 'next/image'
+import { useRef } from 'react'
 import { RichText } from '@payloadcms/richtext-lexical/react'
 import { AllBlocks, ExtractBlock } from '@/types/blocks'
 import { useMembersAnimation } from './useMembersAnimation'

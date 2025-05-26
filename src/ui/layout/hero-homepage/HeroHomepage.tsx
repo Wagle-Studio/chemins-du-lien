@@ -22,7 +22,7 @@ export const HeroHomepage: React.FC<Props> = ({ data, ...props }) => {
 
   return (
     <section
-      id="homepage__hero_banner"
+      id="top"
       ref={heroRef}
       className="homepage__hero_banner"
       style={{ background: `url(${banner?.url}) center/cover no-repeat` }}
