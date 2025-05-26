@@ -1,42 +1,31 @@
-import type { Homepage, Article, Cursus as CursusType, Process } from '@/payload-types'
-import { Introduction } from '@/blocks/introduction/Component'
-import { IntroductionEvents } from '@/blocks/introduction-events/Component'
-import { Discoveries } from '@/blocks/discoveries/Component'
-import { Content } from '@/blocks/content/Component'
-import { Events } from '@/blocks/events/Component'
-import { Cursus } from '@/blocks/cursus/Component'
-import { Articles } from '@/blocks/articles/Component'
-import { IntroductionTeam } from '@/blocks/introduction-team/Component'
-import { Instagram } from '@/blocks/instagram/Component'
-import { PageHeroBanner } from '@/blocks/page-hero-banner/Component'
-import { WorkshopCharter } from '@/blocks/workshop-charter/Component'
-import { Feedback } from '@/blocks/feedback/Component'
-import { Book } from '@/blocks/book/Component'
-import { IntroductionFaq } from '@/blocks/introduction-faq/Component'
+import type { Homepage, Discover } from '@/payload-types'
+
+import { BookBlock } from '@/blocks/book/BookBlock'
+import { RichTextBlock } from '@/blocks/rich-text/RichTextBlock'
+import { FeedbackBlock } from '@/blocks/feedback/FeedbackBlock'
+import { InstagramBlock } from '@/blocks/instagram/InstagramBlock'
+import { IntroductionBlock } from '@/blocks/introduction/IntroductionBlock'
+import { IntroductionEventsBlock } from '@/blocks/introduction-events/IntroductionEventsBlock'
+import { IntroductionTeamBlock } from '@/blocks/introduction-team/IntroductionTeamBlock'
+import { IntroductionFaqBlock } from '@/blocks/introduction-faq/IntroductionFaqBlock'
+import { WorkshopCharterBlock } from '@/blocks/workshop-charter/WorkshopCharterBlock'
 
 export type HomepageBlocks = NonNullable<Homepage['blocks']>[number]
-export type ProcessBlocks = NonNullable<Process['blocks']>[number]
-export type ArticleBlocks = NonNullable<Article['blocks']>[number]
-export type CursusBlocks = NonNullable<CursusType['blocks']>[number]
-export type AllBlocks = HomepageBlocks | ProcessBlocks | ArticleBlocks | CursusBlocks
+export type DiscoverBlocks = NonNullable<Discover['blocks']>[number]
+export type AllBlocks = HomepageBlocks | DiscoverBlocks
 
 export const blockComponents: {
   [K in AllBlocks['blockType']]: React.ComponentType<Extract<AllBlocks, { blockType: K }>>
 } = {
-  discoveries: Discoveries,
-  introduction: Introduction,
-  introduction_events: IntroductionEvents,
-  introduction_team: IntroductionTeam,
-  instagram: Instagram,
-  page_hero_banner: PageHeroBanner,
-  workshop_charter: WorkshopCharter,
-  feedback: Feedback,
-  book: Book,
-  content: Content,
-  introduction_faq: IntroductionFaq,
-  events: Events,
-  cursus: Cursus,
-  articles: Articles,
+  book: BookBlock,
+  content: RichTextBlock,
+  feedback: FeedbackBlock,
+  instagram: InstagramBlock,
+  introduction: IntroductionBlock,
+  introduction_events: IntroductionEventsBlock,
+  introduction_team: IntroductionTeamBlock,
+  introduction_faq: IntroductionFaqBlock,
+  workshop_charter: WorkshopCharterBlock,
 }
 
 export type ExtractBlock<T extends { blockType: string }, S extends T['blockType']> = Extract<

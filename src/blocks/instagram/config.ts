@@ -7,5 +7,10 @@ export const Instagram: Block = {
       name: 'background',
       type: 'checkbox',
     },
+    {
+      name: 'profile-url',
+      type: 'text',
+      required: true,
+    },
   ],
 }

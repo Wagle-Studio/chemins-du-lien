@@ -3,7 +3,7 @@
 import './not-found.scss'
 import { useEffect, useRef } from 'react'
 import gsap from 'gsap'
-import { Link } from '@/ui/link/Link'
+import { Link } from '@/ui/atoms/link/Link'
 
 export default function NotFoundPage() {
   const wrapperRef = useRef<HTMLDivElement>(null)

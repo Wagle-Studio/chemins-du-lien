@@ -1,7 +1,6 @@
 import './style.scss'
 import clsx from 'clsx'
 import { CursusDocument, ExerciceDocument } from '@/types/documents'
-import { Link } from '@/ui/link/Link'
 
 interface Props extends React.HTMLAttributes<HTMLElement> {
   cursus: CursusDocument
@@ -26,7 +25,7 @@ export const ExerciceHeader: React.FC<Props> = ({
   return (
     <div className={clsx('exercice_header', className)} {...props}>
       <h3>{currentIndex >= 0 ? `${currentIndex + 1} - ${exercice.title}` : exercice.title}</h3>
-      <div className="exercice_header__nav">
+      {/* <div className="exercice_header__nav">
         {previousExerciceSlug && (
           <Link
             href={`/didacticiel/${cursus.slug}/${previousExerciceSlug}`}
@@ -45,7 +44,7 @@ export const ExerciceHeader: React.FC<Props> = ({
             Suivant
           </Link>
         )}
-      </div>
+      </div> */}
     </div>
   )
 }

@@ -9,9 +9,9 @@ import clsx from 'clsx'
 import { LoginResponse } from '@/types/response'
 import { useAuth } from '@/hooks/useAuth'
 import useFetcher from '@/hooks/useFetcher'
-import { Button } from '@/ui/button/Button.client'
-import { InputText } from '@/ui/inputs/text/InputText'
 import { FormValues, defaultValues, schema } from '@/forms/signin/config'
+import { Button } from '@/ui/atoms/button/Button'
+import { InputText } from '@/ui/atoms/inputs/text/InputText'
 
 export const SignInForm: React.FC<HTMLAttributes<HTMLElement>> = ({ className, ...props }) => {
   const { fetcher, error, isLoading } = useFetcher<LoginResponse>()

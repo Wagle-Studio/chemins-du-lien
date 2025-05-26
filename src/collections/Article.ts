@@ -1,6 +1,6 @@
 import type { CollectionConfig } from 'payload'
 import { useUniqueSlug } from '@/hooks/useUniqueSlug'
-import { Content } from '@/blocks/content/config'
+import { RichText } from '@/blocks/rich-text/config'
 import { Discoveries } from '@/blocks/discoveries/config'
 
 export const Article: CollectionConfig = {
@@ -46,7 +46,7 @@ export const Article: CollectionConfig = {
     {
       name: 'blocks',
       type: 'blocks',
-      blocks: [Content, Discoveries],
+      blocks: [RichText, Discoveries],
     },
   ],
   hooks: {

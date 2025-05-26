@@ -4,7 +4,6 @@ import './style.scss'
 import { usePathname } from 'next/navigation'
 import { Cursus } from '@/payload-types'
 import clsx from 'clsx'
-import { Link } from '@/ui/link/Link'
 
 interface Props extends React.HTMLAttributes<HTMLElement> {
   cursuses: Cursus[]
@@ -27,7 +26,7 @@ export const DidacticielSideBar: React.FC<Props> = ({ cursuses, className, ...pr
                   'didacticiel_sidebar__wrapper__menu__item--active': isActive,
                 })}
               >
-                <Link href={`/didacticiel/${cursus.slug}`}>{cursus.title}</Link>
+                {/* <Link href={`/didacticiel/${cursus.slug}`}>{cursus.title}</Link> */}
               </div>
             )
           })}

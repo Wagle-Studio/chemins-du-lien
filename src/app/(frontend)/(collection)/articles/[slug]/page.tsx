@@ -6,7 +6,6 @@ import { PageParams } from '@/types/app'
 import { getEntryBySlugCached } from '@/utilities/payload/cached'
 import { getEntryBySlug, getStaticParamsFromSlugs } from '@/utilities/payload/collections'
 import { LivePreviewListener } from '@/ui/LivePreviewListener'
-import { Article } from '@/ui/article/Article'
 import { type RequiredDataFromCollectionSlug } from 'payload'
 
 type Args = PageParams<'slug'>
@@ -25,10 +24,11 @@ export default async function ArticlePage({ params: paramsPromise }: Args) {
   if (!article) return notFound()
 
   return (
-    <Article article={article}>
-      {isDraft && <LivePreviewListener />}
-      <RenderBlocks blocks={article.blocks} />
-    </Article>
+    <div></div>
+    // <Article article={article}>
+    //   {isDraft && <LivePreviewListener />}
+    //   <RenderBlocks blocks={article.blocks} />
+    // </Article>
   )
 }
 

@@ -6,7 +6,7 @@ import { Category } from '@/payload-types'
 import { yupResolver } from '@hookform/resolvers/yup'
 import clsx from 'clsx'
 import { FormValues, schema, defaultValues } from '@/forms/event-filters/config'
-import { InputSelect } from '@/ui/inputs/select/InputSelect'
+import { InputSelect } from '@/ui/atoms/inputs/select/InputSelect'
 
 interface EventFiltersFormProps extends HTMLAttributes<HTMLElement> {
   categories: Category[]

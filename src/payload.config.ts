@@ -8,7 +8,7 @@ import path from 'path'
 
 import { serveLivePreview } from './utilities/payload/preview'
 import { Homepage } from './globals/homepage/config'
-import { ProcessPage } from './globals/process/config'
+import { DiscoverPage } from './globals/discover/config'
 import { Users } from './collections/Users'
 import { Media } from './collections/Media'
 import { Article } from './collections/Article'
@@ -33,7 +33,7 @@ export default buildConfig({
       globals: ['homepage', 'process'],
     },
   },
-  globals: [Homepage, ProcessPage],
+  globals: [Homepage, DiscoverPage],
   collections: [Users, Media, Article, Exercices, Cursus, Categories, Events],
   editor: lexicalEditor(),
   secret: process.env.PAYLOAD_SECRET || '',

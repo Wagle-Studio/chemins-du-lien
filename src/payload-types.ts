@@ -96,11 +96,11 @@ export interface Config {
   };
   globals: {
     homepage: Homepage;
-    process: Process;
+    discover: Discover;
   };
   globalsSelect: {
     homepage: HomepageSelect<false> | HomepageSelect<true>;
-    process: ProcessSelect<false> | ProcessSelect<true>;
+    discover: DiscoverSelect<false> | DiscoverSelect<true>;
   };
   locale: null;
   user: User & {
@@ -660,6 +660,7 @@ export interface PayloadMigrationsSelect<T extends boolean = true> {
  */
 export interface Homepage {
   id: number;
+  banner?: (number | null) | Media;
   blocks?:
     | (
         | {
@@ -744,44 +745,10 @@ export interface Homepage {
           }
         | {
             background?: boolean | null;
+            'profile-url': string;
             id?: string | null;
             blockName?: string | null;
             blockType: 'instagram';
-          }
-        | {
-            cards?:
-              | {
-                  title: string;
-                  description: string;
-                  internalLink: {
-                    label: string;
-                    article: number | Article;
-                  };
-                  id?: string | null;
-                }[]
-              | null;
-            id?: string | null;
-            blockName?: string | null;
-            blockType: 'discoveries';
-          }
-        | {
-            type: 'Les trois prochains événements';
-            id?: string | null;
-            blockName?: string | null;
-            blockType: 'events';
-          }
-        | {
-            title: string;
-            description: string;
-            id?: string | null;
-            blockName?: string | null;
-            blockType: 'cursus';
-          }
-        | {
-            type: 'Les trois derniers articles';
-            id?: string | null;
-            blockName?: string | null;
-            blockType: 'articles';
           }
       )[]
     | null;
@@ -791,15 +758,30 @@ export interface Homepage {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "process".
+ * via the `definition` "discover".
  */
-export interface Process {
+export interface Discover {
   id: number;
+  title: string;
+  introduction: {
+    root: {
+      type: string;
+      children: {
+        type: string;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  };
   blocks?:
     | (
         | {
-            title: string;
-            description: {
+            richText?: {
               root: {
                 type: string;
                 children: {
@@ -813,10 +795,11 @@ export interface Process {
                 version: number;
               };
               [k: string]: unknown;
-            };
+            } | null;
+            background?: boolean | null;
             id?: string | null;
             blockName?: string | null;
-            blockType: 'page_hero_banner';
+            blockType: 'content';
           }
         | {
             title: string;
@@ -897,27 +880,6 @@ export interface Process {
             blockType: 'book';
           }
         | {
-            richText?: {
-              root: {
-                type: string;
-                children: {
-                  type: string;
-                  version: number;
-                  [k: string]: unknown;
-                }[];
-                direction: ('ltr' | 'rtl') | null;
-                format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-                indent: number;
-                version: number;
-              };
-              [k: string]: unknown;
-            } | null;
-            background?: boolean | null;
-            id?: string | null;
-            blockName?: string | null;
-            blockType: 'content';
-          }
-        | {
             title: string;
             subtitle: string;
             description: {
@@ -952,6 +914,7 @@ export interface Process {
  * via the `definition` "homepage_select".
  */
 export interface HomepageSelect<T extends boolean = true> {
+  banner?: T;
   blocks?:
     | T
     | {
@@ -1002,47 +965,7 @@ export interface HomepageSelect<T extends boolean = true> {
           | T
           | {
               background?: T;
-              id?: T;
-              blockName?: T;
-            };
-        discoveries?:
-          | T
-          | {
-              cards?:
-                | T
-                | {
-                    title?: T;
-                    description?: T;
-                    internalLink?:
-                      | T
-                      | {
-                          label?: T;
-                          article?: T;
-                        };
-                    id?: T;
-                  };
-              id?: T;
-              blockName?: T;
-            };
-        events?:
-          | T
-          | {
-              type?: T;
-              id?: T;
-              blockName?: T;
-            };
-        cursus?:
-          | T
-          | {
-              title?: T;
-              description?: T;
-              id?: T;
-              blockName?: T;
-            };
-        articles?:
-          | T
-          | {
-              type?: T;
+              'profile-url'?: T;
               id?: T;
               blockName?: T;
             };
@@ -1054,17 +977,19 @@ export interface HomepageSelect<T extends boolean = true> {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "process_select".
+ * via the `definition` "discover_select".
  */
-export interface ProcessSelect<T extends boolean = true> {
+export interface DiscoverSelect<T extends boolean = true> {
+  title?: T;
+  introduction?: T;
   blocks?:
     | T
     | {
-        page_hero_banner?:
+        content?:
           | T
           | {
-              title?: T;
-              description?: T;
+              richText?: T;
+              background?: T;
               id?: T;
               blockName?: T;
             };
@@ -1121,14 +1046,6 @@ export interface ProcessSelect<T extends boolean = true> {
                     author?: T;
                     description?: T;
                   };
-              background?: T;
-              id?: T;
-              blockName?: T;
-            };
-        content?:
-          | T
-          | {
-              richText?: T;
               background?: T;
               id?: T;
               blockName?: T;

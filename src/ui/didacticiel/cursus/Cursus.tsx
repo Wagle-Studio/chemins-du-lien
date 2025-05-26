@@ -2,7 +2,6 @@ import './style.scss'
 import clsx from 'clsx'
 import { CursusDocument } from '@/types/documents'
 import { RenderBlocks } from '@/blocks/RenderBlocks'
-import { Link } from '@/ui/link/Link'
 
 interface Props extends React.HTMLAttributes<HTMLElement> {
   cursus: CursusDocument
@@ -23,13 +22,13 @@ export const Cursus: React.FC<Props> = ({ cursus, className, ...props }) => {
             typeof exercice !== 'number' && (
               <li key={exercice.id} className="cursus__exercices__item">
                 <p>{[index + 1, exercice.title].join(' - ')}</p>
-                <Link
+                {/* <Link
                   href={`/didacticiel/${cursus.slug}/${exercice.slug}`}
                   variant="primary"
                   size="small"
                 >
                   Commencer
-                </Link>
+                </Link> */}
               </li>
             ),
         )}

@@ -1,15 +1,16 @@
+// TODO : Extract layout when implementing dynamic collection detail pages.
+
 import React from 'react'
 import { getGlobal } from '@/utilities/payload/globals'
 import { RenderBlocks } from '@/blocks/RenderBlocks'
-import type { Homepage } from '@/payload-types'
-import { HomepageHero } from '@/ui/homepage-hero/HomepageHero'
+import { HeroHomepage } from '@/ui/layout/hero-homepage/HeroHomepage'
 
 export async function Homepage() {
   const data = await getGlobal('homepage', 1)
 
   return (
     <>
-      <HomepageHero />
+      <HeroHomepage data={data} />
       <RenderBlocks blocks={data.blocks} />
     </>
   )

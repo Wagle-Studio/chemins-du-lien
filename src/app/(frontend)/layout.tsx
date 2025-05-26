@@ -2,8 +2,8 @@ import './globals.scss'
 import React from 'react'
 import { Libre_Franklin, Open_Sans } from 'next/font/google'
 import { AuthWrapper } from '@/auth/AuthWrapper.server'
-import { Header } from '@/ui/header/Header.client'
-import { Footer } from '@/ui/footer/Footer'
+import { Header } from '@/ui/layout/header/Header'
+import { Footer } from '@/ui/layout/footer/Footer'
 
 export const metadata = {
   description: 'Hello world',

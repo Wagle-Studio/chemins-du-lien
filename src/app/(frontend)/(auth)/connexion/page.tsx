@@ -1,5 +1,5 @@
 import { SignInForm } from '@/forms/signin/SigninForm.client'
-import { Link } from '@/ui/link/Link'
+import { Link } from '@/ui/atoms/link/Link'
 
 export default function SignInPage() {
   return (
