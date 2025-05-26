@@ -11,11 +11,8 @@ import { Homepage } from './globals/homepage/config'
 import { DiscoverPage } from './globals/discover/config'
 import { Users } from './collections/Users'
 import { Media } from './collections/Media'
-import { Article } from './collections/Article'
 import { Categories } from './collections/Categories'
-import { Exercices } from './collections/Exercices'
-import { Cursus } from './collections/Cursus'
-import { Events } from './collections/Events'
+import { Workshops } from './collections/Workshops'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -29,12 +26,12 @@ export default buildConfig({
     livePreview: {
       url: ({ data, collectionConfig, globalConfig }) =>
         serveLivePreview(data, collectionConfig, globalConfig),
-      collections: ['articles', 'cursus', 'exercices'],
-      globals: ['homepage', 'process'],
+      collections: [],
+      globals: ['homepage', 'discover'],
     },
   },
   globals: [Homepage, DiscoverPage],
-  collections: [Users, Media, Article, Exercices, Cursus, Categories, Events],
+  collections: [Users, Media, Categories, Workshops],
   editor: lexicalEditor(),
   secret: process.env.PAYLOAD_SECRET || '',
   typescript: {

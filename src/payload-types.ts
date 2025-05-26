@@ -69,11 +69,8 @@ export interface Config {
   collections: {
     users: User;
     media: Media;
-    articles: Article;
-    exercices: Exercice;
-    cursus: Cursus;
     categories: Category;
-    events: Event;
+    workshops: Workshop;
     'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
     'payload-migrations': PayloadMigration;
@@ -82,11 +79,8 @@ export interface Config {
   collectionsSelect: {
     users: UsersSelect<false> | UsersSelect<true>;
     media: MediaSelect<false> | MediaSelect<true>;
-    articles: ArticlesSelect<false> | ArticlesSelect<true>;
-    exercices: ExercicesSelect<false> | ExercicesSelect<true>;
-    cursus: CursusSelect<false> | CursusSelect<true>;
     categories: CategoriesSelect<false> | CategoriesSelect<true>;
-    events: EventsSelect<false> | EventsSelect<true>;
+    workshops: WorkshopsSelect<false> | WorkshopsSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
     'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
     'payload-migrations': PayloadMigrationsSelect<false> | PayloadMigrationsSelect<true>;
@@ -197,62 +191,6 @@ export interface Media {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "articles".
- */
-export interface Article {
-  id: number;
-  slug?: string | null;
-  title: string;
-  description: string;
-  categories?: (number | Category)[] | null;
-  author?: (number | null) | User;
-  blocks?:
-    | (
-        | {
-            richText?: {
-              root: {
-                type: string;
-                children: {
-                  type: string;
-                  version: number;
-                  [k: string]: unknown;
-                }[];
-                direction: ('ltr' | 'rtl') | null;
-                format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-                indent: number;
-                version: number;
-              };
-              [k: string]: unknown;
-            } | null;
-            background?: boolean | null;
-            id?: string | null;
-            blockName?: string | null;
-            blockType: 'content';
-          }
-        | {
-            cards?:
-              | {
-                  title: string;
-                  description: string;
-                  internalLink: {
-                    label: string;
-                    article: number | Article;
-                  };
-                  id?: string | null;
-                }[]
-              | null;
-            id?: string | null;
-            blockName?: string | null;
-            blockType: 'discoveries';
-          }
-      )[]
-    | null;
-  updatedAt: string;
-  createdAt: string;
-  _status?: ('draft' | 'published') | null;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "categories".
  */
 export interface Category {
@@ -261,84 +199,13 @@ export interface Category {
   title: string;
   updatedAt: string;
   createdAt: string;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "exercices".
- */
-export interface Exercice {
-  id: number;
-  slug?: string | null;
-  title: string;
-  blocks?:
-    | {
-        richText?: {
-          root: {
-            type: string;
-            children: {
-              type: string;
-              version: number;
-              [k: string]: unknown;
-            }[];
-            direction: ('ltr' | 'rtl') | null;
-            format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-            indent: number;
-            version: number;
-          };
-          [k: string]: unknown;
-        } | null;
-        background?: boolean | null;
-        id?: string | null;
-        blockName?: string | null;
-        blockType: 'content';
-      }[]
-    | null;
-  updatedAt: string;
-  createdAt: string;
   _status?: ('draft' | 'published') | null;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "cursus".
+ * via the `definition` "workshops".
  */
-export interface Cursus {
-  id: number;
-  slug?: string | null;
-  title: string;
-  exercices?: (number | Exercice)[] | null;
-  categories?: (number | Category)[] | null;
-  blocks?:
-    | {
-        richText?: {
-          root: {
-            type: string;
-            children: {
-              type: string;
-              version: number;
-              [k: string]: unknown;
-            }[];
-            direction: ('ltr' | 'rtl') | null;
-            format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-            indent: number;
-            version: number;
-          };
-          [k: string]: unknown;
-        } | null;
-        background?: boolean | null;
-        id?: string | null;
-        blockName?: string | null;
-        blockType: 'content';
-      }[]
-    | null;
-  updatedAt: string;
-  createdAt: string;
-  _status?: ('draft' | 'published') | null;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "events".
- */
-export interface Event {
+export interface Workshop {
   id: number;
   slug?: string | null;
   title: string;
@@ -369,24 +236,12 @@ export interface PayloadLockedDocument {
         value: number | Media;
       } | null)
     | ({
-        relationTo: 'articles';
-        value: number | Article;
-      } | null)
-    | ({
-        relationTo: 'exercices';
-        value: number | Exercice;
-      } | null)
-    | ({
-        relationTo: 'cursus';
-        value: number | Cursus;
-      } | null)
-    | ({
         relationTo: 'categories';
         value: number | Category;
       } | null)
     | ({
-        relationTo: 'events';
-        value: number | Event;
+        relationTo: 'workshops';
+        value: number | Workshop;
       } | null);
   globalSlug?: string | null;
   user: {
@@ -503,99 +358,6 @@ export interface MediaSelect<T extends boolean = true> {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "articles_select".
- */
-export interface ArticlesSelect<T extends boolean = true> {
-  slug?: T;
-  title?: T;
-  description?: T;
-  categories?: T;
-  author?: T;
-  blocks?:
-    | T
-    | {
-        content?:
-          | T
-          | {
-              richText?: T;
-              background?: T;
-              id?: T;
-              blockName?: T;
-            };
-        discoveries?:
-          | T
-          | {
-              cards?:
-                | T
-                | {
-                    title?: T;
-                    description?: T;
-                    internalLink?:
-                      | T
-                      | {
-                          label?: T;
-                          article?: T;
-                        };
-                    id?: T;
-                  };
-              id?: T;
-              blockName?: T;
-            };
-      };
-  updatedAt?: T;
-  createdAt?: T;
-  _status?: T;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "exercices_select".
- */
-export interface ExercicesSelect<T extends boolean = true> {
-  slug?: T;
-  title?: T;
-  blocks?:
-    | T
-    | {
-        content?:
-          | T
-          | {
-              richText?: T;
-              background?: T;
-              id?: T;
-              blockName?: T;
-            };
-      };
-  updatedAt?: T;
-  createdAt?: T;
-  _status?: T;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "cursus_select".
- */
-export interface CursusSelect<T extends boolean = true> {
-  slug?: T;
-  title?: T;
-  exercices?: T;
-  categories?: T;
-  blocks?:
-    | T
-    | {
-        content?:
-          | T
-          | {
-              richText?: T;
-              background?: T;
-              id?: T;
-              blockName?: T;
-            };
-      };
-  updatedAt?: T;
-  createdAt?: T;
-  _status?: T;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "categories_select".
  */
 export interface CategoriesSelect<T extends boolean = true> {
@@ -603,12 +365,13 @@ export interface CategoriesSelect<T extends boolean = true> {
   title?: T;
   updatedAt?: T;
   createdAt?: T;
+  _status?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "events_select".
+ * via the `definition` "workshops_select".
  */
-export interface EventsSelect<T extends boolean = true> {
+export interface WorkshopsSelect<T extends boolean = true> {
   slug?: T;
   title?: T;
   description?: T;
@@ -708,7 +471,7 @@ export interface Homepage {
             background?: boolean | null;
             id?: string | null;
             blockName?: string | null;
-            blockType: 'introduction_events';
+            blockType: 'introduction_workshop';
           }
         | {
             title: string;
@@ -929,7 +692,7 @@ export interface HomepageSelect<T extends boolean = true> {
               id?: T;
               blockName?: T;
             };
-        introduction_events?:
+        introduction_workshop?:
           | T
           | {
               title?: T;

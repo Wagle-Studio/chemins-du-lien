@@ -1,24 +1,24 @@
 import React from 'react'
 import { draftMode } from 'next/headers'
 import { notFound } from 'next/navigation'
-import { Discover } from '@/globals/discover/Component'
 import { getGlobal } from '@/utilities/payload/globals'
 import { getGlobalCached } from '@/utilities/payload/cached'
 import { LivePreviewListener } from '@/ui/LivePreviewListener'
+import { DiscoverPage } from '@/ui/pages/DiscoverPage'
 
-export default async function ProcessPage() {
+export default async function Discover() {
   const { isEnabled: isDraft } = await draftMode()
 
-  const processPage = isDraft
+  const discoverPage = isDraft
     ? await getGlobal('discover', 1)
     : await getGlobalCached('discover', 1)
 
-  if (!processPage) return notFound()
+  if (!discoverPage) return notFound()
 
   return (
     <>
       {isDraft && <LivePreviewListener />}
-      <Discover />
+      <DiscoverPage data={discoverPage} />
     </>
   )
 }

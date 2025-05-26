@@ -5,7 +5,7 @@ import { RichTextBlock } from '@/blocks/rich-text/RichTextBlock'
 import { FeedbackBlock } from '@/blocks/feedback/FeedbackBlock'
 import { InstagramBlock } from '@/blocks/instagram/InstagramBlock'
 import { IntroductionBlock } from '@/blocks/introduction/IntroductionBlock'
-import { IntroductionEventsBlock } from '@/blocks/introduction-events/IntroductionEventsBlock'
+import { IntroductionWorkshopBlock } from '@/blocks/introduction-workshop/IntroductionWorkshopBlock'
 import { IntroductionTeamBlock } from '@/blocks/introduction-team/IntroductionTeamBlock'
 import { IntroductionFaqBlock } from '@/blocks/introduction-faq/IntroductionFaqBlock'
 import { WorkshopCharterBlock } from '@/blocks/workshop-charter/WorkshopCharterBlock'
@@ -22,7 +22,7 @@ export const blockComponents: {
   feedback: FeedbackBlock,
   instagram: InstagramBlock,
   introduction: IntroductionBlock,
-  introduction_events: IntroductionEventsBlock,
+  introduction_workshop: IntroductionWorkshopBlock,
   introduction_team: IntroductionTeamBlock,
   introduction_faq: IntroductionFaqBlock,
   workshop_charter: WorkshopCharterBlock,

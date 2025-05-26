@@ -1,6 +1,6 @@
 import { GlobalConfig } from 'payload'
 import { Introduction } from '@/blocks/introduction/config'
-import { IntroductionEvents } from '@/blocks/introduction-events/config'
+import { IntroductionWorkshop } from '@/blocks/introduction-workshop/config'
 import { IntroductionTeam } from '@/blocks/introduction-team/config'
 import { Instagram } from '@/blocks/instagram/config'
 
@@ -18,7 +18,7 @@ export const Homepage: GlobalConfig = {
     {
       name: 'blocks',
       type: 'blocks',
-      blocks: [Introduction, IntroductionEvents, IntroductionTeam, Instagram],
+      blocks: [Introduction, IntroductionWorkshop, IntroductionTeam, Instagram],
     },
   ],
 }

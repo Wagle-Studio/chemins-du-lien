@@ -34,7 +34,7 @@ export const useUniqueSlug: CollectionBeforeChangeHook = async ({
   const isDuplicate = doc && doc.id !== originalDoc?.id
 
   if (isDuplicate) {
-    throw new APIError(`Un ${collection.slug} avec ce titre existe déjà`, 400)
+    throw new APIError(`Un(e) ${collection.slug} avec ce titre existe déjà`, 400)
   }
 
   return {

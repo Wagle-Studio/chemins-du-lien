@@ -1,4 +1,4 @@
-import { Article, Event, User } from '@/payload-types'
+import { Workshop, User } from '@/payload-types'
 
 export type LoginResponse = {
   user: User
@@ -10,5 +10,4 @@ export type RegisterResponse = {
   token: string
 }
 
-export type EventsResponse = Event[]
-export type ArticlesResponse = Article[]
+export type WorkshopsResponse = Workshop[]

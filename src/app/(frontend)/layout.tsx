@@ -1,13 +1,10 @@
-import './globals.scss'
 import React from 'react'
 import { Libre_Franklin, Open_Sans } from 'next/font/google'
-import { AuthWrapper } from '@/auth/AuthWrapper.server'
-import { Header } from '@/ui/layout/header/Header'
-import { Footer } from '@/ui/layout/footer/Footer'
+import { PageLayout } from '@/ui/layout/page-layout/PageLayout'
 
 export const metadata = {
-  description: 'Hello world',
-  title: 'Hello world',
+  description: 'Chemins du lien',
+  title: 'Chemins du lien',
 }
 
 const libreFranklin = Libre_Franklin({ subsets: ['latin'] })
@@ -18,18 +15,5 @@ const fonts = [libreFranklin.className, openSans.className]
 export default async function RootLayout(props: { children: React.ReactNode }) {
   const { children } = props
 
-  return (
-    <html lang="en">
-      <head></head>
-      <body>
-        <AuthWrapper>
-          <div>
-            <Header />
-            <main className={fonts.join(' ')}>{children}</main>
-          </div>
-          <Footer />
-        </AuthWrapper>
-      </body>
-    </html>
-  )
+  return <PageLayout fonts={fonts}>{children}</PageLayout>
 }

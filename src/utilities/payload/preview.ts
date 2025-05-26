@@ -23,7 +23,7 @@ export const serveLivePreview = (
     switch (globalConfig.slug) {
       case 'homepage':
         return `/api/preview?redirect=/`
-      case 'process':
+      case 'discover':
         return `/api/preview?redirect=/decouvrir`
       default:
         return '/'
