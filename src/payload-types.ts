@@ -224,6 +224,7 @@ export interface Article {
               };
               [k: string]: unknown;
             } | null;
+            background?: boolean | null;
             id?: string | null;
             blockName?: string | null;
             blockType: 'content';
@@ -286,6 +287,7 @@ export interface Exercice {
           };
           [k: string]: unknown;
         } | null;
+        background?: boolean | null;
         id?: string | null;
         blockName?: string | null;
         blockType: 'content';
@@ -322,6 +324,7 @@ export interface Cursus {
           };
           [k: string]: unknown;
         } | null;
+        background?: boolean | null;
         id?: string | null;
         blockName?: string | null;
         blockType: 'content';
@@ -515,6 +518,7 @@ export interface ArticlesSelect<T extends boolean = true> {
           | T
           | {
               richText?: T;
+              background?: T;
               id?: T;
               blockName?: T;
             };
@@ -556,6 +560,7 @@ export interface ExercicesSelect<T extends boolean = true> {
           | T
           | {
               richText?: T;
+              background?: T;
               id?: T;
               blockName?: T;
             };
@@ -580,6 +585,7 @@ export interface CursusSelect<T extends boolean = true> {
           | T
           | {
               richText?: T;
+              background?: T;
               id?: T;
               blockName?: T;
             };
@@ -890,6 +896,27 @@ export interface Process {
             blockName?: string | null;
             blockType: 'book';
           }
+        | {
+            richText?: {
+              root: {
+                type: string;
+                children: {
+                  type: string;
+                  version: number;
+                  [k: string]: unknown;
+                }[];
+                direction: ('ltr' | 'rtl') | null;
+                format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+                indent: number;
+                version: number;
+              };
+              [k: string]: unknown;
+            } | null;
+            background?: boolean | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'content';
+          }
       )[]
     | null;
   _status?: ('draft' | 'published') | null;
@@ -1070,6 +1097,14 @@ export interface ProcessSelect<T extends boolean = true> {
                     author?: T;
                     description?: T;
                   };
+              background?: T;
+              id?: T;
+              blockName?: T;
+            };
+        content?:
+          | T
+          | {
+              richText?: T;
               background?: T;
               id?: T;
               blockName?: T;

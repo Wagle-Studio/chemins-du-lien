@@ -8,5 +8,9 @@ export const Content: Block = {
       type: 'richText',
       label: false,
     },
+    {
+      name: 'background',
+      type: 'checkbox',
+    },
   ],
 }

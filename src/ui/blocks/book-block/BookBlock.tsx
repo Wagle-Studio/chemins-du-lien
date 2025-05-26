@@ -17,7 +17,7 @@ type Props = {
   data: ExtractBlock<AllBlocks, 'book'>
 }
 
-export const BookBlock: React.FC<Props> = ({ data }) => {
+export const BookBlock: React.FC<Props> = ({ data }: Props) => {
   return (
     <section className={clsx('book_block', { 'book_block--background': data.background })}>
       <div className="book_block__wrapper">

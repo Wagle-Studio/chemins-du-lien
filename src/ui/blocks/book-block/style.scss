@@ -116,13 +116,6 @@
   .book_block {
     &__wrapper {
       padding: var(--space-12) var(--space-6);
-    }
-  }
-}
-
-@media screen and (min-width: 768px) {
-  .book_block {
-    &__wrapper {
       grid-template-columns: 220px 1fr;
       grid-template-rows: max-content;
       column-gap: var(--space-10);
