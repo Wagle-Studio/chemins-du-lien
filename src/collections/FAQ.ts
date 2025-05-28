@@ -3,6 +3,10 @@ import { useUniqueSlug } from '@/hooks/useUniqueSlug'
 
 export const FAQ: CollectionConfig = {
   slug: 'faq',
+  labels: {
+    singular: 'Foire aux questions',
+    plural: 'Foire aux questions',
+  },
   admin: {
     useAsTitle: 'question',
   },

@@ -1,3 +1,5 @@
+// TODO : Work on fallback.
+
 import React, { Suspense } from 'react'
 import { Category } from '@/payload-types'
 import { WorkshopList } from '@/ui/molecules/workshop-list/WorkshopList'

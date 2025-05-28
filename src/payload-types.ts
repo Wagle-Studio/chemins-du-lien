@@ -474,6 +474,7 @@ export interface Homepage {
   blocks?:
     | (
         | {
+            background?: boolean | null;
             title: string;
             subtitle: string;
             description: {
@@ -492,12 +493,12 @@ export interface Homepage {
               [k: string]: unknown;
             };
             image?: (number | null) | Media;
-            background?: boolean | null;
             id?: string | null;
             blockName?: string | null;
             blockType: 'introduction';
           }
         | {
+            background?: boolean | null;
             title: string;
             description: {
               root: {
@@ -515,12 +516,12 @@ export interface Homepage {
               [k: string]: unknown;
             };
             image?: (number | null) | Media;
-            background?: boolean | null;
             id?: string | null;
             blockName?: string | null;
             blockType: 'introduction_workshop';
           }
         | {
+            background?: boolean | null;
             title: string;
             description: {
               root: {
@@ -548,7 +549,6 @@ export interface Homepage {
                   id?: string | null;
                 }[]
               | null;
-            background?: boolean | null;
             id?: string | null;
             blockName?: string | null;
             blockType: 'introduction_team';
@@ -573,7 +573,7 @@ export interface Homepage {
 export interface Discover {
   id: number;
   title: string;
-  introduction: {
+  introduction?: {
     root: {
       type: string;
       children: {
@@ -587,7 +587,7 @@ export interface Discover {
       version: number;
     };
     [k: string]: unknown;
-  };
+  } | null;
   blocks?:
     | (
         | {
@@ -856,27 +856,28 @@ export interface HomepageSelect<T extends boolean = true> {
         introduction?:
           | T
           | {
+              background?: T;
               title?: T;
               subtitle?: T;
               description?: T;
               image?: T;
-              background?: T;
               id?: T;
               blockName?: T;
             };
         introduction_workshop?:
           | T
           | {
+              background?: T;
               title?: T;
               description?: T;
               image?: T;
-              background?: T;
               id?: T;
               blockName?: T;
             };
         introduction_team?:
           | T
           | {
+              background?: T;
               title?: T;
               description?: T;
               'highlight-video'?:
@@ -892,7 +893,6 @@ export interface HomepageSelect<T extends boolean = true> {
                     'profile-picture'?: T;
                     id?: T;
                   };
-              background?: T;
               id?: T;
               blockName?: T;
             };

@@ -7,6 +7,7 @@ import { Instagram } from '@/blocks/instagram/config'
 
 export const AboutPage: GlobalConfig = {
   slug: 'about',
+  label: 'Page à propos',
   versions: {
     drafts: true,
   },

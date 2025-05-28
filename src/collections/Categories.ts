@@ -3,6 +3,10 @@ import { useUniqueSlug } from '@/hooks/useUniqueSlug'
 
 export const Categories: CollectionConfig = {
   slug: 'categories',
+  labels: {
+    singular: 'Catégorie',
+    plural: 'Catégories',
+  },
   admin: {
     useAsTitle: 'title',
   },

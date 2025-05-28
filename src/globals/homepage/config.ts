@@ -6,17 +6,20 @@ import { Instagram } from '@/blocks/instagram/config'
 
 export const Homepage: GlobalConfig = {
   slug: 'homepage',
+  label: "Page d'accueil",
   versions: {
     drafts: true,
   },
   fields: [
     {
       name: 'banner',
+      label: 'Image de banière',
       type: 'upload',
       relationTo: 'media',
     },
     {
       name: 'blocks',
+      label: 'Blocs de la page',
       type: 'blocks',
       blocks: [Introduction, IntroductionWorkshop, IntroductionTeam, Instagram],
     },
