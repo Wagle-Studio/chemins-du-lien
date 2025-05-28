@@ -1,4 +1,4 @@
-# ACR
+# Chemins du lien
 
 🛡️ TypeScript . ⚛️ Next.js . 📦 Payload CMS
 
@@ -13,8 +13,8 @@ L’objectif est double : proposer une base solide pour une application durable,
 
 ## Présentation
 
-**ACR** est une application web permettant la gestion de parcours pédagogiques composés d’exercices.  
-Elle propose une interface publique, une interface d’administration via Payload, ainsi qu’un système d’authentification hybride.
+**Chemins du lien** est une application web permettant la gestion de parcours pédagogiques composés d’exercices.  
+Elle propose une interface publique ainsi qu'une interface d’administration via Payload.
 
 🔹 **Exercices** : unités de contenu structurées en blocs (texte, image, etc.)  
 🔹 **Cursus** : organisation des exercices en catégories et séquences  
@@ -35,8 +35,8 @@ Elle propose une interface publique, une interface d’administration via Payloa
 ## Installation
 
 ```sh
-git clone git@github.com:Wagle-Studio/acr.git
-cd acr
+git@github.com:Wagle-Studio/chemins-du-lien.git
+cd chemins-du-lien
 cp .env.example .env # Configure les variables d’environnement
 npm install
 npm dev
