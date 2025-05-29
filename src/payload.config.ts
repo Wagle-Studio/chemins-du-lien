@@ -1,3 +1,4 @@
+import { fr } from '@payloadcms/translations/languages/fr'
 import { buildConfig } from 'payload'
 import { postgresAdapter } from '@payloadcms/db-postgres'
 import { payloadCloudPlugin } from '@payloadcms/payload-cloud'
@@ -32,6 +33,10 @@ export default buildConfig({
       collections: [],
       globals: ['homepage', 'discover'],
     },
+  },
+  i18n: {
+    fallbackLanguage: 'en',
+    supportedLanguages: { fr },
   },
   globals: [Homepage, DiscoverPage, AboutPage],
   collections: [Users, Media, Categories, Workshops, FAQ],

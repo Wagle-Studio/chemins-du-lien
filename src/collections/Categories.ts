@@ -19,6 +19,7 @@ export const Categories: CollectionConfig = {
   fields: [
     {
       name: 'slug',
+      label: 'Slug',
       type: 'text',
       admin: {
         readOnly: true,
@@ -26,6 +27,7 @@ export const Categories: CollectionConfig = {
     },
     {
       name: 'title',
+      label: 'Titre',
       type: 'text',
       required: true,
       unique: true,

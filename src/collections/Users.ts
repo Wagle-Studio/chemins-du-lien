@@ -17,21 +17,25 @@ export const Users: CollectionConfig = {
   fields: [
     {
       name: 'firstname',
+      label: 'Prénom',
       type: 'text',
       required: true,
     },
     {
       name: 'lastname',
+      label: 'Nom',
       type: 'text',
       required: true,
     },
     {
       name: 'avatar',
+      label: 'Avatar',
       type: 'upload',
       relationTo: 'media',
     },
     {
       name: 'fullName',
+      label: 'Nom complet',
       type: 'text',
       admin: {
         hidden: true,

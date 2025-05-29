@@ -1,5 +1,4 @@
 import type { CollectionConfig } from 'payload'
-import { useUniqueSlug } from '@/hooks/useUniqueSlug'
 
 export const FAQ: CollectionConfig = {
   slug: 'faq',
@@ -18,25 +17,17 @@ export const FAQ: CollectionConfig = {
   },
   fields: [
     {
-      name: 'slug',
-      type: 'text',
-      admin: {
-        readOnly: true,
-      },
-    },
-    {
       name: 'question',
+      label: 'Question',
       type: 'text',
       required: true,
       unique: true,
     },
     {
       name: 'answer',
+      label: 'Réponse',
       type: 'richText',
       required: true,
     },
   ],
-  hooks: {
-    beforeChange: [useUniqueSlug],
-  },
 }

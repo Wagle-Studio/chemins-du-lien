@@ -16,6 +16,7 @@ export const Media: CollectionConfig = {
   fields: [
     {
       name: 'alt',
+      label: 'Texte alternatif (accessibilité)',
       type: 'text',
       required: true,
     },

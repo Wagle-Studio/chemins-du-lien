@@ -2,15 +2,22 @@ import { Block } from 'payload'
 
 export const Faq: Block = {
   slug: 'faq',
+  labels: {
+    singular: 'Bloc FAQ',
+    plural: 'Blocs FAQ',
+  },
+  imageURL: 'http://localhost:3000/block_illustrations/block_faq.jpg',
   fields: [
     {
-      name: 'title',
-      type: 'text',
-      required: true,
+      name: 'background',
+      label: 'Fond gris',
+      type: 'checkbox',
     },
     {
-      name: 'background',
-      type: 'checkbox',
+      name: 'title',
+      label: 'Titre',
+      type: 'text',
+      required: true,
     },
   ],
 }

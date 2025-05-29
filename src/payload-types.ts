@@ -218,7 +218,7 @@ export interface Workshop {
   date: string;
   'meeting-location': string;
   capacity: number;
-  status: 'Programmé' | 'Confirmé' | 'Annulé' | 'Reporté';
+  status: 'programmed' | 'confirmed' | 'canceled' | 'reported';
   categories?: (number | Category)[] | null;
   updatedAt: string;
   createdAt: string;
@@ -230,7 +230,6 @@ export interface Workshop {
  */
 export interface Faq {
   id: number;
-  slug?: string | null;
   question: string;
   answer: {
     root: {
@@ -425,7 +424,6 @@ export interface WorkshopsSelect<T extends boolean = true> {
  * via the `definition` "faq_select".
  */
 export interface FaqSelect<T extends boolean = true> {
-  slug?: T;
   question?: T;
   answer?: T;
   updatedAt?: T;
@@ -591,6 +589,7 @@ export interface Discover {
   blocks?:
     | (
         | {
+            background?: boolean | null;
             richText?: {
               root: {
                 type: string;
@@ -606,12 +605,12 @@ export interface Discover {
               };
               [k: string]: unknown;
             } | null;
-            background?: boolean | null;
             id?: string | null;
             blockName?: string | null;
             blockType: 'content';
           }
         | {
+            background?: boolean | null;
             title: string;
             subtitle: string;
             item?:
@@ -622,12 +621,12 @@ export interface Discover {
                 }[]
               | null;
             image?: (number | null) | Media;
-            background?: boolean | null;
             id?: string | null;
             blockName?: string | null;
             blockType: 'workshop_charter';
           }
         | {
+            background?: boolean | null;
             title: string;
             description: {
               root: {
@@ -652,12 +651,12 @@ export interface Discover {
                   id?: string | null;
                 }[]
               | null;
-            background?: boolean | null;
             id?: string | null;
             blockName?: string | null;
             blockType: 'feedback';
           }
         | {
+            background?: boolean | null;
             title: string;
             product: {
               'product-picture'?: (number | null) | Media;
@@ -684,12 +683,12 @@ export interface Discover {
               author: string;
               description: string;
             };
-            background?: boolean | null;
             id?: string | null;
             blockName?: string | null;
             blockType: 'book';
           }
         | {
+            background?: boolean | null;
             title: string;
             subtitle: string;
             description: {
@@ -708,7 +707,6 @@ export interface Discover {
               [k: string]: unknown;
             };
             image?: (number | null) | Media;
-            background?: boolean | null;
             id?: string | null;
             blockName?: string | null;
             blockType: 'introduction_faq';
@@ -744,6 +742,7 @@ export interface About {
   blocks?:
     | (
         | {
+            background?: boolean | null;
             richText?: {
               root: {
                 type: string;
@@ -759,12 +758,12 @@ export interface About {
               };
               [k: string]: unknown;
             } | null;
-            background?: boolean | null;
             id?: string | null;
             blockName?: string | null;
             blockType: 'content';
           }
         | {
+            background?: boolean | null;
             members?:
               | {
                   'profile-picture': number | Media;
@@ -787,12 +786,12 @@ export interface About {
                   id?: string | null;
                 }[]
               | null;
-            background?: boolean | null;
             id?: string | null;
             blockName?: string | null;
             blockType: 'members';
           }
         | {
+            background?: boolean | null;
             title: string;
             product: {
               'product-picture'?: (number | null) | Media;
@@ -819,14 +818,13 @@ export interface About {
               author: string;
               description: string;
             };
-            background?: boolean | null;
             id?: string | null;
             blockName?: string | null;
             blockType: 'book';
           }
         | {
-            title: string;
             background?: boolean | null;
+            title: string;
             id?: string | null;
             blockName?: string | null;
             blockType: 'faq';
@@ -923,14 +921,15 @@ export interface DiscoverSelect<T extends boolean = true> {
         content?:
           | T
           | {
-              richText?: T;
               background?: T;
+              richText?: T;
               id?: T;
               blockName?: T;
             };
         workshop_charter?:
           | T
           | {
+              background?: T;
               title?: T;
               subtitle?: T;
               item?:
@@ -941,13 +940,13 @@ export interface DiscoverSelect<T extends boolean = true> {
                     id?: T;
                   };
               image?: T;
-              background?: T;
               id?: T;
               blockName?: T;
             };
         feedback?:
           | T
           | {
+              background?: T;
               title?: T;
               description?: T;
               videos?:
@@ -958,13 +957,13 @@ export interface DiscoverSelect<T extends boolean = true> {
                     video?: T;
                     id?: T;
                   };
-              background?: T;
               id?: T;
               blockName?: T;
             };
         book?:
           | T
           | {
+              background?: T;
               title?: T;
               product?:
                 | T
@@ -981,18 +980,17 @@ export interface DiscoverSelect<T extends boolean = true> {
                     author?: T;
                     description?: T;
                   };
-              background?: T;
               id?: T;
               blockName?: T;
             };
         introduction_faq?:
           | T
           | {
+              background?: T;
               title?: T;
               subtitle?: T;
               description?: T;
               image?: T;
-              background?: T;
               id?: T;
               blockName?: T;
             };
@@ -1015,14 +1013,15 @@ export interface AboutSelect<T extends boolean = true> {
         content?:
           | T
           | {
-              richText?: T;
               background?: T;
+              richText?: T;
               id?: T;
               blockName?: T;
             };
         members?:
           | T
           | {
+              background?: T;
               members?:
                 | T
                 | {
@@ -1031,13 +1030,13 @@ export interface AboutSelect<T extends boolean = true> {
                     description?: T;
                     id?: T;
                   };
-              background?: T;
               id?: T;
               blockName?: T;
             };
         book?:
           | T
           | {
+              background?: T;
               title?: T;
               product?:
                 | T
@@ -1054,15 +1053,14 @@ export interface AboutSelect<T extends boolean = true> {
                     author?: T;
                     description?: T;
                   };
-              background?: T;
               id?: T;
               blockName?: T;
             };
         faq?:
           | T
           | {
-              title?: T;
               background?: T;
+              title?: T;
               id?: T;
               blockName?: T;
             };
