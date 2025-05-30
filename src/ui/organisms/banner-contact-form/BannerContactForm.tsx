@@ -1,5 +1,7 @@
 'use client'
 
+// TODO : update UI design.
+
 import './banner-contact-form.scss'
 
 import { useRef, useState } from 'react'

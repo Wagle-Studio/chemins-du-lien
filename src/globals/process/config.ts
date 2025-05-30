@@ -1,3 +1,5 @@
+// TODO : implement other blocks.
+
 import { GlobalConfig } from 'payload'
 import { RichTextMinimal } from '@/fields/RichTextMinimal'
 import { ArticleRichText } from '@/blocks/article-rich-text/config'

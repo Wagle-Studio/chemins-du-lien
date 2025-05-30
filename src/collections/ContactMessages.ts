@@ -1,3 +1,5 @@
+// TODO : make it creatable by public user.
+
 import type { CollectionConfig } from 'payload'
 
 export const ContactMessages: CollectionConfig = {

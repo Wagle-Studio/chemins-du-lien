@@ -7,6 +7,8 @@ export const metadata = {
   title: 'Chemins du lien',
 }
 
+// TODO : fix fonts loadind on VPS.
+
 const libreFranklin = Libre_Franklin({ subsets: ['latin'] })
 const openSans = Open_Sans({ subsets: ['latin'] })
 

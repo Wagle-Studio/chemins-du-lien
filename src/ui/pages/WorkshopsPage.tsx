@@ -1,4 +1,4 @@
-// TODO : Work on fallback.
+// TODO : work on fallback.
 
 import React, { Suspense } from 'react'
 import { Category } from '@/payload-types'
