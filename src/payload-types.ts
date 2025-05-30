@@ -610,7 +610,7 @@ export interface Homepage {
 export interface Discover {
   id: number;
   title: string;
-  introduction?: {
+  introduction: {
     root: {
       type: string;
       children: {
@@ -624,12 +624,12 @@ export interface Discover {
       version: number;
     };
     [k: string]: unknown;
-  } | null;
+  };
   blocks?:
     | (
         | {
             background?: boolean | null;
-            richText?: {
+            richText: {
               root: {
                 type: string;
                 children: {
@@ -643,10 +643,10 @@ export interface Discover {
                 version: number;
               };
               [k: string]: unknown;
-            } | null;
+            };
             id?: string | null;
             blockName?: string | null;
-            blockType: 'content';
+            blockType: 'rich_text';
           }
         | {
             background?: boolean | null;
@@ -655,7 +655,21 @@ export interface Discover {
             item?:
               | {
                   title: string;
-                  description: string;
+                  description: {
+                    root: {
+                      type: string;
+                      children: {
+                        type: string;
+                        version: number;
+                        [k: string]: unknown;
+                      }[];
+                      direction: ('ltr' | 'rtl') | null;
+                      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+                      indent: number;
+                      version: number;
+                    };
+                    [k: string]: unknown;
+                  };
                   id?: string | null;
                 }[]
               | null;
@@ -782,7 +796,7 @@ export interface About {
     | (
         | {
             background?: boolean | null;
-            richText?: {
+            richText: {
               root: {
                 type: string;
                 children: {
@@ -796,10 +810,10 @@ export interface About {
                 version: number;
               };
               [k: string]: unknown;
-            } | null;
+            };
             id?: string | null;
             blockName?: string | null;
-            blockType: 'content';
+            blockType: 'rich_text';
           }
         | {
             background?: boolean | null;
@@ -907,7 +921,7 @@ export interface Process {
     | (
         | {
             background?: boolean | null;
-            richText?: {
+            richText: {
               root: {
                 type: string;
                 children: {
@@ -921,10 +935,10 @@ export interface Process {
                 version: number;
               };
               [k: string]: unknown;
-            } | null;
+            };
             id?: string | null;
             blockName?: string | null;
-            blockType: 'content';
+            blockType: 'article_rich_text';
           }
         | {
             background?: boolean | null;
@@ -1031,7 +1045,7 @@ export interface DiscoverSelect<T extends boolean = true> {
   blocks?:
     | T
     | {
-        content?:
+        rich_text?:
           | T
           | {
               background?: T;
@@ -1123,7 +1137,7 @@ export interface AboutSelect<T extends boolean = true> {
   blocks?:
     | T
     | {
-        content?:
+        rich_text?:
           | T
           | {
               background?: T;
@@ -1201,7 +1215,7 @@ export interface ProcessSelect<T extends boolean = true> {
   blocks?:
     | T
     | {
-        content?:
+        article_rich_text?:
           | T
           | {
               background?: T;

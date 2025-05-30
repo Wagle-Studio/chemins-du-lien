@@ -1,4 +1,5 @@
 import { Block } from 'payload'
+import { RichTextMinimal } from '@/fields/RichTextMinimal'
 
 export const WorkshopCharter: Block = {
   slug: 'workshop_charter',
@@ -38,12 +39,7 @@ export const WorkshopCharter: Block = {
           type: 'text',
           required: true,
         },
-        {
-          name: 'description',
-          label: 'Description',
-          type: 'textarea',
-          required: true,
-        },
+        RichTextMinimal('description', 'Description', true),
       ],
     },
     {

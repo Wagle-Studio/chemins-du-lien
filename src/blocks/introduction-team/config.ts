@@ -1,4 +1,5 @@
 import { Block } from 'payload'
+import { RichTextMinimal } from '@/fields/RichTextMinimal'
 
 export const IntroductionTeam: Block = {
   slug: 'introduction_team',
@@ -19,12 +20,7 @@ export const IntroductionTeam: Block = {
       type: 'text',
       required: true,
     },
-    {
-      name: 'description',
-      label: 'Description',
-      type: 'richText',
-      required: true,
-    },
+    RichTextMinimal('description', 'Description', true),
     {
       name: 'highlight-video',
       label: 'Vidéo mise en avant',

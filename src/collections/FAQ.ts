@@ -1,3 +1,4 @@
+import { RichTextBase } from '@/fields/RichTextBase'
 import type { CollectionConfig } from 'payload'
 
 export const FAQ: CollectionConfig = {
@@ -23,11 +24,6 @@ export const FAQ: CollectionConfig = {
       required: true,
       unique: true,
     },
-    {
-      name: 'answer',
-      label: 'Réponse',
-      type: 'richText',
-      required: true,
-    },
+    RichTextBase('answer', 'Réponse', true),
   ],
 }

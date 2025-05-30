@@ -1,4 +1,5 @@
 import { Block } from 'payload'
+import { RichTextBase } from '@/fields/RichTextBase'
 
 export const Feedback: Block = {
   slug: 'feedback',
@@ -19,12 +20,7 @@ export const Feedback: Block = {
       type: 'text',
       required: true,
     },
-    {
-      name: 'description',
-      label: 'Description',
-      type: 'richText',
-      required: true,
-    },
+    RichTextBase('description', 'Description', true),
     {
       name: 'videos',
       label: 'Vidéos',

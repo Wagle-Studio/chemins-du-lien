@@ -1,4 +1,5 @@
 import { GlobalConfig } from 'payload'
+import { RichTextMinimal } from '@/fields/RichTextMinimal'
 import { RichText } from '@/blocks/rich-text/config'
 import { WorkshopCharter } from '@/blocks/workshop-charter/config'
 import { Feedback } from '@/blocks/feedback/config'
@@ -18,11 +19,7 @@ export const DiscoverPage: GlobalConfig = {
       type: 'text',
       required: true,
     },
-    {
-      name: 'introduction',
-      label: 'Introduction',
-      type: 'richText',
-    },
+    RichTextMinimal('introduction', 'Introduction', true),
     {
       name: 'blocks',
       label: 'Blocs de la page',

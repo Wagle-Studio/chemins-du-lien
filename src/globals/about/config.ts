@@ -1,4 +1,5 @@
 import { GlobalConfig } from 'payload'
+import { RichTextMinimal } from '@/fields/RichTextMinimal'
 import { RichText } from '@/blocks/rich-text/config'
 import { Members } from '@/blocks/members/config'
 import { Book } from '@/blocks/book/config'
@@ -18,12 +19,7 @@ export const AboutPage: GlobalConfig = {
       type: 'text',
       required: true,
     },
-    {
-      name: 'introduction',
-      label: 'Introduction',
-      type: 'richText',
-      required: true,
-    },
+    RichTextMinimal('introduction', 'Introduction', true),
     {
       name: 'blocks',
       label: 'Blocs de la page',

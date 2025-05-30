@@ -1,8 +1,8 @@
 import type { Homepage, Discover, About, Process } from '@/payload-types'
 
+import { ArticleRichTextBlock } from '@/blocks/article-rich-text/RichTextBlock'
 import { ArticleRichTextPictureBlock } from '@/blocks/article-rich-text-picture/ArticleRichTextPictureBlock'
 import { BookBlock } from '@/blocks/book/BookBlock'
-import { RichTextBlock } from '@/blocks/rich-text/RichTextBlock'
 import { FaqBlock } from '@/blocks/faq/FaqBlock'
 import { FeedbackBlock } from '@/blocks/feedback/FeedbackBlock'
 import { InstagramBlock } from '@/blocks/instagram/InstagramBlock'
@@ -11,6 +11,7 @@ import { IntroductionWorkshopBlock } from '@/blocks/introduction-workshop/Introd
 import { IntroductionTeamBlock } from '@/blocks/introduction-team/IntroductionTeamBlock'
 import { IntroductionFaqBlock } from '@/blocks/introduction-faq/IntroductionFaqBlock'
 import { MembersBlock } from '@/blocks/members/MembersBlock'
+import { RichTextBlock } from '@/blocks/rich-text/RichTextBlock'
 import { WorkshopCharterBlock } from '@/blocks/workshop-charter/WorkshopCharterBlock'
 
 export type HomepageBlocks = NonNullable<Homepage['blocks']>[number]
@@ -22,9 +23,9 @@ export type AllBlocks = HomepageBlocks | DiscoverBlocks | AboutBlocks | ProcessB
 export const blockComponents: {
   [K in AllBlocks['blockType']]: React.ComponentType<Extract<AllBlocks, { blockType: K }>>
 } = {
+  article_rich_text: ArticleRichTextBlock,
   article_rich_text_picture: ArticleRichTextPictureBlock,
   book: BookBlock,
-  content: RichTextBlock,
   faq: FaqBlock,
   feedback: FeedbackBlock,
   instagram: InstagramBlock,
@@ -33,6 +34,7 @@ export const blockComponents: {
   introduction_team: IntroductionTeamBlock,
   introduction_faq: IntroductionFaqBlock,
   members: MembersBlock,
+  rich_text: RichTextBlock,
   workshop_charter: WorkshopCharterBlock,
 }
 

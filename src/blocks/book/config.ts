@@ -1,4 +1,5 @@
 import { Block } from 'payload'
+import { RichTextMinimal } from '@/fields/RichTextMinimal'
 
 export const Book: Block = {
   slug: 'book',
@@ -30,12 +31,7 @@ export const Book: Block = {
           type: 'upload',
           relationTo: 'media',
         },
-        {
-          name: 'comment',
-          label: 'Avis client',
-          type: 'richText',
-          required: true,
-        },
+        RichTextMinimal('comment', 'Avis client', true),
         {
           name: 'comment-url',
           label: 'Lien vers les commentaires',

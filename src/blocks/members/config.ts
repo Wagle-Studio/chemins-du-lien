@@ -1,3 +1,4 @@
+import { RichTextBase } from '@/fields/RichTextBase'
 import { Block } from 'payload'
 
 export const Members: Block = {
@@ -33,12 +34,7 @@ export const Members: Block = {
           type: 'text',
           required: true,
         },
-        {
-          name: 'description',
-          label: 'Description',
-          type: 'richText',
-          required: true,
-        },
+        RichTextBase('description', 'Description', true),
       ],
     },
   ],

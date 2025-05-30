@@ -28,7 +28,7 @@ export const WorkshopTeaser: React.FC<Props> = ({
       <div className="workshop_teaser__header">
         <div className="workshop_teaser__header__top">
           <h3 className="heading_3">{data.title}</h3>
-          <Tag label={data.type ? 'présentiel' : 'visio conférence'} variant="gray" size="small" />
+          <Tag label={generateTypeLabel(data.type)} variant="gray" size="small" />
         </div>
         <div className="workshop_teaser__header__bottom">
           <p>{formatDate(data.date)}</p>
@@ -38,7 +38,7 @@ export const WorkshopTeaser: React.FC<Props> = ({
               generateStatusClass(data.state),
             )}
           >
-            {data.state.toLowerCase()}
+            {generateStatusLabel(data.state)}
           </p>
         </div>
       </div>
@@ -82,22 +82,52 @@ const formatDate = (rawDate: string): string => {
   }).format(date)
 }
 
+const generateTypeLabel = (type: string): string => {
+  switch (type) {
+    case 'in_person':
+      return 'présentiel'
+    case 'remote':
+      return 'visio'
+    case 'hybrid':
+      return 'présentiel + visio'
+    case 'other':
+      return 'autre'
+    default:
+      return ''
+  }
+}
+
 const generateStatusClass = (status: string): string => {
   const classBase = 'workshop_teaser__header__bottom__status'
 
   switch (status) {
-    case 'Programmé':
-    case 'Confirmé':
+    case 'programmed':
+    case 'confirmed':
       return `${classBase}--success`
-    case 'Annulé':
+    case 'canceled':
       return `${classBase}--error`
-    case 'Reporté':
+    case 'reported':
       return `${classBase}--warning`
     default:
       return ''
   }
 }
 
+const generateStatusLabel = (status: string): string => {
+  switch (status) {
+    case 'programmed':
+      return 'programmé'
+    case 'confirmed':
+      return 'confirmé'
+    case 'canceled':
+      return 'annulé'
+    case 'reported':
+      return 'Reporté'
+    default:
+      return ''
+  }
+}
+
 const registrationIsOpen = (status: string): boolean => {
-  return ['Programmé', 'Confirmé'].includes(status)
+  return ['programmed', 'confirmed'].includes(status)
 }

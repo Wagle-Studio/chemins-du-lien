@@ -9,7 +9,7 @@ import { AllBlocks, ExtractBlock } from '@/types/blocks'
 import { useRichTextAnimation } from './useRichTextAnimation'
 
 type Props = {
-  data: ExtractBlock<AllBlocks, 'content'>
+  data: ExtractBlock<AllBlocks, 'rich_text'> | ExtractBlock<AllBlocks, 'article_rich_text'>
 }
 
 export const RichText: React.FC<Props> = ({ data }: Props) => {

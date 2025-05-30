@@ -1,8 +1,8 @@
 import { Block } from 'payload'
-import { RichTextBase } from '@/fields/RichTextBase'
+import { RichTextFull } from '@/fields/RichTextFull'
 
-export const RichText: Block = {
-  slug: 'rich_text',
+export const ArticleRichText: Block = {
+  slug: 'article_rich_text',
   labels: {
     singular: 'Contenu libre',
     plural: 'Contenus libres',
@@ -14,6 +14,6 @@ export const RichText: Block = {
       label: 'Fond gris',
       type: 'checkbox',
     },
-    RichTextBase('richText', 'Contenu', true),
+    RichTextFull('richText', 'Contenu', true),
   ],
 }

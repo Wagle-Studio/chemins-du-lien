@@ -1,5 +1,6 @@
 import { GlobalConfig } from 'payload'
-import { RichText } from '@/blocks/rich-text/config'
+import { RichTextMinimal } from '@/fields/RichTextMinimal'
+import { ArticleRichText } from '@/blocks/article-rich-text/config'
 import { ArticleRichTextPicture } from '@/blocks/article-rich-text-picture/config'
 
 export const ProcessPage: GlobalConfig = {
@@ -15,17 +16,12 @@ export const ProcessPage: GlobalConfig = {
       type: 'text',
       required: true,
     },
-    {
-      name: 'introduction',
-      label: 'Introduction',
-      type: 'richText',
-      required: true,
-    },
+    RichTextMinimal('introduction', 'Introduction', true),
     {
       name: 'blocks',
       label: 'Blocs de la page',
       type: 'blocks',
-      blocks: [RichText, ArticleRichTextPicture],
+      blocks: [ArticleRichText, ArticleRichTextPicture],
     },
   ],
 }

@@ -1,4 +1,5 @@
 import { Block } from 'payload'
+import { RichTextFull } from '@/fields/RichTextFull'
 
 export const ArticleRichTextPicture: Block = {
   slug: 'article_rich_text_picture',
@@ -13,12 +14,7 @@ export const ArticleRichTextPicture: Block = {
       label: 'Fond gris',
       type: 'checkbox',
     },
-    {
-      name: 'content',
-      label: 'Contenu',
-      type: 'richText',
-      required: true,
-    },
+    RichTextFull('content', 'Contenu', true),
     {
       name: 'image-position',
       label: "Position de l'image",
