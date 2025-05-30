@@ -47,6 +47,22 @@ export const ContactMessages: CollectionConfig = {
       required: true,
     },
     {
+      name: 'status',
+      label: 'Statut',
+      type: 'select',
+      options: [
+        { value: 'processed', label: 'Traité' },
+        { value: 'pending', label: 'En attente' },
+        { value: 'needs_review', label: 'À consulter' },
+        { value: 'spam', label: 'Spam' },
+        { value: 'archived', label: 'Archivé' },
+      ],
+      required: true,
+      admin: {
+        position: 'sidebar',
+      },
+    },
+    {
       name: 'sentAt',
       label: 'Envoyé le',
       type: 'date',
@@ -57,12 +73,6 @@ export const ContactMessages: CollectionConfig = {
       hooks: {
         beforeChange: [() => new Date()],
       },
-    },
-    {
-      name: 'processed',
-      label: 'Traité',
-      type: 'checkbox',
-      defaultValue: false,
     },
   ],
 }

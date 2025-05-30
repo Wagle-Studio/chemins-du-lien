@@ -216,11 +216,11 @@ export interface Workshop {
   slug?: string | null;
   title: string;
   description: string;
-  'on-site': boolean;
+  type: 'in_person' | 'remote' | 'hybrid' | 'other';
   date: string;
   'meeting-location': string;
   capacity: number;
-  status: 'programmed' | 'confirmed' | 'canceled' | 'reported';
+  state: 'programmed' | 'confirmed' | 'canceled' | 'reported';
   categories?: (number | Category)[] | null;
   updatedAt: string;
   createdAt: string;
@@ -263,8 +263,8 @@ export interface ContactMessage {
   email: string;
   subject: string;
   message: string;
+  status: 'processed' | 'pending' | 'needs_review' | 'spam' | 'archived';
   sentAt?: string | null;
-  processed?: boolean | null;
   updatedAt: string;
   createdAt: string;
 }
@@ -431,11 +431,11 @@ export interface WorkshopsSelect<T extends boolean = true> {
   slug?: T;
   title?: T;
   description?: T;
-  'on-site'?: T;
+  type?: T;
   date?: T;
   'meeting-location'?: T;
   capacity?: T;
-  status?: T;
+  state?: T;
   categories?: T;
   updatedAt?: T;
   createdAt?: T;
@@ -462,8 +462,8 @@ export interface ContactMessagesSelect<T extends boolean = true> {
   email?: T;
   subject?: T;
   message?: T;
+  status?: T;
   sentAt?: T;
-  processed?: T;
   updatedAt?: T;
   createdAt?: T;
 }

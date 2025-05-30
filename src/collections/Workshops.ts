@@ -38,10 +38,19 @@ export const Workshops: CollectionConfig = {
       required: true,
     },
     {
-      name: 'on-site',
-      label: 'En présentiel',
-      type: 'checkbox',
+      name: 'type',
+      label: "Type d'évènement",
+      type: 'select',
+      options: [
+        { value: 'in_person', label: 'En présentiel' },
+        { value: 'remote', label: 'En visio' },
+        { value: 'hybrid', label: 'Hybride (présentiel + visio)' },
+        { value: 'other', label: 'Autre' },
+      ],
       required: true,
+      admin: {
+        position: 'sidebar',
+      },
     },
     {
       name: 'date',
@@ -62,7 +71,7 @@ export const Workshops: CollectionConfig = {
       required: true,
     },
     {
-      name: 'status',
+      name: 'state',
       label: 'Statut',
       type: 'select',
       options: [
@@ -72,6 +81,9 @@ export const Workshops: CollectionConfig = {
         { value: 'reported', label: 'Reporté' },
       ],
       required: true,
+      admin: {
+        position: 'sidebar',
+      },
     },
     {
       name: 'categories',
@@ -79,6 +91,9 @@ export const Workshops: CollectionConfig = {
       type: 'relationship',
       relationTo: 'categories',
       hasMany: true,
+      admin: {
+        position: 'sidebar',
+      },
     },
   ],
   hooks: {

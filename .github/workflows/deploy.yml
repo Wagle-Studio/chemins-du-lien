@@ -52,15 +52,15 @@ jobs:
           ssh -i ~/.ssh/id_rsa -o StrictHostKeyChecking=no $SSH_USER@$SSH_HOST << EOF
             cd "$APP_DIR"
             cp .env.example .env
-            sed -i 's#^DATABASE_URI=.*#DATABASE_URI=postgresql://${{ secrets.POSTGRES_USER }}:${{ secrets.POSTGRES_PASSWORD }}@db:5432/${{ secrets.POSTGRES_DB }}#' .env.local
-            sed -i 's#^PAYLOAD_SECRET=.*#PAYLOAD_SECRET=${{ secrets.PAYLOAD_SECRET }}#' .env.local
-            sed -i 's#^NEXT_PUBLIC_CMS_URL=.*#NEXT_PUBLIC_CMS_URL=${{ secrets.NEXT_PUBLIC_CMS_URL }}#' .env.local
-            sed -i 's#^POSTGRES_DB=.*#POSTGRES_DB=${{ secrets.POSTGRES_DB }}#' .env.local
-            sed -i 's#^POSTGRES_USER=.*#POSTGRES_USER=${{ secrets.POSTGRES_USER }}#' .env.local
-            sed -i 's#^POSTGRES_PASSWORD=.*#POSTGRES_PASSWORD=${{ secrets.POSTGRES_PASSWORD }}#' .env.local
-            sed -i 's#^PGADMIN_DEFAULT_EMAIL=.*#PGADMIN_DEFAULT_EMAIL=${{ secrets.PGADMIN_DEFAULT_EMAIL }}#' .env.local
-            sed -i 's#^PGADMIN_DEFAULT_PASSWORD=.*#PGADMIN_DEFAULT_PASSWORD=${{ secrets.PGADMIN_PASSWORD }}#' .env.local
-            sed -i 's#^NODE_ENV=.*#NODE_ENV=${{ secrets.NODE_ENV }}#' .env.local
+            sed -i 's#^DATABASE_URI=.*#DATABASE_URI=postgresql://${{ secrets.POSTGRES_USER }}:${{ secrets.POSTGRES_PASSWORD }}@db:5432/${{ secrets.POSTGRES_DB }}#' .env
+            sed -i 's#^PAYLOAD_SECRET=.*#PAYLOAD_SECRET=${{ secrets.PAYLOAD_SECRET }}#' .env
+            sed -i 's#^NEXT_PUBLIC_CMS_URL=.*#NEXT_PUBLIC_CMS_URL=${{ secrets.NEXT_PUBLIC_CMS_URL }}#' .env
+            sed -i 's#^POSTGRES_DB=.*#POSTGRES_DB=${{ secrets.POSTGRES_DB }}#' .env
+            sed -i 's#^POSTGRES_USER=.*#POSTGRES_USER=${{ secrets.POSTGRES_USER }}#' .env
+            sed -i 's#^POSTGRES_PASSWORD=.*#POSTGRES_PASSWORD=${{ secrets.POSTGRES_PASSWORD }}#' .env
+            sed -i 's#^PGADMIN_DEFAULT_EMAIL=.*#PGADMIN_DEFAULT_EMAIL=${{ secrets.PGADMIN_DEFAULT_EMAIL }}#' .env
+            sed -i 's#^PGADMIN_DEFAULT_PASSWORD=.*#PGADMIN_DEFAULT_PASSWORD=${{ secrets.PGADMIN_PASSWORD }}#' .env
+            sed -i 's#^NODE_ENV=.*#NODE_ENV=${{ secrets.NODE_ENV }}#' .env
             docker compose down
             docker compose build
             docker compose up -d
