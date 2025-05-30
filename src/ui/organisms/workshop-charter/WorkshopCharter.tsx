@@ -2,9 +2,10 @@
 
 import './workshop-charter.scss'
 
+import { useRef } from 'react'
 import clsx from 'clsx'
 import Image from 'next/image'
-import { useRef } from 'react'
+import { RichText as ConvertRichText } from '@payloadcms/richtext-lexical/react'
 import { AllBlocks, ExtractBlock } from '@/types/blocks'
 import { Link } from '@/ui/atoms/link/Link'
 import { useWorkshopCharterAnimation } from './useWorkshopCharterAnimation'
@@ -36,7 +37,7 @@ export const WorkshopCharter: React.FC<Props> = ({ data }) => {
                 <div className="workshop_block__wrapper__body__posts__item__background"></div>
                 <div className="workshop_block__wrapper__body__posts__item__content">
                   <h3 className="heading_3">{item.title}</h3>
-                  <p>{item.description}</p>
+                  <ConvertRichText data={item.description} />
                 </div>
               </li>
             ))}
