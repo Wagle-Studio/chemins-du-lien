@@ -1,5 +1,6 @@
 import { GlobalConfig } from 'payload'
 import { RichText } from '@/blocks/rich-text/config'
+import { ArticleRichTextPicture } from '@/blocks/article-rich-text-picture/config'
 
 export const ProcessPage: GlobalConfig = {
   slug: 'process',
@@ -24,7 +25,7 @@ export const ProcessPage: GlobalConfig = {
       name: 'blocks',
       label: 'Blocs de la page',
       type: 'blocks',
-      blocks: [RichText],
+      blocks: [RichText, ArticleRichTextPicture],
     },
   ],
 }

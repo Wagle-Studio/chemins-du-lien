@@ -904,27 +904,52 @@ export interface Process {
     [k: string]: unknown;
   };
   blocks?:
-    | {
-        background?: boolean | null;
-        richText?: {
-          root: {
-            type: string;
-            children: {
-              type: string;
-              version: number;
+    | (
+        | {
+            background?: boolean | null;
+            richText?: {
+              root: {
+                type: string;
+                children: {
+                  type: string;
+                  version: number;
+                  [k: string]: unknown;
+                }[];
+                direction: ('ltr' | 'rtl') | null;
+                format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+                indent: number;
+                version: number;
+              };
               [k: string]: unknown;
-            }[];
-            direction: ('ltr' | 'rtl') | null;
-            format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-            indent: number;
-            version: number;
-          };
-          [k: string]: unknown;
-        } | null;
-        id?: string | null;
-        blockName?: string | null;
-        blockType: 'content';
-      }[]
+            } | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'content';
+          }
+        | {
+            background?: boolean | null;
+            content: {
+              root: {
+                type: string;
+                children: {
+                  type: string;
+                  version: number;
+                  [k: string]: unknown;
+                }[];
+                direction: ('ltr' | 'rtl') | null;
+                format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+                indent: number;
+                version: number;
+              };
+              [k: string]: unknown;
+            };
+            'image-position': 'left' | 'right';
+            image?: (number | null) | Media;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'article_rich_text_picture';
+          }
+      )[]
     | null;
   _status?: ('draft' | 'published') | null;
   updatedAt?: string | null;
@@ -1181,6 +1206,16 @@ export interface ProcessSelect<T extends boolean = true> {
           | {
               background?: T;
               richText?: T;
+              id?: T;
+              blockName?: T;
+            };
+        article_rich_text_picture?:
+          | T
+          | {
+              background?: T;
+              content?: T;
+              'image-position'?: T;
+              image?: T;
               id?: T;
               blockName?: T;
             };

@@ -1,5 +1,6 @@
 import type { Homepage, Discover, About, Process } from '@/payload-types'
 
+import { ArticleRichTextPictureBlock } from '@/blocks/article-rich-text-picture/ArticleRichTextPictureBlock'
 import { BookBlock } from '@/blocks/book/BookBlock'
 import { RichTextBlock } from '@/blocks/rich-text/RichTextBlock'
 import { FaqBlock } from '@/blocks/faq/FaqBlock'
@@ -16,11 +17,12 @@ export type HomepageBlocks = NonNullable<Homepage['blocks']>[number]
 export type DiscoverBlocks = NonNullable<Discover['blocks']>[number]
 export type AboutBlocks = NonNullable<About['blocks']>[number]
 export type ProcessBlocks = NonNullable<Process['blocks']>[number]
-export type AllBlocks = HomepageBlocks | DiscoverBlocks | AboutBlocks
+export type AllBlocks = HomepageBlocks | DiscoverBlocks | AboutBlocks | ProcessBlocks
 
 export const blockComponents: {
   [K in AllBlocks['blockType']]: React.ComponentType<Extract<AllBlocks, { blockType: K }>>
 } = {
+  article_rich_text_picture: ArticleRichTextPictureBlock,
   book: BookBlock,
   content: RichTextBlock,
   faq: FaqBlock,
