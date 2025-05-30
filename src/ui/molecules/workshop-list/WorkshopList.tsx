@@ -10,8 +10,8 @@ import { Category } from '@/payload-types'
 import { WorkshopsResponse } from '@/types/response'
 import useFetcher from '@/hooks/useFetcher'
 import { WorkshopTeaser } from '@/ui/molecules/workshop-teaser/WorkshopTeaser'
-import { WorkshopFiltersForm } from '@/forms/workshop-filters/WorkshopFiltersForm'
-import { FormValues } from '@/forms/workshop-filters/config'
+import { FormValues } from '@/ui/molecules/forms/workshop-filters/config'
+import { WorkshopFiltersForm } from '@/ui/molecules/forms/workshop-filters/WorkshopFiltersForm'
 import { useWorkshopListAnimation } from './useWorkshopListAnimation'
 
 interface WorkshopListProps {

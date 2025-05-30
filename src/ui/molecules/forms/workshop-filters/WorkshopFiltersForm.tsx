@@ -5,7 +5,7 @@ import { Resolver, useForm } from 'react-hook-form'
 import { Category } from '@/payload-types'
 import { yupResolver } from '@hookform/resolvers/yup'
 import clsx from 'clsx'
-import { FormValues, schema, defaultValues } from '@/forms/workshop-filters/config'
+import { FormValues, schema, defaultValues } from '@/ui/molecules/forms/workshop-filters/config'
 import { InputSelect } from '@/ui/atoms/inputs/select/InputSelect'
 
 interface WorkshopFiltersFormProps extends HTMLAttributes<HTMLElement> {

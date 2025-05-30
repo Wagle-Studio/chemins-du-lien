@@ -1,6 +1,6 @@
 'use client'
 
-import './style.scss'
+import './book.scss'
 
 import clsx from 'clsx'
 import Image from 'next/image'

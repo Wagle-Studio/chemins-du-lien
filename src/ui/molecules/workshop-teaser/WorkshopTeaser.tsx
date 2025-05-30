@@ -28,21 +28,17 @@ export const WorkshopTeaser: React.FC<Props> = ({
       <div className="workshop_teaser__header">
         <div className="workshop_teaser__header__top">
           <h3 className="heading_3">{data.title}</h3>
-          <Tag
-            label={data['on-site'] ? 'présentiel' : 'visio conférence'}
-            variant="gray"
-            size="small"
-          />
+          <Tag label={data.type ? 'présentiel' : 'visio conférence'} variant="gray" size="small" />
         </div>
         <div className="workshop_teaser__header__bottom">
           <p>{formatDate(data.date)}</p>
           <p
             className={clsx(
               'workshop_teaser__header__bottom__status',
-              generateStatusClass(data.status),
+              generateStatusClass(data.state),
             )}
           >
-            {data.status.toLowerCase()}
+            {data.state.toLowerCase()}
           </p>
         </div>
       </div>
@@ -62,7 +58,7 @@ export const WorkshopTeaser: React.FC<Props> = ({
             )}
           </ul>
         </div>
-        {variant === 'highlight' && registrationIsOpen(data.status) && (
+        {variant === 'highlight' && registrationIsOpen(data.state) && (
           <div className="workshop_teaser__body__footer">
             <Link href="#" variant="primary">
               S&apos;inscrire

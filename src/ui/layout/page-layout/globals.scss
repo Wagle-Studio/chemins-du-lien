@@ -136,6 +136,10 @@ ol {
   list-style: none;
 }
 
+.form_message--error {
+  color: var(--error);
+}
+
 .not_found {
   flex-grow: 1;
   display: flex;
