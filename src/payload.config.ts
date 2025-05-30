@@ -11,6 +11,7 @@ import { serveLivePreview } from './utilities/payload/preview'
 import { Homepage } from './globals/homepage/config'
 import { DiscoverPage } from './globals/discover/config'
 import { AboutPage } from './globals/about/config'
+import { ProcessPage } from './globals/process/config'
 
 import { Users } from './collections/Users'
 import { Media } from './collections/Media'
@@ -39,7 +40,7 @@ export default buildConfig({
     fallbackLanguage: 'en',
     supportedLanguages: { fr },
   },
-  globals: [Homepage, DiscoverPage, AboutPage],
+  globals: [Homepage, DiscoverPage, AboutPage, ProcessPage],
   collections: [Users, Media, Categories, Workshops, FAQ, ContactMessages],
   editor: lexicalEditor(),
   secret: process.env.PAYLOAD_SECRET || '',

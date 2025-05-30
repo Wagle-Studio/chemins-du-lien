@@ -1,4 +1,4 @@
-import type { Homepage, Discover, About } from '@/payload-types'
+import type { Homepage, Discover, About, Process } from '@/payload-types'
 
 import { BookBlock } from '@/blocks/book/BookBlock'
 import { RichTextBlock } from '@/blocks/rich-text/RichTextBlock'
@@ -15,6 +15,7 @@ import { WorkshopCharterBlock } from '@/blocks/workshop-charter/WorkshopCharterB
 export type HomepageBlocks = NonNullable<Homepage['blocks']>[number]
 export type DiscoverBlocks = NonNullable<Discover['blocks']>[number]
 export type AboutBlocks = NonNullable<About['blocks']>[number]
+export type ProcessBlocks = NonNullable<Process['blocks']>[number]
 export type AllBlocks = HomepageBlocks | DiscoverBlocks | AboutBlocks
 
 export const blockComponents: {

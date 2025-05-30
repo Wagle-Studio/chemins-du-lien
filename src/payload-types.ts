@@ -96,11 +96,13 @@ export interface Config {
     homepage: Homepage;
     discover: Discover;
     about: About;
+    process: Process;
   };
   globalsSelect: {
     homepage: HomepageSelect<false> | HomepageSelect<true>;
     discover: DiscoverSelect<false> | DiscoverSelect<true>;
     about: AboutSelect<false> | AboutSelect<true>;
+    process: ProcessSelect<false> | ProcessSelect<true>;
   };
   locale: null;
   user: User & {
@@ -881,6 +883,55 @@ export interface About {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "process".
+ */
+export interface Process {
+  id: number;
+  title: string;
+  introduction: {
+    root: {
+      type: string;
+      children: {
+        type: string;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  };
+  blocks?:
+    | {
+        background?: boolean | null;
+        richText?: {
+          root: {
+            type: string;
+            children: {
+              type: string;
+              version: number;
+              [k: string]: unknown;
+            }[];
+            direction: ('ltr' | 'rtl') | null;
+            format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+            indent: number;
+            version: number;
+          };
+          [k: string]: unknown;
+        } | null;
+        id?: string | null;
+        blockName?: string | null;
+        blockType: 'content';
+      }[]
+    | null;
+  _status?: ('draft' | 'published') | null;
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "homepage_select".
  */
 export interface HomepageSelect<T extends boolean = true> {
@@ -1106,6 +1157,30 @@ export interface AboutSelect<T extends boolean = true> {
           | {
               background?: T;
               'profile-url'?: T;
+              id?: T;
+              blockName?: T;
+            };
+      };
+  _status?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "process_select".
+ */
+export interface ProcessSelect<T extends boolean = true> {
+  title?: T;
+  introduction?: T;
+  blocks?:
+    | T
+    | {
+        content?:
+          | T
+          | {
+              background?: T;
+              richText?: T;
               id?: T;
               blockName?: T;
             };

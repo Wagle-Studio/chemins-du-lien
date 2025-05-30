@@ -3,11 +3,11 @@
 import './hero-page.scss'
 import { useRef } from 'react'
 import { RichText as ConvertRichText } from '@payloadcms/richtext-lexical/react'
-import { About, Discover } from '@/payload-types'
+import { About, Discover, Process } from '@/payload-types'
 import { useHeroPageAnimation } from './useHeroPageAnimation'
 
 type Props = {
-  data: Discover | About
+  data: Discover | About | Process
 }
 
 export const HeroPage: React.FC<Props> = ({ data, ...props }) => {
@@ -24,9 +24,11 @@ export const HeroPage: React.FC<Props> = ({ data, ...props }) => {
           <h1 ref={headingRef} className="heading_1">
             {data.title}
           </h1>
-          <div ref={introductionRef}>
-            <ConvertRichText data={data.introduction} />
-          </div>
+          {data.introduction && (
+            <div ref={introductionRef}>
+              <ConvertRichText data={data.introduction} />
+            </div>
+          )}
         </div>
       </div>
     </section>
