@@ -17,6 +17,7 @@ import { Media } from './collections/Media'
 import { Categories } from './collections/Categories'
 import { Workshops } from './collections/Workshops'
 import { FAQ } from './collections/FAQ'
+import { ContactMessages } from './collections/ContactMessages'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -39,7 +40,7 @@ export default buildConfig({
     supportedLanguages: { fr },
   },
   globals: [Homepage, DiscoverPage, AboutPage],
-  collections: [Users, Media, Categories, Workshops, FAQ],
+  collections: [Users, Media, Categories, Workshops, FAQ, ContactMessages],
   editor: lexicalEditor(),
   secret: process.env.PAYLOAD_SECRET || '',
   typescript: {
