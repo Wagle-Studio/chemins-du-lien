@@ -1,9 +1,11 @@
-// TODO : implement other blocks.
-
 import { GlobalConfig } from 'payload'
 import { RichTextMinimal } from '@/fields/RichTextMinimal'
 import { ArticleRichText } from '@/blocks/article-rich-text/config'
 import { ArticleRichTextPicture } from '@/blocks/article-rich-text-picture/config'
+import { ArticleNextWorkshops } from '@/blocks/article-next-workshops/config'
+import { IntroductionFaq } from '@/blocks/introduction-faq/config'
+import { Book } from '@/blocks/book/config'
+import { Instagram } from '@/blocks/instagram/config'
 
 export const ProcessPage: GlobalConfig = {
   slug: 'process',
@@ -26,7 +28,14 @@ export const ProcessPage: GlobalConfig = {
       name: 'blocks',
       label: 'Blocs de la page',
       type: 'blocks',
-      blocks: [ArticleRichText, ArticleRichTextPicture],
+      blocks: [
+        ArticleRichText,
+        ArticleRichTextPicture,
+        ArticleNextWorkshops,
+        IntroductionFaq,
+        Book,
+        Instagram,
+      ],
     },
   ],
 }

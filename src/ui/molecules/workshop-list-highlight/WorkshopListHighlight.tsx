@@ -1,3 +1,5 @@
+// TODO : handle empty, loading, error ... cases like WorkshopListTeaser.
+
 import './workshop-list-highlight.scss'
 
 import { useRef } from 'react'

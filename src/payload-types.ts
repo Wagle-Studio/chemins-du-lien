@@ -963,6 +963,75 @@ export interface Process {
             blockName?: string | null;
             blockType: 'article_rich_text_picture';
           }
+        | {
+            background?: boolean | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'article_next_workshops';
+          }
+        | {
+            background?: boolean | null;
+            title: string;
+            subtitle: string;
+            description: {
+              root: {
+                type: string;
+                children: {
+                  type: string;
+                  version: number;
+                  [k: string]: unknown;
+                }[];
+                direction: ('ltr' | 'rtl') | null;
+                format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+                indent: number;
+                version: number;
+              };
+              [k: string]: unknown;
+            };
+            image?: (number | null) | Media;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'introduction_faq';
+          }
+        | {
+            background?: boolean | null;
+            title: string;
+            product: {
+              'product-picture'?: (number | null) | Media;
+              comment: {
+                root: {
+                  type: string;
+                  children: {
+                    type: string;
+                    version: number;
+                    [k: string]: unknown;
+                  }[];
+                  direction: ('ltr' | 'rtl') | null;
+                  format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+                  indent: number;
+                  version: number;
+                };
+                [k: string]: unknown;
+              };
+              'comment-url'?: string | null;
+              'shop-url': string;
+            };
+            author: {
+              picture?: (number | null) | Media;
+              author: string;
+              description: string;
+            };
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'book';
+          }
+        | {
+            background?: boolean | null;
+            'profile-url': string;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'instagram';
+          }
       )[]
     | null;
   _status?: ('draft' | 'published') | null;
@@ -1230,6 +1299,55 @@ export interface ProcessSelect<T extends boolean = true> {
               content?: T;
               'image-position'?: T;
               image?: T;
+              id?: T;
+              blockName?: T;
+            };
+        article_next_workshops?:
+          | T
+          | {
+              background?: T;
+              id?: T;
+              blockName?: T;
+            };
+        introduction_faq?:
+          | T
+          | {
+              background?: T;
+              title?: T;
+              subtitle?: T;
+              description?: T;
+              image?: T;
+              id?: T;
+              blockName?: T;
+            };
+        book?:
+          | T
+          | {
+              background?: T;
+              title?: T;
+              product?:
+                | T
+                | {
+                    'product-picture'?: T;
+                    comment?: T;
+                    'comment-url'?: T;
+                    'shop-url'?: T;
+                  };
+              author?:
+                | T
+                | {
+                    picture?: T;
+                    author?: T;
+                    description?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
+        instagram?:
+          | T
+          | {
+              background?: T;
+              'profile-url'?: T;
               id?: T;
               blockName?: T;
             };

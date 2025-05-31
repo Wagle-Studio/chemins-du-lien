@@ -1,5 +1,6 @@
 import type { Homepage, Discover, About, Process } from '@/payload-types'
 
+import { ArticleNextWorkshopsBlock } from '@/blocks/article-next-workshops/ArticleNextWorkshopsBlock'
 import { ArticleRichTextBlock } from '@/blocks/article-rich-text/RichTextBlock'
 import { ArticleRichTextPictureBlock } from '@/blocks/article-rich-text-picture/ArticleRichTextPictureBlock'
 import { BookBlock } from '@/blocks/book/BookBlock'
@@ -23,6 +24,7 @@ export type AllBlocks = HomepageBlocks | DiscoverBlocks | AboutBlocks | ProcessB
 export const blockComponents: {
   [K in AllBlocks['blockType']]: React.ComponentType<Extract<AllBlocks, { blockType: K }>>
 } = {
+  article_next_workshops: ArticleNextWorkshopsBlock,
   article_rich_text: ArticleRichTextBlock,
   article_rich_text_picture: ArticleRichTextPictureBlock,
   book: BookBlock,
