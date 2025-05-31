@@ -9,6 +9,7 @@ export async function POST(req: Request) {
       collection: 'contact-messages',
       data: {
         ...data,
+        status: 'pending',
         sentAt: new Date(),
       },
     })

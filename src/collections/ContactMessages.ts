@@ -1,5 +1,3 @@
-// TODO : make it creatable by public user.
-
 import type { CollectionConfig } from 'payload'
 
 export const ContactMessages: CollectionConfig = {
@@ -13,6 +11,7 @@ export const ContactMessages: CollectionConfig = {
   },
   access: {
     read: () => true,
+    create: () => true
   },
   versions: {
     drafts: false,
