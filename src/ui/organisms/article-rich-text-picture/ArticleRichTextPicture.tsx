@@ -27,7 +27,7 @@ export const ArticleRichTextPicture: React.FC<Props> = ({ data }) => {
       })}
     >
       <div className={'article_rich_text_picture_block__wrapper'}>
-        <div ref={contentRef} className="article_rich_text_picture_block__wrapper__content">
+        <div ref={contentRef} className="article_rich_text_picture_block__wrapper__content rich_text_full">
           <ConvertRichText data={data.content} />
         </div>
         {data.image &&

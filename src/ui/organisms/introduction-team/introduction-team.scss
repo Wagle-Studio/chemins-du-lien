@@ -48,13 +48,13 @@
       margin: 0 auto;
 
       &__video {
-        border-radius: var(--border-radius-base);
+        border-radius: var(--border-radius-small);
         box-shadow: var(--card-shadow);
 
         &__player {
           width: 100%;
           max-width: 400px;
-          border-radius: var(--border-radius-base);
+          border-radius: var(--border-radius-small);
           margin-bottom: -5px;
         }
       }

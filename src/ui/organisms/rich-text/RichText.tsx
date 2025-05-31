@@ -10,9 +10,10 @@ import { useRichTextAnimation } from './useRichTextAnimation'
 
 type Props = {
   data: ExtractBlock<AllBlocks, 'rich_text'> | ExtractBlock<AllBlocks, 'article_rich_text'>
+  full?: boolean
 }
 
-export const RichText: React.FC<Props> = ({ data }: Props) => {
+export const RichText: React.FC<Props> = ({ data, full = false }: Props) => {
   const sectionRef = useRef<HTMLElement>(null)
 
   useRichTextAnimation(sectionRef)
@@ -22,9 +23,11 @@ export const RichText: React.FC<Props> = ({ data }: Props) => {
       {data.richText && (
         <section
           ref={sectionRef}
-          className={clsx('rich_text_block', { 'rich_text_block--background': data.background })}
+          className={clsx('rich_text_block', {
+            'rich_text_block--background': data.background,
+          })}
         >
-          <div className="rich_text_block__wrapper">
+          <div className={clsx('rich_text_block__wrapper', { rich_text_full: full })}>
             <ConvertRichText data={data.richText} />
           </div>
         </section>

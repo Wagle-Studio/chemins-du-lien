@@ -10,14 +10,6 @@
     margin: 0 auto;
     box-sizing: border-box;
   }
-
-  p + h2 {
-    margin-top: var(--space-4);
-  }
-
-  p + h3 {
-    margin-top: var(--space-3);
-  }
 }
 
 @media screen and (min-width: 768px) {
