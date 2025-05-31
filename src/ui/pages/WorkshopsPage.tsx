@@ -1,17 +1,10 @@
-// TODO : work on fallback.
-
-import React, { Suspense } from 'react'
 import { Category } from '@/payload-types'
-import { WorkshopList } from '@/ui/molecules/workshop-list/WorkshopList'
+import { WorkshopList } from '@/ui/organisms/workshop-list/WorkshopList'
 
 type Props = {
   data: Category[]
 }
 
-export const WorkshopsPage = async ({ data }: Props) => {
-  return (
-    <Suspense fallback={<div>Chargement des ateliers...</div>}>
-      <WorkshopList categories={data} />
-    </Suspense>
-  )
+export const WorkshopsPage = ({ data }: Props) => {
+  return <WorkshopList categories={data} />
 }

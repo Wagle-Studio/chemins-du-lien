@@ -1,20 +1,16 @@
 'use client'
 
-// TODO : Extract list and creae organism + molecule.
-
 import './workshop-list.scss'
 
-import { useRef, useEffect, useState } from 'react'
-import clsx from 'clsx'
+import { useEffect, useState } from 'react'
 import { useRouter, useSearchParams } from 'next/navigation'
 import { Workshop } from '@/payload-types'
 import { Category } from '@/payload-types'
 import { WorkshopsResponse } from '@/types/response'
 import useFetcher from '@/hooks/useFetcher'
-import { WorkshopTeaser } from '@/ui/molecules/workshop-teaser/WorkshopTeaser'
 import { FormValues } from '@/ui/molecules/forms/workshop-filters/config'
 import { WorkshopFiltersForm } from '@/ui/molecules/forms/workshop-filters/WorkshopFiltersForm'
-import { useWorkshopListAnimation } from './useWorkshopListAnimation'
+import { WorkshopListTeaser } from '@/ui/molecules/workshop-list-teaser/WorkshopListTeaser'
 
 interface WorkshopListProps {
   categories: Category[]
@@ -25,7 +21,6 @@ export const WorkshopList: React.FC<WorkshopListProps> = ({ categories }) => {
   const searchParams = useSearchParams()
   const selectedCategory = searchParams.get('categorie')
 
-  const listRef = useRef<HTMLDivElement>(null)
   const [workshops, setWorkshops] = useState<Workshop[]>([])
 
   const { fetcher, error, isLoading } = useFetcher<WorkshopsResponse>()
@@ -33,8 +28,6 @@ export const WorkshopList: React.FC<WorkshopListProps> = ({ categories }) => {
   useEffect(() => {
     fetchFilteredWorkshops(fetcher, selectedCategory, setWorkshops)
   }, [selectedCategory, fetcher])
-
-  useWorkshopListAnimation(listRef, workshops)
 
   const handleFilters = (data: FormValues) => {
     updateURLParams(router, data)
@@ -52,37 +45,7 @@ export const WorkshopList: React.FC<WorkshopListProps> = ({ categories }) => {
         <div className="workshop_collection_layout__grid__filter">
           <WorkshopFiltersForm categories={categories} onSubmitForm={handleFilters} />
         </div>
-        <div
-          ref={listRef}
-          className={clsx('workshop_collection_layout__grid__list', { loading_spiner: isLoading })}
-        >
-          {!error &&
-            workshops.length >= 1 &&
-            workshops.map((workshop) => (
-              <WorkshopTeaser key={workshop.id} data={workshop} variant="highlight" />
-            ))}
-
-          {!error && workshops.length === 0 && (
-            <div className="workshop_collection_layout__grid__list__empty">
-              <p className="workshop_collection_layout__grid__list__empty__msg">
-                Aucun atelier ne correspond à vos filtres.
-              </p>
-              <p className="workshop_collection_layout__grid__list__empty__msg">
-                Essayez d’élargir votre recherche ou de réinitialiser les filtres.
-              </p>
-            </div>
-          )}
-          {error && (
-            <div className="workshop_collection_layout__grid__list__error">
-              <p className="workshop_collection_layout__grid__list__error__msg">
-                Une erreur est survenue lors du chargement des ateliers.
-              </p>
-              <p className="workshop_collection_layout__grid__list__error__msg">
-                Notre équipe technique a été informée et travaille à résoudre le problème.
-              </p>
-            </div>
-          )}
-        </div>
+        <WorkshopListTeaser data={workshops} isError={error} isLoading={isLoading} />
       </div>
     </section>
   )
