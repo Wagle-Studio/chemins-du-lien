@@ -5,6 +5,8 @@ import { getCollection } from '@/utilities/payload/collections'
 import { getCollectionCached } from '@/utilities/payload/cached'
 import { WorkshopsPage } from '@/ui/pages/WorkshopsPage'
 
+export const dynamic = 'force-dynamic'
+
 export default async function Workshops() {
   const { isEnabled: isDraft } = await draftMode()
 

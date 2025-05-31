@@ -3,6 +3,8 @@ import { withPayload } from '@payloadcms/next/withPayload'
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   allowedDevOrigins: [
+    'chemins-du-lien.preprod.wolff-kevin.fr',
+    'www.chemins-du-lien.preprod.wolff-kevin.fr',
     'https://chemins-du-lien.preprod.wolff-kevin.fr',
     'https://www.chemins-du-lien.preprod.wolff-kevin.fr',
   ],
