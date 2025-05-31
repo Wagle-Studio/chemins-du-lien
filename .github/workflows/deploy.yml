@@ -6,9 +6,37 @@ on:
       - master
 
 jobs:
-  deploy:
+  test-build:
     runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
 
+      - name: Set up Docker
+        uses: docker/setup-buildx-action@v3
+
+      - name: Copy .env.example to .env
+        run: cp .env.example .env
+
+      - name: Patch .env with dummy values
+        run: |
+          sed -i 's#^DATABASE_URI=.*#DATABASE_URI=postgresql://user:password@localhost:5432/db#' .env
+          sed -i 's#^PAYLOAD_SECRET=.*#PAYLOAD_SECRET=dummy#' .env
+          sed -i 's#^PAYLOAD_PREVIEW_SECRET=.*#PAYLOAD_PREVIEW_SECRET=dummy#' .env
+          sed -i 's#^NEXT_PUBLIC_CMS_URL=.*#NEXT_PUBLIC_CMS_URL=http://localhost:3000#' .env
+          sed -i 's#^POSTGRES_DB=.*#POSTGRES_DB=db#' .env
+          sed -i 's#^POSTGRES_USER=.*#POSTGRES_USER=user#' .env
+          sed -i 's#^POSTGRES_PASSWORD=.*#POSTGRES_PASSWORD=password#' .env
+          sed -i 's#^PGADMIN_DEFAULT_EMAIL=.*#PGADMIN_DEFAULT_EMAIL=admin@example.com#' .env
+          sed -i 's#^PGADMIN_DEFAULT_PASSWORD=.*#PGADMIN_DEFAULT_PASSWORD=admin#' .env
+          sed -i 's#^NODE_ENV=.*#NODE_ENV=production#' .env
+
+      - name: Build Docker containers (test only)
+        run: docker compose -f docker-compose.yml -f docker-compose.prod.yml build
+
+  deploy:
+    needs: test-build
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout code
         uses: actions/checkout@v4

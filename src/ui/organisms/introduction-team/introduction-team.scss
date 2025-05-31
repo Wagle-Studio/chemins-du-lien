@@ -48,10 +48,7 @@
       margin: 0 auto;
 
       &__video {
-        padding: var(--space-1);
         border-radius: var(--border-radius-base);
-        box-sizing: border-box;
-        background-color: var(--white);
         box-shadow: var(--card-shadow);
 
         &__player {

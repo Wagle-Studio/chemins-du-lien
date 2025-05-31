@@ -27,7 +27,6 @@
         box-shadow: var(--card-shadow);
         cursor: pointer;
         box-sizing: border-box;
-        transition: 150ms ease-in-out;
 
         &__question {
           display: flex;
@@ -37,6 +36,7 @@
           padding: var(--space-2) var(--space-4) var(--space-2) var(--space-2);
           border-radius: var(--border-radius-small);
           box-sizing: border-box;
+          transition: 150ms ease-in-out;
 
           &:hover {
             background-color: var(--primary-45);
