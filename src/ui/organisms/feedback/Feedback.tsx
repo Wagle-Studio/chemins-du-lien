@@ -8,6 +8,7 @@ import Image from 'next/image'
 import { RichText as ConvertRichText } from '@payloadcms/richtext-lexical/react'
 import { Media } from '@/payload-types'
 import { AllBlocks, ExtractBlock } from '@/types/blocks'
+import { PlayButtonIcon } from '@/ui/atoms/icons/PlayButtonIcon'
 import { useFeedbackAnimation } from './useFeedbackAnimation'
 
 type Props = {
@@ -69,6 +70,8 @@ export const Feedback: React.FC<Props> = ({ data }) => {
                   className="feedback_block__wrapper__right__videos__item"
                   onClick={() => setActiveIndex(index)}
                 >
+                  <div className="feedback_block__wrapper__right__videos__item__bg"></div>
+                  <PlayButtonIcon className="feedback_block__wrapper__right__videos__item__icon" />
                   {video.miniature &&
                     typeof video.miniature !== 'number' &&
                     video.miniature.url &&
