@@ -28,7 +28,7 @@ export const BannerContactForm: React.FC = () => {
                 <h2 className="heading_3">Vous souhaitez prendre contact avec nous ?</h2>
                 <div className="banner_contact_form__bg__wrapper__main__cta__content__paragraph">
                   <p>
-                    La communication en situation de tension demande de la clarté, de l'écoute et de
+                    La communication en situation de tension demande de la clarté, de l&rsquo;écoute et de
                     la bienveillance. Que ce soit pour un accompagnement, un atelier ou un simple
                     échange, nous sommes à votre écoute.
                   </p>
@@ -73,7 +73,7 @@ export const BannerContactForm: React.FC = () => {
                 </p>
                 <p>Nous vous répondrons dans les plus brefs délais.</p>
                 <Link href={'/'} internalLink variant="ghost">
-                  Retourner à l'accueil
+                  Retourner à l&rsquo;accueil
                 </Link>
               </div>
             )}

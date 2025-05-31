@@ -1,0 +1,12 @@
+services:
+  web:
+    build:
+      context: .
+    ports:
+      - "3000:3000"
+    env_file: .env
+    environment:
+      NODE_ENV: production
+    depends_on:
+      - db
+    command: sh -c "npm run build && npm run start"

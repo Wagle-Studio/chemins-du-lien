@@ -5,9 +5,9 @@ import ScrollTrigger from 'gsap/ScrollTrigger'
 gsap.registerPlugin(ScrollTrigger)
 
 export const useBannerContactFormAnimation = (refs: React.RefObject<HTMLDivElement | null>[]) => {
-  if (!refs) return
-
   useEffect(() => {
+    if (!refs) return
+
     const ctx = gsap.context(() => {
       refs.forEach((ref) => {
         if (!ref.current) return

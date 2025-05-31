@@ -1,0 +1,15 @@
+services:
+  web:
+    build:
+      context: .
+    volumes:
+      - .:/app
+      - /app/node_modules
+    ports:
+      - "3000:3000"
+    env_file: .env
+    environment:
+      NODE_ENV: development
+    depends_on:
+      - db
+    command: npm run dev
