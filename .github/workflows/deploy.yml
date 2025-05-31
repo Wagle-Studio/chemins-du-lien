@@ -35,6 +35,7 @@ jobs:
             cd $REMOTEDIR;
             mirror -R -v --only-newer --delete \
               --exclude .env/ \
+              --exclude .next/ \
               --exclude media/ \
               --exclude .git/ \
               --exclude .github/ \

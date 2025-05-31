@@ -1,10 +1,10 @@
 #!/bin/bash
 
 # === Configuration locale ===
-CONTAINER_NAME="xxxxxx"
-DB_NAME="xxxxxx"
-DB_USER="xxxxxx"
-DUMP_FILE="xxxxxx"
+CONTAINER_NAME="chemins-du-lien-db-1"
+DB_NAME="chemins_du_lien"
+DB_USER="postgres"
+DUMP_FILE="chemins_du_lien_backup.dump"
 LOCAL_PATH="./$DUMP_FILE"
 
 echo "🧹 Suppression de l'ancien dump"

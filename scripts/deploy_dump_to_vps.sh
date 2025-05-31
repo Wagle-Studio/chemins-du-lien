@@ -3,14 +3,14 @@
 DUMP_FILE="chemins_du_lien_backup.dump"
 LOCAL_DUMP_PATH="./$DUMP_FILE"
 
-VPS_USER="xxxxxx"
-VPS_HOST="xxx.xxx.xxx.xxx"
-VPS_PORT=xx
+VPS_USER="debian"
+VPS_HOST="148.113.203.241"
+VPS_PORT=22
 REMOTE_PATH="/tmp/$DUMP_FILE"
 
-DB_NAME="xxxxxx"
-DB_USER="xxxxxx"
-DB_CONTAINER="xxxxxx"
+DB_NAME="chemins_du_lien"
+DB_USER="postgres"
+DB_CONTAINER="www-db-1"
 
 echo "📤 Transfert du dump vers le VPS..."
 scp -P "$VPS_PORT" "$LOCAL_DUMP_PATH" "$VPS_USER@$VPS_HOST:$REMOTE_PATH"
