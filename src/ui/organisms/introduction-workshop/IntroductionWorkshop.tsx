@@ -1,7 +1,5 @@
 'use client'
 
-// TODO : extract workshops list for reusability.
-
 import './introduction-workshop.scss'
 
 import { useRef } from 'react'
@@ -11,7 +9,7 @@ import { RichText as ConvertRichText } from '@payloadcms/richtext-lexical/react'
 import { Workshop } from '@/payload-types'
 import { AllBlocks, ExtractBlock } from '@/types/blocks'
 import { Link } from '@/ui/atoms/link/Link'
-import { WorkshopTeaser } from '@/ui/molecules/workshop-teaser/WorkshopTeaser'
+import { WorkshopListHighlight } from '@/ui/molecules/workshop-list-highlight/WorkshopListHighlight'
 import { useIntroductionWorkshopAnimation } from './useIntroductionWorkshopAnimation'
 
 type Props = {
@@ -22,9 +20,8 @@ type Props = {
 export const IntroductionWorkshop: React.FC<Props> = ({ data, workshops }) => {
   const sectionRef = useRef<HTMLElement>(null)
   const descriptionRef = useRef<HTMLDivElement>(null)
-  const workshopsListRef = useRef<HTMLUListElement>(null)
 
-  useIntroductionWorkshopAnimation(sectionRef, descriptionRef, workshopsListRef)
+  useIntroductionWorkshopAnimation(sectionRef, descriptionRef)
 
   return (
     <section
@@ -56,26 +53,7 @@ export const IntroductionWorkshop: React.FC<Props> = ({ data, workshops }) => {
             </div>
           </div>
         </div>
-        {workshops.length > 0 && (
-          <div className="introduction_workshop_block__wrapper__workshops">
-            <ul
-              ref={workshopsListRef}
-              className="introduction_workshop_block__wrapper__workshops__list"
-            >
-              {workshops.map((workshops, index) => (
-                <li
-                  key={workshops.id}
-                  className="introduction_workshop_block__wrapper__workshops__list__item"
-                >
-                  <WorkshopTeaser
-                    data={workshops}
-                    variant={index === 0 ? 'highlight' : 'default'}
-                  />
-                </li>
-              ))}
-            </ul>
-          </div>
-        )}
+        {workshops.length > 0 && <WorkshopListHighlight data={workshops} />}
         <div className="introduction_workshop_block__wrapper__cta">
           <Link href="/decouvrir" variant="primary" internalLink>
             Découvrir les ateliers

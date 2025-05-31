@@ -1,5 +1,7 @@
 'use client'
 
+// TODO : Extract list and creae organism + molecule.
+
 import './workshop-list.scss'
 
 import { useRef, useEffect, useState } from 'react'
