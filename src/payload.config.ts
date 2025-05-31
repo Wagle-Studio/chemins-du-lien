@@ -33,7 +33,7 @@ export default buildConfig({
       url: ({ data, collectionConfig, globalConfig }) =>
         serveLivePreview(data, collectionConfig, globalConfig),
       collections: [],
-      globals: ['homepage', 'discover'],
+      globals: ['homepage', 'discover', 'about', 'process'],
     },
   },
   i18n: {

@@ -1,22 +1,36 @@
 import React from 'react'
-import { draftMode } from 'next/headers'
 import { notFound } from 'next/navigation'
+import { checkAuthorizedPreview } from '@/utilities/payload/preview'
 import { getGlobal } from '@/utilities/payload/globals'
 import { getGlobalCached } from '@/utilities/payload/cached'
 import { LivePreviewListener } from '@/ui/LivePreviewListener'
-import { AboutPage } from '@/ui/pages/AboutPage'
+import { ProcessPage } from '@/ui/pages/ProcessPage'
 
-export default async function Process() {
-  const { isEnabled: isDraft } = await draftMode()
+export default async function Process({
+  searchParams,
+}: {
+  searchParams: { [key: string]: string | string[] | undefined }
+}) {
+  const params = await searchParams
 
-  const processPage = isDraft ? await getGlobal('process', 1) : await getGlobalCached('process', 1)
+  const isPreview = searchParams.preview === 'true'
+  const isAuthorizedPreview = checkAuthorizedPreview(params, '/processus')
+
+  if (isPreview && !isAuthorizedPreview) {
+    console.warn('Tentative de preview non autorisée sur /processus.')
+    return notFound()
+  }
+
+  const processPage = isAuthorizedPreview
+    ? await getGlobal('process', 1, true)
+    : await getGlobalCached('process', 1)
 
   if (!processPage) return notFound()
 
   return (
     <>
-      {isDraft && <LivePreviewListener />}
-      <AboutPage data={processPage} />
+      {isAuthorizedPreview && <LivePreviewListener />}
+      <ProcessPage data={processPage} />
     </>
   )
 }

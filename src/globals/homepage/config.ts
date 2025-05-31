@@ -10,6 +10,9 @@ export const Homepage: GlobalConfig = {
   versions: {
     drafts: true,
   },
+  access: {
+    read: () => true,
+  },
   fields: [
     {
       name: 'banner',

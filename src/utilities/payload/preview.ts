@@ -1,4 +1,5 @@
 import { CollectionConfig, GlobalConfig } from 'payload'
+import { createPreviewToken } from '@/utilities/crypto'
 
 // Returns appropriate preview URL based on the document type
 export const serveLivePreview = (
@@ -6,14 +7,13 @@ export const serveLivePreview = (
   collectionConfig: CollectionConfig | undefined,
   globalConfig: GlobalConfig | undefined,
 ): string => {
+  let path: string | null = null
+
   if (collectionConfig && !globalConfig) {
     switch (collectionConfig.slug) {
-      case 'articles':
-        return `/api/preview?redirect=/articles/${data.slug}`
-      case 'cursus':
-        return `/api/preview?redirect=/didacticiel/${data.slug}`
-      case 'exercices':
-        return `/api/preview?redirect=/didacticiel/exercice/${data.slug}`
+      // case 'articles':
+      //   path = `/articles/${data.slug}`
+      //   break
       default:
         return '/'
     }
@@ -22,13 +22,38 @@ export const serveLivePreview = (
   if (globalConfig && !collectionConfig) {
     switch (globalConfig.slug) {
       case 'homepage':
-        return `/api/preview?redirect=/`
+        path = '/'
+        break
       case 'discover':
-        return `/api/preview?redirect=/decouvrir`
+        path = '/decouvrir'
+        break
+      case 'about':
+        path = '/a-propos'
+        break
+      case 'process':
+        path = '/processus'
+        break
       default:
         return '/'
     }
   }
 
-  return '/'
+  if (!path) return '/'
+
+  const token = createPreviewToken(path)
+  const previewURL = `/api/preview?redirect=${encodeURIComponent(path)}&preview=true&token=${token}`
+
+  return previewURL
+}
+
+// Checks if the current request is an authorized preview session
+export const checkAuthorizedPreview = (
+  searchParams: { [key: string]: string | string[] | undefined },
+  path: string,
+): boolean => {
+  const isPreview = searchParams.preview === 'true'
+  const expectedToken = createPreviewToken(path)
+  const receivedToken = searchParams.token
+
+  return isPreview && receivedToken === expectedToken
 }

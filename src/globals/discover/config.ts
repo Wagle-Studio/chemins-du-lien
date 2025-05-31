@@ -12,6 +12,9 @@ export const DiscoverPage: GlobalConfig = {
   versions: {
     drafts: true,
   },
+  access: {
+    read: () => true,
+  },
   fields: [
     {
       name: 'title',
