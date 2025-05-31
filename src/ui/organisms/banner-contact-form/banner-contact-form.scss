@@ -1,104 +1,99 @@
 .banner_contact_form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-10);
+  padding: var(--space-25) var(--space-3);
   width: 100%;
-  padding: var(--space-25) 0;
+  max-width: var(--view-max-width);
+  margin: 0 auto;
   box-sizing: border-box;
 
-  &__title {
+  &__wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-5);
     width: 100%;
     max-width: var(--view-max-width);
     margin: 0 auto;
-    padding: var(--space-5) var(--space-3);
-    box-sizing: border-box;
-  }
 
-  &__bg {
-    width: 100%;
-    background-color: var(--primary-45);
+    &__main {
+      display: grid;
+      grid-template-columns: 1fr;
+      grid-template-rows: max-content;
+      border-radius: var(--border-radius-medium);
+      box-shadow: var(--card-shadow);
 
-    &__wrapper {
-      display: flex;
-      flex-direction: column;
-      gap: var(--space-5);
-      width: 100%;
-      max-width: var(--view-max-width);
-      margin: 0 auto;
-      padding: var(--space-5) var(--space-3);
-      box-sizing: border-box;
+      &__cta {
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-8);
+        padding: var(--space-4) var(--space-2) var(--space-6);
+        background-color: rgba(255, 255, 255, 0.8);
+        border-radius: var(--border-radius-medium) var(--border-radius-medium) 0 0;
+        backdrop-filter: blur(5px);
+        box-sizing: border-box;
 
-      &__main {
-        display: grid;
-        grid-template-columns: 1fr;
-        grid-template-rows: max-content;
-        row-gap: var(--space-15);
-
-        &__cta {
+        &__content {
           display: flex;
           flex-direction: column;
-          gap: var(--space-8);
-          padding: var(--space-3);
-          height: max-content;
-          background-color: rgba(255, 255, 255, 0.8);
-          border-radius: var(--border-radius-medium);
-          backdrop-filter: blur(5px);
-          box-shadow: var(--card-shadow);
-          box-sizing: border-box;
+          gap: var(--space-2);
 
-          &__content {
+          &__link {
             display: flex;
-            flex-direction: column;
-            gap: var(--space-3);
+            flex-direction: row;
+            gap: var(--space-1);
+            justify-content: center;
+            max-width: max-content;
+            margin-top: var(--space-2);
+            font-weight: var(--font-weight-large);
 
-            &__paragraph {
-              display: flex;
-              flex-direction: column;
-              gap: var(--space-2);
+            &:hover > span {
+              border-bottom: 1px solid var(--gray-deeper);
             }
 
-            &__link {
-              display: flex;
-              flex-direction: row;
-              gap: var(--space-1);
-              justify-content: center;
-              max-width: max-content;
-              margin-top: var(--space-2);
-              font-weight: var(--font-weight-large);
-
-              &:hover > span {
-                border-bottom: 1px solid var(--gray-deeper);
-              }
-
-              > span {
-                border-bottom: 1px solid transparent;
-                transition: 150ms ease-out;
-              }
-
-              > svg {
-                width: 24px;
-                height: 24px;
-              }
+            > span {
+              border-bottom: 1px solid transparent;
+              transition: 150ms ease-out;
             }
 
-            > .link {
-              margin-top: var(--space-2);
-              width: 100%;
+            > svg {
+              width: 24px;
+              height: 24px;
             }
           }
-        }
 
-        &__form {
-          display: flex;
-          flex-direction: column;
-          gap: var(--space-5);
-
-          > .button {
+          > .link {
+            margin-top: var(--space-2);
             width: 100%;
           }
         }
+      }
 
-        &__form__success {
-          display: flex;
-          flex-direction: column;
-          gap: var(--space-3);
+      &__form {
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-5);
+        padding: var(--space-6) var(--space-2) var(--space-4);
+        background-color: var(--primary-45);
+        border-radius: 0 0 var(--border-radius-medium) var(--border-radius-medium);
+        box-sizing: border-box;
+
+        > .button {
+          width: 100%;
+        }
+      }
+
+      &__form__success {
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-3);
+        padding: var(--space-4);
+        background-color: var(--primary-45);
+        border-radius: 0 0 var(--border-radius-medium) var(--border-radius-medium);
+        box-sizing: border-box;
+
+        > .link {
+          width: 100%;
         }
       }
     }
@@ -107,38 +102,38 @@
 
 @media screen and (min-width: 768px) {
   .banner_contact_form {
-    &__title {
-      padding: var(--space-5) var(--space-6) var(--space-2);
-    }
+    padding: var(--space-25) var(--space-6);
 
-    &__bg {
-      &__wrapper {
-        padding: var(--space-5) var(--space-6);
+    &__wrapper {
+      &__main {
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(2, max-content);
+        row-gap: unset;
 
-        &__main {
-          grid-template-columns: repeat(2, 1fr);
-          grid-template-rows: repeat(2, max-content);
-          column-gap: var(--space-8);
-          row-gap: unset;
+        &__cta {
+          padding: var(--space-4);
+          border-radius: var(--border-radius-medium) 0 0 var(--border-radius-medium);
 
-          &__form {
-            > .button {
-              width: max-content;
-            }
+          &__content > .link {
+            width: max-content;
           }
         }
-      }
-    }
-  }
-}
 
-@media screen and (min-width: 992px) {
-  .banner_contact_form {
-    &__bg {
-      &__wrapper {
-        &__main {
-          column-gap: var(--space-5);
-          column-gap: var(--space-15);
+        &__form {
+          padding: var(--space-4);
+          border-radius: 0 var(--border-radius-medium) var(--border-radius-medium) 0;
+
+          > .button {
+            width: max-content;
+          }
+        }
+
+        &__form__success {
+          border-radius: 0 var(--border-radius-medium) var(--border-radius-medium) 0;
+
+          > .link {
+            width: max-content;
+          }
         }
       }
     }
