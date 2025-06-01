@@ -1,5 +1,5 @@
 import React from 'react'
-import { blockComponents } from '@/types/blocks'
+import { blockComponents, blockValidators } from '@/types/blocks'
 
 type BaseBlock = { blockType: string; id?: string | null }
 
@@ -17,8 +17,20 @@ export function RenderBlocks<T extends BaseBlock>({ blocks }: RenderBlocksProps<
           | React.ComponentType<T>
           | undefined
 
+        const validator = blockValidators[block.blockType as keyof typeof blockValidators] as
+          | ((block: T) => boolean)
+          | undefined
+
         if (!Block) {
-          console.warn(`No component found for blockType: ${block.blockType}`)
+          console.warn(`Aucun composant pour le blockType: ${block.blockType}`)
+          return null
+        }
+
+        if (validator && !validator(block)) {
+          console.warn(
+            `Block "${block.blockType}" invalide : données manquantes, bloc non affiché`,
+            block,
+          )
           return null
         }
 

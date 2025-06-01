@@ -77,3 +77,8 @@ export const getStaticParamsFromSlugs = async <TSlug extends CollectionSlug>(
   const slugs = await getSlugsFromCollection(collection)
   return slugs.map((slug) => ({ slug }))
 }
+
+// Filter draft collection content type items.
+export const filterPublishedOnly = <T extends Record<string, any>>(docs: T[]): T[] => {
+  return docs.filter((doc) => doc._status === 'published')
+}
