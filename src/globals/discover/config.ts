@@ -1,5 +1,6 @@
 import { GlobalConfig } from 'payload'
 import { RichTextMinimal } from '@/fields/RichTextMinimal'
+import { Process } from '@/blocks/process/config'
 import { RichText } from '@/blocks/rich-text/config'
 import { WorkshopCharter } from '@/blocks/workshop-charter/config'
 import { Feedback } from '@/blocks/feedback/config'
@@ -27,7 +28,7 @@ export const DiscoverPage: GlobalConfig = {
       name: 'blocks',
       label: 'Blocs de la page',
       type: 'blocks',
-      blocks: [RichText, WorkshopCharter, Feedback, Book, IntroductionFaq],
+      blocks: [Process, RichText, WorkshopCharter, Feedback, Book, IntroductionFaq],
     },
   ],
 }

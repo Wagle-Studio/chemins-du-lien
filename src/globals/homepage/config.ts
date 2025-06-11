@@ -1,4 +1,5 @@
 import { GlobalConfig } from 'payload'
+import { Process } from '@/blocks/process/config'
 import { Introduction } from '@/blocks/introduction/config'
 import { IntroductionWorkshop } from '@/blocks/introduction-workshop/config'
 import { IntroductionTeam } from '@/blocks/introduction-team/config'
@@ -24,7 +25,7 @@ export const Homepage: GlobalConfig = {
       name: 'blocks',
       label: 'Blocs de la page',
       type: 'blocks',
-      blocks: [Introduction, IntroductionWorkshop, IntroductionTeam, Instagram],
+      blocks: [Introduction, Process, IntroductionWorkshop, IntroductionTeam, Instagram],
     },
   ],
 }

@@ -36,10 +36,13 @@ import { validateIntroductionFaqBlock } from '@/ui/organisms/introduction-faq/va
 import { MembersBlock } from '@/blocks/members/MembersBlock'
 import { validateMembersBlock } from '@/ui/organisms/members/validateMembersBlock'
 
-import { WorkshopCharterBlock } from '@/blocks/workshop-charter/WorkshopCharterBlock'
-import { validateWorkshopCharterBlock } from '@/ui/organisms/workshop-charter/validateWorkshopCharterBlock'
+import { ProcessBlock } from '@/blocks/process/ProcessBlock'
+import { validateProcessBlock } from '@/ui/organisms/process/validateProcessBlock'
 
 import { RichTextBlock } from '@/blocks/rich-text/RichTextBlock'
+
+import { WorkshopCharterBlock } from '@/blocks/workshop-charter/WorkshopCharterBlock'
+import { validateWorkshopCharterBlock } from '@/ui/organisms/workshop-charter/validateWorkshopCharterBlock'
 
 export type HomepageBlocks = NonNullable<Homepage['blocks']>[number]
 export type DiscoverBlocks = NonNullable<Discover['blocks']>[number]
@@ -62,8 +65,9 @@ export const blockComponents: {
   introduction_team: IntroductionTeamBlock,
   introduction_faq: IntroductionFaqBlock,
   members: MembersBlock,
-  workshop_charter: WorkshopCharterBlock,
+  process: ProcessBlock,
   rich_text: RichTextBlock,
+  workshop_charter: WorkshopCharterBlock,
 }
 
 export const blockValidators: {
@@ -81,6 +85,7 @@ export const blockValidators: {
   introduction_team: validateIntroductionTeamBlock,
   introduction_faq: validateIntroductionFaqBlock,
   members: validateMembersBlock,
+  process: validateProcessBlock,
   workshop_charter: validateWorkshopCharterBlock,
 }
 

@@ -537,6 +537,35 @@ export interface Homepage {
         | {
             background?: boolean | null;
             title: string;
+            subtitle: string;
+            stapes?:
+              | {
+                  title: string;
+                  description: {
+                    root: {
+                      type: string;
+                      children: {
+                        type: string;
+                        version: number;
+                        [k: string]: unknown;
+                      }[];
+                      direction: ('ltr' | 'rtl') | null;
+                      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+                      indent: number;
+                      version: number;
+                    };
+                    [k: string]: unknown;
+                  };
+                  id?: string | null;
+                }[]
+              | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'process';
+          }
+        | {
+            background?: boolean | null;
+            title: string;
             description: {
               root: {
                 type: string;
@@ -627,6 +656,35 @@ export interface Discover {
   };
   blocks?:
     | (
+        | {
+            background?: boolean | null;
+            title: string;
+            subtitle: string;
+            stapes?:
+              | {
+                  title: string;
+                  description: {
+                    root: {
+                      type: string;
+                      children: {
+                        type: string;
+                        version: number;
+                        [k: string]: unknown;
+                      }[];
+                      direction: ('ltr' | 'rtl') | null;
+                      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+                      indent: number;
+                      version: number;
+                    };
+                    [k: string]: unknown;
+                  };
+                  id?: string | null;
+                }[]
+              | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'process';
+          }
         | {
             background?: boolean | null;
             richText: {
@@ -1058,6 +1116,22 @@ export interface HomepageSelect<T extends boolean = true> {
               id?: T;
               blockName?: T;
             };
+        process?:
+          | T
+          | {
+              background?: T;
+              title?: T;
+              subtitle?: T;
+              stapes?:
+                | T
+                | {
+                    title?: T;
+                    description?: T;
+                    id?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
         introduction_workshop?:
           | T
           | {
@@ -1114,6 +1188,22 @@ export interface DiscoverSelect<T extends boolean = true> {
   blocks?:
     | T
     | {
+        process?:
+          | T
+          | {
+              background?: T;
+              title?: T;
+              subtitle?: T;
+              stapes?:
+                | T
+                | {
+                    title?: T;
+                    description?: T;
+                    id?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
         rich_text?:
           | T
           | {
