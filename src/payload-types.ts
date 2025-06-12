@@ -654,6 +654,7 @@ export interface Homepage {
  */
 export interface Discover {
   id: number;
+  banner?: (number | null) | Media;
   title: string;
   introduction: {
     root: {
@@ -866,6 +867,7 @@ export interface Discover {
  */
 export interface About {
   id: number;
+  banner?: (number | null) | Media;
   title: string;
   introduction: {
     root: {
@@ -1007,6 +1009,7 @@ export interface About {
  */
 export interface Process {
   id: number;
+  banner?: (number | null) | Media;
   title: string;
   introduction: {
     root: {
@@ -1251,6 +1254,7 @@ export interface HomepageSelect<T extends boolean = true> {
  * via the `definition` "discover_select".
  */
 export interface DiscoverSelect<T extends boolean = true> {
+  banner?: T;
   title?: T;
   introduction?: T;
   blocks?:
@@ -1363,6 +1367,7 @@ export interface DiscoverSelect<T extends boolean = true> {
  * via the `definition` "about_select".
  */
 export interface AboutSelect<T extends boolean = true> {
+  banner?: T;
   title?: T;
   introduction?: T;
   blocks?:
@@ -1445,6 +1450,7 @@ export interface AboutSelect<T extends boolean = true> {
  * via the `definition` "process_select".
  */
 export interface ProcessSelect<T extends boolean = true> {
+  banner?: T;
   title?: T;
   introduction?: T;
   blocks?:

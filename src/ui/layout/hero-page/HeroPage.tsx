@@ -15,10 +15,18 @@ export const HeroPage: React.FC<Props> = ({ data, ...props }) => {
   const headingRef = useRef<HTMLHeadingElement>(null)
   const introductionRef = useRef<HTMLHeadingElement>(null)
 
+  const banner = data.banner && typeof data.banner !== 'number' ? data.banner : null
+
   useHeroPageAnimation(sectionRef, headingRef, introductionRef)
 
   return (
-    <section id="top" ref={sectionRef} className="page_hero_banner_block" {...props}>
+    <section
+      id="top"
+      ref={sectionRef}
+      className="page_hero_banner_block"
+      style={banner?.url ? { background: `url(${banner.url}) center/cover no-repeat` } : undefined}
+      {...props}
+    >
       <div className="page_hero_banner_block__wrapper">
         <div className="page_hero_banner_block__wrapper__content">
           <h1 ref={headingRef} className="heading_1">

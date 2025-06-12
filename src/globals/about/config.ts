@@ -24,6 +24,12 @@ export const AboutPage: GlobalConfig = {
           label: 'Contenu',
           fields: [
             {
+              name: 'banner',
+              label: 'Image de banière',
+              type: 'upload',
+              relationTo: 'media',
+            },
+            {
               name: 'title',
               label: 'Titre principal',
               type: 'text',
