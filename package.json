@@ -6,6 +6,7 @@
   "type": "module",
   "scripts": {
     "build": "cross-env NODE_OPTIONS=--no-deprecation next build",
+    "postbuild": "next-sitemap",
     "dev": "cross-env NODE_OPTIONS=--no-deprecation next dev",
     "devsafe": "rm -rf .next && cross-env NODE_OPTIONS=--no-deprecation next dev",
     "generate:importmap": "cross-env NODE_OPTIONS=--no-deprecation payload generate:importmap",
@@ -25,6 +26,7 @@
     "graphql": "^16.8.1",
     "gsap": "^3.13.0",
     "next": "15.2.3",
+    "next-sitemap": "^4.2.3",
     "payload": "^3.39.1",
     "react": "19.0.0",
     "react-dom": "19.0.0",

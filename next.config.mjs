@@ -2,6 +2,7 @@ import { withPayload } from '@payloadcms/next/withPayload'
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  poweredByHeader: false,
   allowedDevOrigins: [
     'chemins-du-lien.preprod.wolff-kevin.fr',
     'www.chemins-du-lien.preprod.wolff-kevin.fr',
