@@ -5,6 +5,7 @@ import { Members } from '@/blocks/members/config'
 import { Book } from '@/blocks/book/config'
 import { Faq } from '@/blocks/faq/config'
 import { Instagram } from '@/blocks/instagram/config'
+import { SEOFields } from '@/fields/SEOFields'
 
 export const AboutPage: GlobalConfig = {
   slug: 'about',
@@ -17,17 +18,28 @@ export const AboutPage: GlobalConfig = {
   },
   fields: [
     {
-      name: 'title',
-      label: 'Titre principal',
-      type: 'text',
-      required: true,
-    },
-    RichTextMinimal('introduction', 'Introduction', true),
-    {
-      name: 'blocks',
-      label: 'Blocs de la page',
-      type: 'blocks',
-      blocks: [RichText, Members, Book, Faq, Instagram],
+      type: 'tabs',
+      tabs: [
+        {
+          label: 'Contenu',
+          fields: [
+            {
+              name: 'title',
+              label: 'Titre principal',
+              type: 'text',
+              required: true,
+            },
+            RichTextMinimal('introduction', 'Introduction', true),
+            {
+              name: 'blocks',
+              label: 'Blocs de la page',
+              type: 'blocks',
+              blocks: [RichText, Members, Book, Faq, Instagram],
+            },
+          ],
+        },
+        ...SEOFields.tabs,
+      ],
     },
   ],
 }

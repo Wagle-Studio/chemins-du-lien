@@ -4,6 +4,7 @@ import { PageSearchParams } from '@/types/app'
 import { checkAuthorizedPreview } from '@/utilities/payload/preview'
 import { getGlobal } from '@/utilities/payload/globals'
 import { getGlobalCached } from '@/utilities/payload/cached'
+import { withFallbackSEO } from '@/utilities/SEO/withFallbackSEO'
 import { LivePreviewListener } from '@/ui/LivePreviewListener'
 import { HomePage } from '@/ui/pages/Homepage'
 
@@ -29,4 +30,9 @@ export default async function Home({ searchParams }: PageSearchParams) {
       <HomePage data={homepage} />
     </>
   )
+}
+
+export async function generateMetadata() {
+  const data = await getGlobalCached('homepage', 1)
+  return withFallbackSEO(data)
 }

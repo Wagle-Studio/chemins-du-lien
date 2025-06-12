@@ -4,6 +4,7 @@ import { PageSearchParams } from '@/types/app'
 import { checkAuthorizedPreview } from '@/utilities/payload/preview'
 import { getGlobal } from '@/utilities/payload/globals'
 import { getGlobalCached } from '@/utilities/payload/cached'
+import { withFallbackSEO } from '@/utilities/SEO/withFallbackSEO'
 import { LivePreviewListener } from '@/ui/LivePreviewListener'
 import { ProcessPage } from '@/ui/pages/ProcessPage'
 
@@ -29,4 +30,9 @@ export default async function Process({ searchParams }: PageSearchParams) {
       <ProcessPage data={processPage} />
     </>
   )
+}
+
+export async function generateMetadata() {
+  const data = await getGlobalCached('process', 1)
+  return withFallbackSEO(data)
 }

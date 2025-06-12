@@ -628,6 +628,22 @@ export interface Homepage {
           }
       )[]
     | null;
+  /**
+   * Titre pour les moteurs de recherche (max. 60 caractères)
+   */
+  metaTitle?: string | null;
+  /**
+   * Description affichée dans les résultats de recherche (max. 160 caractères)
+   */
+  metaDescription?: string | null;
+  /**
+   * Image affichée lors du partage de la page sur les réseaux sociaux ou dans une messagerie
+   */
+  metaImage?: (number | null) | Media;
+  /**
+   * Empêche l'indexation de la page par les moteurs de recherche
+   */
+  noIndex?: boolean | null;
   _status?: ('draft' | 'published') | null;
   updatedAt?: string | null;
   createdAt?: string | null;
@@ -824,6 +840,22 @@ export interface Discover {
           }
       )[]
     | null;
+  /**
+   * Titre pour les moteurs de recherche (max. 60 caractères)
+   */
+  metaTitle?: string | null;
+  /**
+   * Description affichée dans les résultats de recherche (max. 160 caractères)
+   */
+  metaDescription?: string | null;
+  /**
+   * Image affichée lors du partage de la page sur les réseaux sociaux ou dans une messagerie
+   */
+  metaImage?: (number | null) | Media;
+  /**
+   * Empêche l'indexation de la page par les moteurs de recherche
+   */
+  noIndex?: boolean | null;
   _status?: ('draft' | 'published') | null;
   updatedAt?: string | null;
   createdAt?: string | null;
@@ -949,6 +981,22 @@ export interface About {
           }
       )[]
     | null;
+  /**
+   * Titre pour les moteurs de recherche (max. 60 caractères)
+   */
+  metaTitle?: string | null;
+  /**
+   * Description affichée dans les résultats de recherche (max. 160 caractères)
+   */
+  metaDescription?: string | null;
+  /**
+   * Image affichée lors du partage de la page sur les réseaux sociaux ou dans une messagerie
+   */
+  metaImage?: (number | null) | Media;
+  /**
+   * Empêche l'indexation de la page par les moteurs de recherche
+   */
+  noIndex?: boolean | null;
   _status?: ('draft' | 'published') | null;
   updatedAt?: string | null;
   createdAt?: string | null;
@@ -1092,6 +1140,22 @@ export interface Process {
           }
       )[]
     | null;
+  /**
+   * Titre pour les moteurs de recherche (max. 60 caractères)
+   */
+  metaTitle?: string | null;
+  /**
+   * Description affichée dans les résultats de recherche (max. 160 caractères)
+   */
+  metaDescription?: string | null;
+  /**
+   * Image affichée lors du partage de la page sur les réseaux sociaux ou dans une messagerie
+   */
+  metaImage?: (number | null) | Media;
+  /**
+   * Empêche l'indexation de la page par les moteurs de recherche
+   */
+  noIndex?: boolean | null;
   _status?: ('draft' | 'published') | null;
   updatedAt?: string | null;
   createdAt?: string | null;
@@ -1173,6 +1237,10 @@ export interface HomepageSelect<T extends boolean = true> {
               blockName?: T;
             };
       };
+  metaTitle?: T;
+  metaDescription?: T;
+  metaImage?: T;
+  noIndex?: T;
   _status?: T;
   updatedAt?: T;
   createdAt?: T;
@@ -1281,6 +1349,10 @@ export interface DiscoverSelect<T extends boolean = true> {
               blockName?: T;
             };
       };
+  metaTitle?: T;
+  metaDescription?: T;
+  metaImage?: T;
+  noIndex?: T;
   _status?: T;
   updatedAt?: T;
   createdAt?: T;
@@ -1359,6 +1431,10 @@ export interface AboutSelect<T extends boolean = true> {
               blockName?: T;
             };
       };
+  metaTitle?: T;
+  metaDescription?: T;
+  metaImage?: T;
+  noIndex?: T;
   _status?: T;
   updatedAt?: T;
   createdAt?: T;
@@ -1442,6 +1518,10 @@ export interface ProcessSelect<T extends boolean = true> {
               blockName?: T;
             };
       };
+  metaTitle?: T;
+  metaDescription?: T;
+  metaImage?: T;
+  noIndex?: T;
   _status?: T;
   updatedAt?: T;
   createdAt?: T;

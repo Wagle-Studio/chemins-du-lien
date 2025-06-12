@@ -4,6 +4,7 @@ import { Introduction } from '@/blocks/introduction/config'
 import { IntroductionWorkshop } from '@/blocks/introduction-workshop/config'
 import { IntroductionTeam } from '@/blocks/introduction-team/config'
 import { Instagram } from '@/blocks/instagram/config'
+import { SEOFields } from '@/fields/SEOFields'
 
 export const Homepage: GlobalConfig = {
   slug: 'homepage',
@@ -16,16 +17,27 @@ export const Homepage: GlobalConfig = {
   },
   fields: [
     {
-      name: 'banner',
-      label: 'Image de banière',
-      type: 'upload',
-      relationTo: 'media',
-    },
-    {
-      name: 'blocks',
-      label: 'Blocs de la page',
-      type: 'blocks',
-      blocks: [Introduction, Process, IntroductionWorkshop, IntroductionTeam, Instagram],
+      type: 'tabs',
+      tabs: [
+        {
+          label: 'Contenu',
+          fields: [
+            {
+              name: 'banner',
+              label: 'Image de banière',
+              type: 'upload',
+              relationTo: 'media',
+            },
+            {
+              name: 'blocks',
+              label: 'Blocs de la page',
+              type: 'blocks',
+              blocks: [Introduction, Process, IntroductionWorkshop, IntroductionTeam, Instagram],
+            },
+          ],
+        },
+        ...SEOFields.tabs,
+      ],
     },
   ],
 }
