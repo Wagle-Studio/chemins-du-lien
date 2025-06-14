@@ -3,6 +3,7 @@
 import './header.scss'
 
 import { HTMLAttributes, useEffect, useRef, useState } from 'react'
+import { usePathname } from 'next/navigation'
 import clsx from 'clsx'
 import { Link } from '@/ui/atoms/link/Link'
 import { MenuIcon } from '@/ui/atoms/icons/MenuIcon'
@@ -11,6 +12,7 @@ export const Header: React.FC<HTMLAttributes<HTMLElement>> = ({ className, ...pr
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const [isMenuScrolled, setIsMenuScrolled] = useState(false)
   const headerRef = useRef<HTMLDivElement>(null)
+  const pathname = usePathname()
 
   useEffect(() => {
     if (!headerRef.current) return
@@ -84,6 +86,7 @@ export const Header: React.FC<HTMLAttributes<HTMLElement>> = ({ className, ...pr
               className={clsx(
                 'header__bar__nav__list__item',
                 'header__bar__nav__list__item--hidden',
+                { 'header__bar__nav__list__item--active': pathname === '/' },
                 {
                   header__bar__nav__list__item__mobile: isMobileMenuOpen,
                   'header__bar__nav__list__item__mobile--hidden': isMobileMenuOpen,
@@ -95,18 +98,26 @@ export const Header: React.FC<HTMLAttributes<HTMLElement>> = ({ className, ...pr
               </Link>
             </li>
             <li
-              className={clsx('header__bar__nav__list__item', {
-                header__bar__nav__list__item__mobile: isMobileMenuOpen,
-              })}
+              className={clsx(
+                'header__bar__nav__list__item',
+                { 'header__bar__nav__list__item--active': pathname === '/decouvrir' },
+                {
+                  header__bar__nav__list__item__mobile: isMobileMenuOpen,
+                },
+              )}
             >
               <Link href={`/decouvrir`} onClick={() => setIsMobileMenuOpen(false)}>
                 Découvrir
               </Link>
             </li>
             <li
-              className={clsx('header__bar__nav__list__item', {
-                header__bar__nav__list__item__mobile: isMobileMenuOpen,
-              })}
+              className={clsx(
+                'header__bar__nav__list__item',
+                { 'header__bar__nav__list__item--active': pathname === '/ateliers' },
+                {
+                  header__bar__nav__list__item__mobile: isMobileMenuOpen,
+                },
+              )}
             >
               <Link href={`/ateliers`} onClick={() => setIsMobileMenuOpen(false)}>
                 Ateliers

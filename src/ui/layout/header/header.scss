@@ -50,7 +50,6 @@
         flex-direction: column;
         font-weight: var(--font-weight-large);
         font-size: var(--font-size-medium) !important;
-        // color: var(--white);
         color: var(--black);
         line-height: 1.75rem;
 
@@ -157,7 +156,6 @@
         box-sizing: border-box;
 
         path {
-          // fill: var(--white) !important;
           fill: var(--black) !important;
         }
       }
@@ -229,7 +227,6 @@
             all: unset;
 
             a:not(.link--variant-primary) {
-              // color: var(--white);
               border-bottom: 2px solid transparent;
               color: var(--black);
               transition: 150ms ease-out;
@@ -244,13 +241,18 @@
               display: none;
             }
 
+            &--active {
+              a {
+                border-bottom: 2px solid var(--gray-deeper) !important;
+              }
+            }
+
             &__mobile {
               a:not(.link--variant-primary) {
                 display: inline;
                 padding: 0;
                 width: 0;
                 border-top: unset !important;
-                // color: var(--white);
                 color: var(--black);
                 border-bottom: 2px solid transparent;
                 transition: 150ms ease-out;
