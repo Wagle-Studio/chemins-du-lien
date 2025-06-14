@@ -7,7 +7,7 @@ export const Feedback: Block = {
     singular: 'Retour d’expériences',
     plural: 'Retours d’expériences',
   },
-  imageURL: 'http://localhost:3000/block_illustrations/block_feedback.jpg',
+  imageURL: '/block_illustrations/block_feedback.jpg',
   fields: [
     {
       name: 'background',

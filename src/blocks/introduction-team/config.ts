@@ -7,7 +7,7 @@ export const IntroductionTeam: Block = {
     singular: 'Introduction Girafons',
     plural: 'Introductions Girafons',
   },
-  imageURL: 'http://localhost:3000/block_illustrations/block_introduction_girafons.jpg',
+  imageURL: '/block_illustrations/block_introduction_girafons.jpg',
   fields: [
     {
       name: 'background',

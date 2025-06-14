@@ -7,7 +7,7 @@ export const IntroductionFaq: Block = {
     singular: 'Introduction FAQ',
     plural: 'Introductions FAQ',
   },
-  imageURL: 'http://localhost:3000/block_illustrations/block_introduction_faq.jpg',
+  imageURL: '/block_illustrations/block_introduction_faq.jpg',
   fields: [
     {
       name: 'background',

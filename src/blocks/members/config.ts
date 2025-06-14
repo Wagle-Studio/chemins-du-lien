@@ -7,7 +7,7 @@ export const Members: Block = {
     singular: 'Membre de l’équipe',
     plural: 'Membres de l’équipe',
   },
-  imageURL: 'http://localhost:3000/block_illustrations/block_members.jpg',
+  imageURL: '/block_illustrations/block_members.jpg',
   fields: [
     {
       name: 'background',

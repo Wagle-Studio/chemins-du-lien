@@ -7,7 +7,7 @@ export const WorkshopCharter: Block = {
     singular: 'Charte de l’atelier',
     plural: 'Chartes des ateliers',
   },
-  imageURL: 'http://localhost:3000/block_illustrations/block_workshop_charter.jpg',
+  imageURL: '/block_illustrations/block_workshop_charter.jpg',
   fields: [
     {
       name: 'background',

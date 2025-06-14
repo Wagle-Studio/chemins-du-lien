@@ -7,7 +7,7 @@ export const Book: Block = {
     singular: 'Livre Jean-Luc Berger',
     plural: 'Livres Jean-Luc Berger',
   },
-  imageURL: 'http://localhost:3000/block_illustrations/block_book.jpg',
+  imageURL: '/block_illustrations/block_book.jpg',
   fields: [
     {
       name: 'background',

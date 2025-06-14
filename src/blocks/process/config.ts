@@ -7,7 +7,7 @@ export const Process: Block = {
     singular: 'Roue du processus',
     plural: 'Roues du processus',
   },
-  imageURL: 'http://localhost:3000/block_illustrations/block_process.jpg',
+  imageURL: '/block_illustrations/block_process.jpg',
   fields: [
     {
       name: 'background',

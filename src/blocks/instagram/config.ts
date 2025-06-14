@@ -6,7 +6,7 @@ export const Instagram: Block = {
     singular: 'Instagram',
     plural: 'Instagram',
   },
-  imageURL: 'http://localhost:3000/block_illustrations/block_instagram.jpg',
+  imageURL: '/block_illustrations/block_instagram.jpg',
   fields: [
     {
       name: 'background',

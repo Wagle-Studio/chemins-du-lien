@@ -6,7 +6,7 @@ export const ArticleNextWorkshops: Block = {
     singular: 'Prochain atelier',
     plural: 'Prochains ateliers',
   },
-  imageURL: 'http://localhost:3000/block_illustrations/block_article_next_workshops.jpg',
+  imageURL: '/block_illustrations/block_article_next_workshops.jpg',
   fields: [
     {
       name: 'background',

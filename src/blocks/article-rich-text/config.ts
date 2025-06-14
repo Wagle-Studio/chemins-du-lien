@@ -7,7 +7,7 @@ export const ArticleRichText: Block = {
     singular: 'Contenu libre',
     plural: 'Contenus libres',
   },
-  imageURL: 'http://localhost:3000/block_illustrations/block_content.jpg',
+  imageURL: '/block_illustrations/block_content.jpg',
   fields: [
     {
       name: 'background',
