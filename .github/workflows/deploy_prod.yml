@@ -1,9 +1,9 @@
-name: Deploy to Production
+name: Deploy to production
 
 on:
   push:
     branches:
-      - master
+      - prod
 
 jobs:
   test-build:
@@ -49,14 +49,14 @@ jobs:
           mkdir -p ~/.ssh
           echo "${{ secrets.SFTP_PROD_SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
           chmod 400 ~/.ssh/id_rsa
-          ssh-keyscan -H "${{ secrets.REMOTE_HOST }}" >> ~/.ssh/known_hosts
+          ssh-keyscan -H "${{ secrets.REMOTE_PROD_HOST }}" >> ~/.ssh/known_hosts
 
       - name: Deploy via SFTP (mirror)
         run: |
           LOCALDIR=$(pwd)
           REMOTEDIR="${{ secrets.REMOTE_PROD_PROJECT_FOLDER_PATH }}"
 
-          lftp sftp://${{ secrets.SFTP_PROD_USERNAME }}:${{ secrets.SFTP_PROD_PWD }}@${{ secrets.REMOTE_HOST }} -e "
+          lftp sftp://${{ secrets.SFTP_PROD_USERNAME }}:${{ secrets.SFTP_PROD_PWD }}@${{ secrets.REMOTE_PROD_HOST }} -e "
             set sftp:auto-confirm yes;
             set net:timeout 300;
             set net:max-retries 3;
@@ -75,21 +75,21 @@ jobs:
       - name: Remote SSH - Build and Restart containers
         run: |
           SSH_USER=${{ secrets.SFTP_PROD_USERNAME }}
-          SSH_HOST=${{ secrets.REMOTE_HOST }}
+          SSH_HOST=${{ secrets.REMOTE_PROD_HOST }}
           APP_DIR=${{ secrets.REMOTE_PROD_PROJECT_FOLDER_PATH }}
 
           ssh -i ~/.ssh/id_rsa -o StrictHostKeyChecking=no $SSH_USER@$SSH_HOST << EOF
             cd "$APP_DIR"
             cp .env.example .env
-            sed -i 's#^DATABASE_URI=.*#DATABASE_URI=postgresql://${{ secrets.POSTGRES_USER }}:${{ secrets.POSTGRES_PASSWORD }}@db:5432/${{ secrets.POSTGRES_DB }}#' .env
-            sed -i 's#^PAYLOAD_SECRET=.*#PAYLOAD_SECRET=${{ secrets.PAYLOAD_SECRET }}#' .env
-            sed -i 's#^PAYLOAD_PREVIEW_SECRET=.*#PAYLOAD_PREVIEW_SECRET=${{ secrets.PAYLOAD_PREVIEW_SECRET }}#' .env
-            sed -i 's#^NEXT_PUBLIC_CMS_URL=.*#NEXT_PUBLIC_CMS_URL=${{ secrets.NEXT_PUBLIC_CMS_URL }}#' .env
-            sed -i 's#^POSTGRES_DB=.*#POSTGRES_DB=${{ secrets.POSTGRES_DB }}#' .env
-            sed -i 's#^POSTGRES_USER=.*#POSTGRES_USER=${{ secrets.POSTGRES_USER }}#' .env
-            sed -i 's#^POSTGRES_PASSWORD=.*#POSTGRES_PASSWORD=${{ secrets.POSTGRES_PASSWORD }}#' .env
-            sed -i 's#^PGADMIN_DEFAULT_EMAIL=.*#PGADMIN_DEFAULT_EMAIL=${{ secrets.PGADMIN_DEFAULT_EMAIL }}#' .env
-            sed -i 's#^PGADMIN_DEFAULT_PASSWORD=.*#PGADMIN_DEFAULT_PASSWORD=${{ secrets.PGADMIN_PASSWORD }}#' .env
+            sed -i 's#^DATABASE_URI=.*#DATABASE_URI=postgresql://${{ secrets.POSTGRES_USER_PROD }}:${{ secrets.POSTGRES_PASSWORD_PROD }}@db:5432/${{ secrets.POSTGRES_DB_PROD }}#' .env
+            sed -i 's#^PAYLOAD_SECRET=.*#PAYLOAD_SECRET=${{ secrets.PAYLOAD_SECRET_PROD }}#' .env
+            sed -i 's#^PAYLOAD_PREVIEW_SECRET=.*#PAYLOAD_PREVIEW_SECRET=${{ secrets.PAYLOAD_PREVIEW_SECRET_PROD }}#' .env
+            sed -i 's#^NEXT_PUBLIC_CMS_URL=.*#NEXT_PUBLIC_CMS_URL=${{ secrets.NEXT_PUBLIC_CMS_URL_PROD }}#' .env
+            sed -i 's#^POSTGRES_DB=.*#POSTGRES_DB=${{ secrets.POSTGRES_DB_PROD }}#' .env
+            sed -i 's#^POSTGRES_USER=.*#POSTGRES_USER=${{ secrets.POSTGRES_USER_PROD }}#' .env
+            sed -i 's#^POSTGRES_PASSWORD=.*#POSTGRES_PASSWORD=${{ secrets.POSTGRES_PASSWORD_PROD }}#' .env
+            sed -i 's#^PGADMIN_DEFAULT_EMAIL=.*#PGADMIN_DEFAULT_EMAIL=${{ secrets.PGADMIN_DEFAULT_EMAIL_PROD }}#' .env
+            sed -i 's#^PGADMIN_DEFAULT_PASSWORD=.*#PGADMIN_DEFAULT_PASSWORD=${{ secrets.PGADMIN_PASSWORD_PROD }}#' .env
             docker compose pull
             docker compose -f docker-compose.yml -f docker-compose.prod.yml up --build -d
             docker image prune -f
