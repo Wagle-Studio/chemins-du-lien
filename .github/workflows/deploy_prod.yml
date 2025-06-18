@@ -1,0 +1,96 @@
+name: Deploy to production
+
+on:
+  push:
+    branches:
+      - prod
+
+jobs:
+  test-build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Docker
+        uses: docker/setup-buildx-action@v3
+
+      - name: Copy .env.example to .env
+        run: cp .env.example .env
+
+      - name: Patch .env with dummy values
+        run: |
+          sed -i 's#^DATABASE_URI=.*#DATABASE_URI=postgresql://user:password@localhost:5432/db#' .env
+          sed -i 's#^PAYLOAD_SECRET=.*#PAYLOAD_SECRET=dummy#' .env
+          sed -i 's#^PAYLOAD_PREVIEW_SECRET=.*#PAYLOAD_PREVIEW_SECRET=dummy#' .env
+          sed -i 's#^NEXT_PUBLIC_CMS_URL=.*#NEXT_PUBLIC_CMS_URL=http://localhost:3000#' .env
+          sed -i 's#^POSTGRES_DB=.*#POSTGRES_DB=db#' .env
+          sed -i 's#^POSTGRES_USER=.*#POSTGRES_USER=user#' .env
+          sed -i 's#^POSTGRES_PASSWORD=.*#POSTGRES_PASSWORD=password#' .env
+          sed -i 's#^PGADMIN_DEFAULT_EMAIL=.*#PGADMIN_DEFAULT_EMAIL=admin@example.com#' .env
+          sed -i 's#^PGADMIN_DEFAULT_PASSWORD=.*#PGADMIN_DEFAULT_PASSWORD=admin#' .env
+          sed -i 's#^NODE_ENV=.*#NODE_ENV=production#' .env
+
+      - name: Build Docker containers (test only)
+        run: docker compose -f docker-compose.yml -f docker-compose.prod.yml build
+
+  deploy:
+    needs: test-build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Install dependencies
+        run: sudo apt-get update && sudo apt-get install -y lftp openssh-client
+
+      - name: Setup SSH
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.SFTP_PREPROD_SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
+          chmod 400 ~/.ssh/id_rsa
+          ssh-keyscan -H "${{ secrets.REMOTE_PROD_HOST }}" >> ~/.ssh/known_hosts
+
+      - name: Deploy via SFTP (mirror)
+        run: |
+          LOCALDIR=$(pwd)
+          REMOTEDIR="${{ secrets.REMOTE_PREPROD_PROJECT_FOLDER_PATH }}"
+
+          lftp sftp://${{ secrets.SFTP_PROD_USERNAME }}:${{ secrets.SFTP_PROD_PWD }}@${{ secrets.REMOTE_PROD_HOST }} -e "
+            set sftp:auto-confirm yes;
+            set net:timeout 300;
+            set net:max-retries 3;
+            cd $REMOTEDIR;
+            mirror -R -v --only-newer --delete \
+              --exclude .env/ \
+              --exclude .next/ \
+              --exclude media/ \
+              --exclude .git/ \
+              --exclude .github/ \
+              --exclude node_modules/ \
+              $LOCALDIR/ ./
+            quit
+          "
+
+      - name: Remote SSH - Build and Restart containers
+        run: |
+          SSH_USER=${{ secrets.SFTP_PROD_USERNAME }}
+          SSH_HOST=${{ secrets.REMOTE_PROD_HOST }}
+          APP_DIR=${{ secrets.REMOTE_PROD_PROJECT_FOLDER_PATH }}
+
+          ssh -i ~/.ssh/id_rsa -o StrictHostKeyChecking=no $SSH_USER@$SSH_HOST << EOF
+            cd "$APP_DIR"
+            cp .env.example .env
+            sed -i 's#^DATABASE_URI=.*#DATABASE_URI=postgresql://${{ secrets.POSTGRES_USER_PROD }}:${{ secrets.POSTGRES_PASSWORD_PROD }}@db:5432/${{ secrets.POSTGRES_DB_PROD }}#' .env
+            sed -i 's#^PAYLOAD_SECRET=.*#PAYLOAD_SECRET=${{ secrets.PAYLOAD_SECRET_PROD }}#' .env
+            sed -i 's#^PAYLOAD_PREVIEW_SECRET=.*#PAYLOAD_PREVIEW_SECRET=${{ secrets.PAYLOAD_PREVIEW_SECRET_PROD }}#' .env
+            sed -i 's#^NEXT_PUBLIC_CMS_URL=.*#NEXT_PUBLIC_CMS_URL=${{ secrets.NEXT_PUBLIC_CMS_URL_PROD }}#' .env
+            sed -i 's#^POSTGRES_DB=.*#POSTGRES_DB=${{ secrets.POSTGRES_DB_PROD }}#' .env
+            sed -i 's#^POSTGRES_USER=.*#POSTGRES_USER=${{ secrets.POSTGRES_USER_PROD }}#' .env
+            sed -i 's#^POSTGRES_PASSWORD=.*#POSTGRES_PASSWORD=${{ secrets.POSTGRES_PASSWORD_PROD }}#' .env
+            sed -i 's#^PGADMIN_DEFAULT_EMAIL=.*#PGADMIN_DEFAULT_EMAIL=${{ secrets.PGADMIN_DEFAULT_EMAIL_PROD }}#' .env
+            sed -i 's#^PGADMIN_DEFAULT_PASSWORD=.*#PGADMIN_DEFAULT_PASSWORD=${{ secrets.PGADMIN_PASSWORD_PROD }}#' .env
+            docker compose pull
+            docker compose -f docker-compose.yml -f docker-compose.prod.yml up --build -d
+            docker image prune -f
+          EOF
