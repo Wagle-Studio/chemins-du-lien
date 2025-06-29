@@ -13,3 +13,17 @@ services:
     depends_on:
       - db
     command: npm run dev
+
+  pgadmin:
+    image: dpage/pgadmin4
+    restart: always
+    environment:
+      PGADMIN_DEFAULT_EMAIL: ${PGADMIN_DEFAULT_EMAIL}
+      PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_DEFAULT_PASSWORD}
+    ports:
+      - "7171:80"
+    depends_on:
+      - db
+
+volumes:
+  postgres_data:
