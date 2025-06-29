@@ -3,12 +3,17 @@
 import './banner-contact-form.scss'
 
 import { useRef, useState } from 'react'
+import { AllBlocks, ExtractBlock } from '@/types/blocks'
 import { ContactForm } from '@/ui/molecules/forms/contact/ContactForm'
 import { Link } from '@/ui/atoms/link/Link'
 import { InstagramIcon } from '@/ui/atoms/icons/InstagramIcon'
 import { useBannerContactFormAnimation } from './useBannerContactFormAnimation'
 
-export const BannerContactForm: React.FC = () => {
+type Props = {
+  data: ExtractBlock<AllBlocks, 'contact_form'>
+}
+
+export const BannerContactForm = (data: Props) => {
   const [sendMessageSuccess, setSendMessageSuccess] = useState<boolean>(false)
 
   const sectionRef = useRef<HTMLElement>(null)
@@ -17,7 +22,7 @@ export const BannerContactForm: React.FC = () => {
   useBannerContactFormAnimation(sectionRef, cardRef)
 
   return (
-    <section ref={sectionRef} className="banner_contact_form">
+    <section id="contact" ref={sectionRef} className="banner_contact_form">
       <h1 className="banner_contact_form__title heading_1">Formulaire de contact</h1>
       <div ref={cardRef} className="banner_contact_form__wrapper">
         <div className="banner_contact_form__wrapper__main">
@@ -39,17 +44,6 @@ export const BannerContactForm: React.FC = () => {
               >
                 <InstagramIcon />
                 <span> Instagram Chemins du lien</span>
-              </Link>
-            </div>
-            <div className="banner_contact_form__wrapper__main__cta__content">
-              <h2 className="heading_3">Une question, un projet, un besoin spécifique ?</h2>
-              <p>Échangeons de vive voix lors d’un appel gratuit de 15 minutes.</p>
-              <p>
-                Prenez rendez-vous en quelques clics, nous serons ravis de vous écouter et de vous
-                orienter en toute confidentialité.
-              </p>
-              <Link href={'/'} externalLink variant="ghost">
-                Réserver un appel gratuit
               </Link>
             </div>
           </div>

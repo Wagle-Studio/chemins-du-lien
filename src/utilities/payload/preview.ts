@@ -27,8 +27,8 @@ export const serveLivePreview = (
       case 'discover':
         path = '/decouvrir'
         break
-      case 'about':
-        path = '/a-propos'
+      case 'contact':
+        path = '/contact'
         break
       case 'process':
         path = '/processus'

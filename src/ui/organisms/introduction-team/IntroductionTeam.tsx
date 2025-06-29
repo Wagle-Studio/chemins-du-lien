@@ -77,7 +77,7 @@ export const IntroductionTeam: React.FC<Props> = ({ data }) => {
             <Link href="/decouvrir#feedback_block" variant="primary" internalLink>
               Voir les retours d&apos;expériences
             </Link>
-            <Link href="/a-propos" variant="ghost" internalLink>
+            <Link href="/contact#collectif" variant="ghost" internalLink>
               Découvrir le collectif
             </Link>
           </div>

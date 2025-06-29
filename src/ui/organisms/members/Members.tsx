@@ -26,7 +26,7 @@ export const Members: React.FC<Props> = ({ data }) => {
         'members_block--background': data.background,
       })}
     >
-      <div className="members_block__wrapper">
+      <div id="collectif" className="members_block__wrapper">
         <ul ref={listRef} className="members_block__wrapper__list">
           {data.members?.map((member) => (
             <li key={member.id} className="members_block__wrapper__list__item">
