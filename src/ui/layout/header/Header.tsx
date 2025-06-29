@@ -100,27 +100,27 @@ export const Header: React.FC<HTMLAttributes<HTMLElement>> = ({ className, ...pr
             <li
               className={clsx(
                 'header__bar__nav__list__item',
-                { 'header__bar__nav__list__item--active': pathname === '/decouvrir' },
+                { 'header__bar__nav__list__item--active': pathname === '/processus' },
                 {
                   header__bar__nav__list__item__mobile: isMobileMenuOpen,
                 },
               )}
             >
-              <Link href={`/decouvrir`} onClick={() => setIsMobileMenuOpen(false)}>
-                Découvrir
+              <Link href={`/processus`} onClick={() => setIsMobileMenuOpen(false)}>
+                Processus
               </Link>
             </li>
             <li
               className={clsx(
                 'header__bar__nav__list__item',
-                { 'header__bar__nav__list__item--active': pathname === '/ateliers' },
+                { 'header__bar__nav__list__item--active': pathname === '/contact' },
                 {
                   header__bar__nav__list__item__mobile: isMobileMenuOpen,
                 },
               )}
             >
-              <Link href={`/ateliers`} onClick={() => setIsMobileMenuOpen(false)}>
-                Ateliers
+              <Link href={`/contact#formulaire`} onClick={() => setIsMobileMenuOpen(false)}>
+                Contact
               </Link>
             </li>
             <li
@@ -128,8 +128,8 @@ export const Header: React.FC<HTMLAttributes<HTMLElement>> = ({ className, ...pr
                 header__bar__nav__list__item__mobile: isMobileMenuOpen,
               })}
             >
-              <Link href={`/contact`} variant="primary" onClick={() => setIsMobileMenuOpen(false)}>
-                Contact
+              <Link href={`/ateliers`} variant="primary" onClick={() => setIsMobileMenuOpen(false)}>
+                Réserver
               </Link>
             </li>
           </ul>

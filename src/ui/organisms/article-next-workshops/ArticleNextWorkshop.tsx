@@ -32,7 +32,7 @@ export const ArticleNextWorkshop: React.FC<Props> = ({ data, workshops }) => {
         <h2 className="heading_1">Nos prochains ateliers</h2>
         {workshops.length > 0 && <WorkshopListHighlight data={workshops} />}
         <div className="article_next_workshops__wrapper__cta">
-          <Link href="/decouvrir" variant="primary" internalLink>
+          <Link href="/atelier" variant="primary" internalLink>
             Découvrir les ateliers
           </Link>
           <Link href="/ateliers" variant="ghost" internalLink>

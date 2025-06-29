@@ -1,4 +1,4 @@
-import { About, Discover, Homepage, Process } from '@/payload-types'
+import { Contact, Discover, Homepage, Process } from '@/payload-types'
 import { defaultSEO } from './fallback'
 
 export type StaticMeta = {
@@ -8,7 +8,7 @@ export type StaticMeta = {
   noIndex?: boolean
 }
 
-type Options = StaticMeta | Homepage | Process | Discover | About
+type Options = StaticMeta | Homepage | Process | Discover | Contact
 
 export function withFallbackSEO(data?: Options) {
   //   if (!data || !data.metaImage || typeof data.metaImage === 'number') return

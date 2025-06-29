@@ -5,7 +5,7 @@ export default {
   exclude: ['/admin'],
   sitemapSize: 5000,
   additionalPaths: async (config) => {
-    const staticPaths = ['/', '/a-propos', '/decouvrir', '/processus']
+    const staticPaths = ['/', '/contact', '/decouvrir', '/processus']
 
     return staticPaths.map((path) => ({
       loc: path,

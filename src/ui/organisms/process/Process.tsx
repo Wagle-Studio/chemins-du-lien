@@ -48,7 +48,7 @@ export const Process: React.FC<Props> = ({ data }) => {
     return () => {
       if (intervalRef.current) clearInterval(intervalRef.current)
     }
-  }, [])
+  }, [startAnimation])
 
   return (
     <section

@@ -61,7 +61,7 @@ export const WorkshopCharter: React.FC<Props> = ({ data }) => {
               <Link href="/ateliers" variant="primary" internalLink>
                 Participer à un atelier
               </Link>
-              <Link href="/a-propos" variant="ghost" internalLink>
+              <Link href="/contact#collectif" variant="ghost" internalLink>
                 Découvrir le collectif
               </Link>
             </div>

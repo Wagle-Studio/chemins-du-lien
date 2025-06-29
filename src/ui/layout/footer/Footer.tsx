@@ -52,19 +52,19 @@ export const Footer: React.FC<HTMLAttributes<HTMLElement>> = ({ className, ...pr
                 <Link href={`/`}>Page d&apos;accueil</Link>
               </li>
               <li>
-                <Link href={`/decouvrir`}>Découvrir</Link>
-              </li>
-              <li>
-                <Link href={`/ateliers`}>Les ateliers</Link>
-              </li>
-              <li>
                 <Link href={`/processus`}>Le processus</Link>
               </li>
               <li>
-                <Link href={`/a-propos`}>À propos</Link>
+                <Link href={`/atelier`}>Les ateliers</Link>
               </li>
               <li>
-                <Link href={`/contact`}>Contact</Link>
+                <Link href={`/ateliers`}>Réserver votre atelier</Link>
+              </li>
+              <li>
+                <Link href={`/contact#collectif`}>Le collectif</Link>
+              </li>
+              <li>
+                <Link href={`/contact#formulaire`}>Contact</Link>
               </li>
             </ul>
           </nav>

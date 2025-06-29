@@ -10,7 +10,7 @@ import { SEOFields } from '@/fields/SEOFields'
 
 export const DiscoverPage: GlobalConfig = {
   slug: 'discover',
-  label: 'Page découvrir',
+  label: 'Page atelier',
   versions: {
     drafts: true,
   },
