@@ -22,7 +22,7 @@ export const BannerContactForm = (data: Props) => {
   useBannerContactFormAnimation(sectionRef, cardRef)
 
   return (
-    <section id="contact" ref={sectionRef} className="banner_contact_form">
+    <section id="formulaire" ref={sectionRef} className="banner_contact_form">
       <h1 className="banner_contact_form__title heading_1">Formulaire de contact</h1>
       <div ref={cardRef} className="banner_contact_form__wrapper">
         <div className="banner_contact_form__wrapper__main">

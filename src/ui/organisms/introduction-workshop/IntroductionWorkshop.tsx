@@ -55,7 +55,7 @@ export const IntroductionWorkshop: React.FC<Props> = ({ data, workshops }) => {
         </div>
         {workshops.length > 0 && <WorkshopListHighlight data={workshops} />}
         <div className="introduction_workshop_block__wrapper__cta">
-          <Link href="/decouvrir" variant="primary" internalLink>
+          <Link href="/atelier" variant="primary" internalLink>
             Découvrir les ateliers
           </Link>
           <Link href="/ateliers" variant="ghost" internalLink>

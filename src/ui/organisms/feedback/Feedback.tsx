@@ -35,7 +35,7 @@ export const Feedback: React.FC<Props> = ({ data }) => {
 
   return (
     <section
-      id="feedback_block"
+      id="retours"
       className={clsx('feedback_block', {
         'feedback_block--background': data.background,
       })}

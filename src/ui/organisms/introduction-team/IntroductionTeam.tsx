@@ -74,7 +74,7 @@ export const IntroductionTeam: React.FC<Props> = ({ data }) => {
             </video>
           </div>
           <div className="introduction_team_block__wrapper__right__cta">
-            <Link href="/decouvrir#feedback_block" variant="primary" internalLink>
+            <Link href="/atelier#retours" variant="primary" internalLink>
               Voir les retours d&apos;expériences
             </Link>
             <Link href="/contact#collectif" variant="ghost" internalLink>

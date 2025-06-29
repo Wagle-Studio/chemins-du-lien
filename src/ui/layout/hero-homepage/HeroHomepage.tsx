@@ -36,11 +36,11 @@ export const HeroHomepage: React.FC<Props> = ({ data, ...props }) => {
               <p className="heading_3">de soi à l&apos;autre</p>
             </div>
             <div ref={ctaRef} className="homepage__hero_banner__overlay__content__wrapper__cta">
-              <Link href="/decouvrir" variant="primary" internalLink>
+              <Link href="/processus" variant="primary" internalLink>
                 Découvrir le processus
               </Link>
-              <Link href="/ateliers" variant="ghost" internalLink>
-                Nos ateliers
+              <Link href="/atelier" variant="ghost" internalLink>
+                Les ateliers
               </Link>
             </div>
           </div>
