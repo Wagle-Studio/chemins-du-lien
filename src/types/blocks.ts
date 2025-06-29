@@ -1,7 +1,6 @@
 import type { Homepage, Discover, Contact, Process } from '@/payload-types'
 
 import { ArticleNextWorkshopsBlock } from '@/blocks/article-next-workshops/ArticleNextWorkshopsBlock'
-import { validateArticleNextWorkshopBlock } from '@/ui/organisms/article-next-workshops/validateArticleNextWorkshopBlock'
 
 import { ArticleRichTextBlock } from '@/blocks/article-rich-text/RichTextBlock'
 import { validateArticleRichTextBlock } from '@/ui/organisms/rich-text/validateArticleRichTextBlock'
@@ -76,7 +75,6 @@ export const blockComponents: {
 export const blockValidators: {
   [K in AllBlocks['blockType']]?: (block: Extract<AllBlocks, { blockType: K }>) => boolean
 } = {
-  article_next_workshops: validateArticleNextWorkshopBlock,
   article_rich_text: validateArticleRichTextBlock,
   article_rich_text_picture: validateArticleRichTextPictureBlock,
   book: validateBookBlock,

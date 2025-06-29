@@ -60,7 +60,7 @@ export const WorkshopTeaser: React.FC<Props> = ({
         </div>
         {variant === 'highlight' && registrationIsOpen(data.state) && (
           <div className="workshop_teaser__body__footer">
-            <Link href="#" variant="primary">
+            <Link href={data['form-url']} target="_blank" variant="primary" externalLink>
               S&apos;inscrire
             </Link>
             <p>

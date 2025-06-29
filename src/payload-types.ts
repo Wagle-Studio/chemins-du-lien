@@ -222,6 +222,7 @@ export interface Workshop {
   date: string;
   'meeting-location': string;
   capacity: number;
+  'form-url': string;
   state: 'programmed' | 'confirmed' | 'canceled' | 'reported';
   categories?: (number | Category)[] | null;
   updatedAt: string;
@@ -437,6 +438,7 @@ export interface WorkshopsSelect<T extends boolean = true> {
   date?: T;
   'meeting-location'?: T;
   capacity?: T;
+  'form-url'?: T;
   state?: T;
   categories?: T;
   updatedAt?: T;
