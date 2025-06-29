@@ -11,10 +11,10 @@ import { DiscoverPage } from '@/ui/pages/DiscoverPage'
 export default async function Discover({ searchParams }: PageSearchParams) {
   const resolvedSearchParams = await searchParams
   const isPreview = resolvedSearchParams.preview === 'true'
-  const isAuthorizedPreview = checkAuthorizedPreview(resolvedSearchParams, '/decouvrir')
+  const isAuthorizedPreview = checkAuthorizedPreview(resolvedSearchParams, '/atelier')
 
   if (isPreview && !isAuthorizedPreview) {
-    console.warn('Tentative de preview non autorisée sur /decouvrir.')
+    console.warn('Tentative de preview non autorisée sur /atelier.')
     return notFound()
   }
 

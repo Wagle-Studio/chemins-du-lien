@@ -1,5 +1,6 @@
 import { GlobalConfig } from 'payload'
 import { RichTextMinimal } from '@/fields/RichTextMinimal'
+import { Process } from '@/blocks/process/config'
 import { ArticleRichText } from '@/blocks/article-rich-text/config'
 import { ArticleRichTextPicture } from '@/blocks/article-rich-text-picture/config'
 import { ArticleNextWorkshops } from '@/blocks/article-next-workshops/config'
@@ -42,6 +43,7 @@ export const ProcessPage: GlobalConfig = {
               label: 'Blocs de la page',
               type: 'blocks',
               blocks: [
+                Process,
                 ArticleRichText,
                 ArticleRichTextPicture,
                 ArticleNextWorkshops,
