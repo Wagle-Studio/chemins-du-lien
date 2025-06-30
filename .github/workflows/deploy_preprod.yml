@@ -20,7 +20,6 @@ jobs:
 
       - name: Patch .env with dummy values
         run: |
-          sed -i 's/^POSTGRES_VOLUME=.*/POSTGRES_VOLUME=dumy_volume/' .env
           sed -i 's#^DATABASE_URI=.*#DATABASE_URI=postgresql://user:password@localhost:5432/db#' .env
           sed -i 's#^PAYLOAD_SECRET=.*#PAYLOAD_SECRET=dummy#' .env
           sed -i 's#^PAYLOAD_PREVIEW_SECRET=.*#PAYLOAD_PREVIEW_SECRET=dummy#' .env
@@ -82,7 +81,6 @@ jobs:
           ssh -i ~/.ssh/id_rsa -o StrictHostKeyChecking=no $SSH_USER@$SSH_HOST << EOF
             cd "$APP_DIR"
             cp .env.example .env
-            sed -i 's/^POSTGRES_VOLUME=.*/POSTGRES_VOLUME=${{ secrets.DOCKER_POSTGRES_VOLUME_PREPROD }}/' .env
             sed -i 's#^DATABASE_URI=.*#DATABASE_URI=postgresql://${{ secrets.POSTGRES_USER_PREPROD }}:${{ secrets.POSTGRES_PASSWORD_PREPROD }}@db:5432/${{ secrets.POSTGRES_DB_PREPROD }}#' .env
             sed -i 's#^PAYLOAD_SECRET=.*#PAYLOAD_SECRET=${{ secrets.PAYLOAD_SECRET_PREPROD }}#' .env
             sed -i 's#^PAYLOAD_PREVIEW_SECRET=.*#PAYLOAD_PREVIEW_SECRET=${{ secrets.PAYLOAD_PREVIEW_SECRET_PREPROD }}#' .env
