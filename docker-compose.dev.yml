@@ -1,12 +1,24 @@
 services:
+  db:
+    image: postgres:15
+    restart: always
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB}
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data_dev:/var/lib/postgresql/data
+
   web:
     build:
       context: .
+    ports:
+      - "3000:3000"
     volumes:
       - .:/app
       - /app/node_modules
-    ports:
-      - "3000:3000"
     env_file: .env
     environment:
       NODE_ENV: development
@@ -24,3 +36,6 @@ services:
       - "7171:80"
     depends_on:
       - db
+
+volumes:
+  postgres_data_dev:
