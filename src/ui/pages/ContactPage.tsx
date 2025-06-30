@@ -1,10 +1,17 @@
 import React from 'react'
-import { BannerContactForm } from '@/ui/organisms/banner-contact-form/BannerContactForm'
+import { Contact } from '@/payload-types'
+import { RenderBlocks } from '@/blocks/RenderBlocks'
+import { HeroPage } from '@/ui/layout/hero-page/HeroPage'
 
-export const ContactPage = async () => {
+type Props = {
+  data: Contact
+}
+
+export const ContactPage = async ({ data }: Props) => {
   return (
     <>
-      <BannerContactForm />
+      <HeroPage data={data} />
+      <RenderBlocks blocks={data.blocks} />
     </>
   )
 }

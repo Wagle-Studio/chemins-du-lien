@@ -1,7 +1,6 @@
-import type { Homepage, Discover, About, Process } from '@/payload-types'
+import type { Homepage, Discover, Contact, Process } from '@/payload-types'
 
 import { ArticleNextWorkshopsBlock } from '@/blocks/article-next-workshops/ArticleNextWorkshopsBlock'
-import { validateArticleNextWorkshopBlock } from '@/ui/organisms/article-next-workshops/validateArticleNextWorkshopBlock'
 
 import { ArticleRichTextBlock } from '@/blocks/article-rich-text/RichTextBlock'
 import { validateArticleRichTextBlock } from '@/ui/organisms/rich-text/validateArticleRichTextBlock'
@@ -11,6 +10,8 @@ import { validateArticleRichTextPictureBlock } from '@/ui/organisms/article-rich
 
 import { BookBlock } from '@/blocks/book/BookBlock'
 import { validateBookBlock } from '@/ui/organisms/book/validateBookBlock'
+
+import { ContactFormBlock } from '@/blocks/contact-form/ContactFormBlock'
 
 import { FaqBlock } from '@/blocks/faq/FaqBlock'
 import { validateFaqBlock } from '@/ui/organisms/faq/validateFaqBlock'
@@ -46,9 +47,9 @@ import { validateWorkshopCharterBlock } from '@/ui/organisms/workshop-charter/va
 
 export type HomepageBlocks = NonNullable<Homepage['blocks']>[number]
 export type DiscoverBlocks = NonNullable<Discover['blocks']>[number]
-export type AboutBlocks = NonNullable<About['blocks']>[number]
+export type ContactBlocks = NonNullable<Contact['blocks']>[number]
 export type ProcessBlocks = NonNullable<Process['blocks']>[number]
-export type AllBlocks = HomepageBlocks | DiscoverBlocks | AboutBlocks | ProcessBlocks
+export type AllBlocks = HomepageBlocks | DiscoverBlocks | ContactBlocks | ProcessBlocks
 
 export const blockComponents: {
   [K in AllBlocks['blockType']]: React.ComponentType<Extract<AllBlocks, { blockType: K }>>
@@ -57,6 +58,7 @@ export const blockComponents: {
   article_rich_text: ArticleRichTextBlock,
   article_rich_text_picture: ArticleRichTextPictureBlock,
   book: BookBlock,
+  contact_form: ContactFormBlock,
   faq: FaqBlock,
   feedback: FeedbackBlock,
   instagram: InstagramBlock,
@@ -73,7 +75,6 @@ export const blockComponents: {
 export const blockValidators: {
   [K in AllBlocks['blockType']]?: (block: Extract<AllBlocks, { blockType: K }>) => boolean
 } = {
-  article_next_workshops: validateArticleNextWorkshopBlock,
   article_rich_text: validateArticleRichTextBlock,
   article_rich_text_picture: validateArticleRichTextPictureBlock,
   book: validateBookBlock,

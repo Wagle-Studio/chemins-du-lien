@@ -33,7 +33,7 @@ export const IntroductionFaq: React.FC<Props> = ({ data }) => {
           <div>
             <ConvertRichText data={data.description} />
           </div>
-          <Link href="/a-propos#faq" variant="primary" internalLink>
+          <Link href="/contact#faq" variant="primary" internalLink>
             Consulter
           </Link>
         </div>

@@ -71,6 +71,12 @@ export const Workshops: CollectionConfig = {
       required: true,
     },
     {
+      name: 'form-url',
+      label: 'URL du formulaire Google',
+      type: 'text',
+      required: true,
+    },
+    {
       name: 'state',
       label: 'Statut',
       type: 'select',

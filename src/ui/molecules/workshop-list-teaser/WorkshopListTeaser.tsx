@@ -24,7 +24,7 @@ export const WorkshopListTeaser: React.FC<Props> = ({
   useWorkshopListTeaserAnimation(workshopsListRef, data)
 
   return (
-    <div className={clsx('workshop_list_teaser', { loading_spiner: isLoading })} {...props}>
+    <div className={clsx(className, 'workshop_list_teaser', { loading_spiner: isLoading })} {...props}>
       {!isError && !isLoading && data.length >= 1 && (
         <ul ref={workshopsListRef} className="workshop_list_teaser__list">
           {data.map((workshop) => (

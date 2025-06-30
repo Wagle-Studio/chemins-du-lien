@@ -95,13 +95,13 @@ export interface Config {
   globals: {
     homepage: Homepage;
     discover: Discover;
-    about: About;
+    contact: Contact;
     process: Process;
   };
   globalsSelect: {
     homepage: HomepageSelect<false> | HomepageSelect<true>;
     discover: DiscoverSelect<false> | DiscoverSelect<true>;
-    about: AboutSelect<false> | AboutSelect<true>;
+    contact: ContactSelect<false> | ContactSelect<true>;
     process: ProcessSelect<false> | ProcessSelect<true>;
   };
   locale: null;
@@ -222,6 +222,7 @@ export interface Workshop {
   date: string;
   'meeting-location': string;
   capacity: number;
+  'form-url': string;
   state: 'programmed' | 'confirmed' | 'canceled' | 'reported';
   categories?: (number | Category)[] | null;
   updatedAt: string;
@@ -437,6 +438,7 @@ export interface WorkshopsSelect<T extends boolean = true> {
   date?: T;
   'meeting-location'?: T;
   capacity?: T;
+  'form-url'?: T;
   state?: T;
   categories?: T;
   updatedAt?: T;
@@ -863,27 +865,12 @@ export interface Discover {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "about".
+ * via the `definition` "contact".
  */
-export interface About {
+export interface Contact {
   id: number;
   banner?: (number | null) | Media;
   title: string;
-  introduction: {
-    root: {
-      type: string;
-      children: {
-        type: string;
-        version: number;
-        [k: string]: unknown;
-      }[];
-      direction: ('ltr' | 'rtl') | null;
-      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-      indent: number;
-      version: number;
-    };
-    [k: string]: unknown;
-  };
   blocks?:
     | (
         | {
@@ -981,6 +968,12 @@ export interface About {
             blockName?: string | null;
             blockType: 'instagram';
           }
+        | {
+            background?: boolean | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'contact_form';
+          }
       )[]
     | null;
   /**
@@ -1028,6 +1021,35 @@ export interface Process {
   };
   blocks?:
     | (
+        | {
+            background?: boolean | null;
+            title: string;
+            subtitle: string;
+            stapes?:
+              | {
+                  title: string;
+                  description: {
+                    root: {
+                      type: string;
+                      children: {
+                        type: string;
+                        version: number;
+                        [k: string]: unknown;
+                      }[];
+                      direction: ('ltr' | 'rtl') | null;
+                      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+                      indent: number;
+                      version: number;
+                    };
+                    [k: string]: unknown;
+                  };
+                  id?: string | null;
+                }[]
+              | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'process';
+          }
         | {
             background?: boolean | null;
             richText: {
@@ -1364,12 +1386,11 @@ export interface DiscoverSelect<T extends boolean = true> {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "about_select".
+ * via the `definition` "contact_select".
  */
-export interface AboutSelect<T extends boolean = true> {
+export interface ContactSelect<T extends boolean = true> {
   banner?: T;
   title?: T;
-  introduction?: T;
   blocks?:
     | T
     | {
@@ -1435,6 +1456,13 @@ export interface AboutSelect<T extends boolean = true> {
               id?: T;
               blockName?: T;
             };
+        contact_form?:
+          | T
+          | {
+              background?: T;
+              id?: T;
+              blockName?: T;
+            };
       };
   metaTitle?: T;
   metaDescription?: T;
@@ -1456,6 +1484,22 @@ export interface ProcessSelect<T extends boolean = true> {
   blocks?:
     | T
     | {
+        process?:
+          | T
+          | {
+              background?: T;
+              title?: T;
+              subtitle?: T;
+              stapes?:
+                | T
+                | {
+                    title?: T;
+                    description?: T;
+                    id?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
         article_rich_text?:
           | T
           | {

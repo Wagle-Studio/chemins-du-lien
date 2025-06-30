@@ -61,11 +61,11 @@ export const Faq: React.FC<Props> = ({ data, faqs }) => {
           ))}
         </ul>
         <div className="faq_block__wrapper__cta">
-          <Link href="/contact" variant="primary" internalLink>
+          <Link href="/contact#formulaire" variant="primary" internalLink>
             Entrons en contact
           </Link>
-          <Link href="/ateliers" variant="ghost" internalLink>
-            Nos ateliers
+          <Link href="/processus" variant="ghost" internalLink>
+            Découvrir le processus
           </Link>
         </div>
       </div>

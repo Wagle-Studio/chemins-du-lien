@@ -10,7 +10,7 @@ import path from 'path'
 import { serveLivePreview } from './utilities/payload/preview'
 import { Homepage } from './globals/homepage/config'
 import { DiscoverPage } from './globals/discover/config'
-import { AboutPage } from './globals/about/config'
+import { ContactPage } from './globals/contact/config'
 import { ProcessPage } from './globals/process/config'
 
 import { Users } from './collections/Users'
@@ -33,14 +33,14 @@ export default buildConfig({
       url: ({ data, collectionConfig, globalConfig }) =>
         serveLivePreview(data, collectionConfig, globalConfig),
       collections: [],
-      globals: ['homepage', 'discover', 'about', 'process'],
+      globals: ['homepage', 'discover', 'contact', 'process'],
     },
   },
   i18n: {
     fallbackLanguage: 'en',
     supportedLanguages: { fr },
   },
-  globals: [Homepage, DiscoverPage, AboutPage, ProcessPage],
+  globals: [Homepage, DiscoverPage, ContactPage, ProcessPage],
   collections: [Users, Media, Categories, Workshops, FAQ, ContactMessages],
   editor: lexicalEditor(),
   secret: process.env.PAYLOAD_SECRET || '',
