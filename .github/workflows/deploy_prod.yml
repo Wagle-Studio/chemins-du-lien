@@ -32,7 +32,7 @@ jobs:
           sed -i 's#^NODE_ENV=.*#NODE_ENV=production#' .env
 
       - name: Build Docker containers (test only)
-        run: docker compose -f docker-compose.yml -f docker-compose.prod.yml build
+        run: docker compose -f docker-compose.prod.yml build
 
   deploy:
     needs: test-build
@@ -91,6 +91,6 @@ jobs:
             sed -i 's#^PGADMIN_DEFAULT_EMAIL=.*#PGADMIN_DEFAULT_EMAIL=${{ secrets.PGADMIN_DEFAULT_EMAIL_PROD }}#' .env
             sed -i 's#^PGADMIN_DEFAULT_PASSWORD=.*#PGADMIN_DEFAULT_PASSWORD=${{ secrets.PGADMIN_PASSWORD_PROD }}#' .env
             docker compose pull
-            docker compose -f docker-compose.yml -f docker-compose.prod.yml up --build -d
+            docker compose -f docker-compose.yml up --build -d
             docker image prune -f
           EOF
