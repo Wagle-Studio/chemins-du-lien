@@ -91,9 +91,6 @@ jobs:
             sed -i 's#^PGADMIN_DEFAULT_EMAIL=.*#PGADMIN_DEFAULT_EMAIL=${{ secrets.PGADMIN_DEFAULT_EMAIL_PROD }}#' .env
             sed -i 's#^PGADMIN_DEFAULT_PASSWORD=.*#PGADMIN_DEFAULT_PASSWORD=${{ secrets.PGADMIN_PASSWORD_PROD }}#' .env
             docker compose pull
-            docker compose -f docker-compose.yml -f docker-compose.prod.yml build db
-            docker compose up -d db
-            docker compose -f docker-compose.yml -f docker-compose.prod.yml build web
-            docker compose up -d web
+            docker compose -f docker-compose.yml -f docker-compose.prod.yml up --build -d
             docker image prune -f
           EOF
