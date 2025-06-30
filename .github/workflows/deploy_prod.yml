@@ -47,14 +47,14 @@ jobs:
       - name: Setup SSH
         run: |
           mkdir -p ~/.ssh
-          echo "${{ secrets.SFTP_PROD_SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
+          echo "${{ secrets.SFTP_PREPROD_SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
           chmod 400 ~/.ssh/id_rsa
           ssh-keyscan -H "${{ secrets.REMOTE_PROD_HOST }}" >> ~/.ssh/known_hosts
 
       - name: Deploy via SFTP (mirror)
         run: |
           LOCALDIR=$(pwd)
-          REMOTEDIR="${{ secrets.REMOTE_PROD_PROJECT_FOLDER_PATH }}"
+          REMOTEDIR="${{ secrets.REMOTE_PREPROD_PROJECT_FOLDER_PATH }}"
 
           lftp sftp://${{ secrets.SFTP_PROD_USERNAME }}:${{ secrets.SFTP_PROD_PWD }}@${{ secrets.REMOTE_PROD_HOST }} -e "
             set sftp:auto-confirm yes;
