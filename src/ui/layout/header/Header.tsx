@@ -101,7 +101,7 @@ export const Header: React.FC<HTMLAttributes<HTMLElement>> = ({ className, ...pr
               className={clsx(
                 'header__bar__nav__list__item',
                 'header__bar__nav__list__item--hidden',
-                { 'header__bar__nav__list__item--active': pathname === '/processus' },
+                { 'header__bar__nav__list__item--active': pathname === '/atelier' },
                 {
                   header__bar__nav__list__item__mobile: isMobileMenuOpen,
                   'header__bar__nav__list__item__mobile--hidden': isMobileMenuOpen,
