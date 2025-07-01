@@ -97,6 +97,7 @@
   .process_block {
     &__wrapper {
       padding: var(--space-12) var(--space-6);
+      box-sizing: border-box;
     }
   }
 }
@@ -226,14 +227,28 @@
 
 .first,
 .third {
-  width: 102px;
-  height: 144px;
+  width: 81.6px;
+  height: 115.2px;
 }
 
 .second,
 .fourth {
-  width: 144px;
-  height: 102px;
+  width: 115.2px;
+  height: 81.6px;
+}
+
+@media screen and (min-width: 768px) {
+  .first,
+  .third {
+    width: 102px;
+    height: 144px;
+  }
+
+  .second,
+  .fourth {
+    width: 144px;
+    height: 102px;
+  }
 }
 
 @keyframes fill-bar {

@@ -16,6 +16,7 @@ services:
       context: .
     ports:
       - "3002:3000"
+      - "3000:3000"
     env_file: .env
     environment:
       NODE_ENV: production
