@@ -25,7 +25,7 @@ export default async function Workshops() {
 }
 
 const meta: StaticMeta = {
-  metaTitle: 'Nos ateliers – Explorer la posture relationnelle',
+  metaTitle: 'Réservez votre atelier – Chemins du Lien',
   metaDescription:
     'Découvrez nos ateliers pour expérimenter des outils de dialogue, développer l’écoute active et améliorer vos relations.',
   noIndex: false,

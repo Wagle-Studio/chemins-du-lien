@@ -10,7 +10,7 @@ export const useHeroPageAnimation = (
   introductionRef: React.RefObject<HTMLHeadingElement | null>,
 ) => {
   useEffect(() => {
-    if (!sectionRef.current || !headingRef.current || !introductionRef.current) return
+    if (!sectionRef.current || !headingRef.current) return
 
     const ctx = gsap.context(() => {
       gsap.from(headingRef.current, {
@@ -23,6 +23,8 @@ export const useHeroPageAnimation = (
         duration: 0.6,
         ease: 'power2.out',
       })
+
+      if (!introductionRef.current) return
 
       gsap.from(introductionRef.current, {
         scrollTrigger: {
