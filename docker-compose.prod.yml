@@ -10,16 +10,12 @@ services:
       - postgres_data_prod:/var/lib/postgresql/data
 
   web:
-    build:
-      context: .
+    image: ${GHCR_NAMESPACE}
     ports:
-      - "3000:3000"
+      - 127.0.0.1:${REMOTE_DIST_PORT}:3000
     env_file: .env
-    environment:
-      NODE_ENV: production
     depends_on:
       - db
-    command: sh -c "npm run build && npm run start"
 
 volumes:
   postgres_data_prod:
