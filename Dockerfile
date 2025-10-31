@@ -13,6 +13,7 @@ WORKDIR /app
 COPY . .
 
 ENV NEXT_TELEMETRY_DISABLED=1
+
 ENV npm_config_platform=linux
 
 RUN npm install

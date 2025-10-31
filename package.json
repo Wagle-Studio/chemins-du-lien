@@ -5,7 +5,7 @@
   "license": "MIT",
   "type": "module",
   "scripts": {
-    "build": "cross-env NODE_OPTIONS=--no-deprecation next build",
+    "build": "NODE_ENV=production cross-env NODE_OPTIONS=--no-deprecation next build --experimental-build-mode compile",
     "postbuild": "next-sitemap",
     "dev": "cross-env NODE_OPTIONS=--no-deprecation next dev",
     "devsafe": "rm -rf .next && cross-env NODE_OPTIONS=--no-deprecation next dev",
@@ -13,7 +13,7 @@
     "generate:types": "cross-env NODE_OPTIONS=--no-deprecation payload generate:types",
     "lint": "cross-env NODE_OPTIONS=--no-deprecation next lint",
     "payload": "cross-env NODE_OPTIONS=--no-deprecation payload",
-    "start": "cross-env NODE_OPTIONS=--no-deprecation next start"
+    "start": "NODE_ENV=production cross-env NODE_OPTIONS=--no-deprecation next start"
   },
   "dependencies": {
     "@hookform/resolvers": "^4.1.3",
